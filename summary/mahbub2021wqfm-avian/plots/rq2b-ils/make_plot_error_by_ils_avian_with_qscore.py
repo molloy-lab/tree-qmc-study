@@ -269,7 +269,7 @@ def make_figure(df, output):
         # Set labels
         #ax.set_title(letters[i+2] + str(" Species tree height %s" % scal),
         #            loc="left", x=0.0, y=1.0, fontsize=10.5)
-        ax.set_title(upperletters[i+2] + str(" Species tree scale %s" % scal),
+        ax.set_title(upperletters[i+3] + str(" Species tree scale %s" % scal),
                  loc="left", fontsize=11)
         if i == 0:
             ax.set_ylabel(r"$\Delta$ Quartet Score $\times$ 1000", fontsize=11)  
