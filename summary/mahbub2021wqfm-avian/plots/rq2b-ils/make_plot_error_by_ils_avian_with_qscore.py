@@ -24,7 +24,8 @@ upperletters = [r"\textbf{A}",
                 r"\textbf{F}"]
 
 # Tableau 20 colors in RGB.    
-tableau20 = [(255, 127, 14), (255, 187, 120),
+tableau20 = [(44, 160, 44), (152, 223, 138),
+             (255, 127, 14), (255, 187, 120),
              (23, 190, 207), (158, 218, 229),
              (31, 119, 180), (174, 199, 232),
              (227, 119, 194), (247, 182, 210),
@@ -86,13 +87,15 @@ def setBoxColors(bp):
 
 
 def make_figure(df, output):
-    mthds = ["treeqmc_n0_v1.0.0",
+    mthds = ["wqmc_v3.0",
+             "treeqmc_n0_v1.0.0",
              "treeqmc_n1_v1.0.0",
              "treeqmc_n2_v1.0.0",
              "wqfm_v1.3",
              "fastral",
              "astral_3_v5.7.7"]
-    mnams = [r"TREE-QMC-n0",
+    mnams = [r"wQMC",
+             r"TREE-QMC-n0",
              r"n1",
              r"n2",
              r"wQFM",
@@ -188,11 +191,11 @@ def make_figure(df, output):
         ax.set_xticklabels(test)
 
         if scal == "0.5X":
-            yticks = [0, 5, 10, 15, 20]
+            yticks = [0, 5, 10, 15, 20, 25, 30]
         elif scal == "1X":
-            yticks = [0, 3, 6, 9, 12, 15, 18]
+            yticks = [0, 3, 6, 9, 12, 15, 18, 21, 24]
         else:
-            yticks = [0, 3, 6, 9, 12]
+            yticks = [0, 3, 6, 9, 12, 15]
         ydraw = yticks
         ymax = yticks[-1]
         ymin = -0.05 * ymax
@@ -289,11 +292,11 @@ def make_figure(df, output):
         ax.set_xticklabels(test)
 
         if scal == "0.5X":
-            yticks = [-0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2, 1.5]
+            yticks = [-7, -6, -5, -4, -3, -2, -1, 0, 1, 2]
         elif scal == "1X":
-            yticks = [-0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2, 1.5]
+            yticks = [-2, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5]
         else:
-            yticks = [-0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9, 1.2]
+            yticks = [-2, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5]
         ydraw = yticks
         ymax = yticks[-1]
         ymin = -0.05 * ymax
@@ -331,10 +334,10 @@ def make_figure(df, output):
     ax.legend(hs, 
               mnams,
               frameon=False, 
-              ncol=6, 
+              ncol=7, 
               fontsize=9.5,
               loc='lower center', 
-              bbox_to_anchor=(-0.725, -0.55, 0, 3))
+              bbox_to_anchor=(-0.75, -0.55, 0, 3))
 
     # Save plot
     plt.savefig(output, format='pdf', dpi=300)
