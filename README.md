@@ -1,1 +1,1 @@
-# tree-qmc-study
+This repository contains scripts used to analyze data for the study "TREE-QMC: Improving quartet graph construction for scalable and accurate species tree estimation from gene trees" available on [bioRxiv](https://doi.org/10.1101/2022.06.25.497608).
