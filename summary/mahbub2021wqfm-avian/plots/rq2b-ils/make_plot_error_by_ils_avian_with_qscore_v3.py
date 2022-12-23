@@ -335,5 +335,5 @@ def make_figure(df, output):
 df = pandas.read_csv("../../csvs/data-all-error-and-timings.csv")
 df = df[df["NGEN"] == 1000]
 
-title = "supplot-rq2b-ils-avian-with-qscore-v2.pdf"
+title = "supplot-rq2b-ils-avian-with-qscore-v3.pdf"
 make_figure(df, title)
