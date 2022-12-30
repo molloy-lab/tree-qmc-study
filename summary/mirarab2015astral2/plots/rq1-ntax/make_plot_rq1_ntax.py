@@ -260,7 +260,10 @@ def make_figure(df, gtre, ngen, output):
         av = []
         se = []
         for ntax in ntaxs:
-            xdf = df[(df["NTAX"] == ntax) & (df["MTHD"] == mthd)]
+            xdf = df[(df["NTAX"] == ntax) & 
+                     (df["STRHT"] == 2000000) &
+                     (df["SRATE"] == 0.000001) &
+                     (df["MTHD"] == mthd)]
             if xdf.shape[0] > 0:
                 vals = xdf.SECS.values / (60.0 * 60.0)
 
@@ -343,7 +346,7 @@ def make_figure(df, gtre, ngen, output):
     plt.savefig(output, format='pdf', dpi=300)
 
 
-df = pandas.read_csv("../../mirarab2015astral2/csvs/data-all-error-and-timings-ex.csv")
+#df = pandas.read_csv("../../csvs/data-all-error-and-timings-ex.csv")
 #gtre = "estimated"
 #ngen = 1000
 #df = df[df["GTRE"] == gtre + "genetre"]
