@@ -23,13 +23,14 @@ def reformat_timing(data):
 
 
 ste_df = pandas.read_csv("all_species_tree_error.csv", keep_default_na=False)
+wqf_df = pandas.read_csv("all_wqfit.csv", keep_default_na=False)
 mrt_df = pandas.read_csv("all_runtime.csv", keep_default_na=False)
 qrt_df = pandas.read_csv("all_quartets_runtime.csv", keep_default_na=False)
 qsc_df = pandas.read_csv("all_quartet_score.csv", keep_default_na=False)
 
 cols = ["SCAL", "NGEN", "NBPS", "REPL",
         "MTHD", "NODE", "SEFN", "SERF", 
-        "NQSC", "SECS", "FRAC"]
+        "WQFT", "NQSC", "SECS", "FRAC"]
 
 rows = []
 
@@ -59,6 +60,7 @@ for do in ["ils", "ngen"]:
                              "wqfm_v1.3",
                              "wqmc_v3.0"]
 
+                    # Process quartet runtime
                     xqrt_df = qrt_df[(qrt_df["SCAL"] == scal) &
                                      (qrt_df["NGEN"] == ngen) &
                                      (qrt_df["NBPS"] == nbps) &
@@ -70,6 +72,7 @@ for do in ["ils", "ngen"]:
                     qrt = reformat_timing(xqrt_df.real.values[0])
 
                     for mthd in mthds:
+                        # Process species tree error
                         xste_df = ste_df[(ste_df["SCAL"] == scal) &
                                          (ste_df["NGEN"] == ngen) &
                                          (ste_df["NBPS"] == nbps) &
@@ -82,6 +85,19 @@ for do in ["ils", "ngen"]:
                         serf = float(xste_df.RF.values[0])
                         sefn = int(xste_df.FN.values[0])
 
+                        # Process wQfit
+                        xwqf_df = wqf_df[(wqf_df["SCAL"] == scal) &
+                                         (wqf_df["NGEN"] == ngen) &
+                                         (wqf_df["NBPS"] == nbps) &
+                                         (wqf_df["REPL"] == repl) &
+                                         (wqf_df["MTHD"] == mthd)]
+
+                        if xwqf_df.shape[0] != 1:
+                            sys.exit("3 ERROR - %s ste!" % mthd)
+
+                        wqft = float(xwqf_df.WQFIT.values[0])
+
+                        # Process runtime
                         xmrt_df = mrt_df[(mrt_df["SCAL"] == scal) &
                                          (mrt_df["NGEN"] == ngen) &
                                          (mrt_df["NBPS"] == nbps) &
@@ -89,7 +105,7 @@ for do in ["ils", "ngen"]:
                                          (mrt_df["MTHD"] == mthd)]
 
                         if xmrt_df.shape[0] != 1:
-                            sys.exit("3 ERROR - %s rt!" % mthd)
+                            sys.exit("4 ERROR - %s rt!" % mthd)
 
                         node = xmrt_df.NODE.values[0]
                         mrt = reformat_timing(xmrt_df.real.values[0])
@@ -101,6 +117,7 @@ for do in ["ils", "ngen"]:
                             if node != savenode:
                                 sys.stdout.write("Methods run on different nodes!")
 
+                        # Process quartet score
                         xqsc_df = qsc_df[(qsc_df["SCAL"] == scal) &
                                          (qsc_df["NGEN"] == ngen) &
                                          (qsc_df["NBPS"] == nbps) &
@@ -108,7 +125,7 @@ for do in ["ils", "ngen"]:
                                          (qsc_df["MTHD"] == mthd)]
 
                         if xqsc_df.shape[0] != 1:
-                            sys.exit("4 ERROR - %s qsc!" % mthd)
+                            sys.exit("5 ERROR - %s qsc!" % mthd)
 
                         nqsc = float(xqsc_df.NQS.values[0])
 
@@ -120,6 +137,7 @@ for do in ["ils", "ngen"]:
                         row["MTHD"] = mthd
                         row["NODE"] = node
                         row["SEFN"] = sefn
+                        row["WQFT"] = wqft
                         row["SERF"] = serf
                         row["NQSC"] = nqsc
                         row["SECS"] = secs
@@ -137,7 +155,7 @@ for do in ["ils", "ngen"]:
                                      (qsc_df["MTHD"] == "TRUE")]
 
                     if xqsc_df.shape[0] != 1:
-                        sys.exit("5 ERROR - TRUE!")
+                        sys.exit("6 ERROR - TRUE!")
 
                     nqsc = float(xqsc_df.NQS.values[0])
 
@@ -150,6 +168,7 @@ for do in ["ils", "ngen"]:
                     row["NODE"] = node
                     row["SEFN"] = 0
                     row["SERF"] = 0
+                    row["WQFT"] = 1
                     row["NQSC"] = nqsc
                     row["SECS"] = 0
                     row["FRAC"] = 0
