@@ -243,8 +243,11 @@ def compute_wqfit(quartets_t1, quartets_t2, qweights, taxa):
                     qws = [qweights[q] if q in qweights else 0.0 for q in [q0, q1, q2]]
                     tot = sum(qws)
 
-                    normw = [qw / tot for qw in qws]
-                    
+                    if tot == 0:
+                        normw = qws
+                    else:
+                        normw = [qw / tot for qw in qws]
+
                     i1 = i2 = -1
                     w1 = w2 = 0
                     
