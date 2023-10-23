@@ -22,11 +22,11 @@ for MODL in ${MODLS[@]}; do
 
         sbatch \
             --nodelist=$NODE \
-            --job-name="c1-1.$MODL" \
-            --output="c1-1.$MODL.%j.out" \
-            --error="c1-1.$MODL.%j.err" \
+            --job-name="c1.$MODL" \
+            --output="c1.$MODL.%j.out" \
+            --error="c1.$MODL.%j.err" \
             --export=MODL="$MODL" \
-        c1-1_drive.sbatch
+        c1_drive.sbatch
 
         INDEX=$[INDEX+1]
     else
@@ -65,19 +65,19 @@ for MODL in ${MODLS[@]}; do
 
     #sbatch \
     #    --exclude=$EXCLUDE \
-    #    --job-name="c1-1.$MODL" \
-    #    --output="c1-1.$MODL.%j.out" \
-    #    --error="c1-1.$MODL.%j.err" \
+    #    --job-name="c1.$MODL" \
+    #    --output="c1.$MODL.%j.out" \
+    #    --error="c1.$MODL.%j.err" \
     #    --export=MODL="$MODL" \
-    #c1-1_drive.sbatch
+    #c1_drive.sbatch
 
     sbatch \
         --nodelist=$NODE \
-        --job-name="c1-1.$MODL" \
-        --output="c1-1.$MODL.%j.out" \
-        --error="c1-1.$MODL.%j.err" \
+        --job-name="c1.$MODL" \
+        --output="c1.$MODL.%j.out" \
+        --error="c1.$MODL.%j.err" \
         --export=MODL="$MODL" \
-    c1-1_drive.sbatch
+    c1_drive.sbatch
 
     fi
 done

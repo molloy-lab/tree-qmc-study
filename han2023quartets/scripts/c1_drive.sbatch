@@ -28,7 +28,7 @@ srun \
     --ntasks 1 \
     --cpus-per-task 32 \
     --mem=36gb \
-    ./c1-1_run_huntress_default.sh $MYMODL $DATDIR
+    ./c1_run_huntress_default.sh $MYMODL $DATDIR
 wait
 echo "...done"
 
