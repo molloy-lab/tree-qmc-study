@@ -66,18 +66,19 @@ for MODL in ${MODLS[@]}; do
 
         #sbatch \
         #    --exclude=$EXCLUDE \
-        #    --job-name="d1.$MODL" \
-        #    --output="d1.$MODL.%j.out" \
-        #    --error="d1.$MODL.%j.err" \
+        #    --job-name="e1.$MODL" \
+        #    --output="e1.$MODL.%j.out" \
+        #    --error="e1.$MODL.%j.err" \
         #    --export=MODL="$MODL" \
-        #d1_drive.sbatch
+        #e1_drive.sbatch
 
         sbatch \
             --nodelist=$NODE \
-            --job-name="d1.$MODL" \
-            --output="d1.$MODL.%j.out" \
-            --error="d1.$MODL.%j.err" \
+            --job-name="e1.$MODL" \
+            --output="e1.$MODL.%j.out" \
+            --error="e1.$MODL.%j.err" \
             --export=MODL="$MODL" \
-        d1_drive.sbatch
+        e1_drive.sbatch
+
     fi
 done
