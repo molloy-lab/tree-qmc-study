@@ -23,13 +23,13 @@ PROJECTDIR="$GROUPDIR/ekmolloy/species-to-tumor-study"
 DATDIR="$PROJECTDIR/data/kizilkale2022fast/$MODL"
 
 
-echo "Calculating error for pairs of mutations..."
+echo "Mapping mutations to trees..."
 srun \
     --nodes 1 \
     --ntasks 1 \
     --cpus-per-task 1 \
     --mem=16gb \
-    ./h1_calc_huntress_error.sh $MYMODL $DATDIR
+    ./y1_map_muts_to_tree.sh $MYMODL $DATDIR
 wait
 echo "...done"
 
