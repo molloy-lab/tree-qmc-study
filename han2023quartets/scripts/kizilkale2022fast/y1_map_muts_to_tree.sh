@@ -17,10 +17,10 @@ CTRE_TRUE="ground.cell_lineage_tree.nwk"
 
 pwd
 
-MTHDS=( "treeqmcbip_v1.0.0_n2_wroot" \
+MTHDS=( "treeqmcbip_v1.0.0_n2_wrootx" \
         "scistree_v1.2.0.6" \
-        "fastme_v2.1.5_wroot" \
-        "fastral_wroot" )
+        "fastme_v2.1.5_wrootx" \
+        "fastral_wrootx" )
 
 for MYMTHD in ${MTHDS[@]}; do
     FIN="$MYMTHD.cell_lineage_tree"
