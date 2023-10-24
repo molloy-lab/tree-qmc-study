@@ -46,8 +46,8 @@ for MYMTHD in ${MTHDS[@]}; do
             exit
         fi
 
-        #MYERRR=$(/opt/local/stow/Python3-3.8.1/bin/python3 $COMPARE -t1 $CTRE_TRUE -t2 $FIN.cell_lineage_tree.nwk)
-        #echo "$MYMODL,${MYMTHD}_wmuts,$MYERRR" > ${MYMTHD}_cell_lineage_tree_error.csv
+        MYERRR=$(/opt/local/stow/Python3-3.8.1/bin/python3 $COMPARE -t1 $CTRE_TRUE -t2 $FIN.cell_lineage_tree.nwk)
+        echo "$MYMODL,${MYMTHD}_wmuts,$MYERRR" > ${MYMTHD}_cell_lineage_tree_error.csv
 
         MYERRR=$(/opt/local/stow/Python3-3.8.1/bin/python3 $COMPARE -t1 $CTRE_TRUE -t2 $FOUT.cell_lineage_tree.nwk)
         echo "$MYMODL,${MYMTHD}_wmuts,$MYERRR" > ${MYMTHD}_wmuts_cell_lineage_tree_error.csv
