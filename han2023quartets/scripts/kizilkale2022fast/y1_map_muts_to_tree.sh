@@ -26,7 +26,7 @@ for MYMTHD in ${MTHDS[@]}; do
     FIN="$MYMTHD.cell_lineage_tree"
     FOUT="${MYMTHD}_wmuts"
 
-    if [ ! -e $FOUT.cell_lineage_tree.nwk ]; then    
+    if [ ! -e $FOUT.cell_lineage_tree.nwk ]; then
         if [ -e $FIN.nwk ] && [ ! -e $FOUT.CFMatrix ]; then
             /opt/local/stow/Python3-3.8.1/bin/python3 $MAPMUT2TRE \
                 -t $FIN.nwk \
@@ -46,11 +46,10 @@ for MYMTHD in ${MTHDS[@]}; do
             exit
         fi
 
-        MYERRR=$(/opt/local/stow/Python3-3.8.1/bin/python3 $COMPARE -t1 $CTRE_TRUE -t2 $FIN.cell_lineage_tree.nwk)
-        echo "$MYMODL,${MYMTHD}_wmuts,$MYERRR" > ${MYMTHD}_cell_lineage_tree_error.csv
+        MYERRR=$(/opt/local/stow/Python3-3.8.1/bin/python3 $COMPARE -t1 $CTRE_TRUE -t2 $FIN.nwk)
+        echo "$MYMODL,${MYMTHD},$MYERRR" > ${MYMTHD}_cell_lineage_tree_error.csv
 
         MYERRR=$(/opt/local/stow/Python3-3.8.1/bin/python3 $COMPARE -t1 $CTRE_TRUE -t2 $FOUT.cell_lineage_tree.nwk)
         echo "$MYMODL,${MYMTHD}_wmuts,$MYERRR" > ${MYMTHD}_wmuts_cell_lineage_tree_error.csv
     fi
 done
-
