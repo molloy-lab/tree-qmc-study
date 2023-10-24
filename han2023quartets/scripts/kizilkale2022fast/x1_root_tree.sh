@@ -29,6 +29,6 @@ for MYMTHD in ${MTHDS[@]}; do
             -o  $CTRE_ESTI_ROOTED
 
         MYERRR=$(/opt/local/stow/Python3-3.8.1/bin/python3 $COMPARE -t1 $CTRE_ESTI -t2 $CTRE_ESTI_ROOTED)
-        echo "$MYMODL,$MYMTHD,$MYERRR" > ${MYMTHD}x_debug_cell_lineage_tree_error.csv
+        echo "$MYMODL,$MYMTHD,$MYERRR" > ${MYMTHD}x_cell_lineage_tree_error_debug.csv
     fi
 done
