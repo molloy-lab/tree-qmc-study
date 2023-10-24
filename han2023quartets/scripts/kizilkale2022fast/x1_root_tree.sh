@@ -18,9 +18,7 @@ MTHDS=( "treeqmcbip_v1.0.0_n2_wroot" \
         "fastral_wroot" )
 
 for MYMTHD in ${MTHDS[@]}; do
-    FIN="$MYMTHD.cell_lineage_tree"
-    FOUT="${MYMTHD}_wmuts"
-
+    CTRE_ESTI="${MYMTHD}.cell_lineage_tree.nwk"
     CTRE_ESTI_ROOTED="${MYMTHD}x.cell_lineage_tree.nwk"
     if [ -e $CTRE_ESTI ] && [ ! -e $CTRE_ESTI_ROOTED ]; then
         /opt/local/stow/Python3-3.8.1/bin/python3 $ROOTTREE \
