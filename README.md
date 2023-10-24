@@ -10,5 +10,5 @@ A version of the TREE-QMC method, which estimates a species tree from binary cha
 
 * Han and Molloy, Quartets enable statistically consistent estimation of cell lineage trees under an unbiased error and missingness model, *Invited to Algorithms for Molecular Biology (Special issue for WABI 2023)*.
 
-Check out the related [preprint](https://doi.org/10.1101/2023.04.04.535437).
+Check out the related [software](https://github.com/molloy-lab/TREE-QMC-bip) and related [preprint](https://doi.org/10.1101/2023.04.04.535437).
 
