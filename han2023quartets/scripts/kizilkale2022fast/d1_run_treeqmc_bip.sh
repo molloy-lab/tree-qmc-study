@@ -48,15 +48,5 @@ if [ ! -e $CTRE_ESTI ]; then
     echo "$MYMODL,$MYMTHD,$MYERRR" > ${MYMTHD}_cell_lineage_tree_error.csv
 fi
 
-CTRE_ESTI_ROOTED="${MYMTHD}x.cell_lineage_tree.nwk"
-if [ -e $CTRE_ESTI ] && [ ! -e $CTRE_ESTI_ROOTED ]; then
-    /opt/local/stow/Python3-3.8.1/bin/python3 $ROOTTREE \
-        -i $CTRE_ESTI \
-        -r "root" \
-        -o  $CTRE_ESTI_ROOTED   
-    MYERRR=$(/opt/local/stow/Python3-3.8.1/bin/python3 $COMPARE -t1 $CTRE_ESTI -t2 $CTRE_ESTI_ROOTED)
-    echo "$MYMODL,$MYMTHD,$MYERRR" > ${MYMTHD}x_debug_cell_lineage_tree_error.csv
-fi
-
 done
 
