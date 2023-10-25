@@ -98,7 +98,7 @@ def make_figure(df, output):
              "treeqmcbip_v1.0.0_n2_wrootx_wmuts",
              "scistree_v1.2.0.6_wmuts",
              "fastme_v2.1.5_wrootx_wmuts"]
-    mnams = [r"HUNTRESS",
+    mnams = ["HUNTRESS\n(16 threads)",
              r"FASTRAL",
              r"TREE-QMC",
              r"ScisTree",
@@ -276,7 +276,7 @@ def make_figure(df, output):
             ax.spines["right"].set_visible(False)
 
     # Add legend at bottom
-    gs.tight_layout(fig, rect=[0, 0.06, 1, 1])
+    gs.tight_layout(fig, rect=[0, 0.1, 1, 1])
     hs = []
     for k in range(len(mnams)):
         print(mnams[k])
@@ -292,7 +292,7 @@ def make_figure(df, output):
               ncol=5, 
               fontsize=9,
               loc='lower center', 
-              bbox_to_anchor=(-0.95, -0.6, 0, 1))
+              bbox_to_anchor=(-0.95, -0.8, 0, 1))
 
     # Save plot
     plt.savefig(output, format='pdf', dpi=300)
