@@ -264,7 +264,7 @@ def make_figure(df, output):
               ncol=5, 
               fontsize=9,
               loc='lower center', 
-              bbox_to_anchor=(-0.95, -0.6, 0, 1))
+              bbox_to_anchor=(-1.1, -0.6, 0, 1))
 
     # Save plot
     plt.savefig(output, format='pdf', dpi=300)
