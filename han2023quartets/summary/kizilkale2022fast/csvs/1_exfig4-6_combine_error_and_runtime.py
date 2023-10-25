@@ -65,7 +65,6 @@ mthds4 = ["huntress_v0.1.2.0_default",
 ncxms = [["n300", "m300"], ["n300", "m1000"], ["n1000", "m300"]]
 
 fns = ["fn0.05", "fn0.2"]                         # False negative rate
-fns = ["fn0.2"]                                   # False negative rate
 fp = "fp0.001"                                    # No false positives
 na = "na0.05"                                     # No missing data
 s = "s100"                                        # 
