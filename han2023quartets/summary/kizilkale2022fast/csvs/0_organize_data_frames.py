@@ -4,28 +4,29 @@ import sys
 
 inputs = ["all_cell_lineage_tree_error.csv",
           "all_mut_pair_error.csv",
-          "all_runtime.csv"]
+          "all_runtime.csv",
+          "all_cell_lineage_tree_quartet_score.csv"]
 
 for inputf in inputs:
     base = ["SIMNO", "S", "M", "H", "MINVAF", "ISAV", "N", "ALPHA_FP", "BETA_FN", "GAMMA_NA", "D", "L"]
     if inputf == "all_cell_lineage_tree_error.csv":
         outputf = "all_cell_lineage_tree_error_fixed.csv"
         header = base + ["MTHD", "NL", "I1", "I2", "FN", "FP", "RF"]
-        ncol1 = 13
-        ncol2 = 19
     elif inputf == "all_mut_pair_error.csv":
         outputf = "all_mut_pair_error_fixed.csv"
         header = base + ["MTHD", 
                          "SL_TP", "SL_TN", "SL_FP", "SL_FN",
                          "DL_TP", "DL_TN", "DL_FP", "DL_FN",
                          "AD_TP", "AD_TN", "AD_FP", "AD_FN", "AD_FLIP"]
-        ncol1 = 20
-        ncol2 = 26
-    else:
+    elif inputf == "all_runtime.csv":
         outputf = "all_runtime_fixed.csv"
         header = base + ["MTHD", "NODE", "NTHREADS", "real", "user", "sys"]
-        ncol1 = 12
-        ncol2 = 18
+    else:
+        outputf = "all_cell_lineage_tree_quartet_score_fixed.csv"
+        header = base + ["MTHD", "QS", "NQS"]
+
+    ncol2 = len(header)
+    ncol1 = ncol2 - 6
 
     with open (inputf, 'r') as fin, open(outputf, 'w') as fout:
         fout.write(','.join(header) + '\n')

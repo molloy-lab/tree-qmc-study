@@ -24,12 +24,14 @@ def reformat_timing(data):
 ste_df = pandas.read_csv("all_cell_lineage_tree_error_fixed.csv", keep_default_na=False)
 mpe_df = pandas.read_csv("all_mut_pair_error_fixed.csv", keep_default_na=False)
 mrt_df = pandas.read_csv("all_runtime_fixed.csv", keep_default_na=False)
+nqs_df = pandas.read_csv("all_cell_lineage_tree_quartet_score_fixed.csv", keep_default_na=False)
 
 cols = ["NCELL", "NMUT", "ALPHA_FP","BETA_FN","GAMMA_NA",
         "S", "H", "MINVAF", "ISAV", "D", "L", "REPL",
         "MTHD", "NODE", "SECS",
         "NLEAF", "NINT_ESTI", "SEFP", "NINT_TRUE", "SEFN",
-        "SLP", "SLR", "DLP", "DLR", "ADP", "ADR", "ADFLIP"]
+        "SLP", "SLR", "DLP", "DLR", "ADP", "ADR", "ADFLIP",
+        "QS", "NQS"]
 
 rows = []
 
@@ -44,6 +46,12 @@ mthds2 = ["huntress_v0.1.2.0_default",
           "fastral_wrootx_wmuts",
           "fastme_v2.1.5_wrootx_wmuts",
           "treeqmcbip_v1.0.0_n2_wrootx_wmuts"]
+
+mthds3 = ["huntress_v0.1.2.0_default",
+          "scistree_v1.2.0.6",
+          "fastral_wrootx",
+          "fastme_v2.1.5_wrootx",
+          "treeqmcbip_v1.0.0_n2_wrootx"]
 
 # Extended figure 4 (matches 5 and 6) -  80 / 470 model conditions
 ncxms = [["n300", "m300"], ["n300", "m1000"], ["n1000", "m300"]]
@@ -88,7 +96,11 @@ for ncxm in ncxms:
         for repl in repls:
             print("%d %s %s %s %s" % (index, ncell, nmut, fn, repl))
 
-            for mthd1, mthd2 in zip(mthds1, mthds2):
+            for i in range(len(mthds1)):
+                mthd1 = mthds1[i]
+                mthd2 = mthds2[i]
+                mthd3 = mthds3[i]
+
                 # Process cell lineage tree error
                 xste_df = ste_df[(ste_df["N"] == ncell) &
                                  (ste_df["M"] == nmut) &
@@ -199,6 +211,32 @@ for ncxm in ncxms:
                         if node != savenode:
                             sys.exit("Methods run on different nodes!\n")
 
+
+                # Process quartet score
+                xnqs_df = nqs_df[(nqs_df["N"] == ncell) &
+                                 (nqs_df["M"] == nmut) &
+                                 (nqs_df["BETA_FN"] == fn) &
+                                 (nqs_df["ALPHA_FP"] == fp) &
+                                 (nqs_df["GAMMA_NA"] == na) &
+                                 (nqs_df["S"] == s) &
+                                 (nqs_df["H"] == h) &
+                                 (nqs_df["MINVAF"] == minvaf) &
+                                 (nqs_df["ISAV"] == isav) &
+                                 (nqs_df["D"] == d) &
+                                 (nqs_df["L"] == l) &
+                                 (nqs_df["SIMNO"] == repl) &
+                                 (nqs_df["MTHD"] == mthd3)]
+
+                if xnqs_df.shape[0] != 1:
+                    sys.exit("  4 QUARTET SCORE - %s!\n" % mthd3)
+
+                if (xnqs_df.QS.values[0] == '') or (xnqs_df.QS.values[0] == "NA"):
+                    qscore = "NA"
+                    nqscore = "NA"
+                else:
+                    qscore = int(xnqs_df.QS.values[0])
+                    nqscore = float(xnqs_df.NQS.values[0])
+
                 # Build data frame
                 row = {}
                 row["NCELL"] = ncell
@@ -228,6 +266,8 @@ for ncxm in ncxms:
                 row["ADP"] = ad_p
                 row["ADR"] = ad_r
                 row["ADFLIP"] = ad_flip_rate
+                row["QS"] = qscore
+                row["NQS"] = nqscore
                 rows.append(row)
 
                 index += 1
