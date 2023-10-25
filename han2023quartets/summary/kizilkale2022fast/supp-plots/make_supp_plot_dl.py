@@ -94,7 +94,7 @@ def setBoxColors(bp):
 
 def make_figure(df, output):
     mthds = ["huntress_v0.1.2.0_default",
-             "fastral_wrootx",
+             "fastral",
              "treeqmcbip_v1.0.0_n2",
              "scistree_v1.2.0.6",
              "fastme_v2.1.5"]
@@ -104,6 +104,7 @@ def make_figure(df, output):
              r"ScisTree",
              r"FastME"]
     m = len(mthds)
+    pos = numpy.arange(1, m+1)
 
     ncxnms = [["n1000", "m300"], ["n300", "m300"], ["n300", "m1000"]]
     n = len(ncxnms)
@@ -161,28 +162,12 @@ def make_figure(df, output):
                 stds.append(numpy.mean(vals))
                 nrps.append(len(vals))
 
-            pos = numpy.arange(1, m+1)
-            if i == 2:
-                # Bar graph
-                poss = [2, 4, 6, 8, 10]
-                for k, mthd in enumerate(mthds):
-                    ax.bar([poss[k]],
-                           [avgs[k]],
-                           1.5,
-                           yerr=[[0],[stds[k]]],
-                           color=[tableau20[2*k+1]],
-                           edgecolor=[tableau20[2*k+0]],
-                           lw=1.5,
-                           error_kw=dict(ecolor=tableau20[2*k+0],
-                           capsize=3,
-                           capthick=1.5))
-            else:
-                # Box plot
-                bp = ax.boxplot(sers, positions=pos, widths=0.75,
-                                showfliers=True, 
-                                showmeans=True,
-                                patch_artist=True)
-                setBoxColors(bp)
+            
+            bp = ax.boxplot(sers, positions=pos, widths=0.75,
+                            showfliers=True, 
+                            showmeans=True,
+                            patch_artist=True)
+            setBoxColors(bp)
 
             # Add title
             if i == 0:
