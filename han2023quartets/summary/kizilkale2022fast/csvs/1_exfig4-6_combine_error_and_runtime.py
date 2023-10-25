@@ -55,6 +55,12 @@ mthds3 = ["huntress_v0.1.2.0_default",
           "fastme_v2.1.5_wrootx",
           "treeqmcbip_v1.0.0_n2_wrootx"]
 
+mthds4 = ["huntress_v0.1.2.0_default",
+          "scistree_v1.2.0.6",
+          "fastral",
+          "fastme_v2.1.5",
+          "treeqmcbip_v1.0.0_n2"]
+
 # Extended figure 4 (matches 5 and 6) -  80 / 470 model conditions
 ncxms = [["n300", "m300"], ["n300", "m1000"], ["n1000", "m300"]]
 
@@ -92,8 +98,9 @@ for ncxm in ncxms:
         tmp1 = xste_df.I1.values
         tmp2 = xste_df.I2.values
 
-        print(numpy.mean(tmp1))
-        print(numpy.mean(tmp2))
+        print("mean %f" % numpy.mean(tmp1))
+        print("stdev %f" % numpy.std(tmp1))
+        #print(numpy.mean(tmp2))
 
         for repl in repls:
             print("%d %s %s %s %s" % (index, ncell, nmut, fn, repl))
@@ -102,6 +109,7 @@ for ncxm in ncxms:
                 mthd1 = mthds1[i]
                 mthd2 = mthds2[i]
                 mthd3 = mthds3[i]
+                mthd4 = mthds4[i]
 
                 # Process cell lineage tree error
                 xste_df = ste_df[(ste_df["N"] == ncell) &
@@ -259,7 +267,7 @@ for ncxm in ncxms:
                 row["D"] = d
                 row["L"] = l
                 row["REPL"] = repl
-                row["MTHD"] = mthd2
+                row["MTHD"] = mthd4
                 row["NODE"] = node
                 row["SECS"] = secs
                 row["NLEAF"] = nl
