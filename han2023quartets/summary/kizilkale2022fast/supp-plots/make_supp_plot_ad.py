@@ -94,10 +94,10 @@ def setBoxColors(bp):
 
 def make_figure(df, output):
     mthds = ["huntress_v0.1.2.0_default",
-             "fastral_wrootx_wmuts",
-             "treeqmcbip_v1.0.0_n2_wrootx_wmuts",
-             "scistree_v1.2.0.6_wmuts",
-             "fastme_v2.1.5_wrootx_wmuts"]
+             "fastral",
+             "treeqmcbip_v1.0.0_n2",
+             "scistree_v1.2.0.6",
+             "fastme_v2.1.5"]
     mnams = ["HUNTRESS",
              r"FASTRAL",
              r"TREE-QMC",
