@@ -29,8 +29,10 @@ nqs_df = pandas.read_csv("all_cell_lineage_tree_quartet_score_fixed.csv", keep_d
 cols = ["NCELL", "NMUT", "ALPHA_FP","BETA_FN","GAMMA_NA",
         "S", "H", "MINVAF", "ISAV", "D", "L", "REPL",
         "MTHD", "NODE", "SECS",
-        "NLEAF", "NINT_ESTI", "SEFP", "NINT_TRUE", "SEFN",
-        "SLP", "SLR", "DLP", "DLR", "ADP", "ADR", "ADFLIP",
+        "NLEAF", "NINT_ESTI", "SE_FP", "NINT_TRUE", "SE_FN",
+        "SL_P", "SL_R", "SL_FPR",
+        "DL_P", "DL_R", "DL_FPR",
+        "AD_P", "AD_R", "AD_FPR", "AD_FLIP",
         "QS", "NQS"]
 
 rows = []
@@ -163,22 +165,28 @@ for ncxm in ncxms:
                     sl_tp = int(xmpe_df.SL_TP.values[0])
                     sl_fp = int(xmpe_df.SL_FP.values[0])
                     sl_fn = int(xmpe_df.SL_FN.values[0])
+                    sl_tn = int(xmpe_df.SL_TN.values[0])
                     sl_p = sl_tp / (sl_tp + sl_fp)
-                    sl_r = sl_tp / (sl_tp + sl_fn)
+                    sl_r = sl_tp / (sl_tp + sl_fn)  # 1 - FNR
+                    sl_fpr = sl_fp / (sl_fp + sl_tn)
 
                     dl_tp = int(xmpe_df.DL_TP.values[0])
                     dl_fp = int(xmpe_df.DL_FP.values[0])
                     dl_fn = int(xmpe_df.DL_FN.values[0])
+                    dl_tn = int(xmpe_df.DL_TN.values[0])
                     dl_p = dl_tp / (dl_tp + dl_fp)
                     dl_r = dl_tp / (dl_tp + dl_fn)
+                    dl_fpr = sl_fp / (dl_fp + dl_tn)
 
                     ad_tp = int(xmpe_df.AD_TP.values[0])
                     ad_fp = int(xmpe_df.AD_FP.values[0])
                     ad_fn = int(xmpe_df.AD_FN.values[0])
+                    ad_tn = int(xmpe_df.AD_TN.values[0])
                     ad_flip = int(xmpe_df.AD_FLIP.values[0])
                     ad_p = ad_tp / (ad_tp + ad_fp + ad_flip)
                     ad_r = ad_tp / (ad_tp + ad_fn + ad_flip)
-                    ad_flip_rate = ad_flip / (ad_tp + ad_fp + ad_flip)
+                    ad_fpr = ad_fp / (ad_fp + ad_tn)
+                    ad_flip_rate = ad_flip / (ad_tp + ad_flip)  # when it is AD how often do you flip
 
                 # Process runtime
                 xmrt_df = mrt_df[(mrt_df["N"] == ncell) &
@@ -257,15 +265,18 @@ for ncxm in ncxms:
                 row["NLEAF"] = nl
                 row["NINT_TRUE"] = ni1
                 row["NINT_ESTI"] = ni2
-                row["SEFN"] = sefn
-                row["SEFP"] = sefp
-                row["SLP"] = sl_p
-                row["SLR"] = sl_r
-                row["DLP"] = dl_p
-                row["DLR"] = dl_r
-                row["ADP"] = ad_p
-                row["ADR"] = ad_r
-                row["ADFLIP"] = ad_flip_rate
+                row["SE_FN"] = sefn
+                row["SE_FP"] = sefp
+                row["SL_P"] = sl_p
+                row["SL_R"] = sl_r
+                row["SL_FPR"] = sl_fpr
+                row["DL_P"] = dl_p
+                row["DL_R"] = dl_r
+                row["DL_FPR"] = dl_fpr
+                row["AD_P"] = ad_p
+                row["AD_R"] = ad_r
+                row["AD_FPR"] = ad_fpr
+                row["AD_FLIP"] = ad_flip_rate
                 row["QS"] = qscore
                 row["NQS"] = nqscore
                 rows.append(row)

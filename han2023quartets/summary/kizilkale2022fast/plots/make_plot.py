@@ -157,9 +157,9 @@ def make_figure(df, output):
                          (df["MTHD"] == mthd)]
 
                 if i == 0:
-                    vals = ydf["SEFN"].values / ydf["NINT_TRUE"].values
+                    vals = ydf["SE_FN"].values / ydf["NINT_TRUE"].values
                 elif i == 1:
-                    vals = ydf["SEFP"].values / ydf["NINT_ESTI"].values
+                    vals = ydf["SE_FP"].values / ydf["NINT_ESTI"].values
                 else:
                     vals = ydf["SECS"].values / (60)
  
