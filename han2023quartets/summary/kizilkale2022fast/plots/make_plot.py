@@ -94,16 +94,21 @@ def setBoxColors(bp):
 
 def make_figure(df, output):
     mthds = ["huntress_v0.1.2.0_default",
-             "fastral_wrootx_wmuts",
-             "treeqmcbip_v1.0.0_n2_wrootx_wmuts",
-             "scistree_v1.2.0.6_wmuts",
-             "fastme_v2.1.5_wrootx_wmuts"]
+             "fastral",
+             "treeqmcbip_v1.0.0_n2",
+             "scistree_v1.2.0.6",
+             "fastme_v2.1.5"]
     mnams = ["HUNTRESS\n(16 threads)",
              r"FASTRAL",
              r"TREE-QMC",
              r"ScisTree",
              r"FastME"]
+
     m = len(mthds)
+    box_pos = numpy.arange(1, m+1)
+    print(box_pos)
+    bar_pos = list(box_pos * 2) #[2, 4, 6, 8, 10]
+    print(bar_pos)
 
     ncxnms = [["n1000", "m300"], ["n300", "m300"], ["n300", "m1000"]]
     n = len(ncxnms)
@@ -133,90 +138,6 @@ def make_figure(df, output):
         for j in range(n):
             print("Ax %d %d" % (i, j))
             ax = grid[i][j]
-
-            ncell = ncxnms[j][0]
-            nmuts = ncxnms[j][1]
-            print("  %s x %s" % (ncell, nmuts))
-        
-            sers = []
-            avgs = []
-            stds = []
-            nrps = []
-            for k, mthd in enumerate(mthds):
-                ydf = df[(df["NCELL"] == ncell) &
-                         (df["NMUT"] == nmuts) &
-                         (df["BETA_FN"] == "fn0.2") &
-                         (df["ALPHA_FP"] == "fp0.001") &
-                         (df["GAMMA_NA"] == "na0.05") &
-                         (df["S"] == "s100") &
-                         (df["H"] == "h1") &
-                         (df["MINVAF"] == "minVAF0.005") &
-                         (df["ISAV"] == "ISAV0") &
-                         (df["D"] == "d0") &
-                         (df["L"] == "l1000000") &
-                         (df["MTHD"] == mthd)]
-
-                if i == 0:
-                    vals = ydf["SE_FN"].values / ydf["NINT_TRUE"].values
-                elif i == 1:
-                    vals = ydf["SE_FP"].values / ydf["NINT_ESTI"].values
-                else:
-                    vals = ydf["SECS"].values / (60)
- 
-                sers.append(list(vals))
-                avgs.append(numpy.mean(vals))
-                stds.append(numpy.mean(vals))
-                nrps.append(len(vals))
-
-            pos = numpy.arange(1, m+1)
-            if i == 2:
-                # Bar graph
-                poss = [2, 4, 6, 8, 10]
-                for k, mthd in enumerate(mthds):
-                    ax.bar([poss[k]],
-                           [avgs[k]],
-                           1.5,
-                           yerr=[[0],[stds[k]]],
-                           color=[tableau20[2*k+1]],
-                           edgecolor=[tableau20[2*k+0]],
-                           lw=1.5,
-                           error_kw=dict(ecolor=tableau20[2*k+0],
-                           capsize=3,
-                           capthick=1.5))
-            else:
-                # Box plot
-                bp = ax.boxplot(sers, positions=pos, widths=0.75,
-                                showfliers=True, 
-                                showmeans=True,
-                                patch_artist=True)
-                setBoxColors(bp)
-
-            # Add title
-            if i == 0:
-                [ncell, nmuts] = ncxnms[j]
-                ncell = ncell.replace('n', '')
-                nmuts = nmuts.replace('m', '')
-                labl = ncell + " cells x " + nmuts + " muts"
-                ax.set_title(labl,
-                             loc="center", x=0.5, y=1.3,
-                             fontsize=11)
-
-            # Add letter
-            ax.text(0.05, 1.125, letters[i*3 + j], fontsize=10, 
-                    horizontalalignment='center',
-                    verticalalignment='center',
-                    transform=ax.transAxes)
-
-            # Set x ticks
-            ax.set_xticklabels(['', '', '', '', ''], fontsize=9)
-
-            if j == 0:
-                if i == 0:
-                    ax.set_ylabel("FN rate", fontsize=10)
-                elif i == 1:
-                    ax.set_ylabel("FP rate", fontsize=10)
-                else:
-                    ax.set_ylabel("Runtime (min)", fontsize=10)
 
             # Set y ticks
             if i == 0:
@@ -260,12 +181,15 @@ def make_figure(df, output):
             ax.set_yticks(yticks)
             ax.tick_params(axis='y', labelsize=9)
     
-            #xs = numpy.arange(xminor[0]-1, xminor[-1]+2)
-            #for y in ydraw:
-            #    ax.plot(xs, [y] * len(xs), "--", dashes=(3, 3),
-            #            lw=0.5, color="black", alpha=0.3)
+            if i == 2:
+                xs = numpy.arange(bar_pos[0]-1, bar_pos[-1]+2)
+            else:
+                xs = numpy.arange(box_pos[0]-1, box_pos[-1]+2)
+            for y in yticks:
+                ax.plot(xs, [y] * len(xs), "--", dashes=(3, 3),
+                        lw=0.5, color="black", alpha=0.3)
 
-            #ax.tick_params(axis='y', labelsize=8)
+            ax.tick_params(axis='y', labelsize=8)
 
             # Set plot axis parameters
             ax.tick_params(axis=u'both', which=u'both',length=0) # removes tiny ticks
@@ -274,6 +198,91 @@ def make_figure(df, output):
 
             ax.spines["top"].set_visible(False)
             ax.spines["right"].set_visible(False)
+
+
+
+            # Plot data
+            ncell = ncxnms[j][0]
+            nmuts = ncxnms[j][1]
+            print("  %s x %s" % (ncell, nmuts))
+        
+            sers = []
+            avgs = []
+            stds = []
+            nrps = []
+            for k, mthd in enumerate(mthds):
+                ydf = df[(df["NCELL"] == ncell) &
+                         (df["NMUT"] == nmuts) &
+                         (df["BETA_FN"] == "fn0.2") &
+                         (df["ALPHA_FP"] == "fp0.001") &
+                         (df["GAMMA_NA"] == "na0.05") &
+                         (df["S"] == "s100") &
+                         (df["H"] == "h1") &
+                         (df["MINVAF"] == "minVAF0.005") &
+                         (df["ISAV"] == "ISAV0") &
+                         (df["D"] == "d0") &
+                         (df["L"] == "l1000000") &
+                         (df["MTHD"] == mthd)]
+
+                if i == 0:
+                    vals = ydf["SE_FN"].values / ydf["NINT_TRUE"].values
+                elif i == 1:
+                    vals = ydf["SE_FP"].values / ydf["NINT_ESTI"].values
+                else:
+                    vals = ydf["SECS"].values / (60)
+ 
+                sers.append(list(vals))
+                avgs.append(numpy.mean(vals))
+                stds.append(numpy.mean(vals))
+                nrps.append(len(vals))
+
+            if i == 2:
+                # Bar graph
+                for k, mthd in enumerate(mthds):
+                    ax.bar([bar_pos[k]],
+                           [avgs[k]],
+                           1.5,
+                           yerr=[[0],[stds[k]]],
+                           color=[tableau20[2*k+1]],
+                           edgecolor=[tableau20[2*k+0]],
+                           lw=1.5,
+                           error_kw=dict(ecolor=tableau20[2*k+0],
+                           capsize=3,
+                           capthick=1.5))
+            else:
+                # Box plot
+                bp = ax.boxplot(sers, positions=box_pos, widths=0.75,
+                                showfliers=True, 
+                                showmeans=True,
+                                patch_artist=True)
+                setBoxColors(bp)
+
+            # Add title
+            if i == 0:
+                [ncell, nmuts] = ncxnms[j]
+                ncell = ncell.replace('n', '')
+                nmuts = nmuts.replace('m', '')
+                labl = ncell + " cells x " + nmuts + " muts"
+                ax.set_title(labl,
+                             loc="center", x=0.5, y=1.3,
+                             fontsize=11)
+
+            # Add letter
+            ax.text(0.05, 1.125, letters[i*3 + j], fontsize=10, 
+                    horizontalalignment='center',
+                    verticalalignment='center',
+                    transform=ax.transAxes)
+
+            # Set x ticks
+            ax.set_xticklabels(['', '', '', '', ''], fontsize=9)
+
+            if j == 0:
+                if i == 0:
+                    ax.set_ylabel("FN rate", fontsize=10)
+                elif i == 1:
+                    ax.set_ylabel("FP rate", fontsize=10)
+                else:
+                    ax.set_ylabel("Runtime (min)", fontsize=10)
 
     # Add legend at bottom
     gs.tight_layout(fig, rect=[0, 0.1, 1, 1])
