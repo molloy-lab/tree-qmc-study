@@ -16,8 +16,7 @@ PREP4SCISTREE="$PROJECTDIR/tools/prepare_matrix_for_scistree.py"
 # Define data path
 DATPATH="$PROJECTDIR/data/kizilkale2022fast"
 
-#for NSIM in `cat model_list.txt`; do
-for NSIM in `cat model_list_sorted.txt`; do
+for NSIM in `cat model_list_sorted_focused.txt`; do
     cd $DATPATH/$NSIM
 
     if [ -e ground.CFMatrix ]; then
@@ -34,6 +33,11 @@ for NSIM in `cat model_list_sorted.txt`; do
         fi
 
         # Convert to newick strings
+        if [ ! -e ground.nwk ]; then
+        /opt/local/stow/Python3-3.8.1/bin/python3 $MATX2TREE \
+            -i ground.CFMatrix \
+            -o ground.nwk
+        fi
         if [ ! -e noisy.nwk ]; then
         /opt/local/stow/Python3-3.8.1/bin/python3 $MATX2TREE \
             -i noisy.CFMatrix \
