@@ -20,6 +20,10 @@ MTHDS=( "huntress_v0.1.2.0_default" \
         "fastme_v2.1.5_wrootx_wmuts" \
         "fastral_wrootx_wmuts" )
 
+MTHDS=( "aster_v1.10.2.1_wrootx_wmuts" \
+        "treeqmcbip_v1.0.0_n0_wrootx_wmuts" \
+        "treeqmcbip_v1.0.0_n1_wrootx_wmuts" )
+
 for MYMTHD in ${MTHDS[@]}; do
     ESTI="$MYMTHD.CFMatrix"
     FOUT="${MYMTHD}_mut_pair_error.csv"

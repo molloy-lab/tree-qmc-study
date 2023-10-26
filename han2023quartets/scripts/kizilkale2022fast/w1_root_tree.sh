@@ -17,6 +17,10 @@ MTHDS=( "treeqmcbip_v1.0.0_n2_wroot" \
         "fastme_v2.1.5_wroot" \
         "fastral_wroot" )
 
+MTHDS=( "aster_v1.10.2.1_wroot" \
+        "treeqmcbip_v1.0.0_n0_wroot" \
+        "treeqmcbip_v1.0.0_n1_wroot" )
+
 for MYMTHD in ${MTHDS[@]}; do
     CTRE_ESTI="${MYMTHD}.cell_lineage_tree.nwk"
     CTRE_ESTI_ROOTED="${MYMTHD}x.cell_lineage_tree.nwk"

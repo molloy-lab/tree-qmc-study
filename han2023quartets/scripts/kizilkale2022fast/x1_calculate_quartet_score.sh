@@ -19,7 +19,9 @@ MTHDS=( "huntress_v0.1.2.0_default" \
         "fastme_v2.1.5_wrootx" \
         "fastral_wrootx" )
 
-
+MTHDS=( "aster_v1.10.2.1_wrootx" \
+        "treeqmcbip_v1.0.0_n0_wrootx" \
+        "treeqmcbip_v1.0.0_n1_wrootx" )
 
 for MYMTHD in ${MTHDS[@]}; do
     CTRE_ESTI="${MYMTHD}.cell_lineage_tree"
