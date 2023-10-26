@@ -20,7 +20,7 @@ cd $DATDIR
 #NS=( 0 1 2 ) # Run 1
 NS=( 2 )      # Run 2
 
-for N in ${NS}; do
+for N in ${NS[@]}; do
 
 MYMTHD="treeqmcbip_v1.0.0_n${N}_wroot"
 CTRE_ESTI="$MYMTHD.cell_lineage_tree.nwk"
