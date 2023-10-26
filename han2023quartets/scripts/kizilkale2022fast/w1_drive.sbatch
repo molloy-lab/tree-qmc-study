@@ -29,7 +29,7 @@ srun \
     --ntasks 1 \
     --cpus-per-task 1 \
     --mem=16gb \
-    ./w1_calculate_quartet_score.sh $MYMODL $DATDIR
+    ./w1_root_tree.sh $MYMODL $DATDIR
 wait
 echo "...done"
 
