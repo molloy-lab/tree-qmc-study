@@ -6,9 +6,5 @@ The TREE-QMC method, which estimates a species tree from binary gene trees, was 
 
 Check out the related [software](https://github.com/molloy-lab/TREE-QMC) and [data](https://doi.org/10.5061/dryad.m0cfxpp6g). 
 
-A version of the TREE-QMC method, which estimates a species tree from binary characters, was introduced in this paper:
-
-* Han and Molloy, Quartets enable statistically consistent estimation of cell lineage trees under an unbiased error and missingness model, *Invited to Algorithms for Molecular Biology (Special issue for WABI 2023)*.
-
-Check out the related [software](https://github.com/molloy-lab/TREE-QMC-bip) and [preprint](https://doi.org/10.1101/2023.04.04.535437).
+A version of the TREE-QMC method, which estimates a species tree from binary characters. Check out the related [software](https://github.com/molloy-lab/TREE-QMC-bip) and [preprint](https://doi.org/10.1101/2023.04.04.535437).
 
