@@ -11,18 +11,27 @@ def main(args):
     with open(args.input, 'r') as fin:
         line = fin.readline()
         words = line.split()
+        while len(words) == 0:
+            line = fin.readline()
+            words = line.split()
         ntax = int(words[0])
 
     nkeep = ntax + 1
     nskip = nkeep * (args.gnum - 1)
 
     with open(args.input, 'r') as fin:
-        for ns in range(nskip):
+        ns = 0
+        while ns < nskip:
             line = fin.readline()
+            if len(line.split()) > 0:
+                ns += 1
 
-        for nk in range(nkeep):
+        nk = 0
+        while nk < nkeep:
             line = fin.readline()
-            fout.write(line)
+            if len(line.split()) > 0:
+                fout.write(line)
+                nk += 1
 
 
 if __name__ == "__main__":
