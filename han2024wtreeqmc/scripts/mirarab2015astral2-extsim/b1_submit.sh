@@ -1,19 +1,18 @@
 #!/bin/bash
 
-#exit
+exit
 
 # ILS STUDY PARAMETERS
-#NTAXS=( 200 )                            # Number of taxa
-#HGHTS=( "10000000" "2000000" "500000" )  # Species tree height (number of generations)
-#RATES=( "0.0000001" "0.000001" )         # Speciation rate
-#REPLS=( $(seq  -f "%02g" 1 50) )         # Replicates
+NTAXS=( 200 )                            # Number of taxa
+HGHTS=( "10000000" "2000000" "500000" )  # Species tree height (number of generations)
+RATES=( "0.0000001" "0.000001" )         # Speciation rate
+REPLS=( $(seq -f "%02g" 1 50) )         # Replicates
 
 # SCALABILITY STUDY PARAMETERS
 NTAXS=( 10 50 100 500 1000 )      # Number of taxa
-NTAXS=( 500 1000 )
 HGHTS=( "2000000" )               # Species tree height (number of generations)
 RATES=( "0.000001" )              # Speciation rate
-REPLS=( $(seq  -f "%02g" 1 50) )  # Replicates
+REPLS=( $(seq -f "%02g" 1 50) )  # Replicates
 
 for NTAX in ${NTAXS[@]}; do
     for HGHT in ${HGHTS[@]}; do
@@ -28,7 +27,7 @@ for NTAX in ${NTAXS[@]}; do
 	            GES=( 200 400 600 800 1000 )
                 elif [ $NTAX -eq 200 ]; then
                     GSS=( 1 251 501 751 )
-	            GES=( 250 500 750 100 )
+	            GES=( 250 500 750 1000 )
                 else
                     GSS=( 1 )
                     GES=( 1000 )
