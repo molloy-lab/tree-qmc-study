@@ -12,10 +12,15 @@ def main(args):
     nskip = args.gnum - 1
 
     with open(args.input, 'r') as fin:
-        for ns in range(nskip):
+        ns = 0
+        while ns < nskip:
             line = fin.readline()
+            if len(line.split()) > 0:
+                ns += 1
 
         line = fin.readline()
+        while len(line.split()) == 0:
+            line = fin.readline()
 
     tree = treeswift.read_tree(line, schema='newick')
 
