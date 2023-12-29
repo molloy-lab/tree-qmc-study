@@ -31,6 +31,9 @@ def main(args):
 
     fout.write(tree.newick())
 
+    if not args.output is None:
+        fout.close()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
