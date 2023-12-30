@@ -19,9 +19,14 @@ for NTAX in ${NTAXS[@]}; do
         for RATE in ${RATES[@]}; do
             MODL="model.$NTAX.$HGHT.$RATE"
             for REPL in ${REPLS[@]}; do
-
-echo "Running $MODL $REPL..."
-./c1_organize_gene_trees.sh $MODL $REPL
+ 
+echo "Submitting $MODL $REPL..."
+sbatch \
+    --job-name="d1.$MODL.$REPL" \
+    --output="d1.$MODL.$REPL.%j.out" \
+    --error="d1.$MODL.$REPL.%j.err" \
+    --export=NTAX="$NTAX",HGHT="$HGHT",RATE="$RATE",REPL="$REPL" \
+d1_drive.sbatch
 
             done
         done

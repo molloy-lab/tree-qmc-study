@@ -1,5 +1,6 @@
 import argparse
 import treeswift
+from tswrapper import newick
 import sys
 
 
@@ -35,7 +36,11 @@ def get_branch_info(tree):
 
             label = node.label
             if label is None:
-                label = "NA"                
+                # FastTree-2 outputs polytomies for identical sequences,
+                # IQTree randomly refines polytomies and sets support to None
+                label = "NA"
+                node.label = '0.000'
+                node.edge_length = 0.0
 
             info[branch] = [str(node.edge_length), label]
 
@@ -56,6 +61,8 @@ def main(args):
     
     fin_true = open(args.truetrees, 'r')
     fin_esti = open(args.estitrees, 'r')
+    if not args.output is None:
+        fout = open(args.output, 'w')
 
     for gene in range(ngen):
         # Read true tree
@@ -75,6 +82,7 @@ def main(args):
            get_leaf_set_string(esti_tree):
             sys.exit("True and estimated trees are on different leaf sets!")
 
+        # Get branch info
         true_info = get_branch_info(true_tree)
         esti_info = get_branch_info(esti_tree)
 
@@ -82,6 +90,7 @@ def main(args):
         esti_brln_list = []
         esti_supp_list = []
 
+        # Write branch info
         branches = sorted([key for key in esti_info.keys()])
 
         for branch in branches:
@@ -103,8 +112,15 @@ def main(args):
         sys.stdout.write("%s%d,\"%s\",\"%s\",\"%s\"\n" \
             % (prefix, gene + 1, true_brln_str, esti_brln_str, esti_supp_str))
 
+        # Write cleaned up output tree
+        if not args.output is None:
+            fout.write(newick(esti_tree))
+            fout.write('\n')
+
     fin_true.close()
     fin_esti.close()
+    if not args.output is None:
+        fout.close()
 
 
 if __name__ == "__main__":
@@ -119,5 +135,8 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--prefix", type=str,
                         help="Append prefix to each row of CSV",
                         required=False)
-
+    parser.add_argument("-o", "--output", type=str,
+                        help="Output file containing fixed gene trees",
+                        required=False)
+    
     main(parser.parse_args())

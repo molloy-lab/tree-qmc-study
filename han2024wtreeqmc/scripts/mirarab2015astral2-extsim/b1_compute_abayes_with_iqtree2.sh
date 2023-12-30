@@ -39,8 +39,13 @@ GTAG=$(seq -f "%04g" $GNUM $GNUM )
 cd $OUTDIR
 
 if [ -e $GTRE.abayes-$GTAG ]; then
-    echo "$OUTDIR/$GTRE.abayes-$GTAG already exists!"
-    exit 1
+    TMP=$(grep ";" $GTRE.abayes-$GTAG)
+    if [ -z $TMP ]; then
+        rm $GTRE.abayes-$GTAG
+    else
+        echo "$OUTDIR/$GTRE.abayes-$GTAG already exists!"
+        exit 1
+    fi
 fi
 
 # 1 - split the phylip file so each gene has an alignment

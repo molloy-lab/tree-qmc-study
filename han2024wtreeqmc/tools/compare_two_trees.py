@@ -10,6 +10,7 @@ def get_branch_set(tree):
     branch_set = set([])
 
     leaves = sorted([leaf.label for leaf in tree.traverse_leaves()])
+    nl = len(leaves)
     root = leaves[0]
 
     leaf_set = set(leaves)
@@ -25,8 +26,10 @@ def get_branch_set(tree):
                 leaf_set_below = leaf_set.difference(set(leaves_below))
                 leaves_below = sorted(list(leaf_set_below))
 
-            branch = ','.join(leaves_below)
-            branch_set.add(branch)
+            nb = len(leaves_below)
+            if (nb > 1) and (nb < nl - 1):
+                branch = ','.join(leaves_below)
+                branch_set.add(branch)
 
     return branch_set
 

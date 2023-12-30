@@ -13,6 +13,10 @@ NGEN=1000
 
 cd $DATADIR
 
+#if [ -e $GTRE.abayes.gz ]; then
+#    gunzip $GTRE.abayes.gz
+#fi
+
 if [ ! -e $GTRE.abayes ]; then
     GTRES=()
 
@@ -40,5 +44,6 @@ if [ -e $GTRE.abayes ]; then
         echo "$DATADIR/$GTRE.abayes contains wrong number of lines!"
 	exit 1
     fi
+    # gzip $GTRE.abayes
 fi
 

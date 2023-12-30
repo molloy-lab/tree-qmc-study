@@ -38,14 +38,14 @@ def main(args):
         info = compare_two_trees(tree1, tree2)
         [n1, n2, nl, i1, i2, fn, fp] = info
 
-        if fn > 0: 
-            sys.stderr.write("Found %d false negatives" % fn)
+        #if fn > 0: 
+        #    sys.stderr.write("Found %d false negatives" % fn)
 
-        if fp > 0: 
-            sys.stderr.write("Found %d false positives" % fp)
+        #if fp > 0: 
+        #    sys.stderr.write("Found %d false positives" % fp)
 
-        sys.stdout.write("%s%d,%d,%d,%d,%d,%d,%d\n" \
-            % (prefix, n1, n2, nl, i1, i2, fn, fp))
+        sys.stdout.write("%s%d,%d,%d,%d,%d,%d,%d,%d\n" \
+            % (prefix, gene + 1, n1, n2, nl, i1, i2, fn, fp))
 
     fin1.close()
     fin2.close()
