@@ -24,10 +24,10 @@ bash h1_run_asterh.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
 echo "...done"
 
 echo "Running TREE-QMC again..."
-bash i1_run_wtreeqmc_again.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
+bash i1_run_wtreeqmc_wn.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
 echo "done"
 
 echo "Running TREE-QMC again again..."
-bash j1_run_wtreeqmc_again_again.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
+bash j1_run_wtreeqmc_varyn.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
 echo "done"
 
