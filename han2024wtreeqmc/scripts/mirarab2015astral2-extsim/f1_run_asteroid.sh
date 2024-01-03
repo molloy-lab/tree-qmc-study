@@ -37,7 +37,7 @@ fi
 
 MYMTHD="asteroid"
 MYSTRE="${MYMTHD}_${SUPP}_${NGEN}gen"
-if [ ! -e $MYSTRE.tre ]; then
+if [ ! -e $MYSTRE.bestTree.newick ]; then
     MYTIME="$(time ($ASTEROID \
                              -i $GTRE_FILE \
                              -p $MYSTRE \

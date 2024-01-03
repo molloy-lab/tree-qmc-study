@@ -8,6 +8,7 @@ NTAX=$1  # Number of taxa
 HGHT=$2  # Species tree height (number of generations)
 RATE=$3  # Speciation rate
 REPL=$4  # Replicate number
+NGEN=1000
 
 MODL="model.$NTAX.$HGHT.$RATE"
 
@@ -27,20 +28,17 @@ TRUE_GTRE="$OLDDIR/truegenetrees"
 ESTI_GTRE_SH="$OLDDIR/estimatedgenetre"
 ESTI_GTRE_AB="$NEWDIR/estimatedgenetre.abayes"
 
-if [ ! -e $TRUE_GTRE ]; then
-    echo "$TRUE_GTRE does not exist!"
-    exit 1
-fi
-
-if [ ! -e $ESTI_GTRE_SH ]; then
-    echo "$ESTI_GTRE_SH does not exist!"
-    exit 1
-fi
-
-if [ ! -e $ESTI_GTRE_AB ]; then
-    echo "$ESTI_GTRE_AB does not exist!"
-    exit 1
-fi
+for GTRE in $TRUE_GTRE $ESTI_GTRE_SH $ESTI_GTRE_AB; do
+    if [ ! -e $GTRE ]; then
+        echo "$GTRE does not exist!"
+        exit 1
+    fi
+    NL=$(wc -l $GTRE | awk '{print $1}')
+    if [ $NL -ne $NGEN ]; then
+        echo "$GTRE has wrong number of lines!"
+        exit 1
+    fi
+done
 
 CSVF="$NEWDIR/true_vs_sh_gene_trees.csv"
 if [ ! -e $CSVF ]; then
