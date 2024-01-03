@@ -14,7 +14,7 @@ GTRE_ESTI=$5
 # Diff - true species tree and true gene trees
 OUTF="$OUTDIR/true_species_tree_vs_true_gene_trees.csv"
 if [ ! -e $OUTF ]; then
-python $COMPARE_TREE_TO_LIST \
+python3 $COMPARE_TREE_TO_LIST \
     -t $STRE_TRUE \
     -l $GTRE_TRUE \
     -p $MYMODL &> $OUTF
@@ -24,7 +24,7 @@ fi
 # Diff - true species tree and estimated gene trees
 OUTF="$OUTDIR/true_species_tree_vs_estimated_gene_trees.csv"
 if [ ! -e $OUTF ]; then
-python $COMPARE_TREE_TO_LIST \
+python3 $COMPARE_TREE_TO_LIST \
     -t $STRE_TRUE \
     -l $GTRE_ESTI \
     -p $MYMODL &> $OUTF
@@ -34,7 +34,7 @@ fi
 # Diff - true and estimate gene trees
 OUTF="$OUTDIR/true_vs_estimated_gene_trees.csv"
 if [ ! -e $OUTF ]; then
-python $COMPARE_LISTS \
+python3 $COMPARE_LISTS \
    -l1 $GTRE_TRUE \
    -l2 $GTRE_ESTI \
    -p $MYMODL &> $OUTF

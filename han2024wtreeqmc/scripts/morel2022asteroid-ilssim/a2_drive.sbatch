@@ -23,13 +23,15 @@ STRE_TRUE="$INDIR/species_trees/speciesTree.newick"
 OUTDIR="$PROJDIR/data/morel2022asteroid-ilssim/$MODL"
 mkdir -p $OUTDIR
 
-GTRE_TRUE="true_gene_trees.tre"
-GTRE_ESTI="raxmlng_gene_trees.tre"
+cp $STRE_TRUE $OUTDIR
+
+GTRE_TRUE="$OUTDIR/true_gene_trees.tre"
+GTRE_ESTI="$OUTDIR/raxmlng_gene_trees.tre"
 if [ ! -e $GTRE_TRUE ]; then
-    cat $INDIR/families/family_*/gene_trees/true.true.geneTree.newick | sed 's/;/;\n/g' | sed 's/_0_0//g' > $OUTDIR/$GTRE_TRUE
+    cat $INDIR/families/family_*/gene_trees/true.true.geneTree.newick | sed 's/;/;\n/g' | sed 's/_0_0//g' > $GTRE_TRUE
 fi
 if [ ! -e $GTRE_ESTI ]; then
-    cat $INDIR/families/family_*/gene_trees/raxml-ng.GTR+G.geneTree.newick | sed 's/_0_0//g' > $OUTDIR/$GTRE_ESTI
+    cat $INDIR/families/family_*/gene_trees/raxml-ng.GTR+G.geneTree.newick | sed 's/_0_0//g' > $GTRE_ESTI
 fi
 
 ./a2_get_properties.sh $MYMODL $OUTDIR $STRE_TRUE $GTRE_TRUE $GTRE_ESTI

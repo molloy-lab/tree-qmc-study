@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#exit
+exit
 
 MODLS=( $(cat model_list.txt) )
 MODLS=( $(cat model_list_s25.txt) )
