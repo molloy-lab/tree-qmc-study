@@ -3,16 +3,16 @@
 exit
 
 # ILS STUDY PARAMETERS
-#NTAXS=( 200 )                            # Number of taxa
-#HGHTS=( "10000000" "2000000" "500000" )  # Species tree height (number of generations)
-#RATES=( "0.0000001" "0.000001" )         # Speciation rate
-#REPLS=( $(seq -f "%02g" 1 50) )          # Replicates
+NTAXS=( 200 )                            # Number of taxa
+HGHTS=( "10000000" "2000000" "500000" )  # Species tree height (number of generations)
+RATES=( "0.0000001" "0.000001" )         # Speciation rate
+REPLS=( $(seq -f "%02g" 1 50) )          # Replicates
 
 # SCALABILITY STUDY PARAMETERS
-#NTAXS=( 10 50 100 500 1000 )      # Number of taxa
-#HGHTS=( "2000000" )               # Species tree height (number of generations)
-#RATES=( "0.000001" )              # Speciation rate
-#REPLS=( $(seq -f "%02g" 1 50) )   # Replicates
+NTAXS=( 10 50 100 500 1000 )      # Number of taxa
+HGHTS=( "2000000" )               # Species tree height (number of generations)
+RATES=( "0.000001" )              # Speciation rate
+REPLS=( $(seq -f "%02g" 1 50) )   # Replicates
 
 for NTAX in ${NTAXS[@]}; do
     for HGHT in ${HGHTS[@]}; do
@@ -39,12 +39,12 @@ for NTAX in ${NTAXS[@]}; do
      
 echo "Submitting $MODL $REPL $GS $GE..."
 sbatch \
+    --nodelist="legacy[00,28],legacy30" \
     --job-name="b1.$MODL.$REPL.$GS.$GE" \
     --output="b1.$MODL.$REPL.$GS.$GE.%j.out" \
     --error="b1.$MODL.$REPL.$GS.$GE.%j.err" \
     --export=NTAX="$NTAX",HGHT="$HGHT",RATE="$RATE",REPL="$REPL",GS="$GS",GE="$GE" \
 b1_drive.sbatch
-
                 done
             done
         done

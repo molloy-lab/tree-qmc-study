@@ -64,7 +64,7 @@ python3 $GETNEWICK \
 $IQTREE2 \
     -s tmp-$ALGN-$GTAG \
     -te tmp-$GTRE-$GTAG \
-    -m GTR+I+G4 \
+    -m GTR+G \
     -abayes \
     -pre tmp-$GTRE.abayes-$GTAG \
     -T 1
