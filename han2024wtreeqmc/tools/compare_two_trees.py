@@ -82,14 +82,14 @@ def main(args):
     # Read trees
     with open(args.tree1, 'r') as fin:
         line = fin.readline()
-        while len(line.strip()) == 0:
-            line = fin.readline()
+        #while len(line.strip()) == 0:
+        #    line = fin.readline()
         tree1 = treeswift.read_tree(line, "newick")
 
     with open(args.tree2, 'r') as fin:
         line = fin.readline()
-        while len(line.strip()) == 0:
-            line = fin.readline()
+        #while len(line.strip()) == 0:
+        #    line = fin.readline()
         tree2 = treeswift.read_tree(line, "newick")
 
     # Compare two trees

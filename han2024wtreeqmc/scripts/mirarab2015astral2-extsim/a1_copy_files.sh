@@ -30,9 +30,10 @@ cp $INDIR/$STRE $STRE
 cp $INDIR/$GTRE $GTRE
 
 if [ -e $INDIR/$CAML ]; then
-    MYMTHD="caml_${NGEN}gen"
-    cp $INDIR/$CAML $MYMTHD.tre
-    MYERRR=$(python3 $COMPARE -t1 $STRE -t2 $MYMTHD.tre)
-    echo "$MYMODL,$MYMTHD,$MYERRR" > ${MYMTHD}_species_tree_error.csv
+    MYMTHD="caml"
+    MYSTRE="$MYMTHD_${NGEN}gen"
+    cp $INDIR/$CAML $MYSTRE.tre
+    MYERRR=$(python3 $COMPARE -t1 $STRE -t2 $MYSTRE.tre)
+    echo "$MYMODL,$MYMTHD,$MYERRR" > ${MYSTRE}_species_tree_error.csv
 fi
 

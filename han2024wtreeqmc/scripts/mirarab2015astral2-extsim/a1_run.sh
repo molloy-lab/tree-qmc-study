@@ -23,7 +23,7 @@ for NTAX in ${NTAXS[@]}; do
             for REPL in ${REPLS[@]}; do
                 for NGEN in ${NGENS[@]}; do
 echo "Submitting $MODL $REPL $NGEN ..."
-bash e1_copy_files.sh $NTAX $HGHT $RATE $REPL $NGEN
+bash a1_copy_files.sh $NTAX $HGHT $RATE $REPL $NGEN
                 done
             done
         done
