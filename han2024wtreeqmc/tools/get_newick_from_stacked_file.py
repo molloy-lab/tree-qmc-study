@@ -1,7 +1,7 @@
 import argparse
 import sys
+from tswrapper import newick
 import treeswift
-
 
 def main(args):
     if args.output is None:
@@ -29,7 +29,8 @@ def main(args):
         if not node.is_leaf():
             node.label = None
 
-    fout.write(tree.newick())
+    #fout.write(tree.newick())
+    fout.write(newick(tree))
 
     if not args.output is None:
         fout.close()
