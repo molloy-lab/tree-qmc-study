@@ -25,7 +25,7 @@ GTRE="estimatedgenetre"
 OPTS="-r 0 1"
 if [ $SUPP == "abayes" ]; then
     OPTS="-r 0.333 1"
-    GTRE="$GTRE.abayes.fixed"
+    GTRE="$GTRE.abayes"
 fi
 
 # Do work
