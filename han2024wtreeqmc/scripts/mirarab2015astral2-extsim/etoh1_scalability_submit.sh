@@ -1,6 +1,8 @@
 #!/bin/bash
 
-#exit
+exit
+
+DATA="/fs/cbcb-lab/ekmolloy/ekmolloy/tree-qmc-study/han2024wtreeqmc/data/mirarab2015astral2-extsim/"
 
 # ILS STUDY PARAMETERS
 NTAXS=( 200 )                            # Number of taxa
@@ -9,15 +11,12 @@ RATES=( "0.0000001" "0.000001" )         # Speciation rate
 
 # SCALABILITY STUDY PARAMETERS
 NTAXS=( 10 50 100 500 1000 )      # Number of taxa
-NTAXS=( 10 50 )
 HGHTS=( "2000000" )               # Species tree height (number of generations)
 RATES=( "0.000001" )              # Speciation rate
 
 # GENERAL PARAMETERS
 REPLS=( $(seq -f "%02g" 1 50) )   # Replicates
-SUPPS=( "sh" "abayes" )
 SUPPS=( "sh" )
-NGENS=( 1000 200 50 )
 NGENS=( 1000 )
 
 for NTAX in ${NTAXS[@]}; do
@@ -30,15 +29,26 @@ for NTAX in ${NTAXS[@]}; do
 MODL="model.$NTAX.$HGHT.$RATE.$REPL.$SUPP.$NGEN"
 echo "Submitting $MODL ..."
 
-sbatch \
-    --job-name="etoj1.$MODL" \
-    --output="etoj1.$MODL.%j.out" \
-    --error="etog1.$MODL.err" \
-    --export=NTAX="$NTAX",HGHT="$HGHT",RATE="$RATE",REPL="$REPL",SUPP="$SUPP",NGEN="$NGEN" \
-etoj1_drive.sbatch
+FILEX="$DATA/model.$NTAX.$HGHT.$RATE/$REPL/wastrid_s_${SUPP}_${NGEN}gen_node_info.csv"
 
-#bash etoj1_test.sh $NTAX $HGHT $RATE $REPL $SUPP $NGEN
-
+if [ -e $FILEX ]; then
+    NODE=$(cat $FILEX | sed 's/\./ /g' | awk '{print $2}')
+    echo "  using node $NODE"
+    sbatch \
+        --nodelist=$NODE \
+        --job-name="etoh1_scal.$MODL" \
+        --output="etoh1_scal.$MODL.%j.out" \
+        --error="etoh1_scal.$MODL.%j.err" \
+        --export=NTAX="$NTAX",HGHT="$HGHT",RATE="$RATE",REPL="$REPL",SUPP="$SUPP",NGEN="$NGEN" \
+    etoh1_scalability_drive.sbatch
+else
+    sbatch \
+        --job-name="etoh1_scal.$MODL" \
+        --output="etoh1_scal.$MODL.%j.out" \
+        --error="etoh1_scal.$MODL.%j.err" \
+        --export=NTAX="$NTAX",HGHT="$HGHT",RATE="$RATE",REPL="$REPL",SUPP="$SUPP",NGEN="$NGEN" \
+    etoh1_scalability_drive.sbatch
+fi
                     done
                 done
             done

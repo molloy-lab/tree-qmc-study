@@ -26,15 +26,11 @@ echo "Running wTREE-QMC-h..."
 bash g1_run_wtreeqmc.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
 echo "...done"
 
-echo "Running ASTER-h..."
-bash h1_run_asterh.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
+echo "Running ASTER-h with 16 threads..."
+bash h1_run_asterh_t16.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
 echo "...done"
 
-echo "Running TREE-QMC again..."
-bash i1_run_wtreeqmc_again.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
-echo "done"
-
-echo "Running TREE-QMC again again..."
-bash j1_run_wtreeqmc_again_again.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
-echo "done"
+echo "Running ASTER-h with 1 threads..."
+bash h1_run_asterh.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
+echo "...done"
 
