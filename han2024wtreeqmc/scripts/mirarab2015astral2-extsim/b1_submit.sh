@@ -33,7 +33,7 @@ for NTAX in ${NTAXS[@]}; do
      
 echo "Submitting $MODL $REPL $GS $GE..."
 sbatch \
-    --nodelist="legacy[00,28],legacy30" \
+    --nodelist="legacy[00-11,13-28,30]" \
     --job-name="b1.$MODL.$REPL.$GS.$GE" \
     --output="b1.$MODL.$REPL.$GS.$GE.%j.out" \
     --error="b1.$MODL.$REPL.$GS.$GE.%j.err" \
