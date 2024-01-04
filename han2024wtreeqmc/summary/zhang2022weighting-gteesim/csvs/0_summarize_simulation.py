@@ -7,57 +7,47 @@ sys.exit("DONE RUNNING")
 def report_stats(df):
     """
     """
-    nbpss = [200, 400, 800, 1600]
     repls = range(1, 51)
 
-    for nbps in nbpss:
-        keep = []
+    keep = []
 
-        for repl in repls:
-            xdf = df[(df["NBPS"] == nbps) &
-                     (df["REPL"] == repl)]
-
-            fnrs = xdf.FN.values / xdf.I1.values
-
-            keep.append(numpy.mean(fnrs))
-    
-        x = numpy.mean(keep)
-        y = numpy.std(keep)
-        print("%d : MEAN FNR = %f +/- %f" % (nbps, x, y))
+    repls = list(set(df.REPL.values))
+    for repl in repls:
+        xdf = df[df["REPL"] == repl]
+        fnrs = xdf.FN.values / xdf.I1.values
+        keep.append(numpy.mean(fnrs))
+    x = numpy.mean(keep)
+    y = numpy.std(keep)
+    sys.stdout.write(" & %1.4f +/- %1.4f" % (x, y))
 
 
 if __name__ == "__main__":
-    # ILS
-    print("Evaluating ILS")
-    df = pandas.read_csv("all_true_species_tree_vs_true_gene_trees.csv")
-    report_stats(df)
+    nbpss = [200, 400, 800, 1600]
 
-    # GTEE
-    print("Evaluating GTEE")
-    df = pandas.read_csv("all_true_vs_estimated_gene_trees.csv")
-    report_stats(df)
+    df_ils = pandas.read_csv("all_true_species_tree_vs_true_gene_trees.csv")
+    df_gtee = pandas.read_csv("all_true_vs_estimated_gene_trees.csv")
+    df_ad = pandas.read_csv("all_true_species_tree_vs_estimated_gene_trees.csv")
 
-    # AD
-    print("Evaluating AD")
-    df = pandas.read_csv("all_true_species_tree_vs_estimated_gene_trees.csv")
-    report_stats(df)
+    sys.stdout.write("NBPS & ILS & GTEE & AD\\\\\n")
+    for nbps in nbpss:
+        sys.stdout.write("%d" % nbps)
+
+        xdf_ils = df_ils[df_ils["NBPS"] == nbps]
+        report_stats(xdf_ils)
+        
+        xdf_gtee = df_gtee[df_gtee["NBPS"] == nbps]
+        report_stats(xdf_gtee)
+
+        xdf_ad = df_ad[df_ad["NBPS"] == nbps]
+        report_stats(xdf_ad)
+
+        sys.stdout.write("\n")
+
 
 """
-Evaluating ILS
-200 : MEAN FNR = 0.457506 +/- 0.060119
-400 : MEAN FNR = 0.457506 +/- 0.060119
-800 : MEAN FNR = 0.457506 +/- 0.060119
-1600 : MEAN FNR = 0.457506 +/- 0.060119
-
-Evaluating GTEE
-200 : MEAN FNR = 0.554600 +/- 0.079195
-400 : MEAN FNR = 0.422867 +/- 0.082320
-800 : MEAN FNR = 0.311485 +/- 0.078926
-1600 : MEAN FNR = 0.225808 +/- 0.073496
-
-Evaluating AD
-200 : MEAN FNR = 0.663386 +/- 0.065200
-400 : MEAN FNR = 0.589428 +/- 0.065303
-800 : MEAN FNR = 0.538503 +/- 0.062787
-1600 : MEAN FNR = 0.507028 +/- 0.061079
+NBPS & ILS & GTEE & AD\\
+200 & 0.4575 +/- 0.0601 & 0.5546 +/- 0.0792 & 0.6634 +/- 0.0652
+400 & 0.4575 +/- 0.0601 & 0.4229 +/- 0.0823 & 0.5894 +/- 0.0653
+800 & 0.4575 +/- 0.0601 & 0.3115 +/- 0.0789 & 0.5385 +/- 0.0628
+1600 & 0.4575 +/- 0.0601 & 0.2258 +/- 0.0735 & 0.5070 +/- 0.0611
 """
