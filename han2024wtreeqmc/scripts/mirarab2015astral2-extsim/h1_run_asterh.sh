@@ -40,6 +40,14 @@ fi
 
 MYMTHD="aster_h"
 MYSTRE="${MYMTHD}_${SUPP}_${NGEN}gen"
+
+if [ -e $MYSTRE.tre ]; then
+    tmp=$(grep ";" $MYSTRE.tre)
+    if [ -z $TMP ]; then
+        rm $MYSTRE.tre
+    fi
+fi
+
 if [ ! -e $MYSTRE.tre ]; then
     MYTIME="$(time ($ASTERH $OPTS \
                          -i $GTRE_FILE \

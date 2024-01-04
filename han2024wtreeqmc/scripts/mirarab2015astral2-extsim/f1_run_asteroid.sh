@@ -23,7 +23,7 @@ DATADIR="$PROJDIR/data/mirarab2015astral2-extsim/$MODL/$REPL"
 STRE_TRUE="s_tree.trees"
 GTRE="estimatedgenetre"
 if [ $SUPP == "abayes" ]; then
-    GTRE="$GTRE.abayes.fixed"
+    GTRE="$GTRE.abayes"
     exit
 fi
 

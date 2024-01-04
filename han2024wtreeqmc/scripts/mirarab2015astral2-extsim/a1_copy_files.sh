@@ -5,9 +5,10 @@ HGHT=$2
 RATE=$3
 REPL=$4
 NGEN=$5
+SUPP="sh"
 
 MODL="model.$NTAX.$HGHT.$RATE"
-MYMODL="$NTAX,$HGHT,$RATE,$REPL,NA,$NGEN"
+MYMODL="$NTAX,$HGHT,$RATE,$REPL,$SUPP,$NGEN"
 
 # Define directories and files
 LABDIR="/fs/cbcb-lab/ekmolloy"
@@ -41,12 +42,15 @@ if [ $NTAX -eq 200 ]; then
 fi
 
 MYMTHD="caml"
-MYSTRE="$MYMTHD_${NGEN}gen"    
+MYSTRE="${MYMTHD}_${SUPP}_${NGEN}gen"
 if [ ! -e ${MYSTRE}_species_tree_error.csv ]; then
     if [ -e $INDIR1/$CAML ]; then
-        cp $INDIR1/$CAML $MYSTRE.tre
-        MYERRR=$(python3 $COMPARE -t1 $STRE -t2 $MYSTRE.tre)
-        echo "$MYMODL,$MYMTHD,$MYERRR" > ${MYSTRE}_species_tree_error.csv
+        TMP=$(grep ";" $INDIR1/$CAML)
+        if [ ! -z $TMP ]; then
+            cp $INDIR1/$CAML $MYSTRE.tre
+            MYERRR=$(python3 $COMPARE -t1 $STRE -t2 $MYSTRE.tre)
+            echo "$MYMODL,$MYMTHD,$MYERRR" > ${MYSTRE}_species_tree_error.csv
+        fi
     fi
 fi
 

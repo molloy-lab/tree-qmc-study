@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=1
 #SBATCH --mem=64gb
 #SBATCH --account=cbcb
 #SBATCH --partition=cbcb
@@ -23,9 +23,5 @@ echo "...done"
 
 echo "Running wTREE-QMC-h..."
 bash g1_run_wtreeqmc.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
-echo "...done"
-
-echo "Running ASTER-h with 16 threads..."
-bash h1_run_asterh_t16.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
 echo "...done"
 
