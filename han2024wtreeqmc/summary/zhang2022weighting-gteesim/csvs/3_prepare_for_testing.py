@@ -3,7 +3,7 @@ import math
 import numpy
 import sys
 
-#sys.exit("DONE RUNNING")
+sys.exit("DONE RUNNING")
 
 df = pandas.read_csv("data-all-error.csv")
 df.fillna("NA", inplace=True)
