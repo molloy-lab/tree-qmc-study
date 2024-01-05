@@ -39,11 +39,14 @@ for (mthd in mthds) {
         ntreeqmc <- sum(fndf$DIFF > 0)
 
         # Run paired t-test
-        tmp1 <- fndf$TQMCwhn2xSEFN
+        #tmp1 <- fndf$TQMCwhn2xSEFN
+        tmp1 <- fndf$TQMCwhn2xSERF
         if (mthd == "ASTER-h") {
-            tmp2 <- fndf$ASTERHxSEFN
+            #tmp2 <- fndf$ASTERHxSEFN
+            tmp2 <- fndf$ASTERHxSERF
         } else if (mthd == "wASTRID") {
-            tmp2 <- fndf$WASTRIDxSEFN
+            #tmp2 <- fndf$WASTRIDxSEFN
+            tmp2 <- fndf$WASTRIDxSERF
         } else {
             print("ERROR")
             exit()
