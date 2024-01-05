@@ -44,66 +44,54 @@ for (mthd in mthds) {
         nother <- sum(fndf$DIFF < 0)
         ntreeqmc <- sum(fndf$DIFF > 0)
 
-        if (nrow(fndf) > 25) {
-            tmp1 <- fndf$TQMCwhn2xSEFN
-            if (mthd == "ASTER-h") {
-                tmp2 <- fndf$ASTERHxSEFN
-            } else if (mthd == "wASTRID") {
-                tmp2 <- fndf$WASTRIDxSEFN
-            } else {
-                print("ERROR")
-                exit()
-            }
-
-            # Run paired t-test
-            wsr <- t.test(tmp1, y = tmp2,
-                    alternative="two.sided",
-                    mu = 0, paired=TRUE, var.equal=FALSE,
-                    conf.level=0.95)
-
-            # Report
-            if (wsr$p.value < 0.000005) {
-                stars = "*****"
-            } else if (wsr$p.value < 0.00005) {
-                stars = "****"
-            } else if (wsr$p.value < 0.0005) {
-                stars = "***"
-            } else if (wsr$p.value < 0.005) {
-                stars = "**"
-            } else if (wsr$p.value < 0.05) {
-                stars = "*"
-            } else {
-                stars = ""
-            }
-
-            if (wsr$p.value < threshold_bonferoni) {
-                mc <- "MC"
-            } else {
-                mc <- ""
-            }
-
-            writeme <- paste("TQMC-wh-n2 vs.", mthd, "&",
-                             supp, "&",
-                             as.character(ngen), "&",
-                             as.character(nbps), "&",
-                             as.character(ntreeqmc), "/",
-                             as.character(nother), "/",
-                             as.character(ntie), "&",
-                             format(wsr$p.value, scientific = TRUE), "&", stars, "&", mc)
-                print(writeme)
+        # Run paired t-test
+        tmp1 <- fndf$TQMCwhn2xSEFN
+        if (mthd == "ASTER-h") {
+            tmp2 <- fndf$ASTERHxSEFN
+        } else if (mthd == "wASTRID") {
+            tmp2 <- fndf$WASTRIDxSEFN
         } else {
-            writeme <- paste("TQMC-wh-n2 vs.", mthd, "&", 
-                             supp, "&",
-                             as.character(ngen), "&",
-                             as.character(nbps), "&",
-                             as.character(ntreeqmc), "/",
-                             as.character(nother), "/",
-                             as.character(ntie), "&",
-                             "& NA & NA & NA")
-            print(writeme)
+            print("ERROR")
+            exit()
         }
-    }
+    
+        tt <- t.test(tmp1, y = tmp2,
+                     alternative="two.sided",
+                     mu = 0, paired=TRUE, var.equal=FALSE,
+                     conf.level=0.95)
 
+        # Report
+        if (tt$p.value < 0.000005) {
+            stars = "*****"
+        } else if (tt$p.value < 0.00005) {
+            stars = "****"
+        } else if (tt$p.value < 0.0005) {
+            stars = "***"
+        } else if (tt$p.value < 0.005) {
+            stars = "**"
+        } else if (tt$p.value < 0.05) {
+            stars = "*"
+        } else {
+            stars = ""
+        }
+
+        if (tt$p.value < threshold_bonferoni) {
+            mc <- "MC"
+        } else {
+            mc <- ""
+        }
+
+        writeme <- paste("TQMC-wh-n2 vs.", mthd, "&",
+                         supp, "&",
+                         as.character(ngen), "&",
+                         as.character(nbps), "&",
+                         as.character(ntreeqmc), "/",
+                         as.character(nother), "/",
+                         as.character(ntie), "&",
+                         format(tt$p.value, scientific = TRUE), "&", stars, "&", mc)
+        print(writeme)
+
+            }
         }
     }
 }
