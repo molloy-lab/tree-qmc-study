@@ -14,12 +14,6 @@ ngens <- c("50", "200", "500", "1000")
 nbpss <- c("200", "400", "800", "1600")
 mthds <- c("ASTER-h", "wASTRID")
 
-threshold5 <- 0.05 
-threshold4 <- 0.005
-threshold3 <- 0.0005
-threshold2 <- 0.00005
-threshold1 <- 0.000005
-
 ntest <- length(supps) * length(ngens) * length(nbpss) * length(mthds)
 threshold_bonferoni <- 0.05 / ntest
 

@@ -11,12 +11,6 @@ ngens <- c("50", "200", "500", "1000")
 nbpss <- c("200", "400", "800", "1600")
 mthds <- c("ASTER-h", "wASTRID")
 
-threshold5 <- 0.05 
-threshold4 <- 0.005
-threshold3 <- 0.0005
-threshold2 <- 0.00005
-threshold1 <- 0.000005
-
 ntest <- length(supps) * length(ngens) * length(nbpss) * length(mthds)
 threshold_bonferoni <- 0.05 / ntest
 
@@ -61,18 +55,30 @@ for (mthd in mthds) {
                      conf.level=0.95)
 
         # Report
-        if (tt$p.value < 0.000005) {
-            stars = "*****"
-        } else if (tt$p.value < 0.00005) {
-            stars = "****"
-        } else if (tt$p.value < 0.0005) {
-            stars = "***"
-        } else if (tt$p.value < 0.005) {
-            stars = "**"
-        } else if (tt$p.value < 0.05) {
-            stars = "*"
-        } else {
+        if (ntreeqmc + nother == 0) {
+            # all ties!
+            tt$p.value <- "NA"
             stars = ""
+            mc <- ""
+        } else {
+            if (tt$p.value < 0.000005) {
+                stars = "*****"
+            } else if (tt$p.value < 0.00005) {
+                stars = "****"
+            } else if (tt$p.value < 0.0005) {
+                stars = "***"
+            } else if (tt$p.value < 0.005) {
+                stars = "**"
+            } else if (tt$p.value < 0.05) {
+                stars = "*"
+            } else {
+                stars = ""
+            }
+            if (tt$p.value < threshold_bonferoni) {
+                mc <- "MC"
+            } else {
+                mc <- ""
+            }
         }
 
         if (tt$p.value < threshold_bonferoni) {
