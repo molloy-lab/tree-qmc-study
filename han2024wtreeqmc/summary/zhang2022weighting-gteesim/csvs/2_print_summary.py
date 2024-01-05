@@ -35,17 +35,28 @@ nbpss = [200, 400, 800, 1600]
 ngens = [50, 200, 500, 1000]
 supps = ["bs", "abayes"]
 
+
 for nbps in nbpss:
     for ngen in ngens:
         sys.stdout.write("%d bp, %d genes\n" % (nbps, ngen))
-        xdf = df[(df["NBPS"] == nbps) & (df["NGEN"] == ngen)]
         for name, mthd in zip(names, mthds):
             sys.stdout.write("  %s : " % name)
+            xdf = df[(df["NBPS"] == nbps) & 
+                     (df["NGEN"] == ngen) &
+                     (df["MTHD"] == mthd)]
             for supp in supps:
-                ydf = xdf[(xdf["MTHD"] == mthd)  & (xdf["SUPP"] == supp)]
+                if mthd == "wtreeqmc_wn_n2":
+                    if supp == "bs":
+                        xsupp = "none_refinepoly"
+                    else:
+                        xsupp = "none_keeppoly"
+                else:
+                    xsupp = supp
+                ydf = xdf[xdf["SUPP"] == xsupp]
+
                 data = ydf.SERF.values
-                if data.size != 50:
-                    sys.stdout.write("ERROR - wrong number of replicates!\n")
+                #if data.size != 50:
+                #    sys.stdout.write("ERROR - wrong number of replicates!\n")
 
                 nrepl = numpy.sum(~numpy.isnan(data))
 
@@ -55,7 +66,7 @@ for nbps in nbpss:
                 rfavg = numpy.mean(ydf.SERF.values)
                 rfavg = numpy.round(numpy.round(rfavg, 5), 4)
 
-                sys.stdout.write("%1.4f (%s) " % (rfavg, supp))
+                sys.stdout.write("%1.4f (%s) " % (rfavg, xsupp))
 
             sys.stdout.write("\n")
         sys.stdout.write("\n")
@@ -68,7 +79,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.1561 (bs) 0.1455 (abayes) 
   wtreeqmc_wh_n0 : 0.1561 (bs) 0.1455 (abayes) 
   wtreeqmc_ws_n2 : 0.1561 (bs) 0.1455 (abayes) 
-  wtreeqmc_wn_n2 : 0.1720 (bs) 0.1739 (abayes) 
+  wtreeqmc_wn_n2 : 0.1739 (none_refinepoly) 0.1720 (none_keeppoly) 
 
 200 bp, 200 genes
        wastrid_s : 0.0971 (bs) 0.0947 (abayes) 
@@ -77,7 +88,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0982 (bs) 0.0943 (abayes) 
   wtreeqmc_wh_n0 : 0.0982 (bs) 0.0943 (abayes) 
   wtreeqmc_ws_n2 : 0.0982 (bs) 0.0943 (abayes) 
-  wtreeqmc_wn_n2 : 0.1094 (bs) 0.1114 (abayes) 
+  wtreeqmc_wn_n2 : 0.1114 (none_refinepoly) 0.1094 (none_keeppoly) 
 
 200 bp, 500 genes
        wastrid_s : 0.0774 (bs) 0.0753 (abayes) 
@@ -86,7 +97,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0794 (bs) 0.0784 (abayes) 
   wtreeqmc_wh_n0 : 0.0794 (bs) 0.0784 (abayes) 
   wtreeqmc_ws_n2 : 0.0794 (bs) 0.0784 (abayes) 
-  wtreeqmc_wn_n2 : 0.0929 (bs) 0.0924 (abayes) 
+  wtreeqmc_wn_n2 : 0.0924 (none_refinepoly) 0.0929 (none_keeppoly) 
 
 200 bp, 1000 genes
        wastrid_s : 0.0669 (bs) 0.0622 (abayes) 
@@ -95,7 +106,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0704 (bs) 0.0592 (abayes) 
   wtreeqmc_wh_n0 : 0.0704 (bs) 0.0592 (abayes) 
   wtreeqmc_ws_n2 : 0.0704 (bs) 0.0592 (abayes) 
-  wtreeqmc_wn_n2 : 0.0796 (bs) 0.0800 (abayes) 
+  wtreeqmc_wn_n2 : 0.0800 (none_refinepoly) 0.0796 (none_keeppoly) 
 
 400 bp, 50 genes
        wastrid_s : 0.1312 (bs) 0.1239 (abayes) 
@@ -104,7 +115,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.1235 (bs) 0.1153 (abayes) 
   wtreeqmc_wh_n0 : 0.1235 (bs) 0.1153 (abayes) 
   wtreeqmc_ws_n2 : 0.1235 (bs) 0.1153 (abayes) 
-  wtreeqmc_wn_n2 : 0.1306 (bs) 0.1312 (abayes) 
+  wtreeqmc_wn_n2 : 0.1312 (none_refinepoly) 0.1306 (none_keeppoly) 
 
 400 bp, 200 genes
        wastrid_s : 0.0796 (bs) 0.0743 (abayes) 
@@ -113,7 +124,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0747 (bs) 0.0718 (abayes) 
   wtreeqmc_wh_n0 : 0.0747 (bs) 0.0718 (abayes) 
   wtreeqmc_ws_n2 : 0.0747 (bs) 0.0718 (abayes) 
-  wtreeqmc_wn_n2 : 0.0853 (bs) 0.0859 (abayes) 
+  wtreeqmc_wn_n2 : 0.0859 (none_refinepoly) 0.0853 (none_keeppoly) 
 
 400 bp, 500 genes
        wastrid_s : 0.0616 (bs) 0.0608 (abayes) 
@@ -122,7 +133,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0600 (bs) 0.0616 (abayes) 
   wtreeqmc_wh_n0 : 0.0600 (bs) 0.0616 (abayes) 
   wtreeqmc_ws_n2 : 0.0600 (bs) 0.0616 (abayes) 
-  wtreeqmc_wn_n2 : 0.0718 (bs) 0.0722 (abayes) 
+  wtreeqmc_wn_n2 : 0.0722 (none_refinepoly) 0.0718 (none_keeppoly) 
 
 400 bp, 1000 genes
        wastrid_s : 0.0516 (bs) 0.0512 (abayes) 
@@ -131,7 +142,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0506 (bs) 0.0524 (abayes) 
   wtreeqmc_wh_n0 : 0.0506 (bs) 0.0524 (abayes) 
   wtreeqmc_ws_n2 : 0.0506 (bs) 0.0524 (abayes) 
-  wtreeqmc_wn_n2 : 0.0635 (bs) 0.0637 (abayes) 
+  wtreeqmc_wn_n2 : 0.0637 (none_refinepoly) 0.0635 (none_keeppoly) 
 
 800 bp, 50 genes
        wastrid_s : 0.1135 (bs) 0.1114 (abayes) 
@@ -140,7 +151,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.1053 (bs) 0.1006 (abayes) 
   wtreeqmc_wh_n0 : 0.1053 (bs) 0.1006 (abayes) 
   wtreeqmc_ws_n2 : 0.1053 (bs) 0.1006 (abayes) 
-  wtreeqmc_wn_n2 : 0.1147 (bs) 0.1149 (abayes) 
+  wtreeqmc_wn_n2 : 0.1149 (none_refinepoly) 0.1147 (none_keeppoly) 
 
 800 bp, 200 genes
        wastrid_s : 0.0690 (bs) 0.0678 (abayes) 
@@ -149,7 +160,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0641 (bs) 0.0624 (abayes) 
   wtreeqmc_wh_n0 : 0.0641 (bs) 0.0624 (abayes) 
   wtreeqmc_ws_n2 : 0.0641 (bs) 0.0624 (abayes) 
-  wtreeqmc_wn_n2 : 0.0700 (bs) 0.0702 (abayes) 
+  wtreeqmc_wn_n2 : 0.0702 (none_refinepoly) 0.0700 (none_keeppoly) 
 
 800 bp, 500 genes
        wastrid_s : 0.0508 (bs) 0.0488 (abayes) 
@@ -158,7 +169,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0492 (bs) 0.0482 (abayes) 
   wtreeqmc_wh_n0 : 0.0492 (bs) 0.0482 (abayes) 
   wtreeqmc_ws_n2 : 0.0492 (bs) 0.0482 (abayes) 
-  wtreeqmc_wn_n2 : 0.0547 (bs) 0.0545 (abayes) 
+  wtreeqmc_wn_n2 : 0.0545 (none_refinepoly) 0.0547 (none_keeppoly) 
 
 800 bp, 1000 genes
        wastrid_s : 0.0420 (bs) 0.0422 (abayes) 
@@ -167,7 +178,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0412 (bs) 0.0414 (abayes) 
   wtreeqmc_wh_n0 : 0.0412 (bs) 0.0414 (abayes) 
   wtreeqmc_ws_n2 : 0.0412 (bs) 0.0414 (abayes) 
-  wtreeqmc_wn_n2 : 0.0504 (bs) 0.0504 (abayes) 
+  wtreeqmc_wn_n2 : 0.0504 (none_refinepoly) 0.0504 (none_keeppoly) 
 
 1600 bp, 50 genes
        wastrid_s : 0.1035 (bs) 0.1045 (abayes) 
@@ -176,7 +187,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0969 (bs) 0.0882 (abayes) 
   wtreeqmc_wh_n0 : 0.0969 (bs) 0.0882 (abayes) 
   wtreeqmc_ws_n2 : 0.0969 (bs) 0.0882 (abayes) 
-  wtreeqmc_wn_n2 : 0.0971 (bs) 0.0971 (abayes) 
+  wtreeqmc_wn_n2 : 0.0971 (none_refinepoly) 0.0971 (none_keeppoly) 
 
 1600 bp, 200 genes
        wastrid_s : 0.0614 (bs) 0.0588 (abayes) 
@@ -185,7 +196,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0561 (bs) 0.0537 (abayes) 
   wtreeqmc_wh_n0 : 0.0561 (bs) 0.0537 (abayes) 
   wtreeqmc_ws_n2 : 0.0561 (bs) 0.0537 (abayes) 
-  wtreeqmc_wn_n2 : 0.0641 (bs) 0.0641 (abayes) 
+  wtreeqmc_wn_n2 : 0.0641 (none_refinepoly) 0.0641 (none_keeppoly) 
 
 1600 bp, 500 genes
        wastrid_s : 0.0441 (bs) 0.0408 (abayes) 
@@ -194,7 +205,7 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0424 (bs) 0.0382 (abayes) 
   wtreeqmc_wh_n0 : 0.0424 (bs) 0.0382 (abayes) 
   wtreeqmc_ws_n2 : 0.0424 (bs) 0.0382 (abayes) 
-  wtreeqmc_wn_n2 : 0.0490 (bs) 0.0490 (abayes) 
+  wtreeqmc_wn_n2 : 0.0490 (none_refinepoly) 0.0490 (none_keeppoly) 
 
 1600 bp, 1000 genes
        wastrid_s : 0.0359 (bs) 0.0374 (abayes) 
@@ -203,5 +214,5 @@ for nbps in nbpss:
   wtreeqmc_wh_n1 : 0.0353 (bs) 0.0341 (abayes) 
   wtreeqmc_wh_n0 : 0.0353 (bs) 0.0341 (abayes) 
   wtreeqmc_ws_n2 : 0.0353 (bs) 0.0341 (abayes) 
-  wtreeqmc_wn_n2 : 0.0410 (bs) 0.0410 (abayes)
+  wtreeqmc_wn_n2 : 0.0410 (none_refinepoly) 0.0410 (none_keeppoly) 
 """

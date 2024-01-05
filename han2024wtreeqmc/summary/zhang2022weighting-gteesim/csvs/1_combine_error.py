@@ -11,9 +11,7 @@ cols = ["NBPS", "NGEN", "REPL", "SUPP",
 
 rows = []
 
-
-mthds = ["asteroid",
-         "aster_h_t16",
+mthds = ["aster_h_t16",
          "wastrid_s",
          "wtreeqmc_wh_n2",
          "wtreeqmc_wn_n2",
@@ -24,24 +22,19 @@ mthds = ["asteroid",
 nbpss = [200, 400, 800, 1600]
 ngens = [50, 200, 500, 1000]
 repls = range(1, 51)
+supps = ["bs", "abayes"]
 
 for nbps in nbpss:
     for ngen in ngens:
         for repl in repls:
             print("%d %d %d" % (nbps, ngen, repl))
             for mthd in mthds:
-                if mthd == "asteroid":
-                    supps = ["bs"]
-                else:
-                    supps = ["bs", "abayes"]
                 for supp in supps:
                     xste_df = ste_df[(ste_df["NBPS"] == nbps) &
                                      (ste_df["NGEN"] == ngen) &
                                      (ste_df["REPL"] == repl) &
                                      (ste_df["SUPP"] == supp) &
                                      (ste_df["MTHD"] == mthd)]
-
-
 
                     if xste_df.shape[0] != 1:
                         sys.exit("  1 ERROR - %s!\n" % mthd)
@@ -63,7 +56,13 @@ for nbps in nbpss:
                     row["NBPS"] = nbps
                     row["NGEN"] = ngen
                     row["REPL"] = repl
-                    row["SUPP"] = supp
+                    if mthd == "wtreeqmc_wn_n2":
+                        if supp == "bs":
+                            row["SUPP"] = "none_keeppoly"
+                        else:
+                            row["SUPP"] = "none_refinepoly"
+                    else:
+                        row["SUPP"] = supp
                     row["MTHD"] = mthd
                     row["SEFN"] = sefn
                     row["SEFP"] = sefp

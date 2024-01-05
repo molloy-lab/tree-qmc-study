@@ -3,7 +3,7 @@ import math
 import numpy
 import sys
 
-sys.exit("DONE RUNNING")
+#sys.exit("DONE RUNNING")
 
 df = pandas.read_csv("data-all-error.csv")
 df.fillna("NA", inplace=True)
@@ -36,7 +36,7 @@ for nbps in nbpss:
         for supp in supps:
             repls = df[(df["NBPS"] == nbps) &
                        (df["NGEN"] == ngen) & 
-                       (df["SUPP"] == supp) & 
+                       (df["SUPP"] == supps[0]) & 
                        (df["MTHD"] == "wtreeqmc_wh_n2")].REPL.values
 
             for repl in repls:
@@ -44,16 +44,15 @@ for nbps in nbpss:
 
                 xdf = df[(df["NBPS"] == nbps) &
                          (df["NGEN"] == ngen) & 
-                         (df["SUPP"] == supp) & 
                          (df["REPL"] == repl)]
 
-                wastrid = xdf[(xdf["MTHD"] == "wastrid_s")]
-                asterh = xdf[(xdf["MTHD"] == "aster_h_t16")]
-                tqmc_whn2 = xdf[(xdf["MTHD"] == "wtreeqmc_wh_n2")]
-                tqmc_whn1 = xdf[(xdf["MTHD"] == "wtreeqmc_wh_n1")]
-                tqmc_whn0 = xdf[(xdf["MTHD"] == "wtreeqmc_wh_n0")]
-                tqmc_wsn2 = xdf[(xdf["MTHD"] == "wtreeqmc_ws_n2")]
-                tqmc_wnn2 = xdf[(xdf["MTHD"] == "wtreeqmc_wn_n2")]
+                wastrid = xdf[(xdf["MTHD"] == "wastrid_s") & (xdf["SUPP"] == supp)]
+                asterh = xdf[(xdf["MTHD"] == "aster_h_t16") & (xdf["SUPP"] == supp)]
+                tqmc_whn2 = xdf[(xdf["MTHD"] == "wtreeqmc_wh_n2") & (xdf["SUPP"] == supp)]
+                tqmc_whn1 = xdf[(xdf["MTHD"] == "wtreeqmc_wh_n1") & (xdf["SUPP"] == supp)]
+                tqmc_whn0 = xdf[(xdf["MTHD"] == "wtreeqmc_wh_n0") & (xdf["SUPP"] == supp)]
+                tqmc_wsn2 = xdf[(xdf["MTHD"] == "wtreeqmc_ws_n2") & (xdf["SUPP"] == supp)]
+                tqmc_wnn2 = xdf[(xdf["MTHD"] == "wtreeqmc_wn_n2") & (xdf["SUPP"] == "none_refinepoly")]  ## LIKE ORIGINAL
 
                 row = {}
                 row["NBPS"] = nbps
