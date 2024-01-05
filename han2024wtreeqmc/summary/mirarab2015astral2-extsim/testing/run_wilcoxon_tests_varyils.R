@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 
-# MANY NORMALITY FAILURES SO USE WILCOXON INSTEAD!!!
+library(exactRankTests)
+library(coin)
 
 data <- read.csv("../csvs/data-varyils-for-testing.csv")
 
@@ -71,46 +72,45 @@ for (mthd in mthds) {
         ntreeqmc <- sum(diff > 0)
 
         # Run test
-        tt <- t.test(mthd1, y = mthd2,
-                     alternative="two.sided",
-                     mu = 0, paired=TRUE, var.equal=FALSE,
-                     conf.level=0.95)
+        xwsr <-  pvalue(wilcoxsign_test(mthd1 ~ mthd2,
+                            zero.method="Wilcoxon",
+                            distribution = "exact",
+                            paired = TRUE,
+                            alternative = "two.sided",
+                            conf.int = TRUE))
+        ywsr <- pvalue(wilcoxsign_test(mthd1 ~ mthd2, 
+                            zero.method="Pratt",
+                            distribution = "exact",
+                            paired = TRUE,
+                            alternative = "two.sided",
+                            conf.int = TRUE))
 
-        # Report
-        if (ntreeqmc + nother == 0) {
-            # all ties!
-            tt$p.value <- "NA"
-            stars = ""
-            mc <- ""
+        # Take greater of two tests to be conservative
+        if (xwsr < ywsr) {
+            wsr <- ywsr
         } else {
-            # To be safe, check for normality
-            #ggqqplot(diff)
-            #hist(diff)
-            st <- shapiro.test(diff)
+            wsr <- xwsr
+        }
 
-            stars = ""
-            if (tt$p.value < 0.000005) {
-                stars = "*****"
-            } else if (tt$p.value < 0.00005) {
-                stars = "****"
-            } else if (tt$p.value < 0.0005) {
-                stars = "***"
-            } else if (tt$p.value < 0.005) {
-                stars = "**"
-            } else if (tt$p.value < threshold0) {
-                stars = "*"
-            }
-            mc <- ""
-            if (tt$p.value < threshold_bonferoni) {
-                mc <- "MC"
-            }
-            note <- ""
-            if ((mean(diff) < 0) & (tt$p.value < threshold0)) {
-                note <- paste("(", mthd, "better)")
-            }
-            if (st$p.value < 0.05) {
-                note <- paste(note, "<- Failed normality test!")
-            }
+        stars = ""
+        if (wsr < 0.000005) {
+            stars = "*****"
+        } else if (wsr < 0.00005) {
+            stars = "****"
+        } else if (wsr < 0.0005) {
+            stars = "***"
+        } else if (wsr < 0.005) {
+            stars = "**"
+        } else if (wsr < threshold0) {
+            stars = "*"
+        }
+        mc <- ""
+        if (wsr < threshold_bonferoni) {
+            mc <- "MC"
+        }
+        note <- ""
+        if ((mean(diff) < 0) & (wsr < threshold0)) {
+            note <- paste("(", mthd, "better)")
         }
 
         writeme <- paste("TQMC-wh-n2 vs.", mthd, "&",
@@ -121,7 +121,8 @@ for (mthd in mthds) {
                          as.character(ntreeqmc), "/",
                          as.character(nother), "/",
                          as.character(ntie), "&",
-                         format(tt$p.value, scientific = TRUE),
+                         format(xwsr, scientific = TRUE), "&", 
+                         format(ywsr, scientific = TRUE), "&",
                          "&", stars, "&", mc, note)
         print(writeme)
 
