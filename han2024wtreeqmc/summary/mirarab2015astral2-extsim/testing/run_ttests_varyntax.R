@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-data <- read.csv("../csvs/data-for-testing.csv")
+data <- read.csv("../csvs/data-for-testing-varyntax.csv")
 data$NTAX <- as.factor(data$NTAX)
 data$HGHT <- as.factor(data$HGHT)
 data$RATE <- as.factor(data$RATE)
@@ -8,8 +8,8 @@ data$SUPP <- as.factor(data$SUPP)
 data$NGEN <- as.factor(data$NGEN)
 data$REPL <- as.factor(data$REPL)
 
-data <- subset(data, HGHT == "2000000")
-data <- subset(data, RATE == "1e-06")
+#data <- subset(data, HGHT == "2000000")
+#data <- subset(data, RATE == "1e-06")
 
 supps <- c("abayes")
 ngens <- c(50, 200, 1000)

@@ -14,7 +14,6 @@ cols = ["NTAX", "HGHT", "RATE", "REPL", "SUPP", "NGEN",
         "TQMCwhn0xSEFN", "TQMCwhn0xSERF",
         "TQMCwsn2xSEFN", "TQMCwsn2xSERF",
         "TQMCwnn2xSEFN", "TQMCwnn2xSERF"]
-rows = []
 
 ngens = [50, 200, 1000]
 supps = ["sh", "abayes"]
@@ -28,21 +27,22 @@ mthds = ["caml",
          "wtreeqmc_ws_n2",
          "wtreeqmc_wn_n2"]
 
-for do in ["ntax", "ils"]: 
-    if do == "ntax":
+for do in ["varyntax", "varyils"]: 
+    if do == "varyntax":
         sys.stdout.write("Increasing number of taxa\n")
-        df = pandas.read_csv("data-varyntax-error.csv", keep_default_na=False)
-        ntaxs = [10, 50, 100, 500, 1000]
+        ntaxs = [10, 50, 100, 200, 500, 1000]
         hghts = [2000000]
         rates = [0.000001]
-    elif do == "ils":
+        
+    elif do == "varyils":
         sys.stdout.write("Increasing ILS\n")
-        df = pandas.read_csv("data-varyils-error.csv", keep_default_na=False)
         ntaxs = [200]
         hghts = [10000000, 2000000, 500000]
         rates = [0.0000001, 0.000001]
 
+    df = pandas.read_csv("data-" + do + "-error.csv", keep_default_na=False)
     df.fillna("NA", inplace=True)
+    rows = []
 
     for ntax in ntaxs:
         for hght in hghts:
@@ -106,7 +106,7 @@ for do in ["ntax", "ils"]:
 
                             rows.append(row)
 
-df = pandas.DataFrame(rows, columns=cols)
+    df = pandas.DataFrame(rows, columns=cols)
 
-df.to_csv("data-for-testing.csv",
-          sep=',', na_rep="NA",header=True, index=False)
+    df.to_csv("data-" + do + "-for-testing.csv",
+            sep=',', na_rep="NA",header=True, index=False)

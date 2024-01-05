@@ -1,7 +1,15 @@
 #!/usr/bin/env Rscript
 
-# Remove ties
-# https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0200837
+# install.packages("coin", dependencies = TRUE)
+
+library(exactRankTests)
+library(coin)
+
+#https://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_nonparametric/BS704_Nonparametric6.html
+#https://stat.ethz.ch/pipermail/r-help/2011-April/274931.html
+#https://www.graphpad.com/guides/prism/latest/statistics/stat_pratt.htm
+#https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/wilcox.test
+# https://www.rdocumentation.org/packages/rstatix/versions/0.7.2/topics/wilcox_test
 
 data <- read.csv("../csvs/data-for-testing.csv")
 data$NBPS <- as.factor(data$NBPS)
@@ -9,174 +17,203 @@ data$NGEN <- as.factor(data$NGEN)
 data$SUPP <- as.factor(data$SUPP)
 data$REPL <- as.factor(data$REPL)
 
-supps <- c("abayes", "bs")
 ngens <- c("50", "200", "500", "1000")
 nbpss <- c("200", "400", "800", "1600")
-mthds <- c("ASTER-h", "wASTRID")
+mthds <- c("ASTER-h", "wASTRID", "TREEQMC-n2-orig")  # with polys refined
 
-ntest <- length(supps) * length(ngens) * length(nbpss) * length(mthds)
-threshold_bonferoni <- 0.05 / ntest
+threshold0 <- 0.05
+ntests <- length(ngens) * length(nbpss) * 5
+threshold_bonferoni <- threshold0 / ntests
+
+writeme <- paste("alpha =", as.character(threshold0))
+print(writeme)
+print(paste("bonferroni alpha =", as.character(threshold_bonferoni), 
+            "=", as.character(threshold0), "/", as.character(ntests)))
 
 for (mthd in mthds) {
+
+    if (mthd == "TREEQMC-n2-orig") {
+        supps <- c("abayes")
+    } else {
+        supps <- c("abayes", "bs")
+    }
+
     for (supp in supps) {
         for (ngen in ngens) {
             for (nbps in nbpss) {
         
-        fndf <- data[data$SUPP == supp, ]
-        fndf <- fndf[fndf$NGEN == ngen, ]
-        fndf <- fndf[fndf$NBPS == nbps, ]
+        df <- data[data$SUPP == supp, ]
+        df <- df[df$NGEN == ngen, ]
+        df <- df[df$NBPS == nbps, ]
 
-        # Find ties
+        # Set-up
+        mthd1 <- df$TQMCwhn2xSERF #FN
         if (mthd == "ASTER-h") {
-            fndf$DIFF <- fndf$ASTERHxSEFN - fndf$TQMCwhn2xSEFN  # positive means TQMC-wh-n2 is better
+            mthd2 <- df$ASTERHxSERF #FN
         } else if (mthd == "wASTRID") {
-            fndf$DIFF <- fndf$WASTRIDxSEFN - fndf$TQMCwhn2xSEFN  # positive means TQMC-wh-n2 is better
+            mthd2 <- df$WASTRIDxSERF #FN
+        } else if (mthd == "TREEQMC-n2-orig") {
+            mthd2 <- df$TQMCwnn2xSERF #FN
         } else {
             print("ERROR")
             exit()
         }
 
         # Count ties
-        ntie <- sum(fndf$DIFF == 0)
-        nother <- sum(fndf$DIFF < 0)
-        ntreeqmc <- sum(fndf$DIFF > 0)
+        diff <- mthd2 - mthd1  # lower is better
+        ntie <- sum(diff == 0)
+        nother <- sum(diff < 0)
+        ntreeqmc <- sum(diff > 0)
 
-        # Remove ties for wilcox test
-        fndf$DIFF[fndf$DIFF == 0] <- NA
-        xfndf <- fndf[complete.cases(fndf), ]
+        # Perform wilcoxon test
+        #xwsr <-  wilcox.exact(mthd1, mthd2,
+        #                      paired = TRUE,
+        #                      alternative = "two.sided",
+        #                      conf.int = TRUE)
+        #xwsr <- xwsr$p.value
+        xwsr <-  pvalue(wilcoxsign_test(mthd1 ~ mthd2,
+                            zero.method="Wilcoxon",
+                            distribution = "exact",
+                            paired = TRUE,
+                            alternative = "two.sided",
+                            conf.int = TRUE))
+        ywsr <- pvalue(wilcoxsign_test(mthd1 ~ mthd2, 
+                            zero.method="Pratt",
+                            distribution = "exact",
+                            paired = TRUE,
+                            alternative = "two.sided",
+                            conf.int = TRUE))
 
-        if (nrow(xfndf) > 25) {
-            tmp1 <- xfndf$TQMCwhn2xSEFN
-            if (mthd == "ASTER-h") {
-                tmp2 <- xfndf$ASTERHxSEFN
-            } else if (mthd == "wASTRID") {
-                tmp2 <- xfndf$WASTRIDxSEFN
-            } else {
-                print("ERROR")
-                exit()
-            }
-
-            # Perform wilcoxon test
-            wsr <- wilcox.test(tmp1, 
-                               tmp2,
-                               paired=TRUE,
-                               alternative="two.sided",
-                               mu=0, exact=NULL)
-
-            # Report
-            if (wsr$p.value < 0.000005) {
-                stars = "*****"
-            } else if (wsr$p.value < 0.00005) {
-                stars = "****"
-            } else if (wsr$p.value < 0.0005) {
-                stars = "***"
-            } else if (wsr$p.value < 0.005) {
-                stars = "**"
-            } else if (wsr$p.value < 0.05) {
-                stars = "*"
-            } else {
-                stars = ""
-            }
-
-            if (wsr$p.value < threshold_bonferoni) {
-                mc <- "MC"
-            } else {
-                mc <- ""
-            }
-
-            writeme <- paste("TQMC-wh-n2 vs.", mthd, "&",
-                             supp, "&",
-                             as.character(ngen), "&",
-                             as.character(nbps), "&",
-                             as.character(ntreeqmc), "/",
-                             as.character(nother), "/",
-                             as.character(ntie), "&",
-                             format(wsr$p.value, scientific = TRUE), "&", stars, "&", mc)
-                print(writeme)
+        # Take greater of two tests to be conservative
+        if (xwsr < ywsr) {
+            wsr <- ywsr
         } else {
-            writeme <- paste("TQMC-wh-n2 vs.", mthd, "&", 
-                             supp, "&",
-                             as.character(ngen), "&",
+            wsr <- xwsr
+        }
+
+        stars = ""
+        if (wsr < 0.000005) {
+            stars = "*****"
+        } else if (wsr < 0.00005) {
+            stars = "****"
+        } else if (wsr < 0.0005) {
+            stars = "***"
+        } else if (wsr < 0.005) {
+            stars = "**"
+        } else if (wsr < threshold0) {
+            stars = "*"
+        }
+        mc <- ""
+        if (wsr < threshold_bonferoni) {
+            mc <- "MC"
+        }
+        note <- ""
+        if ((mean(diff) < 0) & (wsr < threshold0)) {
+            note <- paste("(", mthd, "better)")
+        }
+
+        writeme <- paste("TQMC-wh-n2 vs.", mthd, "&",
+                         supp, "&",
+                         as.character(ngen), "&",
                              as.character(nbps), "&",
                              as.character(ntreeqmc), "/",
                              as.character(nother), "/",
                              as.character(ntie), "&",
-                             "& NA & NA & NA")
-            print(writeme)
-        }
-    }
+                             format(xwsr, scientific = TRUE), "&", 
+                             format(ywsr, scientific = TRUE), "&", 
+                             stars, "&", mc)
+        print(writeme)
 
+            }
         }
     }
 }
 
+print("done")
+exit()
 
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 50 & 200 & 23 / 17 / 10 & 2.951435e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 50 & 400 & 33 / 7 / 10 & 4.793529e-04 & *** & MC"
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 50 & 800 & 27 / 8 / 15 & 1.112766e-04 & *** & MC"
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 50 & 1600 & 23 / 6 / 21 & 9.786145e-04 & ** & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 200 & 200 & 30 / 9 / 11 & 5.375914e-03 & * & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 200 & 400 & 21 / 14 / 15 & 1.422518e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 200 & 800 & 18 / 11 / 21 & 2.293086e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 200 & 1600 & 22 / 10 / 18 & 2.262861e-02 & * & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 500 & 200 & 22 / 15 / 13 & 3.525035e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 500 & 400 & 14 / 22 / 14 & 7.207358e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 500 & 800 & 18 / 11 / 21 & 4.303105e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 500 & 1600 & 21 / 13 / 16 & 1.607812e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 1000 & 200 & 20 / 9 / 21 & 1.403843e-03 & ** & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 1000 & 400 & 20 / 6 / 24 & 9.810156e-03 & * & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 1000 & 800 & 20 / 7 / 23 & 1.364808e-02 & * & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 1000 & 1600 & 19 / 5 / 26 & & NA & NA & NA"
+[1] "alpha = 0.05"
+[1] "bonferroni alpha = 0.000625 = 0.05 / 80"
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 50 & 200 & 23 / 17 / 10 & 0.3341381 & 0.3238586 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 50 & 400 & 33 / 7 / 10 & 0.000387488 & 0.0001084018 & *** & MC"
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 50 & 800 & 27 / 8 / 15 & 0.0001895597 & 0.0002738126 & *** & MC"
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 50 & 1600 & 23 / 6 / 21 & 0.0002571382 & 0.0004458502 & *** & MC"
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 200 & 200 & 30 / 9 / 11 & 0.006861866 & 0.002451796 & * & "
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 200 & 400 & 21 / 14 / 15 & 0.1247336 & 0.1534584 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 200 & 800 & 18 / 11 / 21 & 0.139051 & 0.1550322 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 200 & 1600 & 22 / 10 / 18 & 0.02106874 & 0.02215265 & * & "
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 500 & 200 & 22 / 15 / 13 & 0.7603878 & 0.5231943 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 500 & 400 & 14 / 22 / 14 & 0.529488 & 0.3493314 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 500 & 800 & 18 / 11 / 21 & 0.5209156 & 0.30146 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 500 & 1600 & 21 / 13 / 16 & 0.1982383 & 0.1719252 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 1000 & 200 & 20 / 9 / 21 & 0.0004676618 & 0.006101582 & * & "
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 1000 & 400 & 20 / 6 / 24 & 0.003161758 & 0.003370821 & ** & "
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 1000 & 800 & 20 / 7 / 23 & 0.007444784 & 0.007649198 & * & "
+[1] "TQMC-wh-n2 vs. ASTER-h & abayes & 1000 & 1600 & 19 / 5 / 26 & 0.0009840727 & 0.001789212 & ** & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 50 & 200 & 22 / 17 / 11 & 0.3399764 & 0.3525142 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 50 & 400 & 19 / 14 / 17 & 0.4983073 & 0.4291406 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 50 & 800 & 23 / 18 / 9 & 0.8386277 & 0.7120619 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 50 & 1600 & 21 / 16 / 13 & 0.1315586 & 0.1983822 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 200 & 200 & 19 / 17 / 14 & 0.5360853 & 0.6023837 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 200 & 400 & 21 / 11 / 18 & 0.06322916 & 0.0613162 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 200 & 800 & 17 / 18 / 15 & 0.3616252 & 0.6384818 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 200 & 1600 & 17 / 11 / 22 & 0.2169209 & 0.2262515 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 500 & 200 & 23 / 18 / 9 & 0.7983978 & 0.6835137 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 500 & 400 & 21 / 14 / 15 & 0.07098527 & 0.112634 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 500 & 800 & 17 / 10 / 23 & 0.3459887 & 0.2246011 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 500 & 1600 & 13 / 8 / 29 & 0.1746035 & 0.2260199 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 1000 & 200 & 16 / 19 / 15 & 0.6453902 & 0.6213272 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 1000 & 400 & 16 / 10 / 24 & 0.03263813 & 0.1127932 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 1000 & 800 & 17 / 6 / 27 & 0.08854365 & 0.03046513 &  & "
+[1] "TQMC-wh-n2 vs. ASTER-h & bs & 1000 & 1600 & 13 / 10 / 27 & 0.2587008 & 0.4147711 &  & "
 
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 50 & 200 & 22 / 17 / 11 & 3.6032e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 50 & 400 & 19 / 14 / 17 & 3.014786e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 50 & 800 & 23 / 18 / 9 & 7.003239e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 50 & 1600 & 21 / 16 / 13 & 2.202192e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 200 & 200 & 19 / 17 / 14 & 4.623817e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 200 & 400 & 21 / 11 / 18 & 7.799515e-02 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 200 & 800 & 17 / 18 / 15 & 5.335754e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 200 & 1600 & 17 / 11 / 22 & 2.138936e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 500 & 200 & 23 / 18 / 9 & 6.237101e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 500 & 400 & 21 / 14 / 15 & 8.318931e-02 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 500 & 800 & 17 / 10 / 23 & 3.587861e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 500 & 1600 & 13 / 8 / 29 & & NA & NA & NA"
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 1000 & 200 & 16 / 19 / 15 & 5.822796e-01 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 1000 & 400 & 16 / 10 / 24 & 6.036127e-02 &  & "
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 1000 & 800 & 17 / 6 / 27 & & NA & NA & NA"
-#[1] "TQMC-wh-n2 vs. ASTER-h & bs & 1000 & 1600 & 13 / 10 / 27 & & NA & NA & NA"
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 50 & 200 & 30 / 16 / 4 & 0.02684553 & 0.02592068 & * & "
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 50 & 400 & 33 / 12 / 5 & 0.001025001 & 0.0008868985 & ** & "
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 50 & 800 & 35 / 10 / 5 & 0.0001701751 & 0.0001248617 & *** & MC"
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 50 & 1600 & 34 / 10 / 6 & 1.910546e-05 & 2.230378e-05 & **** & MC"
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 200 & 200 & 27 / 7 / 16 & 0.0003385869 & 0.0002484249 & *** & MC"
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 200 & 400 & 25 / 13 / 12 & 0.02555467 & 0.02814024 & * & "
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 200 & 800 & 25 / 13 / 12 & 0.03361491 & 0.03383093 & * & "
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 200 & 1600 & 29 / 7 / 14 & 0.00630277 & 0.001176633 & * & "
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 500 & 200 & 24 / 16 / 10 & 0.09150247 & 0.1090007 &  & "
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 500 & 400 & 23 / 13 / 14 & 0.1386635 & 0.1085876 &  & "
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 500 & 800 & 22 / 11 / 17 & 0.01520404 & 0.02431873 & * & "
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 500 & 1600 & 24 / 9 / 17 & 0.03998109 & 0.01614823 & * & "
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 1000 & 200 & 25 / 9 / 16 & 0.008141451 & 0.005204419 & * & "
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 1000 & 400 & 21 / 13 / 16 & 0.04045433 & 0.07196359 &  & "
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 1000 & 800 & 21 / 8 / 21 & 0.001367025 & 0.004363813 & ** & "
+[1] "TQMC-wh-n2 vs. wASTRID & abayes & 1000 & 1600 & 23 / 5 / 22 & 0.0003702417 & 0.0002854466 & *** & MC"
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 50 & 200 & 30 / 12 / 8 & 0.004163601 & 0.003493408 & ** & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 50 & 400 & 31 / 12 / 7 & 0.002196742 & 0.001926339 & ** & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 50 & 800 & 31 / 13 / 6 & 0.002441709 & 0.002425262 & ** & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 50 & 1600 & 32 / 9 / 9 & 0.0002453604 & 0.0001671805 & *** & MC"
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 200 & 200 & 20 / 18 / 12 & 0.5289875 & 0.5903075 &  & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 200 & 400 & 22 / 14 / 14 & 0.01087662 & 0.03486185 & * & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 200 & 800 & 23 / 11 / 16 & 0.01631613 & 0.02033664 & * & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 200 & 1600 & 19 / 11 / 20 & 0.008662751 & 0.03968453 & * & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 500 & 200 & 17 / 14 / 19 & 0.6101888 & 0.589102 &  & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 500 & 400 & 25 / 9 / 16 & 0.0009101708 & 0.001592791 & ** & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 500 & 800 & 17 / 12 / 21 & 0.0654503 & 0.1690782 &  & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 500 & 1600 & 20 / 9 / 21 & 0.02840782 & 0.02918072 & * & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 1000 & 200 & 23 / 18 / 9 & 1 & 0.8306194 &  & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 1000 & 400 & 21 / 11 / 18 & 0.09418824 & 0.07568016 &  & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 1000 & 800 & 15 / 9 / 26 & 0.05144358 & 0.1307372 &  & "
+[1] "TQMC-wh-n2 vs. wASTRID & bs & 1000 & 1600 & 15 / 12 / 23 & 0.2560448 & 0.4097079 &  & "
 
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 50 & 200 & 30 / 16 / 4 & 2.296252e-02 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 50 & 400 & 33 / 12 / 5 & 1.416331e-03 & ** & "
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 50 & 800 & 35 / 10 / 5 & 9.071185e-05 & *** & MC"
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 50 & 1600 & 34 / 10 / 6 & 7.205789e-05 & *** & MC"
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 200 & 200 & 27 / 7 / 16 & 2.912295e-04 & *** & MC"
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 200 & 400 & 25 / 13 / 12 & 1.913904e-02 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 200 & 800 & 25 / 13 / 12 & 1.182815e-02 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 200 & 1600 & 29 / 7 / 14 & 6.481961e-03 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 500 & 200 & 24 / 16 / 10 & 3.823234e-02 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 500 & 400 & 23 / 13 / 14 & 1.562814e-01 &  & "
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 500 & 800 & 22 / 11 / 17 & 3.37693e-02 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 500 & 1600 & 24 / 9 / 17 & 2.002377e-02 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 1000 & 200 & 25 / 9 / 16 & 5.746979e-03 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 1000 & 400 & 21 / 13 / 16 & 3.046085e-02 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 1000 & 800 & 21 / 8 / 21 & 4.159118e-03 & ** & "
-#[1] "TQMC-wh-n2 vs. wASTRID & abayes & 1000 & 1600 & 23 / 5 / 22 & 6.004268e-04 & ** & MC"
-
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 50 & 200 & 30 / 12 / 8 & 3.364415e-03 & ** & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 50 & 400 & 31 / 12 / 7 & 3.938716e-03 & ** & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 50 & 800 & 31 / 13 / 6 & 1.56284e-03 & ** & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 50 & 1600 & 32 / 9 / 9 & 5.733083e-04 & ** & MC"
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 200 & 200 & 20 / 18 / 12 & 3.007714e-01 &  & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 200 & 400 & 22 / 14 / 14 & 1.110129e-02 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 200 & 800 & 23 / 11 / 16 & 1.713481e-02 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 200 & 1600 & 19 / 11 / 20 & 8.739463e-03 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 500 & 200 & 17 / 14 / 19 & 4.283361e-01 &  & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 500 & 400 & 25 / 9 / 16 & 3.284391e-03 & ** & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 500 & 800 & 17 / 12 / 21 & 8.919014e-02 &  & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 500 & 1600 & 20 / 9 / 21 & 4.520053e-02 & * & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 1000 & 200 & 23 / 18 / 9 & 9.417421e-01 &  & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 1000 & 400 & 21 / 11 / 18 & 6.551437e-02 &  & "
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 1000 & 800 & 15 / 9 / 26 & & NA & NA & NA"
-#[1] "TQMC-wh-n2 vs. wASTRID & bs & 1000 & 1600 & 15 / 12 / 23 & 6.30483e-01 &  & "
-#There were 50 or more warnings (use warnings() to see the first 50)
-
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 50 & 200 & 38 / 8 / 4 & 2.657253e-07 & 2.767127e-07 & ***** & MC"
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 50 & 400 & 31 / 11 / 8 & 6.426154e-05 & 0.0001133465 & *** & MC"
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 50 & 800 & 32 / 8 / 10 & 7.426644e-05 & 5.095752e-05 & *** & MC"
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 50 & 1600 & 24 / 16 / 10 & 0.02891075 & 0.05026649 &  & "
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 200 & 200 & 35 / 11 / 4 & 7.055397e-07 & 1.377439e-06 & ***** & MC"
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 200 & 400 & 34 / 8 / 8 & 6.63259e-06 & 6.460657e-06 & **** & MC"
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 200 & 800 & 22 / 11 / 17 & 0.02142979 & 0.02868212 & * & "
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 200 & 1600 & 29 / 9 / 12 & 0.0008714751 & 0.0006293832 & ** & "
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 500 & 200 & 29 / 9 / 12 & 0.0005919595 & 0.0004866494 & ** & MC"
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 500 & 400 & 28 / 9 / 13 & 5.13956e-05 & 0.0001411493 & *** & MC"
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 500 & 800 & 22 / 9 / 19 & 0.004579221 & 0.007677527 & * & "
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 500 & 1600 & 24 / 6 / 20 & 0.0001091119 & 0.0002278164 & *** & MC"
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 1000 & 200 & 26 / 6 / 18 & 1.190277e-05 & 4.012324e-05 & **** & MC"
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 1000 & 400 & 29 / 4 / 17 & 3.792811e-07 & 8.018687e-07 & ***** & MC"
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 1000 & 800 & 28 / 5 / 17 & 7.05081e-06 & 8.580275e-06 & **** & MC"
+[1] "TQMC-wh-n2 vs. TREEQMC-n2-orig & abayes & 1000 & 1600 & 22 / 5 / 23 & 0.001707599 & 0.0007659644 & ** & "
+[1] "done"

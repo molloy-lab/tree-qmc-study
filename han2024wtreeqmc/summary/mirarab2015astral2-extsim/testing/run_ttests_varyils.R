@@ -5,7 +5,7 @@
 
 
 
-data <- read.csv("../csvs/data-for-testing.csv")
+data <- read.csv("../csvs/data-for-testing-varyils.csv")
 
 data$NTAX <- as.factor(data$NTAX)
 data$HGHT <- as.factor(data$HGHT)
@@ -14,7 +14,7 @@ data$SUPP <- as.factor(data$SUPP)
 data$NGEN <- as.factor(data$NGEN)
 data$REPL <- as.factor(data$REPL)
 
-data <- subset(data, NTAX == 200)
+#data <- subset(data, NTAX == 200)
 
 supps <- c("abayes")
 ngens <- c(50, 200, 1000)
