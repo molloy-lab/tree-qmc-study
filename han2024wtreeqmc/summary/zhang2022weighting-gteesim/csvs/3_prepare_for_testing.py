@@ -19,14 +19,6 @@ cols = ["NBPS", "NGEN", "SUPP", "REPL",
 
 rows = []
 
-mthds = ["wastrid_s",
-         "aster_h_t16",
-         "wtreeqmc_wh_n2",
-         "wtreeqmc_wh_n1",
-         "wtreeqmc_wh_n0",
-         "wtreeqmc_ws_n2",
-         "wtreeqmc_wn_n2"]
-
 nbpss = [200, 400, 800, 1600]
 ngens = [50, 200, 500, 1000]
 supps = ["bs", "abayes"]
@@ -37,7 +29,7 @@ for nbps in nbpss:
             repls = df[(df["NBPS"] == nbps) &
                        (df["NGEN"] == ngen) & 
                        (df["SUPP"] == supps[0]) & 
-                       (df["MTHD"] == "wtreeqmc_wh_n2")].REPL.values
+                       (df["MTHD"] == "TQMC-wh_n2")].REPL.values
 
             for repl in repls:
                 print("%d %d %s %d" % (nbps, ngen, supp, repl))
@@ -46,13 +38,13 @@ for nbps in nbpss:
                          (df["NGEN"] == ngen) & 
                          (df["REPL"] == repl)]
 
-                wastrid = xdf[(xdf["MTHD"] == "wastrid_s") & (xdf["SUPP"] == supp)]
-                asterh = xdf[(xdf["MTHD"] == "aster_h_t16") & (xdf["SUPP"] == supp)]
-                tqmc_whn2 = xdf[(xdf["MTHD"] == "wtreeqmc_wh_n2") & (xdf["SUPP"] == supp)]
-                tqmc_whn1 = xdf[(xdf["MTHD"] == "wtreeqmc_wh_n1") & (xdf["SUPP"] == supp)]
-                tqmc_whn0 = xdf[(xdf["MTHD"] == "wtreeqmc_wh_n0") & (xdf["SUPP"] == supp)]
-                tqmc_wsn2 = xdf[(xdf["MTHD"] == "wtreeqmc_ws_n2") & (xdf["SUPP"] == supp)]
-                tqmc_wnn2 = xdf[(xdf["MTHD"] == "wtreeqmc_wn_n2") & (xdf["SUPP"] == "none_refinepoly")]  ## LIKE ORIGINAL
+                wastrid = xdf[(xdf["MTHD"] == "ASTRID-ws") & (xdf["SUPP"] == supp)]
+                asterh = xdf[(xdf["MTHD"] == "ASTER-wh") & (xdf["SUPP"] == supp)]
+                tqmc_whn2 = xdf[(xdf["MTHD"] == "TQMC-wh_n2") & (xdf["SUPP"] == supp)]
+                tqmc_whn1 = xdf[(xdf["MTHD"] == "TQMC-wh_n1") & (xdf["SUPP"] == supp)]
+                tqmc_whn0 = xdf[(xdf["MTHD"] == "TQMC-wh_n0") & (xdf["SUPP"] == supp)]
+                tqmc_wsn2 = xdf[(xdf["MTHD"] == "TQMC-ws_n2") & (xdf["SUPP"] == supp)]
+                tqmc_wnn2 = xdf[(xdf["MTHD"] == "TQMC-wn_n2") & (xdf["SUPP"] == "none_refinepoly")]  ## LIKE ORIGINAL
 
                 row = {}
                 row["NBPS"] = nbps

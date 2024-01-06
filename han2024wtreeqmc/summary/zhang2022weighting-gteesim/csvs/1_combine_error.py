@@ -19,6 +19,15 @@ mthds = ["aster_h_t16",
          "wtreeqmc_wh_n1",
          "wtreeqmc_wh_n0"]
 
+namemap = {}
+namemap["aster_h_t16"] = "ASTER-wh"
+namemap["wastrid_s"] = "ASTRID-ws"
+namemap["wtreeqmc_wn_n2"] = "TQMC-wn_n2"
+namemap["wtreeqmc_ws_n2"] = "TQMC-ws_n2"
+namemap["wtreeqmc_wh_n2"] = "TQMC-wh_n2"
+namemap["wtreeqmc_wh_n1"] = "TQMC-wh_n1"
+namemap["wtreeqmc_wh_n0"] = "TQMC-wh_n0"
+
 nbpss = [200, 400, 800, 1600]
 ngens = [50, 200, 500, 1000]
 repls = range(1, 51)
@@ -63,7 +72,7 @@ for nbps in nbpss:
                             row["SUPP"] = "none_refinepoly"
                     else:
                         row["SUPP"] = supp
-                    row["MTHD"] = mthd
+                    row["MTHD"] = namemap[mthd]
                     row["SEFN"] = sefn
                     row["SEFP"] = sefp
                     row["SERF"] = serf

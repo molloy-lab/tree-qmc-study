@@ -18,7 +18,7 @@ def report_stats(df, mthds, supp, ngen, nbps):
     keep = []
     minval = 1
     for ind, mthd in enumerate(mthds):
-        if mthd == "wtreeqmc_wn_n2":
+        if mthd == "TQMC-wn_n2":
             rfs = ydf[(ydf["MTHD"] == mthd)].SERF.values
         else:
             rfs = xdf[(xdf["MTHD"] == mthd)].SERF.values
@@ -58,18 +58,18 @@ if __name__ == "__main__":
     sys.stdout.write("\\begin{tabular}{r r c c c c c c c}\n")
     sys.stdout.write("\\toprule \n")
 
-    sys.stdout.write(" \\# of & sequence & wASTRID-s & wASTER-h & TREE-QMC & TREE-QMC & TREE-QMC & TREE-QMC & TREE-QMC \\\\\n")
-    sys.stdout.write(" genes & length &  &  & wh-n2 & wh-n1 & wh-n0 & ws-n2 & n2 \\\\\n")
+    sys.stdout.write(" \\# of & sequence & ASTRID & ASTER & TREE-QMC & TREE-QMC & TREE-QMC & TREE-QMC & TREE-QMC \\\\\n")
+    sys.stdout.write(" genes & length & ws & wh & wh-n2 & wh-n1 & wh-n0 & ws-n2 & n2 \\\\\n")
     
     sys.stdout.write("\\midrule\n")
 
-    mthds = ["wastrid_s",
-             "aster_h_t16",
-             "wtreeqmc_wh_n2",
-             "wtreeqmc_wh_n1",
-             "wtreeqmc_wh_n0",
-             "wtreeqmc_ws_n2",
-             "wtreeqmc_wn_n2"]
+    mthds = ["ASTRID-ws",
+             "ASTER-wh",
+             "TQMC-wh_n2",
+             "TQMC-wh_n1",
+             "TQMC-wh_n0",
+             "TQMC-ws_n2",
+             "TQMC-wn_n2"]
 
     df = pandas.read_csv("data-all-error.csv", na_values='NA', keep_default_na=False)
 
