@@ -14,28 +14,44 @@ def report_stats(df, mthds, ntax, ngen, nbps, blsc, psiz, miss, vary, emet):
              (df["PSIZ"] == psiz) &
              (df["MISS"] == miss)]
 
-    for mthd in mthds:
+    keep = []
+    minval = 1
+    for ind, mthd in enumerate(mthds):
         if emet == "FNR":
-            er = xdf[(xdf["MTHD"] == mthd)].SEFNR.values
+            ers = xdf[(xdf["MTHD"] == mthd)].SEFNR.values
         elif emet == "FPR":
-            er = xdf[(xdf["MTHD"] == mthd)].SEFPR.values
+            ers = xdf[(xdf["MTHD"] == mthd)].SEFPR.values
         else:
             sys.exit("unknown error metric\n")
 
-        if len(er) != 50:
+        if len(ers) != 50:
             sys.exit("ERROR")
 
-        x = round(round(numpy.mean(er), 5), 4)
-        y = round(round(numpy.std(er), 5), 4)
-        #sys.stdout.write(" & $%1.4f \\pm %1.4f$" % (x, y))
-        sys.stdout.write(" & %1.4f" % (x))
+        x = round(round(numpy.mean(ers), 5), 4)
+        keep.append(x)
+
+        if x < minval:
+            minval = x
+            minind = []
+            minind.append(ind)
+        elif x == minval:
+            minind.append(ind)
+
+    minind = set(minind)
+    for ind, x in enumerate(keep):
+        if ind in minind:
+            sys.stdout.write(" & \\textbf{%1.5f}" % (x))
+        else:
+            #sys.stdout.write(" & $%1.4f \\pm %1.4f$" % (x, y))
+            sys.stdout.write(" & %1.5f" % (x))
 
     sys.stdout.write(" \\\\\n")
+
 
 if __name__ == "__main__":
     
     emet = "FNR"
-    emet = "FPR"
+    #emet = "FPR"
 
     sys.stdout.write("\\begin{table}[!h]\n")
     sys.stdout.write("\\caption[")

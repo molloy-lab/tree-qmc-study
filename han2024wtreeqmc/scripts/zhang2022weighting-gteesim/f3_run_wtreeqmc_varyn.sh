@@ -21,9 +21,9 @@ OUTDIR="$PROJDIR/data/zhang2022weighting-gteesim/S100/$REPL"
 STRE_TRUE="$INDIR/s_tree.trees"
 GTRE="$INDIR/bestMLestimatedgenetree/estimatedgenetre_${NBPS}.gtr.rerooted.final.contracted.non"
 GTRE_FILE="estimatedgenetre.${NBPS}.${NGEN}"
-OPTS="-r 0 100"
+ROPTS="-r 0 100"
 if [ $SUPP == "abayes" ]; then
-    OPTS="-r 0.333 1"
+    ROPTS="-r 0.333 1"
     GTRE="$GTRE.abayes"
     GTRE_FILE="estimatedgenetre.abayes.${NBPS}.${NGEN}"
 fi
@@ -41,13 +41,11 @@ MYMTHDS=( "wtreeqmc_ws_n2" \
 
 for MYMTHD in ${MYMTHDS[@]}; do
     if [ $MYMTHD == "wtreeqmc_ws_n2" ]; then
-        OPTS="-w s -n 2 $OPTS"
-    elif [ $MYMTHD == "wtreeqmc_wh_n2" ]; then
-        OPTS="-w h -n 2 $OPTS"
+        OPTS="-w s -n 2 $ROPTS"
     elif [ $MYMTHD == "wtreeqmc_wh_n1" ]; then
-        OPTS="-w h -n 1 $OPTS"
+        OPTS="-w h -n 1 $ROPTS"
     elif [ $MYMTHD == "wtreeqmc_wh_n0" ]; then
-        OPTS="-w h -n 0 $OPTS"
+        OPTS="-w h -n 0 $ROPTS"
     else
         echo "Do not recognize $MYMTHD"
 	exit

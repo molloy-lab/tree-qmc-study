@@ -22,9 +22,9 @@ WTREEQMC="$PROJDIR/software/weighted-TREE-QMC/wTREE-QMC"
 DATADIR="$PROJDIR/data/mirarab2015astral2-extsim/$MODL/$REPL"
 STRE_TRUE="s_tree.trees"
 GTRE="estimatedgenetre"
-OPTS="-r 0 1"
+ROPTS="-r 0 1"
 if [ $SUPP == "abayes" ]; then
-    OPTS="-r 0.333 1"
+    ROPTS="-r 0.333 1"
     GTRE="$GTRE.abayes"
 fi
 
@@ -37,18 +37,16 @@ if [ ! -e $GTRE_FILE ]; then
 fi
 
 MYMTHDS=( "wtreeqmc_ws_n2" \
-	  "wtreeqmc_wh_n1" \
-	  "wtreeqmc_wh_n0" )
+	      "wtreeqmc_wh_n1" \
+	      "wtreeqmc_wh_n0" )
 
 for MYMTHD in ${MYMTHDS[@]}; do
     if [ $MYMTHD == "wtreeqmc_ws_n2" ]; then
-        OPTS="-w s -n 2 $OPTS"
-    elif [ $MYMTHD == "wtreeqmc_wh_n2" ]; then
-        OPTS="-w h -n 2 $OPTS"
+        OPTS="-w s -n 2 $ROPTS"
     elif [ $MYMTHD == "wtreeqmc_wh_n1" ]; then
-        OPTS="-w h -n 1 $OPTS"
+        OPTS="-w h -n 1 $ROPTS"
     elif [ $MYMTHD == "wtreeqmc_wh_n0" ]; then
-        OPTS="-w h -n 0 $OPTS"
+        OPTS="-w h -n 0 $ROPTS"
     else
         echo "Do not recognize $MYMTHD"
 	exit

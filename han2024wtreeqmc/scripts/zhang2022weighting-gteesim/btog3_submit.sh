@@ -4,7 +4,6 @@ exit
 
 # STUDY PARAMETERS
 REPLS=( $(seq -f "%02g" 1 50) )   # Replicates
-REPLS=( $(seq -f "%02g" 40 50) )   # Replicates
 NBPSS=( 200 400 800 1600 )
 SUPPS=( "bs" "abayes" )
 NGENS=( 50 200 500 1000 )
