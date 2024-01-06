@@ -9,7 +9,7 @@ Previous studies removed:
 + remove 2 replicates (i.e. 8 and 47) from 100-taxon
 """
 
-#sys.exit("DONE RUNNING")
+sys.exit("DONE RUNNING")
 
 df1 = pandas.read_csv("all_species_tree_error.csv",
                       keep_default_na=False)
