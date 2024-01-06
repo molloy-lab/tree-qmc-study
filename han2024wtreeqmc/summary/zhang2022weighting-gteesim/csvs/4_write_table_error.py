@@ -60,8 +60,6 @@ if __name__ == "__main__":
 
     sys.stdout.write(" \\# of & sequence & ASTRID & ASTER & TREE-QMC & TREE-QMC & TREE-QMC & TREE-QMC & TREE-QMC \\\\\n")
     sys.stdout.write(" genes & length & ws & wh & wh-n2 & wh-n1 & wh-n0 & ws-n2 & n2 \\\\\n")
-    
-    sys.stdout.write("\\midrule\n")
 
     mthds = ["ASTRID-ws",
              "ASTER-wh",
@@ -78,7 +76,9 @@ if __name__ == "__main__":
     nbpss = [200, 400, 800, 1600]
 
     for supp in supps:
-        sys.stdout.write("\\multicolumn{5}{l}{\\textit{%s support for weighted methods}} \\\\[0.25em]\n" % supp)
+        sys.stdout.write("\\midrule\n")
+        sys.stdout.write("\\multicolumn{9}{c}{\\textbf{%s support for weighted methods}} \\\\\n" % supp)
+        sys.stdout.write("\\midrule\n")
         for ngen in ngens:
             for nbps in nbpss:
                 report_stats(df, mthds, supp, ngen, nbps)

@@ -1,0 +1,1157 @@
+"NTAX","ILSL","SPEC","REPL","SUPP","NGEN","MTHD","NODE","SEFN","SEFNR","SECS"
+10,"medium","shallow",1,"sh",1000,"ASTRID-ws","cbcb03",23,2.875,0.033
+10,"medium","shallow",1,"sh",1000,"TQMC-wh_n2","cbcb03",23,2.875,0.331
+10,"medium","shallow",1,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,2.875,0.875
+10,"medium","shallow",1,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,2.875,0.126
+10,"medium","shallow",2,"sh",1000,"ASTRID-ws","cbcb05",23,2.875,0.052
+10,"medium","shallow",2,"sh",1000,"TQMC-wh_n2","cbcb05",23,2.875,0.326
+10,"medium","shallow",2,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,2.875,0.483
+10,"medium","shallow",2,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,2.875,0.105
+10,"medium","shallow",3,"sh",1000,"ASTRID-ws","cbcb06",23,2.875,0.06
+10,"medium","shallow",3,"sh",1000,"TQMC-wh_n2","cbcb06",23,2.875,0.327
+10,"medium","shallow",3,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,2.875,0.505
+10,"medium","shallow",3,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,2.875,0.096
+10,"medium","shallow",4,"sh",1000,"ASTRID-ws","cbcb07",23,2.875,0.051
+10,"medium","shallow",4,"sh",1000,"TQMC-wh_n2","cbcb07",23,2.875,0.307
+10,"medium","shallow",4,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,2.875,1.213
+10,"medium","shallow",4,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,2.875,0.095
+10,"medium","shallow",5,"sh",1000,"ASTRID-ws","cbcb08",23,2.875,0.049
+10,"medium","shallow",5,"sh",1000,"TQMC-wh_n2","cbcb08",23,2.875,0.311
+10,"medium","shallow",5,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,2.875,0.705
+10,"medium","shallow",5,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,2.875,0.124
+10,"medium","shallow",6,"sh",1000,"ASTRID-ws","cbcb09",23,2.875,0.067
+10,"medium","shallow",6,"sh",1000,"TQMC-wh_n2","cbcb09",23,2.875,0.313
+10,"medium","shallow",6,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,2.875,0.481
+10,"medium","shallow",6,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,2.875,0.197
+10,"medium","shallow",7,"sh",1000,"ASTRID-ws","cbcb10",23,2.875,0.042
+10,"medium","shallow",7,"sh",1000,"TQMC-wh_n2","cbcb10",23,2.875,0.329
+10,"medium","shallow",7,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,2.875,0.5
+10,"medium","shallow",7,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,2.875,0.101
+10,"medium","shallow",8,"sh",1000,"ASTRID-ws","cbcb11",23,2.875,0.071
+10,"medium","shallow",8,"sh",1000,"TQMC-wh_n2","cbcb11",23,2.875,0.34
+10,"medium","shallow",8,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,2.875,0.728
+10,"medium","shallow",8,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,2.875,0.108
+10,"medium","shallow",9,"sh",1000,"ASTRID-ws","cbcb12",23,2.875,0.052
+10,"medium","shallow",9,"sh",1000,"TQMC-wh_n2","cbcb12",23,2.875,0.307
+10,"medium","shallow",9,"sh",1000,"ASTER-wh (1 thread)","cbcb12",23,2.875,0.492
+10,"medium","shallow",9,"sh",1000,"ASTER-wh (16 threads)","cbcb12",23,2.875,0.12
+10,"medium","shallow",10,"sh",1000,"ASTRID-ws","cbcb03",23,2.875,0.065
+10,"medium","shallow",10,"sh",1000,"TQMC-wh_n2","cbcb03",23,2.875,0.32
+10,"medium","shallow",10,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,2.875,0.742
+10,"medium","shallow",10,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,2.875,0.091
+10,"medium","shallow",11,"sh",1000,"ASTRID-ws","cbcb13",23,2.875,0.058
+10,"medium","shallow",11,"sh",1000,"TQMC-wh_n2","cbcb13",23,2.875,0.348
+10,"medium","shallow",11,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,2.875,0.464
+10,"medium","shallow",11,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,2.875,0.121
+10,"medium","shallow",13,"sh",1000,"ASTRID-ws","cbcb05",23,2.875,0.049
+10,"medium","shallow",13,"sh",1000,"TQMC-wh_n2","cbcb05",23,2.875,0.344
+10,"medium","shallow",13,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,2.875,0.653
+10,"medium","shallow",13,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,2.875,0.144
+10,"medium","shallow",14,"sh",1000,"ASTRID-ws","cbcb06",23,2.875,0.046
+10,"medium","shallow",14,"sh",1000,"TQMC-wh_n2","cbcb06",23,2.875,0.38
+10,"medium","shallow",14,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,2.875,0.453
+10,"medium","shallow",14,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,2.875,0.091
+10,"medium","shallow",15,"sh",1000,"ASTRID-ws","cbcb15",23,2.875,0.049
+10,"medium","shallow",15,"sh",1000,"TQMC-wh_n2","cbcb15",23,2.875,0.34
+10,"medium","shallow",15,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,2.875,0.488
+10,"medium","shallow",15,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,2.875,0.111
+10,"medium","shallow",16,"sh",1000,"ASTRID-ws","cbcb09",23,2.875,0.046
+10,"medium","shallow",16,"sh",1000,"TQMC-wh_n2","cbcb09",23,2.875,0.323
+10,"medium","shallow",16,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,2.875,0.48
+10,"medium","shallow",16,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,2.875,0.13
+10,"medium","shallow",17,"sh",1000,"ASTRID-ws","cbcb16",23,2.875,0.058
+10,"medium","shallow",17,"sh",1000,"TQMC-wh_n2","cbcb16",23,2.875,0.359
+10,"medium","shallow",17,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,2.875,0.486
+10,"medium","shallow",17,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,2.875,0.092
+10,"medium","shallow",18,"sh",1000,"ASTRID-ws","cbcb17",23,2.875,0.066
+10,"medium","shallow",18,"sh",1000,"TQMC-wh_n2","cbcb17",23,2.875,0.316
+10,"medium","shallow",18,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,2.875,0.464
+10,"medium","shallow",18,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,2.875,0.177
+10,"medium","shallow",19,"sh",1000,"ASTRID-ws","cbcb07",23,2.875,0.057
+10,"medium","shallow",19,"sh",1000,"TQMC-wh_n2","cbcb07",23,2.875,0.328
+10,"medium","shallow",19,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,2.875,0.689
+10,"medium","shallow",19,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,2.875,0.137
+10,"medium","shallow",20,"sh",1000,"ASTRID-ws","cbcb03",23,2.875,0.057
+10,"medium","shallow",20,"sh",1000,"TQMC-wh_n2","cbcb03",23,2.875,0.321
+10,"medium","shallow",20,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,2.875,1.19
+10,"medium","shallow",20,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,2.875,0.098
+10,"medium","shallow",21,"sh",1000,"ASTRID-ws","cbcb08",23,2.875,0.036
+10,"medium","shallow",21,"sh",1000,"TQMC-wh_n2","cbcb08",23,2.875,0.323
+10,"medium","shallow",21,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,2.875,0.502
+10,"medium","shallow",21,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,2.875,0.157
+10,"medium","shallow",22,"sh",1000,"ASTRID-ws","cbcb06",23,2.875,0.049
+10,"medium","shallow",22,"sh",1000,"TQMC-wh_n2","cbcb06",23,2.875,0.3
+10,"medium","shallow",22,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,2.875,0.505
+10,"medium","shallow",22,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,2.875,0.093
+10,"medium","shallow",23,"sh",1000,"ASTRID-ws","cbcb18",23,2.875,0.053
+10,"medium","shallow",23,"sh",1000,"TQMC-wh_n2","cbcb18",23,2.875,0.35
+10,"medium","shallow",23,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,2.875,0.938
+10,"medium","shallow",23,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,2.875,0.194
+10,"medium","shallow",24,"sh",1000,"ASTRID-ws","cbcb19",23,2.875,0.043
+10,"medium","shallow",24,"sh",1000,"TQMC-wh_n2","cbcb19",23,2.875,0.331
+10,"medium","shallow",24,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,2.875,0.836
+10,"medium","shallow",24,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,2.875,0.102
+10,"medium","shallow",25,"sh",1000,"ASTRID-ws","cbcb05",23,2.875,0.04
+10,"medium","shallow",25,"sh",1000,"TQMC-wh_n2","cbcb05",23,2.875,0.334
+10,"medium","shallow",25,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,2.875,0.719
+10,"medium","shallow",25,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,2.875,0.137
+10,"medium","shallow",26,"sh",1000,"ASTRID-ws","cbcb20",23,2.875,0.052
+10,"medium","shallow",26,"sh",1000,"TQMC-wh_n2","cbcb20",23,2.875,0.352
+10,"medium","shallow",26,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,2.875,0.479
+10,"medium","shallow",26,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,2.875,0.11
+10,"medium","shallow",27,"sh",1000,"ASTRID-ws","cbcb21",23,2.875,0.047
+10,"medium","shallow",27,"sh",1000,"TQMC-wh_n2","cbcb21",23,2.875,0.339
+10,"medium","shallow",27,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,2.875,0.438
+10,"medium","shallow",27,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,2.875,0.09
+10,"medium","shallow",28,"sh",1000,"ASTRID-ws","cbcb07",23,2.875,0.056
+10,"medium","shallow",28,"sh",1000,"TQMC-wh_n2","cbcb07",23,2.875,0.3
+10,"medium","shallow",28,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,2.875,0.459
+10,"medium","shallow",28,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,2.875,0.126
+10,"medium","shallow",29,"sh",1000,"ASTRID-ws","cbcb03",23,2.875,0.038
+10,"medium","shallow",29,"sh",1000,"TQMC-wh_n2","cbcb03",23,2.875,0.327
+10,"medium","shallow",29,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,2.875,0.716
+10,"medium","shallow",29,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,2.875,0.153
+10,"medium","shallow",30,"sh",1000,"ASTRID-ws","cbcb08",23,2.875,0.041
+10,"medium","shallow",30,"sh",1000,"TQMC-wh_n2","cbcb08",23,2.875,0.337
+10,"medium","shallow",30,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,2.875,0.756
+10,"medium","shallow",30,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,2.875,0.087
+10,"medium","shallow",31,"sh",1000,"ASTRID-ws","cbcb09",23,2.875,0.049
+10,"medium","shallow",31,"sh",1000,"TQMC-wh_n2","cbcb09",23,2.875,0.332
+10,"medium","shallow",31,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,2.875,0.736
+10,"medium","shallow",31,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,2.875,0.133
+10,"medium","shallow",32,"sh",1000,"ASTRID-ws","cbcb06",23,2.875,0.041
+10,"medium","shallow",32,"sh",1000,"TQMC-wh_n2","cbcb06",23,2.875,0.348
+10,"medium","shallow",32,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,2.875,0.951
+10,"medium","shallow",32,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,2.875,0.108
+10,"medium","shallow",33,"sh",1000,"ASTRID-ws","cbcb05",23,2.875,0.061
+10,"medium","shallow",33,"sh",1000,"TQMC-wh_n2","cbcb05",23,2.875,0.318
+10,"medium","shallow",33,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,2.875,0.458
+10,"medium","shallow",33,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,2.875,0.163
+10,"medium","shallow",34,"sh",1000,"ASTRID-ws","cbcb19",23,2.875,0.06
+10,"medium","shallow",34,"sh",1000,"TQMC-wh_n2","cbcb19",23,2.875,0.321
+10,"medium","shallow",34,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,2.875,0.735
+10,"medium","shallow",34,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,2.875,0.126
+10,"medium","shallow",35,"sh",1000,"ASTRID-ws","cbcb21",23,2.875,0.047
+10,"medium","shallow",35,"sh",1000,"TQMC-wh_n2","cbcb21",23,2.875,0.325
+10,"medium","shallow",35,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,2.875,0.468
+10,"medium","shallow",35,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,2.875,0.156
+10,"medium","shallow",36,"sh",1000,"ASTRID-ws","cbcb10",23,2.875,0.042
+10,"medium","shallow",36,"sh",1000,"TQMC-wh_n2","cbcb10",23,2.875,0.318
+10,"medium","shallow",36,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,2.875,0.5
+10,"medium","shallow",36,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,2.875,0.089
+10,"medium","shallow",37,"sh",1000,"ASTRID-ws","cbcb07",23,2.875,0.051
+10,"medium","shallow",37,"sh",1000,"TQMC-wh_n2","cbcb07",23,2.875,0.365
+10,"medium","shallow",37,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,2.875,0.666
+10,"medium","shallow",37,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,2.875,0.089
+10,"medium","shallow",38,"sh",1000,"ASTRID-ws","cbcb20",23,2.875,0.08
+10,"medium","shallow",38,"sh",1000,"TQMC-wh_n2","cbcb20",23,2.875,0.297
+10,"medium","shallow",38,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,2.875,0.943
+10,"medium","shallow",38,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,2.875,0.12
+10,"medium","shallow",39,"sh",1000,"ASTRID-ws","cbcb08",23,2.875,0.058
+10,"medium","shallow",39,"sh",1000,"TQMC-wh_n2","cbcb08",23,2.875,0.32
+10,"medium","shallow",39,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,2.875,0.734
+10,"medium","shallow",39,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,2.875,0.142
+10,"medium","shallow",40,"sh",1000,"ASTRID-ws","cbcb09",23,2.875,0.043
+10,"medium","shallow",40,"sh",1000,"TQMC-wh_n2","cbcb09",23,2.875,0.306
+10,"medium","shallow",40,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,2.875,0.737
+10,"medium","shallow",40,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,2.875,0.096
+10,"medium","shallow",42,"sh",1000,"ASTRID-ws","cbcb05",23,2.875,0.05
+10,"medium","shallow",42,"sh",1000,"TQMC-wh_n2","cbcb05",23,2.875,0.32
+10,"medium","shallow",42,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,2.875,0.659
+10,"medium","shallow",42,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,2.875,0.124
+10,"medium","shallow",43,"sh",1000,"ASTRID-ws","cbcb06",23,2.875,0.058
+10,"medium","shallow",43,"sh",1000,"TQMC-wh_n2","cbcb06",23,2.875,0.369
+10,"medium","shallow",43,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,2.875,0.476
+10,"medium","shallow",43,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,2.875,0.164
+10,"medium","shallow",44,"sh",1000,"ASTRID-ws","cbcb10",23,2.875,0.047
+10,"medium","shallow",44,"sh",1000,"TQMC-wh_n2","cbcb10",23,2.875,0.322
+10,"medium","shallow",44,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,2.875,0.5
+10,"medium","shallow",44,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,2.875,0.126
+10,"medium","shallow",45,"sh",1000,"ASTRID-ws","cbcb11",23,2.875,0.047
+10,"medium","shallow",45,"sh",1000,"TQMC-wh_n2","cbcb11",23,2.875,0.343
+10,"medium","shallow",45,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,2.875,0.951
+10,"medium","shallow",45,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,2.875,0.095
+10,"medium","shallow",46,"sh",1000,"ASTRID-ws","cbcb12",23,2.875,0.063
+10,"medium","shallow",46,"sh",1000,"TQMC-wh_n2","cbcb12",23,2.875,0.35
+10,"medium","shallow",46,"sh",1000,"ASTER-wh (1 thread)","cbcb12",23,2.875,0.499
+10,"medium","shallow",46,"sh",1000,"ASTER-wh (16 threads)","cbcb12",23,2.875,0.112
+10,"medium","shallow",47,"sh",1000,"ASTRID-ws","cbcb07",23,2.875,0.053
+10,"medium","shallow",47,"sh",1000,"TQMC-wh_n2","cbcb07",23,2.875,0.383
+10,"medium","shallow",47,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,2.875,0.698
+10,"medium","shallow",47,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,2.875,0.155
+10,"medium","shallow",48,"sh",1000,"ASTRID-ws","cbcb08",23,2.875,0.046
+10,"medium","shallow",48,"sh",1000,"TQMC-wh_n2","cbcb08",23,2.875,0.311
+10,"medium","shallow",48,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,2.875,0.485
+10,"medium","shallow",48,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,2.875,0.087
+10,"medium","shallow",49,"sh",1000,"ASTRID-ws","cbcb09",23,2.875,0.059
+10,"medium","shallow",49,"sh",1000,"TQMC-wh_n2","cbcb09",23,2.875,0.354
+10,"medium","shallow",49,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,2.875,0.725
+10,"medium","shallow",49,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,2.875,0.177
+10,"medium","shallow",50,"sh",1000,"ASTRID-ws","cbcb03",23,2.875,0.058
+10,"medium","shallow",50,"sh",1000,"TQMC-wh_n2","cbcb03",23,2.875,0.326
+10,"medium","shallow",50,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,2.875,0.938
+10,"medium","shallow",50,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,2.875,0.18
+50,"medium","shallow",1,"sh",1000,"ASTRID-ws","cbcb10",23,0.4791666666666667,0.127
+50,"medium","shallow",1,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.4791666666666667,7.368
+50,"medium","shallow",1,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.4791666666666667,50.271
+50,"medium","shallow",1,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.4791666666666667,2.149
+50,"medium","shallow",2,"sh",1000,"ASTRID-ws","cbcb13",23,0.4791666666666667,0.174
+50,"medium","shallow",2,"sh",1000,"TQMC-wh_n2","cbcb13",23,0.4791666666666667,7.032
+50,"medium","shallow",2,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,0.4791666666666667,33.045
+50,"medium","shallow",2,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,0.4791666666666667,1.524
+50,"medium","shallow",3,"sh",1000,"ASTRID-ws","cbcb05",23,0.4791666666666667,0.118
+50,"medium","shallow",3,"sh",1000,"TQMC-wh_n2","cbcb05",23,0.4791666666666667,7.185
+50,"medium","shallow",3,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,0.4791666666666667,34.756
+50,"medium","shallow",3,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,0.4791666666666667,2.085
+50,"medium","shallow",4,"sh",1000,"ASTRID-ws","cbcb06",23,0.4791666666666667,0.147
+50,"medium","shallow",4,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.4791666666666667,7.107
+50,"medium","shallow",4,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.4791666666666667,34.073
+50,"medium","shallow",4,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.4791666666666667,2.11
+50,"medium","shallow",5,"sh",1000,"ASTRID-ws","cbcb07",23,0.4791666666666667,0.164
+50,"medium","shallow",5,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.4791666666666667,7.417
+50,"medium","shallow",5,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.4791666666666667,23.499
+50,"medium","shallow",5,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.4791666666666667,1.958
+50,"medium","shallow",6,"sh",1000,"ASTRID-ws","cbcb12",23,0.4791666666666667,0.152
+50,"medium","shallow",6,"sh",1000,"TQMC-wh_n2","cbcb12",23,0.4791666666666667,7.519
+50,"medium","shallow",6,"sh",1000,"ASTER-wh (1 thread)","cbcb12",23,0.4791666666666667,31.672
+50,"medium","shallow",6,"sh",1000,"ASTER-wh (16 threads)","cbcb12",23,0.4791666666666667,2.911
+50,"medium","shallow",7,"sh",1000,"ASTRID-ws","cbcb11",23,0.4791666666666667,0.133
+50,"medium","shallow",7,"sh",1000,"TQMC-wh_n2","cbcb11",23,0.4791666666666667,7.985
+50,"medium","shallow",7,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,0.4791666666666667,21.276
+50,"medium","shallow",7,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,0.4791666666666667,3.047
+50,"medium","shallow",8,"sh",1000,"ASTRID-ws","cbcb08",23,0.4791666666666667,0.141
+50,"medium","shallow",8,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.4791666666666667,7.38
+50,"medium","shallow",8,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.4791666666666667,23.281
+50,"medium","shallow",8,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.4791666666666667,2.145
+50,"medium","shallow",9,"sh",1000,"ASTRID-ws","cbcb03",23,0.4791666666666667,0.157
+50,"medium","shallow",9,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.4791666666666667,7.588
+50,"medium","shallow",9,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.4791666666666667,20.774
+50,"medium","shallow",9,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.4791666666666667,2.09
+50,"medium","shallow",10,"sh",1000,"ASTRID-ws","cbcb09",23,0.4791666666666667,0.153
+50,"medium","shallow",10,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.4791666666666667,6.942
+50,"medium","shallow",10,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.4791666666666667,28.321
+50,"medium","shallow",10,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.4791666666666667,2.294
+50,"medium","shallow",11,"sh",1000,"ASTRID-ws","cbcb14",23,0.4791666666666667,0.157
+50,"medium","shallow",11,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.4791666666666667,7.572
+50,"medium","shallow",11,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.4791666666666667,32.945
+50,"medium","shallow",11,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.4791666666666667,2.116
+50,"medium","shallow",12,"sh",1000,"ASTRID-ws","cbcb15",23,0.4791666666666667,0.136
+50,"medium","shallow",12,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.4791666666666667,7.055
+50,"medium","shallow",12,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.4791666666666667,23.412
+50,"medium","shallow",12,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.4791666666666667,2.59
+50,"medium","shallow",13,"sh",1000,"ASTRID-ws","cbcb16",23,0.4791666666666667,0.155
+50,"medium","shallow",13,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.4791666666666667,7.117
+50,"medium","shallow",13,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.4791666666666667,38.405
+50,"medium","shallow",13,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.4791666666666667,2.54
+50,"medium","shallow",14,"sh",1000,"ASTRID-ws","cbcb17",23,0.4791666666666667,0.14
+50,"medium","shallow",14,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.4791666666666667,7.471
+50,"medium","shallow",14,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.4791666666666667,31.188
+50,"medium","shallow",14,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.4791666666666667,2.192
+50,"medium","shallow",15,"sh",1000,"ASTRID-ws","cbcb18",23,0.4791666666666667,0.156
+50,"medium","shallow",15,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.4791666666666667,7.054
+50,"medium","shallow",15,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.4791666666666667,21.039
+50,"medium","shallow",15,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.4791666666666667,1.651
+50,"medium","shallow",16,"sh",1000,"ASTRID-ws","cbcb19",23,0.4791666666666667,0.133
+50,"medium","shallow",16,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.4791666666666667,7.574
+50,"medium","shallow",16,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.4791666666666667,42.713
+50,"medium","shallow",16,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.4791666666666667,2.225
+50,"medium","shallow",17,"sh",1000,"ASTRID-ws","cbcb20",23,0.4791666666666667,0.16
+50,"medium","shallow",17,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.4791666666666667,6.834
+50,"medium","shallow",17,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.4791666666666667,24.065
+50,"medium","shallow",17,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.4791666666666667,3.294
+50,"medium","shallow",18,"sh",1000,"ASTRID-ws","cbcb21",23,0.4791666666666667,0.133
+50,"medium","shallow",18,"sh",1000,"TQMC-wh_n2","cbcb21",23,0.4791666666666667,7.598
+50,"medium","shallow",18,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,0.4791666666666667,33.524
+50,"medium","shallow",18,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,0.4791666666666667,3.847
+50,"medium","shallow",19,"sh",1000,"ASTRID-ws","cbcb03",23,0.4791666666666667,0.237
+50,"medium","shallow",19,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.4791666666666667,7.241
+50,"medium","shallow",19,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.4791666666666667,41.011
+50,"medium","shallow",19,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.4791666666666667,1.775
+50,"medium","shallow",20,"sh",1000,"ASTRID-ws","cbcb08",23,0.4791666666666667,0.134
+50,"medium","shallow",20,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.4791666666666667,7.081
+50,"medium","shallow",20,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.4791666666666667,22.139
+50,"medium","shallow",20,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.4791666666666667,4.436
+50,"medium","shallow",22,"sh",1000,"ASTRID-ws","cbcb11",23,0.4791666666666667,0.125
+50,"medium","shallow",22,"sh",1000,"TQMC-wh_n2","cbcb11",23,0.4791666666666667,7.118
+50,"medium","shallow",22,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,0.4791666666666667,34.123
+50,"medium","shallow",22,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,0.4791666666666667,1.603
+50,"medium","shallow",23,"sh",1000,"ASTRID-ws","cbcb18",23,0.4791666666666667,0.155
+50,"medium","shallow",23,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.4791666666666667,7.123
+50,"medium","shallow",23,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.4791666666666667,23.06
+50,"medium","shallow",23,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.4791666666666667,2.639
+50,"medium","shallow",24,"sh",1000,"ASTRID-ws","cbcb15",23,0.4791666666666667,0.144
+50,"medium","shallow",24,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.4791666666666667,7.302
+50,"medium","shallow",24,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.4791666666666667,20.393
+50,"medium","shallow",24,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.4791666666666667,2.666
+50,"medium","shallow",25,"sh",1000,"ASTRID-ws","cbcb13",23,0.4791666666666667,0.139
+50,"medium","shallow",25,"sh",1000,"TQMC-wh_n2","cbcb13",23,0.4791666666666667,7.636
+50,"medium","shallow",25,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,0.4791666666666667,33.902
+50,"medium","shallow",25,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,0.4791666666666667,1.588
+50,"medium","shallow",26,"sh",1000,"ASTRID-ws","cbcb20",23,0.4791666666666667,0.149
+50,"medium","shallow",26,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.4791666666666667,7.711
+50,"medium","shallow",26,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.4791666666666667,21.747
+50,"medium","shallow",26,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.4791666666666667,1.631
+50,"medium","shallow",28,"sh",1000,"ASTRID-ws","cbcb09",23,0.4791666666666667,0.201
+50,"medium","shallow",28,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.4791666666666667,7.804
+50,"medium","shallow",28,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.4791666666666667,34.261
+50,"medium","shallow",28,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.4791666666666667,1.599
+50,"medium","shallow",29,"sh",1000,"ASTRID-ws","cbcb12",23,0.4791666666666667,0.151
+50,"medium","shallow",29,"sh",1000,"TQMC-wh_n2","cbcb12",23,0.4791666666666667,7.274
+50,"medium","shallow",29,"sh",1000,"ASTER-wh (1 thread)","cbcb12",23,0.4791666666666667,23.625
+50,"medium","shallow",29,"sh",1000,"ASTER-wh (16 threads)","cbcb12",23,0.4791666666666667,3.6
+50,"medium","shallow",30,"sh",1000,"ASTRID-ws","cbcb06",23,0.4791666666666667,0.176
+50,"medium","shallow",30,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.4791666666666667,7.279
+50,"medium","shallow",30,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.4791666666666667,42.769
+50,"medium","shallow",30,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.4791666666666667,1.738
+50,"medium","shallow",31,"sh",1000,"ASTRID-ws","cbcb17",23,0.4791666666666667,0.193
+50,"medium","shallow",31,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.4791666666666667,6.915
+50,"medium","shallow",31,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.4791666666666667,32.314
+50,"medium","shallow",31,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.4791666666666667,1.755
+50,"medium","shallow",32,"sh",1000,"ASTRID-ws","cbcb14",23,0.4791666666666667,0.15
+50,"medium","shallow",32,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.4791666666666667,7.515
+50,"medium","shallow",32,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.4791666666666667,31.593
+50,"medium","shallow",32,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.4791666666666667,1.768
+50,"medium","shallow",33,"sh",1000,"ASTRID-ws","cbcb16",23,0.4791666666666667,0.13
+50,"medium","shallow",33,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.4791666666666667,7.065
+50,"medium","shallow",33,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.4791666666666667,45.788
+50,"medium","shallow",33,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.4791666666666667,1.641
+50,"medium","shallow",34,"sh",1000,"ASTRID-ws","cbcb21",23,0.4791666666666667,0.145
+50,"medium","shallow",34,"sh",1000,"TQMC-wh_n2","cbcb21",23,0.4791666666666667,7.582
+50,"medium","shallow",34,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,0.4791666666666667,35.67
+50,"medium","shallow",34,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,0.4791666666666667,3.503
+50,"medium","shallow",35,"sh",1000,"ASTRID-ws","cbcb10",23,0.4791666666666667,0.129
+50,"medium","shallow",35,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.4791666666666667,7.951
+50,"medium","shallow",35,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.4791666666666667,22.053
+50,"medium","shallow",35,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.4791666666666667,2.953
+50,"medium","shallow",36,"sh",1000,"ASTRID-ws","cbcb19",23,0.4791666666666667,0.126
+50,"medium","shallow",36,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.4791666666666667,7.021
+50,"medium","shallow",36,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.4791666666666667,24.251
+50,"medium","shallow",36,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.4791666666666667,3.391
+50,"medium","shallow",37,"sh",1000,"ASTRID-ws","cbcb08",23,0.4791666666666667,0.159
+50,"medium","shallow",37,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.4791666666666667,6.925
+50,"medium","shallow",37,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.4791666666666667,32.11
+50,"medium","shallow",37,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.4791666666666667,2.025
+50,"medium","shallow",38,"sh",1000,"ASTRID-ws","cbcb18",23,0.4791666666666667,0.147
+50,"medium","shallow",38,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.4791666666666667,7.13
+50,"medium","shallow",38,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.4791666666666667,23.657
+50,"medium","shallow",38,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.4791666666666667,2.506
+50,"medium","shallow",39,"sh",1000,"ASTRID-ws","cbcb15",23,0.4791666666666667,0.188
+50,"medium","shallow",39,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.4791666666666667,7.233
+50,"medium","shallow",39,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.4791666666666667,21.441
+50,"medium","shallow",39,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.4791666666666667,2.595
+50,"medium","shallow",40,"sh",1000,"ASTRID-ws","cbcb20",23,0.4791666666666667,0.12
+50,"medium","shallow",40,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.4791666666666667,7.595
+50,"medium","shallow",40,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.4791666666666667,32.408
+50,"medium","shallow",40,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.4791666666666667,5.621
+50,"medium","shallow",42,"sh",1000,"ASTRID-ws","cbcb11",23,0.4791666666666667,0.145
+50,"medium","shallow",42,"sh",1000,"TQMC-wh_n2","cbcb11",23,0.4791666666666667,7.465
+50,"medium","shallow",42,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,0.4791666666666667,45.466
+50,"medium","shallow",42,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,0.4791666666666667,2.221
+50,"medium","shallow",43,"sh",1000,"ASTRID-ws","cbcb03",23,0.4791666666666667,0.15
+50,"medium","shallow",43,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.4791666666666667,7.257
+50,"medium","shallow",43,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.4791666666666667,23.537
+50,"medium","shallow",43,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.4791666666666667,1.633
+50,"medium","shallow",44,"sh",1000,"ASTRID-ws","cbcb13",23,0.4791666666666667,0.154
+50,"medium","shallow",44,"sh",1000,"TQMC-wh_n2","cbcb13",23,0.4791666666666667,7.83
+50,"medium","shallow",44,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,0.4791666666666667,43.904
+50,"medium","shallow",44,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,0.4791666666666667,3.085
+50,"medium","shallow",45,"sh",1000,"ASTRID-ws","cbcb09",23,0.4791666666666667,0.14
+50,"medium","shallow",45,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.4791666666666667,7.151
+50,"medium","shallow",45,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.4791666666666667,21.484
+50,"medium","shallow",45,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.4791666666666667,2.943
+50,"medium","shallow",46,"sh",1000,"ASTRID-ws","cbcb17",23,0.4791666666666667,0.129
+50,"medium","shallow",46,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.4791666666666667,8.186
+50,"medium","shallow",46,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.4791666666666667,21.488
+50,"medium","shallow",46,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.4791666666666667,2.634
+50,"medium","shallow",47,"sh",1000,"ASTRID-ws","cbcb14",23,0.4791666666666667,0.185
+50,"medium","shallow",47,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.4791666666666667,6.764
+50,"medium","shallow",47,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.4791666666666667,50.448
+50,"medium","shallow",47,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.4791666666666667,2.45
+50,"medium","shallow",48,"sh",1000,"ASTRID-ws","cbcb10",23,0.4791666666666667,0.146
+50,"medium","shallow",48,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.4791666666666667,7.287
+50,"medium","shallow",48,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.4791666666666667,22.337
+50,"medium","shallow",48,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.4791666666666667,2.162
+50,"medium","shallow",49,"sh",1000,"ASTRID-ws","cbcb06",23,0.4791666666666667,0.181
+50,"medium","shallow",49,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.4791666666666667,7.193
+50,"medium","shallow",49,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.4791666666666667,34.292
+50,"medium","shallow",49,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.4791666666666667,2.037
+50,"medium","shallow",50,"sh",1000,"ASTRID-ws","cbcb19",23,0.4791666666666667,0.15
+50,"medium","shallow",50,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.4791666666666667,7.045
+50,"medium","shallow",50,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.4791666666666667,54.676
+50,"medium","shallow",50,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.4791666666666667,2.336
+100,"medium","shallow",1,"sh",1000,"ASTRID-ws","cbcb05",23,0.23469387755102042,0.2
+100,"medium","shallow",1,"sh",1000,"TQMC-wh_n2","cbcb05",23,0.23469387755102042,39.49
+100,"medium","shallow",1,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,0.23469387755102042,89.277
+100,"medium","shallow",1,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,0.23469387755102042,11.332
+100,"medium","shallow",2,"sh",1000,"ASTRID-ws","cbcb18",23,0.23469387755102042,0.186
+100,"medium","shallow",2,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.23469387755102042,38.324
+100,"medium","shallow",2,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.23469387755102042,91.032
+100,"medium","shallow",2,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.23469387755102042,6.377
+100,"medium","shallow",3,"sh",1000,"ASTRID-ws","cbcb21",23,0.23469387755102042,0.198
+100,"medium","shallow",3,"sh",1000,"TQMC-wh_n2","cbcb21",23,0.23469387755102042,39.09
+100,"medium","shallow",3,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,0.23469387755102042,148.103
+100,"medium","shallow",3,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,0.23469387755102042,24.788
+100,"medium","shallow",4,"sh",1000,"ASTRID-ws","cbcb07",23,0.23469387755102042,0.192
+100,"medium","shallow",4,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.23469387755102042,40.409
+100,"medium","shallow",4,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.23469387755102042,104.84100000000001
+100,"medium","shallow",4,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.23469387755102042,10.375
+100,"medium","shallow",5,"sh",1000,"ASTRID-ws","cbcb08",23,0.23469387755102042,0.148
+100,"medium","shallow",5,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.23469387755102042,37.685
+100,"medium","shallow",5,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.23469387755102042,129.721
+100,"medium","shallow",5,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.23469387755102042,9.264
+100,"medium","shallow",6,"sh",1000,"ASTRID-ws","cbcb15",23,0.23469387755102042,0.181
+100,"medium","shallow",6,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.23469387755102042,39.307
+100,"medium","shallow",6,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.23469387755102042,94.733
+100,"medium","shallow",6,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.23469387755102042,11.086
+100,"medium","shallow",7,"sh",1000,"ASTRID-ws","cbcb16",23,0.23469387755102042,0.22
+100,"medium","shallow",7,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.23469387755102042,38.415
+100,"medium","shallow",7,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.23469387755102042,86.8
+100,"medium","shallow",7,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.23469387755102042,6.173
+100,"medium","shallow",9,"sh",1000,"ASTRID-ws","cbcb20",23,0.23469387755102042,0.177
+100,"medium","shallow",9,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.23469387755102042,39.762
+100,"medium","shallow",9,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.23469387755102042,196.981
+100,"medium","shallow",9,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.23469387755102042,11.591
+100,"medium","shallow",10,"sh",1000,"ASTRID-ws","cbcb09",23,0.23469387755102042,0.171
+100,"medium","shallow",10,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.23469387755102042,38.445
+100,"medium","shallow",10,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.23469387755102042,127.30199999999999
+100,"medium","shallow",10,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.23469387755102042,8.565
+100,"medium","shallow",11,"sh",1000,"ASTRID-ws","cbcb17",23,0.23469387755102042,0.154
+100,"medium","shallow",11,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.23469387755102042,40.454
+100,"medium","shallow",11,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.23469387755102042,90.242
+100,"medium","shallow",11,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.23469387755102042,6.234
+100,"medium","shallow",12,"sh",1000,"ASTRID-ws","cbcb10",23,0.23469387755102042,0.205
+100,"medium","shallow",12,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.23469387755102042,41.471
+100,"medium","shallow",12,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.23469387755102042,91.57300000000001
+100,"medium","shallow",12,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.23469387755102042,10.769
+100,"medium","shallow",13,"sh",1000,"ASTRID-ws","cbcb12",23,0.23469387755102042,0.289
+100,"medium","shallow",13,"sh",1000,"TQMC-wh_n2","cbcb12",23,0.23469387755102042,40.35
+100,"medium","shallow",13,"sh",1000,"ASTER-wh (1 thread)","cbcb12",23,0.23469387755102042,108.732
+100,"medium","shallow",13,"sh",1000,"ASTER-wh (16 threads)","cbcb12",23,0.23469387755102042,13.609
+100,"medium","shallow",14,"sh",1000,"ASTRID-ws","cbcb11",23,0.23469387755102042,0.195
+100,"medium","shallow",14,"sh",1000,"TQMC-wh_n2","cbcb11",23,0.23469387755102042,39.743
+100,"medium","shallow",14,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,0.23469387755102042,167.28199999999998
+100,"medium","shallow",14,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,0.23469387755102042,6.769
+100,"medium","shallow",15,"sh",1000,"ASTRID-ws","cbcb06",23,0.23469387755102042,0.142
+100,"medium","shallow",15,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.23469387755102042,37.44
+100,"medium","shallow",15,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.23469387755102042,96.83500000000001
+100,"medium","shallow",15,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.23469387755102042,7.313
+100,"medium","shallow",16,"sh",1000,"ASTRID-ws","cbcb13",23,0.23469387755102042,0.161
+100,"medium","shallow",16,"sh",1000,"TQMC-wh_n2","cbcb13",23,0.23469387755102042,41.449
+100,"medium","shallow",16,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,0.23469387755102042,157.945
+100,"medium","shallow",16,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,0.23469387755102042,6.226
+100,"medium","shallow",17,"sh",1000,"ASTRID-ws","cbcb14",23,0.23469387755102042,0.114
+100,"medium","shallow",17,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.23469387755102042,39.922
+100,"medium","shallow",17,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.23469387755102042,87.76
+100,"medium","shallow",17,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.23469387755102042,8.155
+100,"medium","shallow",18,"sh",1000,"ASTRID-ws","cbcb19",23,0.23469387755102042,0.139
+100,"medium","shallow",18,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.23469387755102042,39.037
+100,"medium","shallow",18,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.23469387755102042,142.441
+100,"medium","shallow",18,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.23469387755102042,7.659
+100,"medium","shallow",19,"sh",1000,"ASTRID-ws","cbcb16",23,0.23469387755102042,0.136
+100,"medium","shallow",19,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.23469387755102042,40.374
+100,"medium","shallow",19,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.23469387755102042,96.174
+100,"medium","shallow",19,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.23469387755102042,11.738
+100,"medium","shallow",20,"sh",1000,"ASTRID-ws","cbcb18",23,0.23469387755102042,0.146
+100,"medium","shallow",20,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.23469387755102042,41.303
+100,"medium","shallow",20,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.23469387755102042,93.42
+100,"medium","shallow",20,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.23469387755102042,12.564
+100,"medium","shallow",21,"sh",1000,"ASTRID-ws","cbcb05",23,0.23469387755102042,0.158
+100,"medium","shallow",21,"sh",1000,"TQMC-wh_n2","cbcb05",23,0.23469387755102042,40.659
+100,"medium","shallow",21,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,0.23469387755102042,136.687
+100,"medium","shallow",21,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,0.23469387755102042,7.014
+100,"medium","shallow",22,"sh",1000,"ASTRID-ws","cbcb15",23,0.23469387755102042,0.152
+100,"medium","shallow",22,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.23469387755102042,41.247
+100,"medium","shallow",22,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.23469387755102042,139.804
+100,"medium","shallow",22,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.23469387755102042,6.862
+100,"medium","shallow",23,"sh",1000,"ASTRID-ws","cbcb17",23,0.23469387755102042,0.143
+100,"medium","shallow",23,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.23469387755102042,40.642
+100,"medium","shallow",23,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.23469387755102042,150.923
+100,"medium","shallow",23,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.23469387755102042,8.204
+100,"medium","shallow",24,"sh",1000,"ASTRID-ws","cbcb10",23,0.23469387755102042,0.098
+100,"medium","shallow",24,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.23469387755102042,40.197
+100,"medium","shallow",24,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.23469387755102042,109.37899999999999
+100,"medium","shallow",24,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.23469387755102042,7.402
+100,"medium","shallow",25,"sh",1000,"ASTRID-ws","cbcb07",23,0.23469387755102042,0.103
+100,"medium","shallow",25,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.23469387755102042,41.962
+100,"medium","shallow",25,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.23469387755102042,102.761
+100,"medium","shallow",25,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.23469387755102042,12.227
+100,"medium","shallow",26,"sh",1000,"ASTRID-ws","cbcb06",23,0.23469387755102042,0.099
+100,"medium","shallow",26,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.23469387755102042,38.698
+100,"medium","shallow",26,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.23469387755102042,119.184
+100,"medium","shallow",26,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.23469387755102042,6.291
+100,"medium","shallow",27,"sh",1000,"ASTRID-ws","cbcb08",23,0.23469387755102042,0.099
+100,"medium","shallow",27,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.23469387755102042,43.316
+100,"medium","shallow",27,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.23469387755102042,94.80799999999999
+100,"medium","shallow",27,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.23469387755102042,8.98
+100,"medium","shallow",28,"sh",1000,"ASTRID-ws","cbcb09",23,0.23469387755102042,0.099
+100,"medium","shallow",28,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.23469387755102042,40.482
+100,"medium","shallow",28,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.23469387755102042,94.798
+100,"medium","shallow",28,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.23469387755102042,6.98
+100,"medium","shallow",29,"sh",1000,"ASTRID-ws","cbcb12",23,0.23469387755102042,0.1
+100,"medium","shallow",29,"sh",1000,"TQMC-wh_n2","cbcb12",23,0.23469387755102042,40.423
+100,"medium","shallow",29,"sh",1000,"ASTER-wh (1 thread)","cbcb12",23,0.23469387755102042,111.553
+100,"medium","shallow",29,"sh",1000,"ASTER-wh (16 threads)","cbcb12",23,0.23469387755102042,12.058
+100,"medium","shallow",30,"sh",1000,"ASTRID-ws","cbcb14",23,0.23469387755102042,0.101
+100,"medium","shallow",30,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.23469387755102042,38.282
+100,"medium","shallow",30,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.23469387755102042,122.447
+100,"medium","shallow",30,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.23469387755102042,6.312
+100,"medium","shallow",31,"sh",1000,"ASTRID-ws","cbcb21",23,0.23469387755102042,0.097
+100,"medium","shallow",31,"sh",1000,"TQMC-wh_n2","cbcb21",23,0.23469387755102042,37.998
+100,"medium","shallow",31,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,0.23469387755102042,119.75200000000001
+100,"medium","shallow",31,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,0.23469387755102042,6.15
+100,"medium","shallow",32,"sh",1000,"ASTRID-ws","cbcb11",23,0.23469387755102042,0.101
+100,"medium","shallow",32,"sh",1000,"TQMC-wh_n2","cbcb11",23,0.23469387755102042,39.442
+100,"medium","shallow",32,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,0.23469387755102042,137.339
+100,"medium","shallow",32,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,0.23469387755102042,6.893
+100,"medium","shallow",33,"sh",1000,"ASTRID-ws","cbcb19",23,0.23469387755102042,0.101
+100,"medium","shallow",33,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.23469387755102042,41.294
+100,"medium","shallow",33,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.23469387755102042,179.333
+100,"medium","shallow",33,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.23469387755102042,6.886
+100,"medium","shallow",34,"sh",1000,"ASTRID-ws","cbcb13",23,0.23469387755102042,0.101
+100,"medium","shallow",34,"sh",1000,"TQMC-wh_n2","cbcb13",23,0.23469387755102042,41.315
+100,"medium","shallow",34,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,0.23469387755102042,168.363
+100,"medium","shallow",34,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,0.23469387755102042,9.128
+100,"medium","shallow",35,"sh",1000,"ASTRID-ws","cbcb20",23,0.23469387755102042,0.097
+100,"medium","shallow",35,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.23469387755102042,40.676
+100,"medium","shallow",35,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.23469387755102042,173.796
+100,"medium","shallow",35,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.23469387755102042,14.351
+100,"medium","shallow",36,"sh",1000,"ASTRID-ws","cbcb03",23,0.23469387755102042,0.099
+100,"medium","shallow",36,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.23469387755102042,38.314
+100,"medium","shallow",36,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.23469387755102042,96.63900000000001
+100,"medium","shallow",36,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.23469387755102042,7.513
+100,"medium","shallow",37,"sh",1000,"ASTRID-ws","cbcb16",23,0.23469387755102042,0.099
+100,"medium","shallow",37,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.23469387755102042,38.984
+100,"medium","shallow",37,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.23469387755102042,105.126
+100,"medium","shallow",37,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.23469387755102042,12.769
+100,"medium","shallow",38,"sh",1000,"ASTRID-ws","cbcb18",23,0.23469387755102042,0.095
+100,"medium","shallow",38,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.23469387755102042,39.635
+100,"medium","shallow",38,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.23469387755102042,251.292
+100,"medium","shallow",38,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.23469387755102042,19.118
+100,"medium","shallow",39,"sh",1000,"ASTRID-ws","cbcb10",23,0.23469387755102042,0.098
+100,"medium","shallow",39,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.23469387755102042,38.487
+100,"medium","shallow",39,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.23469387755102042,135.095
+100,"medium","shallow",39,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.23469387755102042,14.347
+100,"medium","shallow",40,"sh",1000,"ASTRID-ws","cbcb07",23,0.23469387755102042,0.099
+100,"medium","shallow",40,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.23469387755102042,37.676
+100,"medium","shallow",40,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.23469387755102042,92.84899999999999
+100,"medium","shallow",40,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.23469387755102042,6.521
+100,"medium","shallow",41,"sh",1000,"ASTRID-ws","cbcb06",23,0.23469387755102042,0.095
+100,"medium","shallow",41,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.23469387755102042,38.361
+100,"medium","shallow",41,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.23469387755102042,215.827
+100,"medium","shallow",41,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.23469387755102042,12.607
+100,"medium","shallow",42,"sh",1000,"ASTRID-ws","cbcb05",23,0.23469387755102042,0.1
+100,"medium","shallow",42,"sh",1000,"TQMC-wh_n2","cbcb05",23,0.23469387755102042,38.444
+100,"medium","shallow",42,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,0.23469387755102042,190.696
+100,"medium","shallow",42,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,0.23469387755102042,12.949
+100,"medium","shallow",43,"sh",1000,"ASTRID-ws","cbcb09",23,0.23469387755102042,0.099
+100,"medium","shallow",43,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.23469387755102042,39.247
+100,"medium","shallow",43,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.23469387755102042,90.53
+100,"medium","shallow",43,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.23469387755102042,6.465
+100,"medium","shallow",44,"sh",1000,"ASTRID-ws","cbcb08",23,0.23469387755102042,0.098
+100,"medium","shallow",44,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.23469387755102042,38.582
+100,"medium","shallow",44,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.23469387755102042,105.768
+100,"medium","shallow",44,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.23469387755102042,6.949
+100,"medium","shallow",45,"sh",1000,"ASTRID-ws","cbcb15",23,0.23469387755102042,0.098
+100,"medium","shallow",45,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.23469387755102042,39.887
+100,"medium","shallow",45,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.23469387755102042,124.751
+100,"medium","shallow",45,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.23469387755102042,6.809
+100,"medium","shallow",46,"sh",1000,"ASTRID-ws","cbcb14",23,0.23469387755102042,0.104
+100,"medium","shallow",46,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.23469387755102042,41.209
+100,"medium","shallow",46,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.23469387755102042,153.437
+100,"medium","shallow",46,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.23469387755102042,6.234
+100,"medium","shallow",48,"sh",1000,"ASTRID-ws","cbcb21",23,0.23469387755102042,0.098
+100,"medium","shallow",48,"sh",1000,"TQMC-wh_n2","cbcb21",23,0.23469387755102042,39.724
+100,"medium","shallow",48,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,0.23469387755102042,125.613
+100,"medium","shallow",48,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,0.23469387755102042,6.436
+100,"medium","shallow",49,"sh",1000,"ASTRID-ws","cbcb17",23,0.23469387755102042,0.097
+100,"medium","shallow",49,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.23469387755102042,37.171
+100,"medium","shallow",49,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.23469387755102042,120.793
+100,"medium","shallow",49,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.23469387755102042,8.422
+100,"medium","shallow",50,"sh",1000,"ASTRID-ws","cbcb11",23,0.23469387755102042,0.094
+100,"medium","shallow",50,"sh",1000,"TQMC-wh_n2","cbcb11",23,0.23469387755102042,38.512
+100,"medium","shallow",50,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,0.23469387755102042,103.223
+100,"medium","shallow",50,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,0.23469387755102042,7.72
+200,"medium","shallow",1,"sh",1000,"ASTRID-ws","cbcb19",23,0.11616161616161616,0.275
+200,"medium","shallow",1,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.11616161616161616,163.31900000000002
+200,"medium","shallow",1,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.11616161616161616,485.005
+200,"medium","shallow",1,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.11616161616161616,28.394
+200,"medium","shallow",2,"sh",1000,"ASTRID-ws","cbcb07",23,0.11616161616161616,0.271
+200,"medium","shallow",2,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.11616161616161616,160.078
+200,"medium","shallow",2,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.11616161616161616,604.008
+200,"medium","shallow",2,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.11616161616161616,25.146
+200,"medium","shallow",3,"sh",1000,"ASTRID-ws","cbcb10",23,0.11616161616161616,0.274
+200,"medium","shallow",3,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.11616161616161616,159.91
+200,"medium","shallow",3,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.11616161616161616,487.678
+200,"medium","shallow",3,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.11616161616161616,27.25
+200,"medium","shallow",4,"sh",1000,"ASTRID-ws","cbcb05",23,0.11616161616161616,0.265
+200,"medium","shallow",4,"sh",1000,"TQMC-wh_n2","cbcb05",23,0.11616161616161616,161.56900000000002
+200,"medium","shallow",4,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,0.11616161616161616,680.876
+200,"medium","shallow",4,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,0.11616161616161616,29.476
+200,"medium","shallow",5,"sh",1000,"ASTRID-ws","cbcb17",23,0.11616161616161616,0.271
+200,"medium","shallow",5,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.11616161616161616,161.517
+200,"medium","shallow",5,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.11616161616161616,789.713
+200,"medium","shallow",5,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.11616161616161616,51.756
+200,"medium","shallow",6,"sh",1000,"ASTRID-ws","cbcb03",23,0.11616161616161616,0.277
+200,"medium","shallow",6,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.11616161616161616,165.60399999999998
+200,"medium","shallow",6,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.11616161616161616,622.838
+200,"medium","shallow",6,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.11616161616161616,25.69
+200,"medium","shallow",7,"sh",1000,"ASTRID-ws","cbcb21",23,0.11616161616161616,0.268
+200,"medium","shallow",7,"sh",1000,"TQMC-wh_n2","cbcb21",23,0.11616161616161616,168.508
+200,"medium","shallow",7,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,0.11616161616161616,475.171
+200,"medium","shallow",7,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,0.11616161616161616,34.672
+200,"medium","shallow",8,"sh",1000,"ASTRID-ws","cbcb13",23,0.11616161616161616,0.27
+200,"medium","shallow",8,"sh",1000,"TQMC-wh_n2","cbcb13",23,0.11616161616161616,167.183
+200,"medium","shallow",8,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,0.11616161616161616,1641.477
+200,"medium","shallow",8,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,0.11616161616161616,64.704
+200,"medium","shallow",9,"sh",1000,"ASTRID-ws","cbcb18",23,0.11616161616161616,0.269
+200,"medium","shallow",9,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.11616161616161616,156.71800000000002
+200,"medium","shallow",9,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.11616161616161616,496.339
+200,"medium","shallow",9,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.11616161616161616,37.011
+200,"medium","shallow",10,"sh",1000,"ASTRID-ws","cbcb09",23,0.11616161616161616,0.262
+200,"medium","shallow",10,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.11616161616161616,162.402
+200,"medium","shallow",10,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.11616161616161616,487.664
+200,"medium","shallow",10,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.11616161616161616,29.188
+200,"medium","shallow",11,"sh",1000,"ASTRID-ws","cbcb08",23,0.11616161616161616,0.264
+200,"medium","shallow",11,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.11616161616161616,154.867
+200,"medium","shallow",11,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.11616161616161616,607.366
+200,"medium","shallow",11,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.11616161616161616,25.031
+200,"medium","shallow",12,"sh",1000,"ASTRID-ws","cbcb15",23,0.11616161616161616,0.266
+200,"medium","shallow",12,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.11616161616161616,160.772
+200,"medium","shallow",12,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.11616161616161616,800.639
+200,"medium","shallow",12,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.11616161616161616,65.994
+200,"medium","shallow",13,"sh",1000,"ASTRID-ws","cbcb11",23,0.11616161616161616,0.262
+200,"medium","shallow",13,"sh",1000,"TQMC-wh_n2","cbcb11",23,0.11616161616161616,164.415
+200,"medium","shallow",13,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,0.11616161616161616,469.545
+200,"medium","shallow",13,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,0.11616161616161616,34.272
+200,"medium","shallow",14,"sh",1000,"ASTRID-ws","cbcb12",23,0.11616161616161616,0.27
+200,"medium","shallow",14,"sh",1000,"TQMC-wh_n2","cbcb12",23,0.11616161616161616,164.95600000000002
+200,"medium","shallow",14,"sh",1000,"ASTER-wh (1 thread)","cbcb12",23,0.11616161616161616,570.498
+200,"medium","shallow",14,"sh",1000,"ASTER-wh (16 threads)","cbcb12",23,0.11616161616161616,59.258
+200,"medium","shallow",15,"sh",1000,"ASTRID-ws","cbcb06",23,0.11616161616161616,0.269
+200,"medium","shallow",15,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.11616161616161616,162.93200000000002
+200,"medium","shallow",15,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.11616161616161616,855.255
+200,"medium","shallow",15,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.11616161616161616,28.122
+200,"medium","shallow",16,"sh",1000,"ASTRID-ws","cbcb14",23,0.11616161616161616,0.271
+200,"medium","shallow",16,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.11616161616161616,161.722
+200,"medium","shallow",16,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.11616161616161616,636.375
+200,"medium","shallow",16,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.11616161616161616,42.461
+200,"medium","shallow",17,"sh",1000,"ASTRID-ws","cbcb20",23,0.11616161616161616,0.263
+200,"medium","shallow",17,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.11616161616161616,159.254
+200,"medium","shallow",17,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.11616161616161616,461.435
+200,"medium","shallow",17,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.11616161616161616,32.23
+200,"medium","shallow",18,"sh",1000,"ASTRID-ws","cbcb16",23,0.11616161616161616,0.272
+200,"medium","shallow",18,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.11616161616161616,162.049
+200,"medium","shallow",18,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.11616161616161616,856.497
+200,"medium","shallow",18,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.11616161616161616,42.405
+200,"medium","shallow",19,"sh",1000,"ASTRID-ws","cbcb19",23,0.11616161616161616,0.265
+200,"medium","shallow",19,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.11616161616161616,163.087
+200,"medium","shallow",19,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.11616161616161616,736.73
+200,"medium","shallow",19,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.11616161616161616,47.017
+200,"medium","shallow",20,"sh",1000,"ASTRID-ws","cbcb07",23,0.11616161616161616,0.273
+200,"medium","shallow",20,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.11616161616161616,168.394
+200,"medium","shallow",20,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.11616161616161616,470.14300000000003
+200,"medium","shallow",20,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.11616161616161616,24.604
+200,"medium","shallow",21,"sh",1000,"ASTRID-ws","cbcb10",23,0.11616161616161616,0.264
+200,"medium","shallow",21,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.11616161616161616,160.689
+200,"medium","shallow",21,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.11616161616161616,483.536
+200,"medium","shallow",21,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.11616161616161616,26.361
+200,"medium","shallow",22,"sh",1000,"ASTRID-ws","cbcb04",23,0.11616161616161616,0.266
+200,"medium","shallow",22,"sh",1000,"TQMC-wh_n2","cbcb04",23,0.11616161616161616,162.351
+200,"medium","shallow",22,"sh",1000,"ASTER-wh (1 thread)","cbcb04",23,0.11616161616161616,807.762
+200,"medium","shallow",22,"sh",1000,"ASTER-wh (16 threads)","cbcb04",23,0.11616161616161616,52.959
+200,"medium","shallow",23,"sh",1000,"ASTRID-ws","cbcb21",23,0.11616161616161616,0.271
+200,"medium","shallow",23,"sh",1000,"TQMC-wh_n2","cbcb21",23,0.11616161616161616,159.413
+200,"medium","shallow",23,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,0.11616161616161616,478.805
+200,"medium","shallow",23,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,0.11616161616161616,26.784
+200,"medium","shallow",24,"sh",1000,"ASTRID-ws","cbcb05",23,0.11616161616161616,0.267
+200,"medium","shallow",24,"sh",1000,"TQMC-wh_n2","cbcb05",23,0.11616161616161616,160.19299999999998
+200,"medium","shallow",24,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,0.11616161616161616,491.757
+200,"medium","shallow",24,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,0.11616161616161616,39.049
+200,"medium","shallow",25,"sh",1000,"ASTRID-ws","cbcb03",23,0.11616161616161616,0.269
+200,"medium","shallow",25,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.11616161616161616,159.511
+200,"medium","shallow",25,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.11616161616161616,568.932
+200,"medium","shallow",25,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.11616161616161616,33.038
+200,"medium","shallow",26,"sh",1000,"ASTRID-ws","cbcb17",23,0.11616161616161616,0.271
+200,"medium","shallow",26,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.11616161616161616,171.981
+200,"medium","shallow",26,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.11616161616161616,774.51
+200,"medium","shallow",26,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.11616161616161616,32.167
+200,"medium","shallow",27,"sh",1000,"ASTRID-ws","cbcb18",23,0.11616161616161616,0.273
+200,"medium","shallow",27,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.11616161616161616,172.1
+200,"medium","shallow",27,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.11616161616161616,932.171
+200,"medium","shallow",27,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.11616161616161616,76.054
+200,"medium","shallow",28,"sh",1000,"ASTRID-ws","cbcb09",23,0.11616161616161616,0.266
+200,"medium","shallow",28,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.11616161616161616,161.645
+200,"medium","shallow",28,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.11616161616161616,687.603
+200,"medium","shallow",28,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.11616161616161616,41.629
+200,"medium","shallow",29,"sh",1000,"ASTRID-ws","cbcb11",23,0.11616161616161616,0.28
+200,"medium","shallow",29,"sh",1000,"TQMC-wh_n2","cbcb11",23,0.11616161616161616,166.436
+200,"medium","shallow",29,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,0.11616161616161616,1232.497
+200,"medium","shallow",29,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,0.11616161616161616,63.242
+200,"medium","shallow",30,"sh",1000,"ASTRID-ws","cbcb08",23,0.11616161616161616,0.272
+200,"medium","shallow",30,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.11616161616161616,160.836
+200,"medium","shallow",30,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.11616161616161616,610.224
+200,"medium","shallow",30,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.11616161616161616,33.025
+200,"medium","shallow",31,"sh",1000,"ASTRID-ws","cbcb12",23,0.11616161616161616,0.266
+200,"medium","shallow",31,"sh",1000,"TQMC-wh_n2","cbcb12",23,0.11616161616161616,168.303
+200,"medium","shallow",31,"sh",1000,"ASTER-wh (1 thread)","cbcb12",23,0.11616161616161616,488.119
+200,"medium","shallow",31,"sh",1000,"ASTER-wh (16 threads)","cbcb12",23,0.11616161616161616,27.855
+200,"medium","shallow",32,"sh",1000,"ASTRID-ws","cbcb20",23,0.11616161616161616,0.261
+200,"medium","shallow",32,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.11616161616161616,167.046
+200,"medium","shallow",32,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.11616161616161616,490.545
+200,"medium","shallow",32,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.11616161616161616,37.843
+200,"medium","shallow",33,"sh",1000,"ASTRID-ws","cbcb15",23,0.11616161616161616,0.258
+200,"medium","shallow",33,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.11616161616161616,162.614
+200,"medium","shallow",33,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.11616161616161616,446.06
+200,"medium","shallow",33,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.11616161616161616,24.86
+200,"medium","shallow",34,"sh",1000,"ASTRID-ws","cbcb14",23,0.11616161616161616,0.271
+200,"medium","shallow",34,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.11616161616161616,166.14
+200,"medium","shallow",34,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.11616161616161616,523.096
+200,"medium","shallow",34,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.11616161616161616,40.463
+200,"medium","shallow",35,"sh",1000,"ASTRID-ws","cbcb07",23,0.11616161616161616,0.287
+200,"medium","shallow",35,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.11616161616161616,169.52100000000002
+200,"medium","shallow",35,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.11616161616161616,926.081
+200,"medium","shallow",35,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.11616161616161616,64.577
+200,"medium","shallow",36,"sh",1000,"ASTRID-ws","cbcb10",23,0.11616161616161616,0.271
+200,"medium","shallow",36,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.11616161616161616,168.699
+200,"medium","shallow",36,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.11616161616161616,467.714
+200,"medium","shallow",36,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.11616161616161616,25.388
+200,"medium","shallow",37,"sh",1000,"ASTRID-ws","cbcb19",23,0.11616161616161616,0.273
+200,"medium","shallow",37,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.11616161616161616,159.973
+200,"medium","shallow",37,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.11616161616161616,468.825
+200,"medium","shallow",37,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.11616161616161616,43.604
+200,"medium","shallow",38,"sh",1000,"ASTRID-ws","cbcb06",23,0.11616161616161616,0.272
+200,"medium","shallow",38,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.11616161616161616,165.235
+200,"medium","shallow",38,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.11616161616161616,952.15
+200,"medium","shallow",38,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.11616161616161616,25.802
+200,"medium","shallow",39,"sh",1000,"ASTRID-ws","cbcb16",23,0.11616161616161616,0.266
+200,"medium","shallow",39,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.11616161616161616,168.061
+200,"medium","shallow",39,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.11616161616161616,639.48
+200,"medium","shallow",39,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.11616161616161616,26.211
+200,"medium","shallow",40,"sh",1000,"ASTRID-ws","cbcb04",23,0.11616161616161616,0.267
+200,"medium","shallow",40,"sh",1000,"TQMC-wh_n2","cbcb04",23,0.11616161616161616,161.249
+200,"medium","shallow",40,"sh",1000,"ASTER-wh (1 thread)","cbcb04",23,0.11616161616161616,775.075
+200,"medium","shallow",40,"sh",1000,"ASTER-wh (16 threads)","cbcb04",23,0.11616161616161616,34.907
+200,"medium","shallow",41,"sh",1000,"ASTRID-ws","cbcb21",23,0.11616161616161616,0.266
+200,"medium","shallow",41,"sh",1000,"TQMC-wh_n2","cbcb21",23,0.11616161616161616,164.121
+200,"medium","shallow",41,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,0.11616161616161616,686.533
+200,"medium","shallow",41,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,0.11616161616161616,39.724
+200,"medium","shallow",42,"sh",1000,"ASTRID-ws","cbcb05",23,0.11616161616161616,0.278
+200,"medium","shallow",42,"sh",1000,"TQMC-wh_n2","cbcb05",23,0.11616161616161616,161.34
+200,"medium","shallow",42,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,0.11616161616161616,477.159
+200,"medium","shallow",42,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,0.11616161616161616,26.75
+200,"medium","shallow",43,"sh",1000,"ASTRID-ws","cbcb13",23,0.11616161616161616,0.265
+200,"medium","shallow",43,"sh",1000,"TQMC-wh_n2","cbcb13",23,0.11616161616161616,158.603
+200,"medium","shallow",43,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,0.11616161616161616,448.296
+200,"medium","shallow",43,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,0.11616161616161616,24.73
+200,"medium","shallow",44,"sh",1000,"ASTRID-ws","cbcb03",23,0.11616161616161616,0.268
+200,"medium","shallow",44,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.11616161616161616,156.69400000000002
+200,"medium","shallow",44,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.11616161616161616,456.981
+200,"medium","shallow",44,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.11616161616161616,25.857
+200,"medium","shallow",45,"sh",1000,"ASTRID-ws","cbcb09",23,0.11616161616161616,0.265
+200,"medium","shallow",45,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.11616161616161616,159.805
+200,"medium","shallow",45,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.11616161616161616,792.623
+200,"medium","shallow",45,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.11616161616161616,25.848
+200,"medium","shallow",46,"sh",1000,"ASTRID-ws","cbcb08",23,0.11616161616161616,0.264
+200,"medium","shallow",46,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.11616161616161616,164.04
+200,"medium","shallow",46,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.11616161616161616,440.544
+200,"medium","shallow",46,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.11616161616161616,33.645
+200,"medium","shallow",47,"sh",1000,"ASTRID-ws","cbcb17",23,0.11616161616161616,0.265
+200,"medium","shallow",47,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.11616161616161616,163.395
+200,"medium","shallow",47,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.11616161616161616,635.195
+200,"medium","shallow",47,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.11616161616161616,25.723
+200,"medium","shallow",48,"sh",1000,"ASTRID-ws","cbcb12",23,0.11616161616161616,0.275
+200,"medium","shallow",48,"sh",1000,"TQMC-wh_n2","cbcb12",23,0.11616161616161616,158.647
+200,"medium","shallow",48,"sh",1000,"ASTER-wh (1 thread)","cbcb12",23,0.11616161616161616,432.201
+200,"medium","shallow",48,"sh",1000,"ASTER-wh (16 threads)","cbcb12",23,0.11616161616161616,23.544
+200,"medium","shallow",49,"sh",1000,"ASTRID-ws","cbcb20",23,0.11616161616161616,0.27
+200,"medium","shallow",49,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.11616161616161616,154.074
+200,"medium","shallow",49,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.11616161616161616,639.444
+200,"medium","shallow",49,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.11616161616161616,51.26
+200,"medium","shallow",50,"sh",1000,"ASTRID-ws","cbcb15",23,0.11616161616161616,0.269
+200,"medium","shallow",50,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.11616161616161616,166.977
+200,"medium","shallow",50,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.11616161616161616,758.168
+200,"medium","shallow",50,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.11616161616161616,33.349
+500,"medium","shallow",1,"sh",1000,"ASTRID-ws","cbcb03",23,0.04618473895582329,1.632
+500,"medium","shallow",1,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.04618473895582329,1070.586
+500,"medium","shallow",1,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.04618473895582329,3814.515
+500,"medium","shallow",1,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.04618473895582329,172.305
+500,"medium","shallow",2,"sh",1000,"ASTRID-ws","cbcb13",23,0.04618473895582329,1.369
+500,"medium","shallow",2,"sh",1000,"TQMC-wh_n2","cbcb13",23,0.04618473895582329,1048.492
+500,"medium","shallow",2,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,0.04618473895582329,4791.152
+500,"medium","shallow",2,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,0.04618473895582329,283.677
+500,"medium","shallow",3,"sh",1000,"ASTRID-ws","cbcb19",23,0.04618473895582329,1.738
+500,"medium","shallow",3,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.04618473895582329,1103.561
+500,"medium","shallow",3,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.04618473895582329,3503.194
+500,"medium","shallow",3,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.04618473895582329,164.864
+500,"medium","shallow",4,"sh",1000,"ASTRID-ws","cbcb20",23,0.04618473895582329,1.423
+500,"medium","shallow",4,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.04618473895582329,1058.901
+500,"medium","shallow",4,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.04618473895582329,4449.224
+500,"medium","shallow",4,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.04618473895582329,155.123
+500,"medium","shallow",5,"sh",1000,"ASTRID-ws","cbcb16",23,0.04618473895582329,1.339
+500,"medium","shallow",5,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.04618473895582329,1048.487
+500,"medium","shallow",5,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.04618473895582329,7028.82
+500,"medium","shallow",5,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.04618473895582329,170.836
+500,"medium","shallow",6,"sh",1000,"ASTRID-ws","cbcb07",23,0.04618473895582329,1.473
+500,"medium","shallow",6,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.04618473895582329,988.225
+500,"medium","shallow",6,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.04618473895582329,4733.598
+500,"medium","shallow",6,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.04618473895582329,172.678
+500,"medium","shallow",7,"sh",1000,"ASTRID-ws","cbcb09",23,0.04618473895582329,1.344
+500,"medium","shallow",7,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.04618473895582329,1023.701
+500,"medium","shallow",7,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.04618473895582329,3589.251
+500,"medium","shallow",7,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.04618473895582329,218.704
+500,"medium","shallow",8,"sh",1000,"ASTRID-ws","cbcb08",23,0.04618473895582329,1.674
+500,"medium","shallow",8,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.04618473895582329,1187.401
+500,"medium","shallow",8,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.04618473895582329,3715.858
+500,"medium","shallow",8,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.04618473895582329,284.158
+500,"medium","shallow",9,"sh",1000,"ASTRID-ws","cbcb10",23,0.04618473895582329,1.505
+500,"medium","shallow",9,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.04618473895582329,1056.117
+500,"medium","shallow",9,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.04618473895582329,7913.425
+500,"medium","shallow",9,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.04618473895582329,475.263
+500,"medium","shallow",10,"sh",1000,"ASTRID-ws","cbcb15",23,0.04618473895582329,1.566
+500,"medium","shallow",10,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.04618473895582329,1061.005
+500,"medium","shallow",10,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.04618473895582329,6851.182
+500,"medium","shallow",10,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.04618473895582329,334.56
+500,"medium","shallow",11,"sh",1000,"ASTRID-ws","cbcb17",23,0.04618473895582329,1.352
+500,"medium","shallow",11,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.04618473895582329,1066.219
+500,"medium","shallow",11,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.04618473895582329,4425.017
+500,"medium","shallow",11,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.04618473895582329,156.434
+500,"medium","shallow",12,"sh",1000,"ASTRID-ws","cbcb21",23,0.04618473895582329,1.359
+500,"medium","shallow",12,"sh",1000,"TQMC-wh_n2","cbcb21",23,0.04618473895582329,1002.344
+500,"medium","shallow",12,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,0.04618473895582329,4147.785
+500,"medium","shallow",12,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,0.04618473895582329,231.143
+500,"medium","shallow",13,"sh",1000,"ASTRID-ws","cbcb14",23,0.04618473895582329,1.375
+500,"medium","shallow",13,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.04618473895582329,1049.452
+500,"medium","shallow",13,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.04618473895582329,3565.89
+500,"medium","shallow",13,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.04618473895582329,206.997
+500,"medium","shallow",14,"sh",1000,"ASTRID-ws","cbcb05",23,0.04618473895582329,1.49
+500,"medium","shallow",14,"sh",1000,"TQMC-wh_n2","cbcb05",23,0.04618473895582329,1064.809
+500,"medium","shallow",14,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,0.04618473895582329,4281.803
+500,"medium","shallow",14,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,0.04618473895582329,343.927
+500,"medium","shallow",15,"sh",1000,"ASTRID-ws","cbcb11",23,0.04618473895582329,1.56
+500,"medium","shallow",15,"sh",1000,"TQMC-wh_n2","cbcb11",23,0.04618473895582329,1084.424
+500,"medium","shallow",15,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,0.04618473895582329,5929.302
+500,"medium","shallow",15,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,0.04618473895582329,466.058
+500,"medium","shallow",16,"sh",1000,"ASTRID-ws","cbcb18",23,0.04618473895582329,1.399
+500,"medium","shallow",16,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.04618473895582329,1054.319
+500,"medium","shallow",16,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.04618473895582329,4632.404
+500,"medium","shallow",16,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.04618473895582329,305.664
+500,"medium","shallow",17,"sh",1000,"ASTRID-ws","cbcb06",23,0.04618473895582329,1.334
+500,"medium","shallow",17,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.04618473895582329,1062.24
+500,"medium","shallow",17,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.04618473895582329,3803.61
+500,"medium","shallow",17,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.04618473895582329,222.779
+500,"medium","shallow",18,"sh",1000,"ASTRID-ws","cbcb12",23,0.04618473895582329,1.401
+500,"medium","shallow",18,"sh",1000,"TQMC-wh_n2","cbcb12",23,0.04618473895582329,1071.603
+500,"medium","shallow",18,"sh",1000,"ASTER-wh (1 thread)","cbcb12",23,0.04618473895582329,6498.083
+500,"medium","shallow",18,"sh",1000,"ASTER-wh (16 threads)","cbcb12",23,0.04618473895582329,335.31600000000003
+500,"medium","shallow",19,"sh",1000,"ASTRID-ws","cbcb04",23,0.04618473895582329,1.501
+500,"medium","shallow",19,"sh",1000,"TQMC-wh_n2","cbcb04",23,0.04618473895582329,1034.357
+500,"medium","shallow",19,"sh",1000,"ASTER-wh (1 thread)","cbcb04",23,0.04618473895582329,3466.837
+500,"medium","shallow",19,"sh",1000,"ASTER-wh (16 threads)","cbcb04",23,0.04618473895582329,303.532
+500,"medium","shallow",20,"sh",1000,"ASTRID-ws","cbcb17",23,0.04618473895582329,1.32
+500,"medium","shallow",20,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.04618473895582329,1033.205
+500,"medium","shallow",20,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.04618473895582329,4954.589
+500,"medium","shallow",20,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.04618473895582329,173.672
+500,"medium","shallow",21,"sh",1000,"ASTRID-ws","cbcb16",23,0.04618473895582329,1.366
+500,"medium","shallow",21,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.04618473895582329,1070.441
+500,"medium","shallow",21,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.04618473895582329,3527.498
+500,"medium","shallow",21,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.04618473895582329,156.792
+500,"medium","shallow",22,"sh",1000,"ASTRID-ws","cbcb07",23,0.04618473895582329,1.434
+500,"medium","shallow",22,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.04618473895582329,1039.931
+500,"medium","shallow",22,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.04618473895582329,5752.446
+500,"medium","shallow",22,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.04618473895582329,164.747
+500,"medium","shallow",23,"sh",1000,"ASTRID-ws","cbcb19",23,0.04618473895582329,1.448
+500,"medium","shallow",23,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.04618473895582329,1041.985
+500,"medium","shallow",23,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.04618473895582329,4867.451
+500,"medium","shallow",23,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.04618473895582329,175.917
+500,"medium","shallow",24,"sh",1000,"ASTRID-ws","cbcb09",23,0.04618473895582329,1.427
+500,"medium","shallow",24,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.04618473895582329,1081.99
+500,"medium","shallow",24,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.04618473895582329,4367.738
+500,"medium","shallow",24,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.04618473895582329,285.18399999999997
+500,"medium","shallow",25,"sh",1000,"ASTRID-ws","cbcb21",23,0.04618473895582329,1.462
+500,"medium","shallow",25,"sh",1000,"TQMC-wh_n2","cbcb21",23,0.04618473895582329,1048.702
+500,"medium","shallow",25,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,0.04618473895582329,4613.378
+500,"medium","shallow",25,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,0.04618473895582329,164.732
+500,"medium","shallow",26,"sh",1000,"ASTRID-ws","cbcb13",23,0.04618473895582329,1.671
+500,"medium","shallow",26,"sh",1000,"TQMC-wh_n2","cbcb13",23,0.04618473895582329,1093.283
+500,"medium","shallow",26,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,0.04618473895582329,5017.917
+500,"medium","shallow",26,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,0.04618473895582329,643.497
+500,"medium","shallow",27,"sh",1000,"ASTRID-ws","cbcb15",23,0.04618473895582329,1.472
+500,"medium","shallow",27,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.04618473895582329,1093.375
+500,"medium","shallow",27,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.04618473895582329,4771.784
+500,"medium","shallow",27,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.04618473895582329,168.066
+500,"medium","shallow",28,"sh",1000,"ASTRID-ws","cbcb12",23,0.04618473895582329,1.472
+500,"medium","shallow",28,"sh",1000,"TQMC-wh_n2","cbcb12",23,0.04618473895582329,1030.128
+500,"medium","shallow",28,"sh",1000,"ASTER-wh (1 thread)","cbcb12",23,0.04618473895582329,7950.565
+500,"medium","shallow",28,"sh",1000,"ASTER-wh (16 threads)","cbcb12",23,0.04618473895582329,331.255
+500,"medium","shallow",29,"sh",1000,"ASTRID-ws","cbcb05",23,0.04618473895582329,1.388
+500,"medium","shallow",29,"sh",1000,"TQMC-wh_n2","cbcb05",23,0.04618473895582329,1025.181
+500,"medium","shallow",29,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,0.04618473895582329,4624.159
+500,"medium","shallow",29,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,0.04618473895582329,164.45499999999998
+500,"medium","shallow",30,"sh",1000,"ASTRID-ws","cbcb03",23,0.04618473895582329,1.359
+500,"medium","shallow",30,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.04618473895582329,1085.358
+500,"medium","shallow",30,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.04618473895582329,3616.787
+500,"medium","shallow",30,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.04618473895582329,213.243
+500,"medium","shallow",31,"sh",1000,"ASTRID-ws","cbcb11",23,0.04618473895582329,1.371
+500,"medium","shallow",31,"sh",1000,"TQMC-wh_n2","cbcb11",23,0.04618473895582329,1049.862
+500,"medium","shallow",31,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,0.04618473895582329,4878.234
+500,"medium","shallow",31,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,0.04618473895582329,201.32999999999998
+500,"medium","shallow",32,"sh",1000,"ASTRID-ws","cbcb10",23,0.04618473895582329,1.403
+500,"medium","shallow",32,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.04618473895582329,1026.457
+500,"medium","shallow",32,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.04618473895582329,4069.562
+500,"medium","shallow",32,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.04618473895582329,236.34199999999998
+500,"medium","shallow",33,"sh",1000,"ASTRID-ws","cbcb06",23,0.04618473895582329,1.529
+500,"medium","shallow",33,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.04618473895582329,1036.072
+500,"medium","shallow",33,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.04618473895582329,4033.793
+500,"medium","shallow",33,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.04618473895582329,183.875
+500,"medium","shallow",34,"sh",1000,"ASTRID-ws","cbcb20",23,0.04618473895582329,1.469
+500,"medium","shallow",34,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.04618473895582329,1114.868
+500,"medium","shallow",34,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.04618473895582329,4517.716
+500,"medium","shallow",34,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.04618473895582329,218.583
+500,"medium","shallow",35,"sh",1000,"ASTRID-ws","cbcb08",23,0.04618473895582329,1.429
+500,"medium","shallow",35,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.04618473895582329,1030.078
+500,"medium","shallow",35,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.04618473895582329,3747.167
+500,"medium","shallow",35,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.04618473895582329,172.78300000000002
+500,"medium","shallow",36,"sh",1000,"ASTRID-ws","cbcb14",23,0.04618473895582329,1.547
+500,"medium","shallow",36,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.04618473895582329,1067.291
+500,"medium","shallow",36,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.04618473895582329,4902.588
+500,"medium","shallow",36,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.04618473895582329,328.793
+500,"medium","shallow",37,"sh",1000,"ASTRID-ws","cbcb18",23,0.04618473895582329,1.571
+500,"medium","shallow",37,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.04618473895582329,1121.748
+500,"medium","shallow",37,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.04618473895582329,5534.368
+500,"medium","shallow",37,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.04618473895582329,256.903
+500,"medium","shallow",38,"sh",1000,"ASTRID-ws","cbcb04",23,0.04618473895582329,1.447
+500,"medium","shallow",38,"sh",1000,"TQMC-wh_n2","cbcb04",23,0.04618473895582329,1098.897
+500,"medium","shallow",38,"sh",1000,"ASTER-wh (1 thread)","cbcb04",23,0.04618473895582329,8285.322
+500,"medium","shallow",38,"sh",1000,"ASTER-wh (16 threads)","cbcb04",23,0.04618473895582329,687.299
+500,"medium","shallow",39,"sh",1000,"ASTRID-ws","cbcb16",23,0.04618473895582329,1.982
+500,"medium","shallow",39,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.04618473895582329,1063.983
+500,"medium","shallow",39,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.04618473895582329,5077.812
+500,"medium","shallow",39,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.04618473895582329,180.908
+500,"medium","shallow",40,"sh",1000,"ASTRID-ws","cbcb03",23,0.04618473895582329,1.348
+500,"medium","shallow",40,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.04618473895582329,1067.846
+500,"medium","shallow",40,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.04618473895582329,4696.109
+500,"medium","shallow",40,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.04618473895582329,214.17000000000002
+500,"medium","shallow",41,"sh",1000,"ASTRID-ws","cbcb08",23,0.04618473895582329,1.346
+500,"medium","shallow",41,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.04618473895582329,1050.687
+500,"medium","shallow",41,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.04618473895582329,3736.396
+500,"medium","shallow",41,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.04618473895582329,326.319
+500,"medium","shallow",42,"sh",1000,"ASTRID-ws","cbcb06",23,0.04618473895582329,1.375
+500,"medium","shallow",42,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.04618473895582329,1030.466
+500,"medium","shallow",42,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.04618473895582329,7669.578
+500,"medium","shallow",42,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.04618473895582329,241.809
+500,"medium","shallow",43,"sh",1000,"ASTRID-ws","cbcb10",23,0.04618473895582329,1.334
+500,"medium","shallow",43,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.04618473895582329,998.973
+500,"medium","shallow",43,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.04618473895582329,5740.311
+500,"medium","shallow",43,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.04618473895582329,172.465
+500,"medium","shallow",44,"sh",1000,"ASTRID-ws","cbcb09",23,0.04618473895582329,1.629
+500,"medium","shallow",44,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.04618473895582329,1122.259
+500,"medium","shallow",44,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.04618473895582329,5170.672
+500,"medium","shallow",44,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.04618473895582329,351.769
+500,"medium","shallow",45,"sh",1000,"ASTRID-ws","cbcb21",23,0.04618473895582329,1.432
+500,"medium","shallow",45,"sh",1000,"TQMC-wh_n2","cbcb21",23,0.04618473895582329,1043.119
+500,"medium","shallow",45,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,0.04618473895582329,3665.988
+500,"medium","shallow",45,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,0.04618473895582329,168.278
+500,"medium","shallow",46,"sh",1000,"ASTRID-ws","cbcb05",23,0.04618473895582329,1.457
+500,"medium","shallow",46,"sh",1000,"TQMC-wh_n2","cbcb05",23,0.04618473895582329,1088.482
+500,"medium","shallow",46,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,0.04618473895582329,5726.041
+500,"medium","shallow",46,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,0.04618473895582329,330.318
+500,"medium","shallow",47,"sh",1000,"ASTRID-ws","cbcb19",23,0.04618473895582329,1.393
+500,"medium","shallow",47,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.04618473895582329,1048.719
+500,"medium","shallow",47,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.04618473895582329,6241.461
+500,"medium","shallow",47,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.04618473895582329,412.407
+500,"medium","shallow",48,"sh",1000,"ASTRID-ws","cbcb17",23,0.04618473895582329,1.349
+500,"medium","shallow",48,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.04618473895582329,1041.483
+500,"medium","shallow",48,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.04618473895582329,4591.103
+500,"medium","shallow",48,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.04618473895582329,212.769
+500,"medium","shallow",49,"sh",1000,"ASTRID-ws","cbcb15",23,0.04618473895582329,1.395
+500,"medium","shallow",49,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.04618473895582329,1016.926
+500,"medium","shallow",49,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.04618473895582329,4847.702
+500,"medium","shallow",49,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.04618473895582329,274.944
+500,"medium","shallow",50,"sh",1000,"ASTRID-ws","cbcb20",23,0.04618473895582329,1.539
+500,"medium","shallow",50,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.04618473895582329,1091.377
+500,"medium","shallow",50,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.04618473895582329,3838.496
+500,"medium","shallow",50,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.04618473895582329,282.491
+1000,"medium","shallow",1,"sh",1000,"ASTRID-ws","cbcb11",23,0.023046092184368736,7.521
+1000,"medium","shallow",1,"sh",1000,"TQMC-wh_n2","cbcb11",23,0.023046092184368736,4086.402
+1000,"medium","shallow",1,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,0.023046092184368736,16815.761
+1000,"medium","shallow",1,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,0.023046092184368736,1207.123
+1000,"medium","shallow",2,"sh",1000,"ASTRID-ws","cbcb13",23,0.023046092184368736,13.025
+1000,"medium","shallow",2,"sh",1000,"TQMC-wh_n2","cbcb13",23,0.023046092184368736,5181.613
+1000,"medium","shallow",2,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,0.023046092184368736,49085.019
+1000,"medium","shallow",2,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,0.023046092184368736,2668.448
+1000,"medium","shallow",3,"sh",1000,"ASTRID-ws","cbcb07",23,0.023046092184368736,5.775
+1000,"medium","shallow",3,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.023046092184368736,4267.696
+1000,"medium","shallow",3,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.023046092184368736,15711.753
+1000,"medium","shallow",3,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.023046092184368736,1145.824
+1000,"medium","shallow",4,"sh",1000,"ASTRID-ws","cbcb14",23,0.023046092184368736,7.444
+1000,"medium","shallow",4,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.023046092184368736,4296.861
+1000,"medium","shallow",4,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.023046092184368736,19927.802
+1000,"medium","shallow",4,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.023046092184368736,1123.995
+1000,"medium","shallow",5,"sh",1000,"ASTRID-ws","cbcb18",23,0.023046092184368736,6.698
+1000,"medium","shallow",5,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.023046092184368736,4321.704
+1000,"medium","shallow",5,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.023046092184368736,15951.857
+1000,"medium","shallow",5,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.023046092184368736,1364.425
+1000,"medium","shallow",7,"sh",1000,"ASTRID-ws","cbcb08",23,0.023046092184368736,5.945
+1000,"medium","shallow",7,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.023046092184368736,4266.475
+1000,"medium","shallow",7,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.023046092184368736,20540.849
+1000,"medium","shallow",7,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.023046092184368736,1019.049
+1000,"medium","shallow",9,"sh",1000,"ASTRID-ws","cbcb16",23,0.023046092184368736,6.779
+1000,"medium","shallow",9,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.023046092184368736,4068.02
+1000,"medium","shallow",9,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.023046092184368736,23183.44
+1000,"medium","shallow",9,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.023046092184368736,833.641
+1000,"medium","shallow",10,"sh",1000,"ASTRID-ws","cbcb03",23,0.023046092184368736,6.69
+1000,"medium","shallow",10,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.023046092184368736,4033.577
+1000,"medium","shallow",10,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.023046092184368736,25031.834
+1000,"medium","shallow",10,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.023046092184368736,769.353
+1000,"medium","shallow",11,"sh",1000,"ASTRID-ws","cbcb20",23,0.023046092184368736,7.014
+1000,"medium","shallow",11,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.023046092184368736,4547.253
+1000,"medium","shallow",11,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.023046092184368736,28269.864
+1000,"medium","shallow",11,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.023046092184368736,811.555
+1000,"medium","shallow",12,"sh",1000,"ASTRID-ws","cbcb17",23,0.023046092184368736,6.891
+1000,"medium","shallow",12,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.023046092184368736,4301.045
+1000,"medium","shallow",12,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.023046092184368736,16381.21
+1000,"medium","shallow",12,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.023046092184368736,739.162
+1000,"medium","shallow",13,"sh",1000,"ASTRID-ws","cbcb15",23,0.023046092184368736,6.23
+1000,"medium","shallow",13,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.023046092184368736,4233.498
+1000,"medium","shallow",13,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.023046092184368736,28758.953
+1000,"medium","shallow",13,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.023046092184368736,1959.779
+1000,"medium","shallow",14,"sh",1000,"ASTRID-ws","cbcb09",23,0.023046092184368736,5.82
+1000,"medium","shallow",14,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.023046092184368736,4056.317
+1000,"medium","shallow",14,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.023046092184368736,16599.154
+1000,"medium","shallow",14,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.023046092184368736,774.061
+1000,"medium","shallow",15,"sh",1000,"ASTRID-ws","cbcb10",23,0.023046092184368736,6.375
+1000,"medium","shallow",15,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.023046092184368736,4008.071
+1000,"medium","shallow",15,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.023046092184368736,17854.448
+1000,"medium","shallow",15,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.023046092184368736,880.704
+1000,"medium","shallow",16,"sh",1000,"ASTRID-ws","cbcb05",23,0.023046092184368736,6.546
+1000,"medium","shallow",16,"sh",1000,"TQMC-wh_n2","cbcb05",23,0.023046092184368736,4249.812
+1000,"medium","shallow",16,"sh",1000,"ASTER-wh (1 thread)","cbcb05",23,0.023046092184368736,19165.063
+1000,"medium","shallow",16,"sh",1000,"ASTER-wh (16 threads)","cbcb05",23,0.023046092184368736,1178.136
+1000,"medium","shallow",17,"sh",1000,"ASTRID-ws","cbcb19",23,0.023046092184368736,6.383
+1000,"medium","shallow",17,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.023046092184368736,4245.97
+1000,"medium","shallow",17,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.023046092184368736,17338.452
+1000,"medium","shallow",17,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.023046092184368736,1047.767
+1000,"medium","shallow",18,"sh",1000,"ASTRID-ws","cbcb11",23,0.023046092184368736,6.818
+1000,"medium","shallow",18,"sh",1000,"TQMC-wh_n2","cbcb11",23,0.023046092184368736,4332.668
+1000,"medium","shallow",18,"sh",1000,"ASTER-wh (1 thread)","cbcb11",23,0.023046092184368736,15908.272
+1000,"medium","shallow",18,"sh",1000,"ASTER-wh (16 threads)","cbcb11",23,0.023046092184368736,923.798
+1000,"medium","shallow",19,"sh",1000,"ASTRID-ws","cbcb07",23,0.023046092184368736,6.511
+1000,"medium","shallow",19,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.023046092184368736,4247.336
+1000,"medium","shallow",19,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.023046092184368736,16322.363
+1000,"medium","shallow",19,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.023046092184368736,748.113
+1000,"medium","shallow",20,"sh",1000,"ASTRID-ws","cbcb14",23,0.023046092184368736,7.037
+1000,"medium","shallow",20,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.023046092184368736,4164.421
+1000,"medium","shallow",20,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.023046092184368736,20374.694
+1000,"medium","shallow",20,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.023046092184368736,732.947
+1000,"medium","shallow",21,"sh",1000,"ASTRID-ws","cbcb06",23,0.023046092184368736,7.256
+1000,"medium","shallow",21,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.023046092184368736,4717.493
+1000,"medium","shallow",21,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.023046092184368736,17062.873
+1000,"medium","shallow",21,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.023046092184368736,782.913
+1000,"medium","shallow",22,"sh",1000,"ASTRID-ws","cbcb04",23,0.023046092184368736,5.383
+1000,"medium","shallow",22,"sh",1000,"TQMC-wh_n2","cbcb04",23,0.023046092184368736,4121.603
+1000,"medium","shallow",22,"sh",1000,"ASTER-wh (1 thread)","cbcb04",23,0.023046092184368736,26906.27
+1000,"medium","shallow",22,"sh",1000,"ASTER-wh (16 threads)","cbcb04",23,0.023046092184368736,1082.26
+1000,"medium","shallow",23,"sh",1000,"ASTRID-ws","cbcb18",23,0.023046092184368736,5.484
+1000,"medium","shallow",23,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.023046092184368736,4339.202
+1000,"medium","shallow",23,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.023046092184368736,17840.508
+1000,"medium","shallow",23,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.023046092184368736,811.858
+1000,"medium","shallow",24,"sh",1000,"ASTRID-ws","cbcb13",23,0.023046092184368736,6.428
+1000,"medium","shallow",24,"sh",1000,"TQMC-wh_n2","cbcb13",23,0.023046092184368736,4208.431
+1000,"medium","shallow",24,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,0.023046092184368736,20458.788
+1000,"medium","shallow",24,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,0.023046092184368736,769.366
+1000,"medium","shallow",25,"sh",1000,"ASTRID-ws","cbcb08",23,0.023046092184368736,5.737
+1000,"medium","shallow",25,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.023046092184368736,4097.201
+1000,"medium","shallow",25,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.023046092184368736,25852.685
+1000,"medium","shallow",25,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.023046092184368736,1026.743
+1000,"medium","shallow",26,"sh",1000,"ASTRID-ws","cbcb16",23,0.023046092184368736,5.843
+1000,"medium","shallow",26,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.023046092184368736,4300.127
+1000,"medium","shallow",26,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.023046092184368736,20779.493
+1000,"medium","shallow",26,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.023046092184368736,772.51
+1000,"medium","shallow",27,"sh",1000,"ASTRID-ws","cbcb03",23,0.023046092184368736,6.878
+1000,"medium","shallow",27,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.023046092184368736,5006.677
+1000,"medium","shallow",27,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.023046092184368736,17860.96
+1000,"medium","shallow",27,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.023046092184368736,1085.533
+1000,"medium","shallow",28,"sh",1000,"ASTRID-ws","cbcb20",23,0.023046092184368736,6.266
+1000,"medium","shallow",28,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.023046092184368736,4165.336
+1000,"medium","shallow",28,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.023046092184368736,16328.216
+1000,"medium","shallow",28,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.023046092184368736,1428.544
+1000,"medium","shallow",29,"sh",1000,"ASTRID-ws","cbcb17",23,0.023046092184368736,6.717
+1000,"medium","shallow",29,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.023046092184368736,4332.987
+1000,"medium","shallow",29,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.023046092184368736,27320.904
+1000,"medium","shallow",29,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.023046092184368736,1006.217
+1000,"medium","shallow",30,"sh",1000,"ASTRID-ws","cbcb15",23,0.023046092184368736,15.737
+1000,"medium","shallow",30,"sh",1000,"TQMC-wh_n2","cbcb15",23,0.023046092184368736,4719.307
+1000,"medium","shallow",30,"sh",1000,"ASTER-wh (1 thread)","cbcb15",23,0.023046092184368736,30445.646
+1000,"medium","shallow",30,"sh",1000,"ASTER-wh (16 threads)","cbcb15",23,0.023046092184368736,1713.814
+1000,"medium","shallow",31,"sh",1000,"ASTRID-ws","cbcb09",23,0.023046092184368736,7.872
+1000,"medium","shallow",31,"sh",1000,"TQMC-wh_n2","cbcb09",23,0.023046092184368736,4404.711
+1000,"medium","shallow",31,"sh",1000,"ASTER-wh (1 thread)","cbcb09",23,0.023046092184368736,18180.936
+1000,"medium","shallow",31,"sh",1000,"ASTER-wh (16 threads)","cbcb09",23,0.023046092184368736,960.981
+1000,"medium","shallow",32,"sh",1000,"ASTRID-ws","cbcb10",23,0.023046092184368736,8.945
+1000,"medium","shallow",32,"sh",1000,"TQMC-wh_n2","cbcb10",23,0.023046092184368736,5621.033
+1000,"medium","shallow",32,"sh",1000,"ASTER-wh (1 thread)","cbcb10",23,0.023046092184368736,25701.085
+1000,"medium","shallow",32,"sh",1000,"ASTER-wh (16 threads)","cbcb10",23,0.023046092184368736,1188.887
+1000,"medium","shallow",34,"sh",1000,"ASTRID-ws","cbcb12",23,0.023046092184368736,7.095
+1000,"medium","shallow",34,"sh",1000,"TQMC-wh_n2","cbcb12",23,0.023046092184368736,4260.891
+1000,"medium","shallow",34,"sh",1000,"ASTER-wh (1 thread)","cbcb12",23,0.023046092184368736,33388.14
+1000,"medium","shallow",34,"sh",1000,"ASTER-wh (16 threads)","cbcb12",23,0.023046092184368736,3070.524
+1000,"medium","shallow",35,"sh",1000,"ASTRID-ws","cbcb19",23,0.023046092184368736,5.437
+1000,"medium","shallow",35,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.023046092184368736,4142.886
+1000,"medium","shallow",35,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.023046092184368736,21237.177
+1000,"medium","shallow",35,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.023046092184368736,765.745
+1000,"medium","shallow",36,"sh",1000,"ASTRID-ws","cbcb07",23,0.023046092184368736,6.514
+1000,"medium","shallow",36,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.023046092184368736,4067.075
+1000,"medium","shallow",36,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.023046092184368736,16232.093
+1000,"medium","shallow",36,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.023046092184368736,770.45
+1000,"medium","shallow",37,"sh",1000,"ASTRID-ws","cbcb14",23,0.023046092184368736,5.587
+1000,"medium","shallow",37,"sh",1000,"TQMC-wh_n2","cbcb14",23,0.023046092184368736,4237.801
+1000,"medium","shallow",37,"sh",1000,"ASTER-wh (1 thread)","cbcb14",23,0.023046092184368736,28832.147
+1000,"medium","shallow",37,"sh",1000,"ASTER-wh (16 threads)","cbcb14",23,0.023046092184368736,938.517
+1000,"medium","shallow",39,"sh",1000,"ASTRID-ws","cbcb04",23,0.023046092184368736,6.005
+1000,"medium","shallow",39,"sh",1000,"TQMC-wh_n2","cbcb04",23,0.023046092184368736,4111.079
+1000,"medium","shallow",39,"sh",1000,"ASTER-wh (1 thread)","cbcb04",23,0.023046092184368736,22462.282
+1000,"medium","shallow",39,"sh",1000,"ASTER-wh (16 threads)","cbcb04",23,0.023046092184368736,801.188
+1000,"medium","shallow",40,"sh",1000,"ASTRID-ws","cbcb18",23,0.023046092184368736,7.666
+1000,"medium","shallow",40,"sh",1000,"TQMC-wh_n2","cbcb18",23,0.023046092184368736,4216.571
+1000,"medium","shallow",40,"sh",1000,"ASTER-wh (1 thread)","cbcb18",23,0.023046092184368736,23187.832
+1000,"medium","shallow",40,"sh",1000,"ASTER-wh (16 threads)","cbcb18",23,0.023046092184368736,827.048
+1000,"medium","shallow",41,"sh",1000,"ASTRID-ws","cbcb06",23,0.023046092184368736,6.731
+1000,"medium","shallow",41,"sh",1000,"TQMC-wh_n2","cbcb06",23,0.023046092184368736,4330.66
+1000,"medium","shallow",41,"sh",1000,"ASTER-wh (1 thread)","cbcb06",23,0.023046092184368736,35332.479
+1000,"medium","shallow",41,"sh",1000,"ASTER-wh (16 threads)","cbcb06",23,0.023046092184368736,1328.333
+1000,"medium","shallow",42,"sh",1000,"ASTRID-ws","cbcb13",23,0.023046092184368736,5.572
+1000,"medium","shallow",42,"sh",1000,"TQMC-wh_n2","cbcb13",23,0.023046092184368736,3958.437
+1000,"medium","shallow",42,"sh",1000,"ASTER-wh (1 thread)","cbcb13",23,0.023046092184368736,15370.542
+1000,"medium","shallow",42,"sh",1000,"ASTER-wh (16 threads)","cbcb13",23,0.023046092184368736,774.93
+1000,"medium","shallow",43,"sh",1000,"ASTRID-ws","cbcb08",23,0.023046092184368736,5.433
+1000,"medium","shallow",43,"sh",1000,"TQMC-wh_n2","cbcb08",23,0.023046092184368736,4178.566
+1000,"medium","shallow",43,"sh",1000,"ASTER-wh (1 thread)","cbcb08",23,0.023046092184368736,15823.025
+1000,"medium","shallow",43,"sh",1000,"ASTER-wh (16 threads)","cbcb08",23,0.023046092184368736,951.688
+1000,"medium","shallow",44,"sh",1000,"ASTRID-ws","cbcb16",23,0.023046092184368736,9.761
+1000,"medium","shallow",44,"sh",1000,"TQMC-wh_n2","cbcb16",23,0.023046092184368736,4545.3
+1000,"medium","shallow",44,"sh",1000,"ASTER-wh (1 thread)","cbcb16",23,0.023046092184368736,17182.293
+1000,"medium","shallow",44,"sh",1000,"ASTER-wh (16 threads)","cbcb16",23,0.023046092184368736,1015.5360000000001
+1000,"medium","shallow",45,"sh",1000,"ASTRID-ws","cbcb21",23,0.023046092184368736,5.924
+1000,"medium","shallow",45,"sh",1000,"TQMC-wh_n2","cbcb21",23,0.023046092184368736,4176.736
+1000,"medium","shallow",45,"sh",1000,"ASTER-wh (1 thread)","cbcb21",23,0.023046092184368736,16592.539
+1000,"medium","shallow",45,"sh",1000,"ASTER-wh (16 threads)","cbcb21",23,0.023046092184368736,757.538
+1000,"medium","shallow",46,"sh",1000,"ASTRID-ws","cbcb03",23,0.023046092184368736,5.946
+1000,"medium","shallow",46,"sh",1000,"TQMC-wh_n2","cbcb03",23,0.023046092184368736,4306.578
+1000,"medium","shallow",46,"sh",1000,"ASTER-wh (1 thread)","cbcb03",23,0.023046092184368736,20695.973
+1000,"medium","shallow",46,"sh",1000,"ASTER-wh (16 threads)","cbcb03",23,0.023046092184368736,780.788
+1000,"medium","shallow",47,"sh",1000,"ASTRID-ws","cbcb20",23,0.023046092184368736,7.225
+1000,"medium","shallow",47,"sh",1000,"TQMC-wh_n2","cbcb20",23,0.023046092184368736,4391.142
+1000,"medium","shallow",47,"sh",1000,"ASTER-wh (1 thread)","cbcb20",23,0.023046092184368736,16951.425
+1000,"medium","shallow",47,"sh",1000,"ASTER-wh (16 threads)","cbcb20",23,0.023046092184368736,1192.329
+1000,"medium","shallow",48,"sh",1000,"ASTRID-ws","cbcb17",23,0.023046092184368736,5.513
+1000,"medium","shallow",48,"sh",1000,"TQMC-wh_n2","cbcb17",23,0.023046092184368736,4291.161
+1000,"medium","shallow",48,"sh",1000,"ASTER-wh (1 thread)","cbcb17",23,0.023046092184368736,18133.814
+1000,"medium","shallow",48,"sh",1000,"ASTER-wh (16 threads)","cbcb17",23,0.023046092184368736,818.956
+1000,"medium","shallow",49,"sh",1000,"ASTRID-ws","cbcb07",23,0.023046092184368736,11.898
+1000,"medium","shallow",49,"sh",1000,"TQMC-wh_n2","cbcb07",23,0.023046092184368736,4438.986
+1000,"medium","shallow",49,"sh",1000,"ASTER-wh (1 thread)","cbcb07",23,0.023046092184368736,41980.714
+1000,"medium","shallow",49,"sh",1000,"ASTER-wh (16 threads)","cbcb07",23,0.023046092184368736,1451.873
+1000,"medium","shallow",50,"sh",1000,"ASTRID-ws","cbcb19",23,0.023046092184368736,7.474
+1000,"medium","shallow",50,"sh",1000,"TQMC-wh_n2","cbcb19",23,0.023046092184368736,4214.012
+1000,"medium","shallow",50,"sh",1000,"ASTER-wh (1 thread)","cbcb19",23,0.023046092184368736,19504.325
+1000,"medium","shallow",50,"sh",1000,"ASTER-wh (16 threads)","cbcb19",23,0.023046092184368736,765.851

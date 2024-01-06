@@ -44,7 +44,7 @@ for nbps in nbpss:
                 tqmc_whn1 = xdf[(xdf["MTHD"] == "TQMC-wh_n1") & (xdf["SUPP"] == supp)]
                 tqmc_whn0 = xdf[(xdf["MTHD"] == "TQMC-wh_n0") & (xdf["SUPP"] == supp)]
                 tqmc_wsn2 = xdf[(xdf["MTHD"] == "TQMC-ws_n2") & (xdf["SUPP"] == supp)]
-                tqmc_wnn2 = xdf[(xdf["MTHD"] == "TQMC-wn_n2") & (xdf["SUPP"] == "none_refinepoly")]  ## LIKE ORIGINAL
+                tqmc_wnn2 = xdf[(xdf["MTHD"] == "TQMC-n2") & (xdf["SUPP"] == "none_refinepoly")]  ## LIKE ORIGINAL
 
                 row = {}
                 row["NBPS"] = nbps
