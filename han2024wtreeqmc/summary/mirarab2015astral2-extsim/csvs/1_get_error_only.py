@@ -7,6 +7,7 @@ Previous studies removed:
 + remove 1 replicate (i.e. 41) from 10-taxon
 + remove 3 replicates (i.e. 21 and 41) from 50-taxon (next is 27 with 590ish genes)
 + remove 2 replicates (i.e. 8 and 47) from 100-taxon
++ remove 3 replicates (i.e. 8, 15, 49) from 200 taxon/500 K/1e-06
 """
 
 sys.exit("DONE RUNNING")
@@ -49,10 +50,10 @@ for do in ["varyntax", "varyils"]:
                     if ntax == 10:
                         repls.remove(41)
                         if ngen == 1000:
-                            repls.remove(12)  # additional
+                            repls.remove(12)  # additional because of concatenation
                     elif ntax == 50:
                         repls.remove(21)
-                        repls.remove(27)  # additional
+                        repls.remove(27)  # additional because of concatenation
                         repls.remove(41)
                     elif ntax == 100:
                         repls.remove(8)

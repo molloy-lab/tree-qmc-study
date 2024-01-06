@@ -73,14 +73,14 @@ if __name__ == "__main__":
     df_ad = pandas.read_csv("all_true_species_tree_vs_estimated_gene_trees.csv")
 
     sys.stdout.write("\\begin{table}[!h]\n")
-    sys.stdout.write("\\caption[Properties of simulated data from Morel et al., 2022]")
-    sys.stdout.write("{\\textbf{Properties of simulated data from \\cite{morel2022asteroid}.} Data were downloaded from ")
+    sys.stdout.write("\\caption[Properties of Asteroid simulated data]")
+    sys.stdout.write("{\\textbf{Properties of Asteroid simulated data from \\cite{morel2022asteroid}.} Data were downloaded from ")
     sys.stdout.write("\\url{https://cme.h-its.org/exelixis/material/asteroid_data.tar.gz} in December 2022. ")
     sys.stdout.write("For each replicate, ILS is the fraction of branches in true species tree missing from the true gene tree, averaged across all gene trees. ")
     sys.stdout.write("GTEE is the fraction of branches in true gene tree that are missing from the estimated gene tree, averaged across all gene trees. ")
     sys.stdout.write("AD is the fraction of branches in the true species tree that are missing from the estimated gene tree, averaged across all gene trees. ") 
     sys.stdout.write("The values in the table are the average ($\\pm$ standard deviation) across all replicates.}\n")
-    sys.stdout.write("\\label{tab:mahbub}\n")
+    sys.stdout.write("\\label{tab:morel}\n")
     sys.stdout.write("\\centering\n")
     sys.stdout.write("\\small\n")
     sys.stdout.write("\\begin{tabular}{r c c c c}\n")
@@ -155,7 +155,7 @@ For each replicate, ILS is the fraction of branches in true species tree missing
 GTEE is the fraction of branches in true gene tree that are missing from the estimated gene tree, averaged across all gene trees. 
 AD is the fraction of branches in the true species tree that are missing from the estimated gene tree, averaged across all gene trees. 
 The values in the table are the average ($\pm$ standard deviation) across all replicates.}
-\label{tab:mahbub}
+\label{tab:morel}
 \centering
 \small
 \begin{tabular}{r c c c c}
