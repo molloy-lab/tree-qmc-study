@@ -13,16 +13,18 @@ rows = []
 
 mthds = ["aster_h_t16",
          "wastrid_s",
-         "wtreeqmc_wh_n2",
+         "wtreeqmc_wf_n2",
          "wtreeqmc_wn_n2",
          "wtreeqmc_ws_n2",
+         "wtreeqmc_wh_n2",
          "wtreeqmc_wh_n1",
          "wtreeqmc_wh_n0"]
 
 namemap = {}
 namemap["aster_h_t16"] = "ASTER-wh"
 namemap["wastrid_s"] = "ASTRID-ws"
-namemap["wtreeqmc_wn_n2"] = "TQMC-n2"
+namemap["wtreeqmc_wf_n2"] = "TQMC-n2"
+namemap["wtreeqmc_wn_n2"] = "TQMC-wn_n2"
 namemap["wtreeqmc_ws_n2"] = "TQMC-ws_n2"
 namemap["wtreeqmc_wh_n2"] = "TQMC-wh_n2"
 namemap["wtreeqmc_wh_n1"] = "TQMC-wh_n1"
@@ -30,8 +32,8 @@ namemap["wtreeqmc_wh_n0"] = "TQMC-wh_n0"
 
 nbpss = [200, 400, 800, 1600]
 ngens = [50, 200, 500, 1000]
+supps = ["abayes", "bs"]
 repls = range(1, 51)
-supps = ["bs", "abayes"]
 
 for nbps in nbpss:
     for ngen in ngens:
@@ -65,13 +67,7 @@ for nbps in nbpss:
                     row["NBPS"] = nbps
                     row["NGEN"] = ngen
                     row["REPL"] = repl
-                    if mthd == "wtreeqmc_wn_n2":
-                        if supp == "bs":
-                            row["SUPP"] = "none_keeppoly"
-                        else:
-                            row["SUPP"] = "none_refinepoly"
-                    else:
-                        row["SUPP"] = supp
+                    row["SUPP"] = supp
                     row["MTHD"] = namemap[mthd]
                     row["SEFN"] = sefn
                     row["SEFP"] = sefp

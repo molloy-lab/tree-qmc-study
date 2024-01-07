@@ -9,13 +9,14 @@ df = pandas.read_csv("data-all-error.csv")
 df.fillna("NA", inplace=True)
 
 cols = ["NBPS", "NGEN", "SUPP", "REPL", 
-        "WASTRIDxSEFN", "WASTRIDxSERF",
-        "ASTERHxSEFN", "ASTERHxSERF",
+        "WASTRIDxSEFN",  "WASTRIDxSERF",
+        "ASTERHxSEFN",   "ASTERHxSERF",
         "TQMCwhn2xSEFN", "TQMCwhn2xSERF",
         "TQMCwhn1xSEFN", "TQMCwhn1xSERF",
         "TQMCwhn0xSEFN", "TQMCwhn0xSERF",
         "TQMCwsn2xSEFN", "TQMCwsn2xSERF",
-        "TQMCwnn2xSEFN", "TQMCwnn2xSERF"]
+        "TQMCwnn2xSEFN", "TQMCwnn2xSERF",
+        "TQMCn2xSEFN",   "TQMCn2xSERF"]
 
 rows = []
 
@@ -44,7 +45,8 @@ for nbps in nbpss:
                 tqmc_whn1 = xdf[(xdf["MTHD"] == "TQMC-wh_n1") & (xdf["SUPP"] == supp)]
                 tqmc_whn0 = xdf[(xdf["MTHD"] == "TQMC-wh_n0") & (xdf["SUPP"] == supp)]
                 tqmc_wsn2 = xdf[(xdf["MTHD"] == "TQMC-ws_n2") & (xdf["SUPP"] == supp)]
-                tqmc_wnn2 = xdf[(xdf["MTHD"] == "TQMC-n2") & (xdf["SUPP"] == "none_refinepoly")]  ## LIKE ORIGINAL
+                tqmc_wnn2 = xdf[(xdf["MTHD"] == "TQMC-wn_n2") & (xdf["SUPP"] == supp)]
+                tqmc_n2 = xdf[(xdf["MTHD"] == "TQMC-n2") & (xdf["SUPP"] == supp)]
 
                 row = {}
                 row["NBPS"] = nbps
@@ -72,6 +74,9 @@ for nbps in nbpss:
 
                 row["TQMCwnn2xSEFN"] = tqmc_wnn2.SEFN.values[0]
                 row["TQMCwnn2xSERF"] = tqmc_wnn2.SERF.values[0]
+
+                row["TQMCn2xSEFN"] = tqmc_n2.SEFN.values[0]
+                row["TQMCn2xSERF"] = tqmc_n2.SERF.values[0]
 
                 rows.append(row)
 

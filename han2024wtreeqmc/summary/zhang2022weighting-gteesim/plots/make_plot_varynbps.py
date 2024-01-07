@@ -128,12 +128,12 @@ def make_figure(df, supp, output):
             sers[j] = []
             nrps[j] = []
             for k, mthd in enumerate(mthds):
-                print(mthd)
+                #print(mthd)
                 if (mthd == "TQMC-n2"):
                     ydf = df[(df["NBPS"] == nbps) &
                              (df["NGEN"] == ngen) &
                              (df["MTHD"] == mthd) &
-                             (df["SUPP"] == "none_refinepoly")]
+                             (df["SUPP"] == "bs")]
                 else: 
                     ydf = df[(df["NBPS"] == nbps) &
                              (df["NGEN"] == ngen) &
@@ -206,7 +206,7 @@ def make_figure(df, supp, output):
         elif ngen == 200:
             yticks = list(range(0, 25 + 1, 5))
         else:
-            yticks = list(range(0, 30 + 1, 5))
+            yticks = list(range(0, 35 + 1, 5))
 
         ymax = yticks[-1]
         ymin = -0.05 * ymax

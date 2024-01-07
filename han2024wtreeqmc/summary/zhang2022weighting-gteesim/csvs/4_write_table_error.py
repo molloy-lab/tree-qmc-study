@@ -13,12 +13,12 @@ def report_stats(df, mthds, supp, ngen, nbps):
 
     ydf = df[(df["NGEN"] == ngen) &
              (df["NBPS"] == nbps) &
-             (df["SUPP"] == "none_refinepoly")]  # Like original
+             (df["SUPP"] == "none-refinedpoly")]  # -w -f bs support
 
     keep = []
     minval = 1
     for ind, mthd in enumerate(mthds):
-        if mthd == "TQMC-wn_n2":
+        if mthd == "TQMC-n2":
             rfs = ydf[(ydf["MTHD"] == mthd)].SERF.values
         else:
             rfs = xdf[(xdf["MTHD"] == mthd)].SERF.values
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     sys.stdout.write("\\begin{table}[!h]\n")
     sys.stdout.write("\\caption[RF error for S100 simulated data]{\\textbf{RF error rate for S100 simulated data.} ")
     sys.stdout.write("Mean error rate is given across 50 replicates for each method. ")
-    sys.stdout.write("TREE-QMC-n2 does not use support; it is run with the refined abayes trees because the old TREE-QMC method could not handle polytomies}.")
+    sys.stdout.write("Note: TREE-QMC-n2 corresponds to the original method, which cannot handle polytomies and thus refines them randomly}.")
     #sys.stdout.write("\\label{tab:}\n")
     sys.stdout.write("\\centering\n")
     sys.stdout.write("\\footnotesize\n")  # \small
@@ -67,7 +67,7 @@ if __name__ == "__main__":
              "TQMC-wh_n1",
              "TQMC-wh_n0",
              "TQMC-ws_n2",
-             "TQMC-wn_n2"]
+             "TQMC-n2"]
 
     df = pandas.read_csv("data-all-error.csv", na_values='NA', keep_default_na=False)
 
