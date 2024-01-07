@@ -7,21 +7,16 @@ import sys
 def report_stats(df, mthds, supp, ngen, nbps):
     sys.stdout.write("%d & %d" % (ngen, nbps))
 
-    xdf = df[(df["NGEN"] == ngen) &
-             (df["NBPS"] == nbps) &
-             (df["SUPP"] == supp)]
-
-    ydf = df[(df["NGEN"] == ngen) &
-             (df["NBPS"] == nbps) &
-             (df["SUPP"] == "none-refinedpoly")]  # -w -f bs support
+    xdf = df[(df["NGEN"] == ngen) & (df["NBPS"] == nbps)]
 
     keep = []
     minval = 1
     for ind, mthd in enumerate(mthds):
         if mthd == "TQMC-n2":
-            rfs = ydf[(ydf["MTHD"] == mthd)].SERF.values
+            # -w -f bs support (don't use abayes!)
+            rfs = xdf[(xdf["MTHD"] == mthd) & (xdf["SUPP"] == "bs")].SERF.values
         else:
-            rfs = xdf[(xdf["MTHD"] == mthd)].SERF.values
+            rfs = xdf[(xdf["MTHD"] == mthd) & (xdf["SUPP"] == supp)].SERF.values
 
         if len(rfs) != 50:
             sys.exit("\nERROR")
@@ -49,9 +44,9 @@ def report_stats(df, mthds, supp, ngen, nbps):
 
 if __name__ == "__main__":
     sys.stdout.write("\\begin{table}[!h]\n")
-    sys.stdout.write("\\caption[RF error for S100 simulated data]{\\textbf{RF error rate for S100 simulated data.} ")
+    sys.stdout.write("\\caption[Species tree error for S100 simulated data]{\\textbf{Species tree (RF) error rate for S100 simulated data.} ")
     sys.stdout.write("Mean error rate is given across 50 replicates for each method. ")
-    sys.stdout.write("Note: TREE-QMC-n2 corresponds to the original method, which cannot handle polytomies and thus refines them randomly}.")
+    sys.stdout.write("Note: TREE-QMC-n2 refines polytomies in the input gene trees randomly}.")
     #sys.stdout.write("\\label{tab:}\n")
     sys.stdout.write("\\centering\n")
     sys.stdout.write("\\footnotesize\n")  # \small
