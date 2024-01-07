@@ -36,20 +36,27 @@ for (mthd in mthds) {
     message("\\begin{table}[!h]")
     message(paste("\\caption[Statistical testing for TREE-QMC-wh\\_n2 vs", mthd)) 
     message("on S100 data]{\\textbf{Testing for differences between TREE-QMC-wh\\_n2 vs")
-    message(paste(mthd, "simulated data sets.} BET is the number of replicates for which"))
-    message(paste("TREE-QMC-wh\\_n2 achieves a lower RF error rate and thus is better than", mthd)) 
-    message("WOR is the number of replicates for which wTREE-QMC-wh\\_n2  achieves a higher")
-    message(paste("RF error rate and thus is worse than", mthd, ",")) 
+    message(paste(mthd, "on the S100 simulated data.} BET is the number of replicates for which"))
+    message(paste("TREE-QMC-wh\\_n2 has lower species tree (RF) error and thus is better than", mthd, ",")) 
+    message("WOR is the number of replicates for which wTREE-QMC-wh\\_n2 has higher")
+    message(paste("RF error and thus is worse than", mthd, ",")) 
     message("and TIE is the number of replicates where the two methods tie.")
-    message("Significance is evaluated using Wilcoxon signed-rank tests on the species tree (RF) error rates.")
-    message("The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005,$ and so on.")
-    message(paste("Note: $p < ", as.character(threshold0), "/", as.character(ntests), "=", format(threshold_bonferoni, scientific = TRUE, digits=1)))
-    message(paste("is be significant after Bonferroni correction for the ", as.character(ntests), " tests made on the S100 data sets (MC).}"))
+    message("Significance is evaluated using paired, two-sided Wilcoxon signed-rank tests on the RF error rates.")
+    message("The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.")
+    message(paste("MC indicates significance after Bonferroni correction, i.e., $p < $",
+                  as.character(threshold0), "/",
+                  as.character(ntests), "=", 
+                  format(threshold_bonferoni, scientific = TRUE, digits=1)))
+    message(paste("for the ",
+                  as.character(ntests),
+                  "tests made on the S100 data."))
     if (mthd == "TREE-QMC-n2") {
         message("IMPORTANT: All other results for TREE-QMC-n2 do NOT use the refined tree from IQTREE.")
+    } else {
     }
+    message("}")
     message("\\centering")
-    message("\\normal")
+    message("\\normalsize")
     message("\\begin{tabular}{r r l r r r l c c c l}")
     message("\\toprule") 
     message(paste("\\multicolumn{11}{c}{\\textbf{TREE-QMC-wh\\_n2  vs ", mthd, "}} \\\\"))
@@ -178,17 +185,18 @@ exit()
 \begin{table}[!h]
 \caption[Statistical testing for TREE-QMC-wh\_n2 vs ASTER-wh
 on S100 data]{\textbf{Testing for differences between TREE-QMC-wh\_n2 vs
-ASTER-wh simulated data sets.} BET is the number of replicates for which
-TREE-QMC-wh\_n2 achieves a lower RF error rate and thus is better than ASTER-wh
-WOR is the number of replicates for which wTREE-QMC-wh\_n2  achieves a higher
-RF error rate and thus is worse than ASTER-wh ,
+ASTER-wh on the S100 simulated data.} BET is the number of replicates for which
+TREE-QMC-wh\_n2 has lower species tree (RF) error and thus is better than ASTER-wh ,
+WOR is the number of replicates for which wTREE-QMC-wh\_n2 has higher
+RF error and thus is worse than ASTER-wh ,
 and TIE is the number of replicates where the two methods tie.
-Significance is evaluated using Wilcoxon signed-rank tests on the species tree (RF) error rates.
-The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005,$ and so on.
-Note: $p <  0.05 / 96 = 5e-04
-is be significant after Bonferroni correction for the  96  tests made on the S100 data sets (MC).}
+Significance is evaluated using paired, two-sided Wilcoxon signed-rank tests on the RF error rates.
+The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.
+MC indicates significance after Bonferroni correction, i.e., $p < $ 0.05 / 96 = 5e-04
+for the  96 tests made on the S100 data.
+}
 \centering
-\normal
+\normalsize
 \begin{tabular}{r r l r r r l c c c l}
 \toprule
 \multicolumn{11}{c}{\textbf{TREE-QMC-wh\_n2  vs  ASTER-wh }} \\
@@ -239,17 +247,18 @@ is be significant after Bonferroni correction for the  96  tests made on the S10
 \begin{table}[!h]
 \caption[Statistical testing for TREE-QMC-wh\_n2 vs ASTRID-ws
 on S100 data]{\textbf{Testing for differences between TREE-QMC-wh\_n2 vs
-ASTRID-ws simulated data sets.} BET is the number of replicates for which
-TREE-QMC-wh\_n2 achieves a lower RF error rate and thus is better than ASTRID-ws
-WOR is the number of replicates for which wTREE-QMC-wh\_n2  achieves a higher
-RF error rate and thus is worse than ASTRID-ws ,
+ASTRID-ws on the S100 simulated data.} BET is the number of replicates for which
+TREE-QMC-wh\_n2 has lower species tree (RF) error and thus is better than ASTRID-ws ,
+WOR is the number of replicates for which wTREE-QMC-wh\_n2 has higher
+RF error and thus is worse than ASTRID-ws ,
 and TIE is the number of replicates where the two methods tie.
-Significance is evaluated using Wilcoxon signed-rank tests on the species tree (RF) error rates.
-The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005,$ and so on.
-Note: $p <  0.05 / 96 = 5e-04
-is be significant after Bonferroni correction for the  96  tests made on the S100 data sets (MC).}
+Significance is evaluated using paired, two-sided Wilcoxon signed-rank tests on the RF error rates.
+The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.
+MC indicates significance after Bonferroni correction, i.e., $p < $ 0.05 / 96 = 5e-04
+for the  96 tests made on the S100 data.
+}
 \centering
-\normal
+\normalsize
 \begin{tabular}{r r l r r r l c c c l}
 \toprule
 \multicolumn{11}{c}{\textbf{TREE-QMC-wh\_n2  vs  ASTRID-ws }} \\
@@ -300,18 +309,19 @@ is be significant after Bonferroni correction for the  96  tests made on the S10
 \begin{table}[!h]
 \caption[Statistical testing for TREE-QMC-wh\_n2 vs TREE-QMC-n2
 on S100 data]{\textbf{Testing for differences between TREE-QMC-wh\_n2 vs
-TREE-QMC-n2 simulated data sets.} BET is the number of replicates for which
-TREE-QMC-wh\_n2 achieves a lower RF error rate and thus is better than TREE-QMC-n2
-WOR is the number of replicates for which wTREE-QMC-wh\_n2  achieves a higher
-RF error rate and thus is worse than TREE-QMC-n2 ,
+TREE-QMC-n2 on the S100 simulated data.} BET is the number of replicates for which
+TREE-QMC-wh\_n2 has lower species tree (RF) error and thus is better than TREE-QMC-n2 ,
+WOR is the number of replicates for which wTREE-QMC-wh\_n2 has higher
+RF error and thus is worse than TREE-QMC-n2 ,
 and TIE is the number of replicates where the two methods tie.
-Significance is evaluated using Wilcoxon signed-rank tests on the species tree (RF) error rates.
-The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005,$ and so on.
-Note: $p <  0.05 / 96 = 5e-04
-is be significant after Bonferroni correction for the  96  tests made on the S100 data sets (MC).}
+Significance is evaluated using paired, two-sided Wilcoxon signed-rank tests on the RF error rates.
+The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.
+MC indicates significance after Bonferroni correction, i.e., $p < $ 0.05 / 96 = 5e-04
+for the  96 tests made on the S100 data.
 IMPORTANT: All other results for TREE-QMC-n2 do NOT use the refined tree from IQTREE.
+}
 \centering
-\normal
+\normalsize
 \begin{tabular}{r r l r r r l c c c l}
 \toprule
 \multicolumn{11}{c}{\textbf{TREE-QMC-wh\_n2  vs  TREE-QMC-n2 }} \\
