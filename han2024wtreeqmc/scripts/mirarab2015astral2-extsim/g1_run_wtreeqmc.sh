@@ -54,3 +54,21 @@ if [ ! -e $MYSTRE.tre ]; then
     echo "$MYMODL,$MYMTHD,$MYERRR" > ${MYSTRE}_species_tree_error.csv
 fi
 
+MYMTHD="wtreeqmc_wf_n2"
+MYSTRE="${MYMTHD}_${SUPP}_${NGEN}gen"
+if [ ! -e $MYSTRE.tre ]; then
+    MYTIME="$(time ($WTREEQMC -w f -n 2 \
+                              -i $GTRE_FILE \
+                              -o $MYSTRE.tre \
+                              &> $MYSTRE.log) 2>&1 1>/dev/null)"
+
+    uname -a > ${MYSTRE}_node_info.csv
+    MYNODE=$( uname -a | sed 's/\./ /g' | awk '{print $2}' )
+
+    MYSECS="$(echo $MYTIME | awk '{print $2","$4","$6}')"
+    echo "$MYMODL,$MYMTHD,$MYNODE,$MYSECS" > ${MYSTRE}_runtime.csv
+
+    MYERRR=$(python3 $COMPARE -t1 $STRE_TRUE -t2 $MYSTRE.tre)
+    echo "$MYMODL,$MYMTHD,$MYERRR" > ${MYSTRE}_species_tree_error.csv
+fi
+
