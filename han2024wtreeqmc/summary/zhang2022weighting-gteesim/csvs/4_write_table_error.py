@@ -44,7 +44,7 @@ def report_stats(df, mthds, supp, ngen, nbps):
 
 if __name__ == "__main__":
     sys.stdout.write("\\begin{table}[!h]\n")
-    sys.stdout.write("\\caption[Species tree error for S100 simulated data]{\\textbf{Species tree (RF) error rate for S100 simulated data.} ")
+    sys.stdout.write("\\caption[Species tree error (RF) for S100 simulated data]{\\textbf{Species tree (RF) error rate for S100 simulated data.} ")
     sys.stdout.write("Mean error rate is given across 50 replicates for each method. ")
     sys.stdout.write("Note: TREE-QMC-n2 refines polytomies in the input gene trees randomly}.")
     #sys.stdout.write("\\label{tab:}\n")

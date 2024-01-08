@@ -23,39 +23,31 @@ upperletters = [r"\textbf{A}",
                 r"\textbf{E}", 
                 r"\textbf{F}"]
 
-# Tableau 20 colors in RGB.    
-#tableau20 = [(44, 160, 44), (152, 223, 138),
-#             (255, 127, 14), (255, 187, 120),
-#             (23, 190, 207), (158, 218, 229),
-#             (31, 119, 180), (174, 199, 232),
-#             (227, 119, 194), (247, 182, 210),
-#             (214, 39, 40), (255, 152, 150),
-#             (148, 103, 189), (197, 176, 213)]
+# Tableau 20 colors in RGB.
+darkblue_pair = [(31, 119, 180), (174, 199, 232)]
+orange_pair = [(255, 127, 14), (255, 187, 120)]
+green_pair = [(44, 160, 44), (152, 223, 138)]
+red_pair = [(214, 39, 40), (255, 152, 150)]
+purple_pair = [(148, 103, 189), (197, 176, 213)]
+brown_pair = [(140, 86, 75), (196, 156, 148)]
+pink_pair = [(227, 119, 194), (247, 182, 210)]
+gray_pair = [(127, 127, 127), (199, 199, 199)]
+yellow_pair = [(188, 189, 34), (219, 219, 141)]
+lightblue_pair = [(23, 190, 207), (158, 218, 229)]
+specialgray = [(76.5, 76.5, 76.5)]
 
-# Dark blue - (31, 119, 180), (174, 199, 232),
-# Orange - (255, 127, 14), (255, 187, 120),
-# Green - (44, 160, 44), (152, 223, 138),
-# Red - (214, 39, 40), (255, 152, 150), 
-# Purple - (148, 103, 189), (197, 176, 213),
-# Brown - (140, 86, 75), (196, 156, 148), 
-# Pink - (227, 119, 194), (247, 182, 210),
-# Gray - (127, 127, 127), (199, 199, 199), 
-# Yellow - (188, 189, 34), (219, 219, 141),
-# Light blue - (23, 190, 207), (158, 218, 229),
+def map_rgb_to_01(tableau20):
+    """
+    Map RGB values to the [0, 1]
+    """
+    for i in range(len(tableau20)):
+        r, g, b = tableau20[i]
+        tableau20[i] = (r / 255., g / 255., b / 255.)
 
-darkblue = [(31, 119, 180), (174, 199, 232)]
-orange = [(255, 127, 14), (255, 187, 120)]
-green = [(44, 160, 44), (152, 223, 138)]
-red = [(214, 39, 40), (255, 152, 150)]
-purple = [(148, 103, 189), (197, 176, 213)]
-brown = [(140, 86, 75), (196, 156, 148)]
-pink = [(227, 119, 194), (247, 182, 210)]
-gray = [(127, 127, 127), (199, 199, 199)]
-yellow = [(188, 189, 34), (219, 219, 141)]
-lightblue = [(23, 190, 207), (158, 218, 229)]
-
-# Color grouped boxplots
-def setBoxColors(bp, tableau20):
+def setBoxColors(bp, tableau20, addfliers=False):
+    """
+    Color grouped boxplots
+    """
     n = len(bp['boxes'])
     for i in range(n):
         j = i
@@ -80,47 +72,46 @@ def setBoxColors(bp, tableau20):
                  markerfacecolor=[0.3, 0.3, 0.3],
                  markeredgecolor=[0.3, 0.3, 0.3],
                  markersize=3)
-        #plt.setp(bp['fliers'][i], marker=".",
-        #         markerfacecolor=[0.3, 0.3, 0.3],
-        #         markeredgecolor=[0.3, 0.3, 0.3],
-        #         markersize=4)
+        if addfliers:
+            plt.setp(bp['fliers'][i], marker=".",
+                     markerfacecolor=[0.3, 0.3, 0.3],
+                     markeredgecolor=[0.3, 0.3, 0.3],
+                     markersize=4)
+
 
 def make_figure(df, supp, output):
+    # Define colors for methods
     mthds = ["ASTRID-ws",
              "ASTER-wh",
              "TQMC-wh_n2",
              "TQMC-n2",
              "TQMC-wh_n0"]
-
-    tableau20 = []
-    tableau20 += orange
-    tableau20 += purple
-    tableau20 += darkblue
-    tableau20 += brown
-    tableau20 += pink
-    print()
-
-    # Map RGB values to the [0, 1]
-    for i in range(len(tableau20)):
-        r, g, b = tableau20[i]
-        tableau20[i] = (r / 255., g / 255., b / 255.)
-
     n_mthds = len(mthds)
 
+    tableau20 = []
+    tableau20 += orange_pair
+    tableau20 += purple_pair
+    tableau20 += darkblue_pair
+    tableau20 += brown_pair
+    tableau20 += pink_pair
+    map_rgb_to_01(tableau20)
+
+    # Create a figure
     fig = plt.figure(figsize=(7, 7.125))   # x,y
     gs = gridspec.GridSpec(3, 1)  # nrows, ncols
-    ax00 = plt.subplot(gs[0, 0])  ## changing number of seq len
+    ax00 = plt.subplot(gs[0, 0])
     ax10 = plt.subplot(gs[1, 0])
     ax20 = plt.subplot(gs[2, 0])
     axs = [ax00, ax10, ax20]
 
-    # Plot error for varying number of base pairs
-    nbpss = [200, 400, 800, 1600]
-    ngens = [1000, 200, 50]
+    ngens = [1000, 200, 50]        # Subplots are number of genes
+    nbpss = [200, 400, 800, 1600]  # Box plots grouped by varying number of base pairs
     n_nbps = len(nbpss)
 
     for sub_ind, ngen in enumerate(ngens):
         ax = axs[sub_ind]
+
+        # Set up data for box plot
         sers = [None] * n_nbps
         nrps = [None] * n_nbps
         for j, nbps in enumerate(nbpss):
@@ -130,11 +121,14 @@ def make_figure(df, supp, output):
             for k, mthd in enumerate(mthds):
                 #print(mthd)
                 if (mthd == "TQMC-n2"):
+                    # IMPORTANT: TQMC-n2 doesn't use support
+                    # and bs support means unrefined trees
+                    # that are internally refined (better than abayes)!
                     ydf = df[(df["NBPS"] == nbps) &
                              (df["NGEN"] == ngen) &
                              (df["MTHD"] == mthd) &
                              (df["SUPP"] == "bs")]
-                else: 
+                else:
                     ydf = df[(df["NBPS"] == nbps) &
                              (df["NGEN"] == ngen) &
                              (df["MTHD"] == mthd) &
@@ -142,10 +136,15 @@ def make_figure(df, supp, output):
 
                 ydf = ydf.sort_values(by=["REPL"], ascending=True)
                 ser = ydf.SERF.values * 100
-                #print(ser)
                 sers[j].append(list(ser))
                 nrps[j].append(len(ser))
 
+        # Check data
+        for j, nbps in enumerate(nbpss):
+            if nrps[j][0] != 50:
+                sys.stdout.write("%d genes, %d bp - Found %d replicates!\n" % (ngen, nbps, nrps[j][0]))
+
+        # Create box plot
         xs = []
         ys = []
         inds = nbpss
@@ -173,31 +172,25 @@ def make_figure(df, supp, output):
         # Set labels
         ax.set_title(letters[sub_ind] + str("   %d genes" % ngen),
                      loc="left", x=0.0, y=1.0, fontsize=10.5)
-        #ax.set_title(upperletters[sub_ind] + str("   %d genes" % ngen),
-        #             loc="left", fontsize=11)
         ax.set_ylabel(r"\% RF Error", fontsize=11)  
 
         ax.tick_params(axis='x', labelsize=10)
         ax.tick_params(axis='y', labelsize=9)
-    
 
         if sub_ind == 0:
-            mytitle = "Impact of Number of Taxa"
+            mytitle = str("S100 Data (%s support)" % supp)
             #ax.set_title(mytitle, 
             #             loc="center", y=1.1, fontsize=12)
         elif sub_ind == 2:
             ax.set_xlabel("Sequence Length", fontsize=12)
-            
 
         # Set tick labels
         ax.set_xlim(xminor[0]-1, xminor[-1]+1)
         ax.set_xticks(xmajor)
         test = []
         for j, nbps in enumerate(nbpss):
-            if nrps[j][0] != 50:
-                sys.stdout.write("nbps %d - Found %d replicates!\n" % (nbps, nrps[j][0]))
             test.append(r"%d" % nbps)
-
+            #test.append(r"%d (%d)" % (nbps, nrps[j][0]))
         ax.set_xticklabels(test)
 
         # Set dashed lines
@@ -208,6 +201,7 @@ def make_figure(df, supp, output):
         else:
             yticks = list(range(0, 35 + 1, 5))
 
+        # Add dashed lines
         ymax = yticks[-1]
         ymin = -0.05 * ymax
         ax.set_ylim(ymin, ymax)
