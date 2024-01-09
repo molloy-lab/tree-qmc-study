@@ -59,6 +59,7 @@ def process_false_negatives(ttre_bset, etre1_bset, etre2_bset):
     fn_tt = [] # first holds pp1, second holds q1
     fn_e1 = []
     fn_e2 = []
+    count = 0
 
     for br in ttre_bset:
         # Process tree 1
@@ -80,10 +81,14 @@ def process_false_negatives(ttre_bset, etre1_bset, etre2_bset):
 
         # Add false negative info
         if e1_miss or e2_miss:
+            count += 1
             # Save information if FP in et1 OR et2
             fn_tt.append(ttre_bset[br]["supp"])
             fn_e1.append(e1_supp)
             fn_e2.append(e2_supp)
+
+    if not count:
+        return "\"\",\"\",\"\",\"\",\"\",\"\"" 
 
     fn_tt = numpy.array(fn_tt, dtype=object)
     fn_e1 = numpy.array(fn_e1, dtype=object)
@@ -102,6 +107,7 @@ def process_false_negatives(ttre_bset, etre1_bset, etre2_bset):
 def process_false_positives(ttre_bset, etre1_bset, etre2_bset):
     fp_e1 = []
     fp_e2 = []
+    count = 0
 
     brs = set(etre1_bset.keys()).union(etre2_bset.keys())
 
@@ -111,6 +117,7 @@ def process_false_positives(ttre_bset, etre1_bset, etre2_bset):
             tmp = ttre_bset[br]
         except KeyError:
             # False positive branch so grab support
+            count += 1
             try:
                 fp_e1.append(etre1_bset[br]["supp"])
             except KeyError:
@@ -120,6 +127,9 @@ def process_false_positives(ttre_bset, etre1_bset, etre2_bset):
                 fp_e2.append(etre2_bset[br]["supp"])
             except KeyError:
                 fp_e2.append(["NA", "NA"])
+
+    if not count:
+        return "\"\",\"\",\"\",\"\""
 
     fp_e1 = numpy.array(fp_e1, dtype=object)
     fp_e2 = numpy.array(fp_e2, dtype=object)

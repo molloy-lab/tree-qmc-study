@@ -14,8 +14,8 @@ RATES=( "0.000001" )              # Speciation rate
 
 # GENERAL PARAMETERS
 REPLS=( $(seq -f "%02g" 1 50) )  # Replicates
-SUPPS=( "sh" "abayes" )
-NGENS=( 1000 200 50 )
+SUPPS=( "abayes" )
+NGENS=( 1000 )
 
 for NTAX in ${NTAXS[@]}; do
     for HGHT in ${HGHTS[@]}; do
@@ -27,12 +27,14 @@ for NTAX in ${NTAXS[@]}; do
 MODL="model.$NTAX.$HGHT.$RATE.$REPL.$SUPP.$NGEN"
 echo "Submitting $MODL ..."
 
+NAME="l1.$MODL"
+
 sbatch \
-    --job-name="itoj1.$MODL" \
-    --output="itoj1.$MODL.%j.out" \
-    --error="itoj1.$MODL.%j.err" \
+    --job-name="$NAME" \
+    --output="$NAME.%j.out" \
+    --error="$NAME.%j.err" \
     --export=NTAX="$NTAX",HGHT="$HGHT",RATE="$RATE",REPL="$REPL",SUPP="$SUPP",NGEN="$NGEN" \
-itoj1_drive.sbatch
+l1_drive.sbatch
 
 #exit
                     done
