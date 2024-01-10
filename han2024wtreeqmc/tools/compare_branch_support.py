@@ -143,7 +143,56 @@ def process_false_positives(ttre_bset, etre1_bset, etre2_bset):
     return ','.join(data)
 
 
-def compare_support_for_false_branches(ttre, etre1, etre2):
+def process_true_positives(ttre_bset, etre1_bset, etre2_bset):
+    tp_tt = [] # first holds pp1, second holds q1
+    tp_e1 = []
+    tp_e2 = []
+    count = 0
+
+    for br in ttre_bset:
+        # Process tree 1
+        e1_miss = True
+        try:
+            e1_supp = etre1_bset[br]["supp"]
+            e1_miss = False
+        except KeyError:
+            e1_supp = ["NA", "NA"]
+
+        # Process tree 2
+        e2_supp = ["NA", "NA"]
+        e2_miss = True
+        try:
+            e2_supp= etre2_bset[br]["supp"]
+            e2_miss = False
+        except KeyError:
+            pass
+
+        # Add false negative info
+        if (not e1_miss) or (not e2_miss):
+            count += 1
+            # Save information if TP in et1 OR et2
+            tp_tt.append(ttre_bset[br]["supp"])
+            tp_e1.append(e1_supp)
+            tp_e2.append(e2_supp)
+
+    if not count:
+        return "\"\",\"\",\"\",\"\",\"\",\"\"" 
+
+    tp_tt = numpy.array(tp_tt, dtype=object)
+    tp_e1 = numpy.array(tp_e1, dtype=object)
+    tp_e2 = numpy.array(tp_e2, dtype=object)
+
+    data = []
+    for i in range(tp_tt.shape[1]):
+        data.append('\"' + ','.join(tp_tt[:,i]) + '\"')
+        data.append('\"' + ','.join(tp_e1[:,i]) + '\"')
+        data.append('\"' + ','.join(tp_e2[:,i]) + '\"')
+
+    #return '\n'.join(data)
+    return ','.join(data)
+
+
+def compare_branch_support(ttre, etre1, etre2):
     # Suppress unifurcations
     ttre.suppress_unifurcations()
     etre2.suppress_unifurcations()
@@ -167,8 +216,9 @@ def compare_support_for_false_branches(ttre, etre1, etre2):
 
     fn_data = process_false_negatives(ttre_bset, etre1_bset, etre2_bset)
     fp_data = process_false_positives(ttre_bset, etre1_bset, etre2_bset)
+    tp_data = process_true_positives(ttre_bset, etre1_bset, etre2_bset)
 
-    return [fn_data, fp_data]
+    return [fn_data, fp_data, tp_data]
 
 
 def main(args):
@@ -193,7 +243,7 @@ def main(args):
         etre2 = treeswift.read_tree(line, "newick")
 
     # Compare two trees
-    [fn, fp] = compare_support_for_false_branches(ttre, etre1, etre2)
+    [fn, fp, tp] = compare_branch_support(ttre, etre1, etre2)
 
     # Write CSV to standard output
     # PREFIX,
@@ -201,9 +251,11 @@ def main(args):
     # FN_TT_QS, FN_E1_QS, FN_E2_QS
     # FP_E1_PP, FP_E2_PP
     # FP_E1_QS, FP_E2_QS
+    # TP_TT_PP, TP_E1_PP, TP_E2_PP
+    # TP_TT_QS, TP_E1_QS, TP_E2_QS
 
-    #sys.stdout.write("%s\n%s,\n\n%s\n" % (prefix, fn, fp))
-    sys.stdout.write("%s%s,%s\n" % (prefix, fn, fp))
+    #sys.stdout.write("%s\n%s\n\n%s\n\n%s\n" % (prefix, fn, fp, tp))
+    sys.stdout.write("%s%s,%s,%s\n" % (prefix, fn, fp, tp))
 
 
 if __name__ == "__main__":
