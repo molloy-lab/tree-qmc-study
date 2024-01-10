@@ -19,7 +19,7 @@ SUPP="abayes"
 for NBPS in ${NBPSS[@]}; do
     for NGEN in ${NGENS[@]}; do
         echo "Working on $NBPS bps $NGEN gen"
-        bash i3_compare_support_for_false_branches.sh  $REPL $NBPS $SUPP $NGEN
+        bash i3_compare_branch_support.sh  $REPL $NBPS $SUPP $NGEN
     done
 done
 
