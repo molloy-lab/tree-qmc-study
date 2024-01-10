@@ -73,19 +73,24 @@ def setBoxColors(bp, tableau20):
         #         markersize=4)
 
 def make_figure(df, output):
+    namemap = {}
+    namemap["TREE-QMC-wf_n0"] = "TQMC-n0"
+    namemap["TREE-QMC-wf_n1_shared"] = "TQMC-n1 (shared)"
+    namemap["TREE-QMC-wf_n1"] = "TQMC-n1"
+    namemap["TREE-QMC-wf_n2_shared"] = "TQMC-n2 (shared)"
+    namemap["TREE-QMC-wf_n2"] = "TQMC-n2"
+    namemap["Asteroid"] = "Asteroid"
+    namemap["ASTER"] = "ASTER"
+    namemap["ASTRID"] = "ASTRID"
+
     mthds = ["TREE-QMC-wf_n0",
-             "TREE-QMC-wf_n1_shared",
+             "TREE-QMC-wf_n2_shared",
              "TREE-QMC-wf_n2",
              "Asteroid",
              "ASTER",
              "ASTRID"]
 
-    names = ["TQMC-n0",
-             "TQMC-n1 (shared)",
-             "TQMC-n2",
-             "Asteroid",
-             "ASTER",
-             "ASTRID"]
+    names = [namemap[mthd] for mthd in mthds]
 
     tableau20 = []
     tableau20 += brown
@@ -103,8 +108,8 @@ def make_figure(df, output):
 
     fig = plt.figure(figsize=(8, 4.75))  # x,y
     gs = gridspec.GridSpec(2, 1)  # nrows, ncols
-    ax00 = plt.subplot(gs[0, 0])  # changing ntax FN
-    ax10 = plt.subplot(gs[1, 0])  # changing ntax FP
+    ax00 = plt.subplot(gs[0, 0])  # FN
+    ax10 = plt.subplot(gs[1, 0])  # FP
 
     for doit in [0, 1]:
         if doit == 0:
@@ -112,8 +117,8 @@ def make_figure(df, output):
         else:
             ax = ax10
 
+        # Collect data
         n = len(modls)
-
         sers = [None] * n
         nrps = [None] * n
         for j, modl in enumerate(modls):
@@ -125,12 +130,13 @@ def make_figure(df, output):
                 ydf = ydf.sort_values(by=["REPL"], ascending=True)
 
                 if doit == 0:
-                    ser = ydf.SEFNR.values
+                    ser = ydf.SEFNR.values * 100
                 else:
-                    ser = ydf.SEFPR.values
+                    ser = ydf.SEFPR.values * 100
                 sers[j].append(list(ser))
                 nrps[j].append(len(ser))
 
+        # Plot data
         xs = []
         ys = []
         inds = modls
@@ -161,9 +167,9 @@ def make_figure(df, output):
         ax.set_title(letters[doit],
                  loc="left", fontsize=11)
         if doit == 0:
-            ax.set_ylabel(r"FN Error", fontsize=11)  
+            ax.set_ylabel(r"\% FN Error", fontsize=11)  
         else:
-            ax.set_ylabel(r"FP Error", fontsize=11)
+            ax.set_ylabel(r"\% FP Error", fontsize=11)
             ax.set_xlabel(r"Number of Genes", fontsize=12)
 
         ax.tick_params(axis='x', labelsize=10)
@@ -179,11 +185,9 @@ def make_figure(df, output):
         ax.set_xticklabels(test)
 
         if doit == 0:
-            yticks = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-            yticks = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+            yticks = range(0, 81, 10)
         else:
-            yticks = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-            yticks = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+            yticks = range(0, 81, 10)
         ydraw = yticks
         ymax = yticks[-1]
 
