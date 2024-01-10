@@ -31,9 +31,8 @@ def get_branch_set(tree):
     bset = {}
 
     leaves = sorted([leaf.label for leaf in tree.traverse_leaves()])
-    nl = len(leaves)
     root = leaves[0]  # Randomly pick root
-
+    nl = len(leaves)
     leaf_set = set(leaves)
 
     for node in tree.traverse_postorder():
@@ -61,7 +60,9 @@ def process_false_negatives(ttre_bset, etre1_bset, etre2_bset):
     fn_e2 = []
     count = 0
 
-    for br in ttre_bset:
+    brs = sorted([key for key in ttre_bset.keys()])
+
+    for br in brs:
         # Process tree 1
         e1_miss = True
         try:
@@ -110,6 +111,7 @@ def process_false_positives(ttre_bset, etre1_bset, etre2_bset):
     count = 0
 
     brs = set(etre1_bset.keys()).union(etre2_bset.keys())
+    brs = sorted(list(brs))
 
     for br in brs:
         try:
@@ -149,7 +151,9 @@ def process_true_positives(ttre_bset, etre1_bset, etre2_bset):
     tp_e2 = []
     count = 0
 
-    for br in ttre_bset:
+    brs = sorted([key for key in ttre_bset.keys()])
+
+    for br in brs:
         # Process tree 1
         e1_miss = True
         try:
