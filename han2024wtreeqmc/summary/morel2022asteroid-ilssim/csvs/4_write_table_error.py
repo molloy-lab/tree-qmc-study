@@ -65,9 +65,9 @@ if __name__ == "__main__":
     sys.stdout.write("\\begin{table}[!h]\n")
     sys.stdout.write("\\caption[")
     if emet == "FNR":
-        sys.stdout.write("Species tree error (FN) for Asteroid simulated data]{\\textbf{Species tree (FN) error rate for Asteroid simulated data.} ")
+        sys.stdout.write("Species tree error (FN) for Asteroid data]{\\textbf{Species tree (FN) error rate for Asteroid data.} ")
     else:
-        sys.stdout.write("Species tree error (FP) for Asteroid simulated data]{\\textbf{Species tree (FP) error rate for Asteroid simulated data.} ")
+        sys.stdout.write("Species tree error (FP) for Asteroid data]{\\textbf{Species tree (FP) error rate for Asteroid data.} ")
     sys.stdout.write("Mean error rate is given across 50 replicates for each method.}\n")
     #sys.stdout.write("\\label{tab:}\n")
     sys.stdout.write("\\centering\n")

@@ -26,7 +26,7 @@ run_tests_helper <- function(df, mthd, ntax, ngen, nbps, blsc, psiz, miss, name,
     if (emet == "FNR") { 
         mthd1 <- xdf$TQMCn2xFNR
         if (mthd == "ASTER") { mthd2 <- xdf$ASTERxFNR } 
-        else if (mthd == "wASTRID") { mthd2 <- xdf$WASTRIDxFNR } 
+        else if (mthd == "ASTRID") { mthd2 <- xdf$WASTRIDxFNR } 
         else if (mthd == "ASTEROID") { mthd2 <- xdf$ASTEROIDxFNR }
         else if (mthd == "TREE-QMC-n2-shared") { mthd2 <- xdf$TQMCn2sharedxFNR }
         else if (mthd == "TREE-QMC-n1") { mthd2 <- xdf$TQMCn1xFNR }
@@ -38,7 +38,7 @@ run_tests_helper <- function(df, mthd, ntax, ngen, nbps, blsc, psiz, miss, name,
     } else if (emet == "FPR") {
         mthd1 <- xdf$TQMCn2xFPR
         if (mthd == "ASTER") { mthd2 <- xdf$ASTERxFPR }
-        else if (mthd == "wASTRID") { mthd2 <- xdf$WASTRIDxFPR }
+        else if (mthd == "ASTRID") { mthd2 <- xdf$WASTRIDxFPR }
         else if (mthd == "ASTEROID") { mthd2 <- xdf$ASTEROIDxFPR }
         else if (mthd == "TREE-QMC-n2-shared") { mthd2 <- xdf$TQMCn2sharedxFPR }
         else if (mthd == "TREE-QMC-n1") { mthd2 <- xdf$TQMCn1xFPR } 
@@ -140,7 +140,7 @@ run_tests_helper <- function(df, mthd, ntax, ngen, nbps, blsc, psiz, miss, name,
 
 
 # MAIN FUNCTION
-mthds <- c("ASTEROID", "ASTER", "wASTRID",
+mthds <- c("ASTEROID", "ASTER", "ASTRID",
            "TREE-QMC-n2-shared", "TREE-QMC-n1", "TREE-QMC-n0")
 varys <- c("varypsiz", "varyntax", "varyngen",
            "varynbps", "varyblsc", "varymiss")
@@ -155,8 +155,8 @@ count_tests <- 0
 for (mthd in mthds) {
     message("\\begin{table}[!h]")
     message(paste("\\caption[Statistical testing for TREE-QMC-n2 vs", mthd)) 
-    message("on Asteroid simulated data]{\\textbf{Testing for differences between TREE-QMC-n2 vs")
-    message(paste(mthd, "on the Asteroid simulated data.} BET is the number of replicates for which"))
+    message("on Asteroid data]{\\textbf{Testing for differences between TREE-QMC-n2 vs")
+    message(paste(mthd, "on the Asteroid data.} BET is the number of replicates for which"))
     message(paste("TREE-QMC-n2 has lower species tree error and thus is better than ", mthd, ", and WOR is the opposite." , sep="")) 
     message("Significance is evaluated using Wilcoxon signed-rank tests on the error rates.")
     message("The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.")
@@ -276,8 +276,8 @@ exit()
 
 \begin{table}[!h]
 \caption[Statistical testing for TREE-QMC-n2 vs ASTEROID
-on Asteroid simulated data]{\textbf{Testing for differences between TREE-QMC-n2 vs
-ASTEROID on the Asteroid simulated data.} BET is the number of replicates for which
+on Asteroid data]{\textbf{Testing for differences between TREE-QMC-n2 vs
+ASTEROID on the Asteroid data.} BET is the number of replicates for which
 TREE-QMC-n2 has lower species tree error and thus is better than ASTEROID, and WOR is the opposite.
 Significance is evaluated using Wilcoxon signed-rank tests on the error rates.
 The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.
@@ -387,8 +387,8 @@ for the  312 tests made on the Asteroid data.
 
 \begin{table}[!h]
 \caption[Statistical testing for TREE-QMC-n2 vs ASTER
-on Asteroid simulated data]{\textbf{Testing for differences between TREE-QMC-n2 vs
-ASTER on the Asteroid simulated data.} BET is the number of replicates for which
+on Asteroid data]{\textbf{Testing for differences between TREE-QMC-n2 vs
+ASTER on the Asteroid data.} BET is the number of replicates for which
 TREE-QMC-n2 has lower species tree error and thus is better than ASTER, and WOR is the opposite.
 Significance is evaluated using Wilcoxon signed-rank tests on the error rates.
 The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.
@@ -497,10 +497,10 @@ for the  312 tests made on the Asteroid data.
 \end{table}
 
 \begin{table}[!h]
-\caption[Statistical testing for TREE-QMC-n2 vs wASTRID
-on Asteroid simulated data]{\textbf{Testing for differences between TREE-QMC-n2 vs
-wASTRID on the Asteroid simulated data.} BET is the number of replicates for which
-TREE-QMC-n2 has lower species tree error and thus is better than wASTRID, and WOR is the opposite.
+\caption[Statistical testing for TREE-QMC-n2 vs ASTRID
+on Asteroid data]{\textbf{Testing for differences between TREE-QMC-n2 vs
+ASTRID on the Asteroid data.} BET is the number of replicates for which
+TREE-QMC-n2 has lower species tree error and thus is better than ASTRID, and WOR is the opposite.
 Significance is evaluated using Wilcoxon signed-rank tests on the error rates.
 The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.
 MC indicates significance after Bonferroni correction, i.e., $p < $ 0.05 / 312 = 2e-04
@@ -510,7 +510,7 @@ for the  312 tests made on the Asteroid data.
 \scriptsize
 \begin{tabular}{l r l r r r l c c c l l c}
 \toprule
-\multicolumn{11}{c}{\textbf{TREE-QMC-n2  vs  wASTRID }} \\
+\multicolumn{11}{c}{\textbf{TREE-QMC-n2  vs  ASTRID }} \\
 \midrule
 & & & BET & WOR & TIE & & p-val & sig & MC & note \\
 \midrule
@@ -609,8 +609,8 @@ for the  312 tests made on the Asteroid data.
 
 \begin{table}[!h]
 \caption[Statistical testing for TREE-QMC-n2 vs TREE-QMC-n2-shared
-on Asteroid simulated data]{\textbf{Testing for differences between TREE-QMC-n2 vs
-TREE-QMC-n2-shared on the Asteroid simulated data.} BET is the number of replicates for which
+on Asteroid data]{\textbf{Testing for differences between TREE-QMC-n2 vs
+TREE-QMC-n2-shared on the Asteroid data.} BET is the number of replicates for which
 TREE-QMC-n2 has lower species tree error and thus is better than TREE-QMC-n2-shared, and WOR is the opposite.
 Significance is evaluated using Wilcoxon signed-rank tests on the error rates.
 The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.
@@ -720,8 +720,8 @@ for the  312 tests made on the Asteroid data.
 
 \begin{table}[!h]
 \caption[Statistical testing for TREE-QMC-n2 vs TREE-QMC-n1
-on Asteroid simulated data]{\textbf{Testing for differences between TREE-QMC-n2 vs
-TREE-QMC-n1 on the Asteroid simulated data.} BET is the number of replicates for which
+on Asteroid data]{\textbf{Testing for differences between TREE-QMC-n2 vs
+TREE-QMC-n1 on the Asteroid data.} BET is the number of replicates for which
 TREE-QMC-n2 has lower species tree error and thus is better than TREE-QMC-n1, and WOR is the opposite.
 Significance is evaluated using Wilcoxon signed-rank tests on the error rates.
 The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.
@@ -831,8 +831,8 @@ for the  312 tests made on the Asteroid data.
 
 \begin{table}[!h]
 \caption[Statistical testing for TREE-QMC-n2 vs TREE-QMC-n0
-on Asteroid simulated data]{\textbf{Testing for differences between TREE-QMC-n2 vs
-TREE-QMC-n0 on the Asteroid simulated data.} BET is the number of replicates for which
+on Asteroid data]{\textbf{Testing for differences between TREE-QMC-n2 vs
+TREE-QMC-n0 on the Asteroid data.} BET is the number of replicates for which
 TREE-QMC-n2 has lower species tree error and thus is better than TREE-QMC-n0, and WOR is the opposite.
 Significance is evaluated using Wilcoxon signed-rank tests on the error rates.
 The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.
