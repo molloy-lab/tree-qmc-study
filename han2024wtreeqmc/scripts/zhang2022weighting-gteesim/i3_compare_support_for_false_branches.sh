@@ -22,24 +22,26 @@ cd $DATADIR
 MTHD1="aster_h_t16"
 MTHD2="wtreeqmc_wh_n2"
 
-STRE_TRUE="$DATADIR/true_stree_${SUPP}_${NBPS}bps_${NGEN}gen-ah-annotated.tre"
-STRE_EST1="$DATADIR/${MTHD1}_${SUPP}_${NBPS}bps_${NGEN}gen-ah-annotated.tre"
-STRE_EST2="$DATADIR/${MTHD2}_${SUPP}_${NBPS}bps_${NGEN}gen-ah-annotated.tre"
-OUTF="$DATADIR/false_branches_${MTHD1}_vs_${MTHD2}_for_${SUPP}_${NBPS}bps_${NGEN}gen-ah-annotated.csv"
+for QSUP in "qsupp-wh" "qsupp-wn"; do
+    STRE_TRUE="$DATADIR/true_stree_${SUPP}_${NBPS}bps_${NGEN}gen_${QSUP}.tre"
+    STRE_EST1="$DATADIR/${MTHD1}_${SUPP}_${NBPS}bps_${NGEN}gen_${QSUP}.tre"
+    STRE_EST2="$DATADIR/${MTHD2}_${SUPP}_${NBPS}bps_${NGEN}gen_${QSUP}.tre"
+    CSVF="$DATADIR/false_branches_${MTHD1}_vs_${MTHD2}_for_${SUPP}_${NBPS}bps_${NGEN}gen_${QSUP}.csv"
 
-for TREE in $STRE_TRUE $STRE_EST1 $STRE_EST2; do
-    if [ ! -e $TREE ]; then
-        echo "$TREE is missing!"
-	exit
-    fi
+    for TREE in $STRE_TRUE $STRE_EST1 $STRE_EST2; do
+        if [ ! -e $TREE ]; then
+            echo "$TREE is missing!"
+	    exit
+        fi
+        if [ -z $(grep ";" $TREE) ]; then
+            echo "$TREE is empty!"
+	    exit
+        fi
+    done
 
-    if [ -z $(grep ";" $TREE) ]; then
-        echo "$TREE is empty!"
-	exit
+    if [ ! -e $CSVF ]; then
+        python3 $COMPARE -t $STRE_TRUE -e1 $STRE_EST1 -e2 $STRE_EST2 \
+		         -p "$MYMODL,$MTHD1,$MTHD2" &> $CSVF
     fi
 done
-
-if [ ! -e $OUTF ]; then
-    python3 $COMPARE -t $STRE_TRUE -e1 $STRE_EST1 -e2 $STRE_EST2 -p $MYMODL &> $OUTF
-fi
 

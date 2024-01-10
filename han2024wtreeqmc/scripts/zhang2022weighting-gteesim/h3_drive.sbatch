@@ -13,7 +13,16 @@
 lscpu
 cat /proc/meminfo
 
-echo "Running branch_support_..."
-bash h3_compute_quartet_score.sh  $REPL $NBPS $SUPP $NGEN
+MTHDS=( "true_stree" \
+        "aster_h_t16" \
+        "wastrid_s" \
+        "wtreeqmc_wf_n2" \
+        "wtreeqmc_wh_n2" \
+        "wtreeqmc_wh_n0" )
+
+echo "Running branch_support estimation..."
+for MTHD in ${MTHDS[@]}; do
+    bash h3_compute_quartet_score.sh  $REPL $NBPS $SUPP $NGEN $MTHD
+done
 echo "done"
 

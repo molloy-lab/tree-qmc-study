@@ -5,9 +5,8 @@
 # STUDY PARAMETERS
 REPLS=( $(seq -f "%02g" 1 50) )   # Replicates
 NBPSS=( 200 400 800 1600 )
-SUPPS=( "bs" "abayes" )
+SUPPS=( "abayes" )
 NGENS=( 50 200 500 1000 )
-
 
 for NBPS in ${NBPSS[@]}; do
     for REPL in ${REPLS[@]}; do
