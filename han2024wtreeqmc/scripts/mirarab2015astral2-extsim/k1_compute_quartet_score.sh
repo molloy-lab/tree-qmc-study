@@ -6,9 +6,10 @@ RATE=$3
 REPL=$4
 SUPP=$5
 NGEN=$6
+MTHD=$7
 
 MODL="model.$NTAX.$HGHT.$RATE"
-MYMODL="$NTAX,$HGHT,$RATE,$REPL,$SUPP,$NGEN"
+MYMODL="$NTAX,$HGHT,$RATE,$REPL,$SUPP,$NGEN,$MTHD"
 
 # Define directories
 GROUPDIR="/fs/cbcb-lab/ekmolloy"
@@ -37,54 +38,49 @@ if [ ! -e $GTRE_FILE ]; then
     head -n${NGEN} $GTRE > $GTRE_FILE
 fi
 
-MYMTHDS=( "aster_h_t16" \
-	  "wtreeqmc_wh_n2" )
-
-MYSTRE="true_stree_${SUPP}_${NGEN}gen"
-if [ ! -e $MYSTRE.tre ]; then
-    if [ ! -e $STRE_TRUE ]; then
-        echo "$DATADIR/$STRE_TRUE is missing!"
-    else
-        if [ -z $(grep ";" $STRE_TRUE) ]; then
-            echo "$DATADIR/$STRE_TRUE is empty!"
-        else
-            # Run weighted ASTRAL
-            $ASTERH $ROPTS \
-                    -u 2 -t 16 \
-                    -i $GTRE_FILE \
-                    -c $STRE_TRUE \
-                    -o $MYSTRE-ah-annotated.tre \
-                    &> $MYSTRE-ah-annotated.log
-
-            # Write to CSV file
-            MYQSCR="$(grep "Score:" $MYSTRE-ah-annotated.log | awk '{print $2}')"
-            echo "$MYMODL,TRUE,$MYQSCR" > ${MYSTRE}_ah_quartet_score.csv
-        fi
-    fi
+if [ $MTHD == "true_stree" ]; then
+    NAME="${MTHD}_${SUPP}_${NGEN}gen"
+    INPUT=$STRE_TRUE
+else
+    NAME="${MTHD}_${SUPP}_${NGEN}gen"
+    INPUT="$NAME.tre"
 fi
 
-for MYMTHD in ${MYMTHDS[@]}; do
-    MYSTRE="${MYMTHD}_${SUPP}_${NGEN}gen"
-    if [ ! -e $MYSTRE-ah-annotated.tre ]; then
-	if [ ! -e $MYSTRE.tre ]; then
-            echo "$DATADIR/$MYSTRE.tre is missing!"
-        else
-            if [ -z $(grep ";" $MYSTRE.tre) ]; then
-                echo "$DATADIR/$MYSTRE.tre is empty!"
-            else
-                # Run weighted ASTRAL
-                $ASTERH $ROPTS \
-                    -u 2 -t 16 \
-                    -i $GTRE_FILE \
-                    -c $MYSTRE.tre \
-                    -o $MYSTRE-ah-annotated.tre \
-                    &> $MYSTRE-ah-annotated.log
+if [ ! -e $INPUT ]; then
+    echo "$INPUT is missing!"
+    exit
+fi    
 
-                # Write to CSV file
-                MYQSCR="$(grep "Score:" $MYSTRE-ah-annotated.log | awk '{print $2}')"
-                echo "$MYMODL,$MYMTHD,$MYQSCR" > ${MYSTRE}_ah_quartet_score.csv
-            fi
-        fi
-    fi
-done
+if [ -z $(grep ";" $INPUT) ]; then
+    echo "$INPUT is empty!"
+    exit
+fi
+
+QSUP="qsupp-wh"
+OUTPUT="${NAME}_${QSUP}"
+if [ ! -e $OUTPUT.tre ]; then
+    # Run weighted ASTRAL
+    $ASTERH $ROPTS \
+            --scoring -u 2 -t 16 \
+            -i $GTRE_FILE \
+            -c $INPUT \
+            -o $OUTPUT.tre \
+            &> $OUTPUT.log
+    MYQS="$(grep "Score:" $OUTPUT.log | awk '{print $2}')"
+    echo "$MYMODL,$QSUP,$MYQS" > ${OUTPUT}_quartet_score.csv
+
+fi
+
+QSUP="qsupp-wn"
+OUTPUT="${NAME}_${QSUP}"
+if [ ! -e $OUTPUT.tre ]; then
+    # Run weighted ASTRAL
+    $ASTER --scoring -u 2 -t 16 \
+            -i $GTRE_FILE \
+            -c $INPUT \
+            -o $OUTPUT.tre \
+            &> $OUTPUT.log
+    MYQS="$(grep "Score:" $OUTPUT.log | awk '{print $2}')"
+    echo "$MYMODL,$QSUP,$MYQS" > ${OUTPUT}_quartet_score.csv
+fi
 

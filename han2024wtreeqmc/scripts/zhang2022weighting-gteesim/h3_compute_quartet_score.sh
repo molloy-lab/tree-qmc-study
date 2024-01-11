@@ -62,7 +62,7 @@ OUTPUT="${NAME}_${QSUP}"
 if [ ! -e $OUTPUT.tre ]; then
     # Run weighted ASTRAL
     $ASTERH $ROPTS \
-            -u 2 -t 16 \
+            --scoring -u 2 -t 16 \
             -i $GTRE_FILE \
             -c $INPUT \
             -o $OUTPUT.tre \
@@ -76,7 +76,7 @@ QSUP="qsupp-wn"
 OUTPUT="${NAME}_${QSUP}"
 if [ ! -e $OUTPUT.tre ]; then
     # Run weighted ASTRAL
-    $ASTER -u 2 -t 16 \
+    $ASTER --scoring -u 2 -t 16 \
             -i $GTRE_FILE \
             -c $INPUT \
             -o $OUTPUT.tre \
