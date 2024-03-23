@@ -2,7 +2,6 @@ import pandas
 import numpy
 import sys
 
-sys.exit("DONE RUNNING")
 
 def report_stats(df):
     repls = range(3000, 3050)

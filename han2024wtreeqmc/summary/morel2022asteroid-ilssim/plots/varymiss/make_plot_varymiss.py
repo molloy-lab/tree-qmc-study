@@ -74,21 +74,21 @@ def setBoxColors(bp, tableau20):
 
 def make_figure(df, output):
     namemap = {}
-    namemap["TREE-QMC-wf_n0"] = "TQMC-n0"
-    namemap["TREE-QMC-wf_n1_shared"] = "TQMC-n1 (shared)"
-    namemap["TREE-QMC-wf_n1"] = "TQMC-n1"
-    namemap["TREE-QMC-wf_n2_shared"] = "TQMC-n2 (shared)"
-    namemap["TREE-QMC-wf_n2"] = "TQMC-n2"
-    namemap["Asteroid"] = "Asteroid"
-    namemap["ASTER"] = "ASTER"
-    namemap["ASTRID"] = "ASTRID"
+    namemap["wtreeqmc_wf_n0"] = "TQMC-n0"
+    namemap["wtreeqmc_wf_n1_shared"] = "TQMC-n1 (shared)"
+    namemap["wtreeqmc_wf_n1"] = "TQMC-n1"
+    namemap["wtreeqmc_wf_n2_shared"] = "TQMC-n2 (shared)"
+    namemap["wtreeqmc_wf_n2"] = "TQMC-n2"
+    namemap["asteroid"] = "Asteroid"
+    namemap["aster_v1.16.3.4"] = "ASTER"
+    namemap["wastrid_vanilla"] = "ASTRID"
 
-    mthds = ["TREE-QMC-wf_n0",
-             "TREE-QMC-wf_n2_shared",
-             "TREE-QMC-wf_n2",
-             "Asteroid",
-             "ASTER",
-             "ASTRID"]
+    mthds = ["wtreeqmc_wf_n0",
+             "wtreeqmc_wf_n2_shared",
+             "wtreeqmc_wf_n2",
+             "asteroid",
+             "aster_v1.16.3.4",
+             "wastrid_vanilla"]
 
     names = [namemap[mthd] for mthd in mthds]
 

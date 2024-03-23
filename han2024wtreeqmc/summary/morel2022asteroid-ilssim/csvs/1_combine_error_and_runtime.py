@@ -10,7 +10,7 @@ User is the amount of CPU time spent in user-mode code (outside the kernel) with
 Sys is the amount of CPU time spent in the kernel within the process. This means executing CPU time spent in system calls within the kernel, as opposed to library code, which is still running in user-space. Like 'user', this is only CPU time used by the process. See below for a brief description of kernel mode (also known as 'supervisor' mode) and the system call mechanism.
 """
 
-#sys.exit("DONE RUNNING")
+sys.exit("DONE RUNNING")
 
 def reformat_timing(data):
     [m, s] = data.split('m')
@@ -132,11 +132,8 @@ for do in experiments:
                                         secs = mrt[0]
 
                                         node = xmrt_df.NODE.values[0]
-                                        if (mthd == "asteroid"):
-                                            savenode = node
-                                        else:
-                                            if node != savenode:
-                                                sys.exit("Methods run on different nodes!\n")
+                                        if node.find("cbcb") < 0:
+                                            sys.exit("Method not run on CBCB node - check architecture!\n")
 
                                     row = {}
                                     row["NTAX"] = int(s.replace('s', ''))

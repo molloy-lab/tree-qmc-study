@@ -3,7 +3,6 @@ import numpy
 import sys
 
 mthds = ["wastrid_vanilla",
-         "astral_3_v5.7.8",
          "aster_v1.16.3.4",
          "asteroid",
          "wtreeqmc_wf_n2",
@@ -12,15 +11,16 @@ mthds = ["wastrid_vanilla",
          "wtreeqmc_wf_n1_shared",
          "wtreeqmc_wf_n0"]
 
-names = ["      wastrid_vanilla",
-         "      astral_3_v5.7.8",
-         "      aster_v1.16.3.4",
-         "             asteroid",
-         "       wtreeqmc_wf_n2",
-         "wtreeqmc_wf_n2_shared",
-         "       wtreeqmc_wf_n1",
-         "wtreeqmc_wf_n1_shared",
-         "       wtreeqmc_wf_n0"]
+namemap = {}
+namemap["wastrid_vanilla"] = "      wastrid_vanilla"
+namemap["aster_v1.16.3.4"] = "      aster_v1.16.3.4"
+namemap["asteroid"] = "             asteroid"
+namemap["wtreeqmc_wf_n2"] = "       wtreeqmc_wf_n2"
+namemap["wtreeqmc_wf_n2_shared"] = "wtreeqmc_wf_n2_shared"
+namemap["wtreeqmc_wf_n1"] = "       wtreeqmc_wf_n1"
+namemap["wtreeqmc_wf_n1_shared"] = "wtreeqmc_wf_n1_shared"
+namemap["wtreeqmc_wf_n0"] = "       wtreeqmc_wf_n0"
+
 
 experiments = ["varypsiz", "varyntax", "varyngen",
                "varynbps", "varyblsc", "varymiss"]
@@ -69,7 +69,8 @@ for do in experiments:
                                      (df["PSIZ"] == psiz) & 
                                      (df["MISS"] == miss)]
 
-                            for name, mthd in zip(names, mthds):
+                            for mthd in mthds:
+                                name = namemap[mthd]
                                 ydf = xdf[(xdf["MTHD"] == mthd)]
 
                                 data = ydf.SEFN.values
@@ -92,7 +93,6 @@ for do in experiments:
 Reporting experitment varypsiz
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 10 pop size, 0.600000 missing param
           wastrid_vanilla : 0.212 (fn) 0.212 (fp)
-          astral_3_v5.7.8 : 0.195 (fn) 0.195 (fp)
           aster_v1.16.3.4 : 0.177 (fn) 0.177 (fp)
                  asteroid : 0.144 (fn) 0.144 (fp)
            wtreeqmc_wf_n2 : 0.158 (fn) 0.144 (fp)
@@ -103,7 +103,6 @@ Reporting experitment varypsiz
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.246 (fn) 0.246 (fp)
-          astral_3_v5.7.8 : 0.220 (fn) 0.220 (fp)
           aster_v1.16.3.4 : 0.204 (fn) 0.204 (fp)
                  asteroid : 0.181 (fn) 0.181 (fp)
            wtreeqmc_wf_n2 : 0.196 (fn) 0.181 (fp)
@@ -114,7 +113,6 @@ Reporting experitment varypsiz
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 100000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.297 (fn) 0.297 (fp)
-          astral_3_v5.7.8 : 0.267 (fn) 0.267 (fp)
           aster_v1.16.3.4 : 0.262 (fn) 0.262 (fp)
                  asteroid : 0.232 (fn) 0.232 (fp)
            wtreeqmc_wf_n2 : 0.240 (fn) 0.224 (fp)
@@ -125,7 +123,6 @@ Reporting experitment varypsiz
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 500000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.475 (fn) 0.475 (fp)
-          astral_3_v5.7.8 : 0.469 (fn) 0.469 (fp)
           aster_v1.16.3.4 : 0.462 (fn) 0.462 (fp)
                  asteroid : 0.434 (fn) 0.434 (fp)
            wtreeqmc_wf_n2 : 0.424 (fn) 0.416 (fp)
@@ -136,7 +133,6 @@ Reporting experitment varypsiz
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 1000000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.585 (fn) 0.585 (fp)
-          astral_3_v5.7.8 : 0.600 (fn) 0.600 (fp)
           aster_v1.16.3.4 : 0.588 (fn) 0.588 (fp)
                  asteroid : 0.553 (fn) 0.553 (fp)
            wtreeqmc_wf_n2 : 0.561 (fn) 0.553 (fp)
@@ -148,7 +144,6 @@ Reporting experitment varypsiz
 Reporting experitment varyntax
   25 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.269 (fn) 0.269 (fp)
-          astral_3_v5.7.8 : 0.270 (fn) 0.270 (fp)
           aster_v1.16.3.4 : 0.276 (fn) 0.276 (fp)
                  asteroid : 0.226 (fn) 0.226 (fp)
            wtreeqmc_wf_n2 : 0.242 (fn) 0.223 (fp)
@@ -159,7 +154,6 @@ Reporting experitment varyntax
 
   75 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.244 (fn) 0.244 (fp)
-          astral_3_v5.7.8 : 0.215 (fn) 0.215 (fp)
           aster_v1.16.3.4 : 0.209 (fn) 0.209 (fp)
                  asteroid : 0.183 (fn) 0.183 (fp)
            wtreeqmc_wf_n2 : 0.196 (fn) 0.181 (fp)
@@ -170,7 +164,6 @@ Reporting experitment varyntax
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.246 (fn) 0.246 (fp)
-          astral_3_v5.7.8 : 0.220 (fn) 0.220 (fp)
           aster_v1.16.3.4 : 0.204 (fn) 0.204 (fp)
                  asteroid : 0.181 (fn) 0.181 (fp)
            wtreeqmc_wf_n2 : 0.196 (fn) 0.181 (fp)
@@ -181,7 +174,6 @@ Reporting experitment varyntax
 
   100 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.251 (fn) 0.251 (fp)
-          astral_3_v5.7.8 : 0.226 (fn) 0.226 (fp)
           aster_v1.16.3.4 : 0.217 (fn) 0.217 (fp)
                  asteroid : 0.196 (fn) 0.196 (fp)
            wtreeqmc_wf_n2 : 0.203 (fn) 0.186 (fp)
@@ -192,7 +184,6 @@ Reporting experitment varyntax
 
   125 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.247 (fn) 0.247 (fp)
-          astral_3_v5.7.8 : 0.223 (fn) 0.223 (fp)
           aster_v1.16.3.4 : 0.211 (fn) 0.211 (fp)
                  asteroid : 0.185 (fn) 0.185 (fp)
            wtreeqmc_wf_n2 : 0.194 (fn) 0.176 (fp)
@@ -203,7 +194,6 @@ Reporting experitment varyntax
 
   150 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.256 (fn) 0.256 (fp)
-          astral_3_v5.7.8 : 0.229 (fn) 0.229 (fp)
           aster_v1.16.3.4 : 0.217 (fn) 0.217 (fp)
                  asteroid : 0.187 (fn) 0.187 (fp)
            wtreeqmc_wf_n2 : 0.198 (fn) 0.182 (fp)
@@ -215,7 +205,6 @@ Reporting experitment varyntax
 Reporting experitment varyngen
   50 taxa, 250 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.471 (fn) 0.471 (fp)
-          astral_3_v5.7.8 : 0.448 (fn) 0.448 (fp)
           aster_v1.16.3.4 : 0.431 (fn) 0.431 (fp)
                  asteroid : 0.360 (fn) 0.360 (fp)
            wtreeqmc_wf_n2 : 0.412 (fn) 0.364 (fp)
@@ -226,7 +215,6 @@ Reporting experitment varyngen
 
   50 taxa, 500 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.348 (fn) 0.348 (fp)
-          astral_3_v5.7.8 : 0.330 (fn) 0.330 (fp)
           aster_v1.16.3.4 : 0.313 (fn) 0.313 (fp)
                  asteroid : 0.260 (fn) 0.260 (fp)
            wtreeqmc_wf_n2 : 0.283 (fn) 0.253 (fp)
@@ -237,7 +225,6 @@ Reporting experitment varyngen
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.246 (fn) 0.246 (fp)
-          astral_3_v5.7.8 : 0.220 (fn) 0.220 (fp)
           aster_v1.16.3.4 : 0.204 (fn) 0.204 (fp)
                  asteroid : 0.181 (fn) 0.181 (fp)
            wtreeqmc_wf_n2 : 0.196 (fn) 0.181 (fp)
@@ -248,7 +235,6 @@ Reporting experitment varyngen
 
   50 taxa, 2000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.182 (fn) 0.182 (fp)
-          astral_3_v5.7.8 : 0.148 (fn) 0.148 (fp)
           aster_v1.16.3.4 : 0.149 (fn) 0.149 (fp)
                  asteroid : 0.131 (fn) 0.131 (fp)
            wtreeqmc_wf_n2 : 0.131 (fn) 0.120 (fp)
@@ -260,7 +246,6 @@ Reporting experitment varyngen
 Reporting experitment varynbps
   50 taxa, 1000 genes, 50 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.292 (fn) 0.292 (fp)
-          astral_3_v5.7.8 : 0.291 (fn) 0.291 (fp)
           aster_v1.16.3.4 : 0.295 (fn) 0.295 (fp)
                  asteroid : 0.246 (fn) 0.246 (fp)
            wtreeqmc_wf_n2 : 0.263 (fn) 0.250 (fp)
@@ -271,7 +256,6 @@ Reporting experitment varynbps
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.246 (fn) 0.246 (fp)
-          astral_3_v5.7.8 : 0.220 (fn) 0.220 (fp)
           aster_v1.16.3.4 : 0.204 (fn) 0.204 (fp)
                  asteroid : 0.181 (fn) 0.181 (fp)
            wtreeqmc_wf_n2 : 0.196 (fn) 0.181 (fp)
@@ -282,7 +266,6 @@ Reporting experitment varynbps
 
   50 taxa, 1000 genes, 200 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.231 (fn) 0.231 (fp)
-          astral_3_v5.7.8 : 0.185 (fn) 0.185 (fp)
           aster_v1.16.3.4 : 0.171 (fn) 0.171 (fp)
                  asteroid : 0.164 (fn) 0.164 (fp)
            wtreeqmc_wf_n2 : 0.175 (fn) 0.153 (fp)
@@ -293,7 +276,6 @@ Reporting experitment varynbps
 
   50 taxa, 1000 genes, 500 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.197 (fn) 0.197 (fp)
-          astral_3_v5.7.8 : 0.156 (fn) 0.156 (fp)
           aster_v1.16.3.4 : 0.146 (fn) 0.146 (fp)
                  asteroid : 0.132 (fn) 0.132 (fp)
            wtreeqmc_wf_n2 : 0.137 (fn) 0.115 (fp)
@@ -305,7 +287,6 @@ Reporting experitment varynbps
 Reporting experitment varyblsc
   50 taxa, 1000 genes, 100 bps, 0.050000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.510 (fn) 0.510 (fp)
-          astral_3_v5.7.8 : 0.512 (fn) 0.512 (fp)
           aster_v1.16.3.4 : 0.486 (fn) 0.486 (fp)
                  asteroid : 0.451 (fn) 0.451 (fp)
            wtreeqmc_wf_n2 : 0.468 (fn) 0.455 (fp)
@@ -316,7 +297,6 @@ Reporting experitment varyblsc
 
   50 taxa, 1000 genes, 100 bps, 0.100000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.378 (fn) 0.378 (fp)
-          astral_3_v5.7.8 : 0.348 (fn) 0.348 (fp)
           aster_v1.16.3.4 : 0.340 (fn) 0.340 (fp)
                  asteroid : 0.293 (fn) 0.293 (fp)
            wtreeqmc_wf_n2 : 0.323 (fn) 0.309 (fp)
@@ -327,7 +307,6 @@ Reporting experitment varyblsc
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.246 (fn) 0.246 (fp)
-          astral_3_v5.7.8 : 0.220 (fn) 0.220 (fp)
           aster_v1.16.3.4 : 0.204 (fn) 0.204 (fp)
                  asteroid : 0.181 (fn) 0.181 (fp)
            wtreeqmc_wf_n2 : 0.196 (fn) 0.181 (fp)
@@ -338,7 +317,6 @@ Reporting experitment varyblsc
 
   50 taxa, 1000 genes, 100 bps, 10.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.261 (fn) 0.261 (fp)
-          astral_3_v5.7.8 : 0.269 (fn) 0.269 (fp)
           aster_v1.16.3.4 : 0.245 (fn) 0.245 (fp)
                  asteroid : 0.207 (fn) 0.207 (fp)
            wtreeqmc_wf_n2 : 0.212 (fn) 0.190 (fp)
@@ -349,7 +327,6 @@ Reporting experitment varyblsc
 
   50 taxa, 1000 genes, 100 bps, 100.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.427 (fn) 0.427 (fp)
-          astral_3_v5.7.8 : 0.447 (fn) 0.447 (fp)
           aster_v1.16.3.4 : 0.426 (fn) 0.426 (fp)
                  asteroid : 0.358 (fn) 0.358 (fp)
            wtreeqmc_wf_n2 : 0.372 (fn) 0.363 (fp)
@@ -360,7 +337,6 @@ Reporting experitment varyblsc
 
   50 taxa, 1000 genes, 100 bps, 200.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.501 (fn) 0.501 (fp)
-          astral_3_v5.7.8 : 0.518 (fn) 0.518 (fp)
           aster_v1.16.3.4 : 0.495 (fn) 0.495 (fp)
                  asteroid : 0.456 (fn) 0.456 (fp)
            wtreeqmc_wf_n2 : 0.493 (fn) 0.482 (fp)
@@ -372,7 +348,6 @@ Reporting experitment varyblsc
 Reporting experitment varymiss
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.500000 missing param
           wastrid_vanilla : 0.134 (fn) 0.134 (fp)
-          astral_3_v5.7.8 : 0.117 (fn) 0.117 (fp)
           aster_v1.16.3.4 : 0.118 (fn) 0.118 (fp)
                  asteroid : 0.099 (fn) 0.099 (fp)
            wtreeqmc_wf_n2 : 0.105 (fn) 0.103 (fp)
@@ -383,7 +358,6 @@ Reporting experitment varymiss
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.550000 missing param
           wastrid_vanilla : 0.173 (fn) 0.173 (fp)
-          astral_3_v5.7.8 : 0.169 (fn) 0.169 (fp)
           aster_v1.16.3.4 : 0.172 (fn) 0.172 (fp)
                  asteroid : 0.145 (fn) 0.145 (fp)
            wtreeqmc_wf_n2 : 0.147 (fn) 0.140 (fp)
@@ -394,7 +368,6 @@ Reporting experitment varymiss
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.600000 missing param
           wastrid_vanilla : 0.246 (fn) 0.246 (fp)
-          astral_3_v5.7.8 : 0.220 (fn) 0.220 (fp)
           aster_v1.16.3.4 : 0.204 (fn) 0.204 (fp)
                  asteroid : 0.181 (fn) 0.181 (fp)
            wtreeqmc_wf_n2 : 0.196 (fn) 0.181 (fp)
@@ -405,7 +378,6 @@ Reporting experitment varymiss
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.650000 missing param
           wastrid_vanilla : 0.385 (fn) 0.385 (fp)
-          astral_3_v5.7.8 : 0.342 (fn) 0.342 (fp)
           aster_v1.16.3.4 : 0.324 (fn) 0.324 (fp)
                  asteroid : 0.280 (fn) 0.280 (fp)
            wtreeqmc_wf_n2 : 0.290 (fn) 0.247 (fp)
@@ -416,7 +388,6 @@ Reporting experitment varymiss
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.700000 missing param
           wastrid_vanilla : 0.607 (fn) 0.607 (fp)
-          astral_3_v5.7.8 : 0.558 (fn) 0.558 (fp)
           aster_v1.16.3.4 : 0.498 (fn) 0.498 (fp)
                  asteroid : 0.431 (fn) 0.431 (fp)
            wtreeqmc_wf_n2 : 0.488 (fn) 0.415 (fp)
@@ -427,7 +398,6 @@ Reporting experitment varymiss
 
   50 taxa, 1000 genes, 100 bps, 1.000000 bl scaler, 50000000 pop size, 0.750000 missing param
           wastrid_vanilla : 0.820 (fn) 0.820 (fp)
-          astral_3_v5.7.8 : 0.767 (fn) 0.767 (fp)
           aster_v1.16.3.4 : 0.734 (fn) 0.734 (fp)
                  asteroid : 0.622 (fn) 0.622 (fp)
            wtreeqmc_wf_n2 : 0.696 (fn) 0.610 (fp)
