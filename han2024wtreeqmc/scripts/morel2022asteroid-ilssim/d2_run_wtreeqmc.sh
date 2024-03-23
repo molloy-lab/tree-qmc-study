@@ -6,7 +6,7 @@ PROJDIR="$GROUPDIR/ekmolloy/tree-qmc-study/han2024wtreeqmc"
 
 REFINE="$PROJDIR/tools/randomly_refine_trees.py"
 COMPARE="$PROJDIR/tools/compare_two_trees.py"
-WTREEQMC="$PROJDIR/software/weighted-TREE-QMC/wTREE-QMC"
+WTREEQMC="$PROJDIR/software/TREE-QMC/tree-qmc"
 
 MYMODL=$1
 OUTDIR=$2
@@ -29,17 +29,17 @@ MYMTHDS=( "wtreeqmc_wf_n0" \
 
 for MYMTHD in ${MYMTHDS[@]}; do
     if [ $MYMTHD == "wtreeqmc_wf_n0" ]; then
-        OPTS="-w f -n 0"
+        OPTS="-w f --norm_atax 0"
     elif [ $MYMTHD == "wtreeqmc_wf_n1" ]; then
-        OPTS="-w f -n 1"
+        OPTS="-w f --norm_atax 1"
     elif [ $MYMTHD == "wtreeqmc_wf_n2" ]; then
-        OPTS="-w f -n 2"
+        OPTS="-w f --norm_atax 2"
     elif [ $MYMTHD == "wtreeqmc_wf_n1_shared" ]; then
-        OPTS="-w f -n 1 --shared"
+        OPTS="-w f --norm_atax 1 --shared"
     elif [ $MYMTHD == "wtreeqmc_wf_n2_shared" ]; then
-        OPTS="-w f -n 2 --shared"
+        OPTS="-w f --norm_atax 2 --shared"
     elif [ $MYMTHD == "wtreeqmc_wn_n2" ]; then
-        OPTS="-w n -n 2"
+        OPTS="-w n --norm_atax 2"
     else
         echo "Do not recognize $MYMTHD"
 	exit
