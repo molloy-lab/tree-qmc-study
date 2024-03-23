@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#exit
+exit
 
 # STUDY PARAMETERS
 REPLS=( $(seq -f "%02g" 1 50) )   # Replicates

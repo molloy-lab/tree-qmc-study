@@ -13,7 +13,7 @@ PROJDIR="$GROUPDIR/ekmolloy/tree-qmc-study/han2024wtreeqmc"
 
 # Define software
 COMPARE="$PROJDIR/tools/compare_two_trees.py"
-WTREEQMC="$PROJDIR/software/weighted-TREE-QMC/wTREE-QMC"
+WTREEQMC="$PROJDIR/software/TREE-QMC/tree-qmc"
 
 # Define input files
 INDIR="$GROUPDIR/group/data/zhang2022weighting-dryad/S100/$REPL"
@@ -21,9 +21,9 @@ OUTDIR="$PROJDIR/data/zhang2022weighting-gteesim/S100/$REPL"
 STRE_TRUE="$INDIR/s_tree.trees"
 GTRE="$INDIR/bestMLestimatedgenetree/estimatedgenetre_${NBPS}.gtr.rerooted.final.contracted.non"
 GTRE_FILE="estimatedgenetre.${NBPS}.${NGEN}"
-OPTS="-r 0 100"
+OPTS="--bootstrap"
 if [ $SUPP == "abayes" ]; then
-    OPTS="-r 0.333 1"
+    OPTS="--bayes"
     GTRE="$GTRE.abayes"
     GTRE_FILE="estimatedgenetre.abayes.${NBPS}.${NGEN}"
 fi
@@ -38,7 +38,7 @@ fi
 MYMTHD="wtreeqmc_wh_n2"
 MYSTRE="${MYMTHD}_${SUPP}_${NBPS}bps_${NGEN}gen"
 if [ ! -e $MYSTRE.tre ]; then
-    MYTIME="$(time ($WTREEQMC -w h -n 2 $OPTS \
+    MYTIME="$(time ($WTREEQMC --hybrid $OPTS \
                               -i $GTRE_FILE \
                               -o $MYSTRE.tre \
                               &> $MYSTRE.log) 2>&1 1>/dev/null)"
@@ -56,7 +56,7 @@ fi
 MYMTHD="wtreeqmc_wf_n2"
 MYSTRE="${MYMTHD}_${SUPP}_${NBPS}bps_${NGEN}gen"
 if [ ! -e $MYSTRE.tre ]; then
-    MYTIME="$(time ($WTREEQMC -w f -n 2 \
+    MYTIME="$(time ($WTREEQMC --fast \
                               -i $GTRE_FILE \
                               -o $MYSTRE.tre \
                               &> $MYSTRE.log) 2>&1 1>/dev/null)"

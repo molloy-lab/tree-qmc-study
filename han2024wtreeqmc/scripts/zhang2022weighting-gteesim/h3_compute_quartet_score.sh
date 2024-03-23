@@ -25,9 +25,9 @@ GTRE="$INDIR/bestMLestimatedgenetree/estimatedgenetre_${NBPS}.gtr.rerooted.final
 GTRE_FILE="estimatedgenetre.${NBPS}.${NGEN}"
 
 # Options
-ROPTS="-n 0 -x 100 -d 0.0"
+ROPTS="--bootstrap"
 if [ $SUPP == "abayes" ]; then
-    ROPTS="-n 0.333 -x 1.0 -d 0.0"
+    ROPTS="--bayes"
     GTRE="$GTRE.abayes"
 fi
 
@@ -75,7 +75,7 @@ fi
 QSUP="qsupp-wn"
 OUTPUT="${NAME}_${QSUP}"
 if [ ! -e $OUTPUT.tre ]; then
-    # Run weighted ASTRAL
+    # Run ASTRAL
     $ASTER --scoring -u 2 -t 16 \
             -i $GTRE_FILE \
             -c $INPUT \

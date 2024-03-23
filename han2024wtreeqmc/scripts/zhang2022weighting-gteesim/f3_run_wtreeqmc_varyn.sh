@@ -13,7 +13,7 @@ PROJDIR="$GROUPDIR/ekmolloy/tree-qmc-study/han2024wtreeqmc"
 
 # Define software
 COMPARE="$PROJDIR/tools/compare_two_trees.py"
-WTREEQMC="$PROJDIR/software/weighted-TREE-QMC/wTREE-QMC"
+WTREEQMC="$PROJDIR/software/TREE-QMC/tree-qmc"
 
 # Define input files
 INDIR="$GROUPDIR/group/data/zhang2022weighting-dryad/S100/$REPL"
@@ -21,9 +21,9 @@ OUTDIR="$PROJDIR/data/zhang2022weighting-gteesim/S100/$REPL"
 STRE_TRUE="$INDIR/s_tree.trees"
 GTRE="$INDIR/bestMLestimatedgenetree/estimatedgenetre_${NBPS}.gtr.rerooted.final.contracted.non"
 GTRE_FILE="estimatedgenetre.${NBPS}.${NGEN}"
-ROPTS="-r 0 100"
+ROPTS="--bootstrap"
 if [ $SUPP == "abayes" ]; then
-    ROPTS="-r 0.333 1"
+    ROPTS="--bayes"
     GTRE="$GTRE.abayes"
     GTRE_FILE="estimatedgenetre.abayes.${NBPS}.${NGEN}"
 fi
@@ -41,11 +41,11 @@ MYMTHDS=( "wtreeqmc_ws_n2" \
 
 for MYMTHD in ${MYMTHDS[@]}; do
     if [ $MYMTHD == "wtreeqmc_ws_n2" ]; then
-        OPTS="-w s -n 2 $ROPTS"
+        OPTS="-w s $ROPTS"
     elif [ $MYMTHD == "wtreeqmc_wh_n1" ]; then
-        OPTS="-w h -n 1 $ROPTS"
+        OPTS="-w h --norm_atax 1 $ROPTS"
     elif [ $MYMTHD == "wtreeqmc_wh_n0" ]; then
-        OPTS="-w h -n 0 $ROPTS"
+        OPTS="-w h --norm_atax 0 $ROPTS"
     else
         echo "Do not recognize $MYMTHD"
 	exit

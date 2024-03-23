@@ -17,8 +17,11 @@ MTHDS=( "true_stree" \
         "aster_h_t16" \
         "wastrid_s" \
         "wtreeqmc_wf_n2" \
+        "wtreeqmc_wh_n0" \
+        "wtreeqmc_wh_n1" \
         "wtreeqmc_wh_n2" \
-        "wtreeqmc_wh_n0" )
+        "wtreeqmc_wn_n2" \
+        "wtreeqmc_ws_n2" )
 
 echo "Running branch_support estimation..."
 for MTHD in ${MTHDS[@]}; do
