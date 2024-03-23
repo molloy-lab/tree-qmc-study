@@ -61,7 +61,7 @@ def report_stats(df, mthds, ntax, ngen, nbps, blsc, psiz, miss, vary, emet, doit
 if __name__ == "__main__":
     
     emet = "FNR"
-    #emet = "FPR"
+    emet = "FPR"
 
     sys.stdout.write("\\begin{table}[!h]\n")
     sys.stdout.write("\\caption[")
@@ -90,6 +90,15 @@ if __name__ == "__main__":
              "wtreeqmc_wf_n1",
              "wtreeqmc_wf_n0",
              "wtreeqmc_wf_n2_shared"] #, "wtreeqmc_wf_n1_shared"]
+
+    # Sanity check by refining TREE-QMC trees
+    #mthds = ["wastrid_vanilla",
+    #         "aster_v1.16.3.4",
+    #         "asteroid",
+    #         "wtreeqmc_wf_n2_refined",
+    #         "wtreeqmc_wf_n1_refined",
+    #         "wtreeqmc_wf_n0_refined",
+    #         "wtreeqmc_wf_n2_shared_refined"] #, "wtreeqmc_wf_n1_shared_refined"]
 
     namemap = {}
     namemap["asteroid"] = "Asteroid"
