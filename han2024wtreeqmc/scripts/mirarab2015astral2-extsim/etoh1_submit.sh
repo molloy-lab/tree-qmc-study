@@ -16,8 +16,8 @@ RATES=( "0.000001" )              # Speciation rate
 
 # GENERAL PARAMETERS
 REPLS=( $(seq -f "%02g" 1 50) )   # Replicates
-SUPPS=( "abayes" "sh" )
-NGENS=( 1000 )
+SUPPS=( "abayes" )
+NGENS=( 1000 200 50 )
 
 for NTAX in ${NTAXS[@]}; do
     for HGHT in ${HGHTS[@]}; do
@@ -36,18 +36,18 @@ if [ -e $FILEX ]; then
     echo "  using node $NODE"
     sbatch \
         --nodelist=$NODE \
-        --job-name="etoh1_scal.$MODL" \
-        --output="etoh1_scal.$MODL.%j.out" \
-        --error="etoh1_scal.$MODL.%j.err" \
+        --job-name="etoh1.$MODL" \
+        --output="etoh1.$MODL.%j.out" \
+        --error="etoh1.$MODL.%j.err" \
         --export=NTAX="$NTAX",HGHT="$HGHT",RATE="$RATE",REPL="$REPL",SUPP="$SUPP",NGEN="$NGEN" \
-    etoh1_scalability_drive.sbatch
+    etoh1_drive.sbatch
 else
     sbatch \
-        --job-name="etoh1_scal.$MODL" \
-        --output="etoh1_scal.$MODL.%j.out" \
-        --error="etoh1_scal.$MODL.%j.err" \
+        --job-name="etoh1.$MODL" \
+        --output="etoh1.$MODL.%j.out" \
+        --error="etoh1.$MODL.%j.err" \
         --export=NTAX="$NTAX",HGHT="$HGHT",RATE="$RATE",REPL="$REPL",SUPP="$SUPP",NGEN="$NGEN" \
-    etoh1_scalability_drive.sbatch
+    etoh1_drive.sbatch
 fi
                     done
                 done

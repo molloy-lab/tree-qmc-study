@@ -24,9 +24,9 @@ ASTERH="$GROUPDIR/group/software-compiled-on-EPYC-7313/ASTER/bin/astral-hybrid"
 DATADIR="$PROJDIR/data/mirarab2015astral2-extsim/$MODL/$REPL"
 STRE_TRUE="s_tree.trees"
 GTRE="estimatedgenetre"
-ROPTS="-n 0.0 -x 1.0 -d 0.0"
+ROPTS="--lrt"
 if [ $SUPP == "abayes" ]; then
-    ROPTS="-n 0.333 -x 1.0 -d 0.0"
+    ROPTS="--bayes"
     GTRE="$GTRE.abayes"
 fi
 

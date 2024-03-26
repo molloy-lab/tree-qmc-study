@@ -23,9 +23,9 @@ ASTERH="$GROUPDIR/group/software-compiled-on-EPYC-7313/ASTER/bin/astral-hybrid"
 DATADIR="$PROJDIR/data/mirarab2015astral2-extsim/$MODL/$REPL"
 STRE_TRUE="s_tree.trees"
 GTRE="estimatedgenetre"
-OPTS="-n 0.0 -x 1 -d 0.0 -u 0"
+OPTS="--lrt"
 if [ $SUPP == "abayes" ]; then
-    OPTS="-n 0.333 -x 1 -d 0.0 -u 0"
+    OPTS="--bayes"
     GTRE="$GTRE.abayes"
 fi
 
@@ -41,7 +41,7 @@ fi
 MYMTHD="aster_h_t16"
 MYSTRE="${MYMTHD}_${SUPP}_${NGEN}gen"
 if [ ! -e $MYSTRE.tre ]; then
-    MYTIME="$(time ($ASTERH -t 16 $OPTS \
+    MYTIME="$(time ($ASTERH -u 0 -t 16 $OPTS \
                          -i $GTRE_FILE \
                          -o $MYSTRE.tre \
                          &> $MYSTRE.log) 2>&1 1>/dev/null)"

@@ -27,7 +27,7 @@ if [ -e $MYMTHD.tre ]; then
 fi
 
 if [ ! -e $MYMTHD.tre ]; then
-    MYTIME="$(time ($ASTER -i $GTRE_FILE \
+    MYTIME="$(time ($ASTER -u 0 -i $GTRE_FILE \
                            -o $MYMTHD.tre \
                            &> $MYMTHD.log) 2>&1 1>/dev/null)"
 

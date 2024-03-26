@@ -15,11 +15,13 @@ cat /proc/meminfo
 
 NBPSS=( 200 400 800 1600 )
 NGENS=( 50 200 500 1000 )
-SUPP="abayes"
+SUPPS=( "abayes" "bs" )
 for NBPS in ${NBPSS[@]}; do
-    for NGEN in ${NGENS[@]}; do
-        echo "Working on $NBPS bps $NGEN gen"
-        bash i3_compare_branch_support.sh  $REPL $NBPS $SUPP $NGEN
+    for SUPP in ${SUPPS[@]}; do
+        for NGEN in ${NGENS[@]}; do
+            echo "Working on $NBPS bps $NGEN gen"
+            bash i3_compare_branch_support.sh  $REPL $NBPS $SUPP $NGEN
+        done
     done
 done
 

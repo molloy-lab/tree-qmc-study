@@ -19,7 +19,7 @@ DATADIR="$PROJDIR/data/zhang2022weighting-gteesim/S100/$REPL"
 
 cd $DATADIR
 
-MTHD1="aster_h_t16"
+MTHD1="aster_h"
 MTHD2="wtreeqmc_wh_n2"
 
 for QSUP in "qsupp-wh" "qsupp-wn"; do

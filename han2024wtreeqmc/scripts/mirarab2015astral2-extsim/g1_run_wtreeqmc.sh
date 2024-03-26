@@ -22,9 +22,9 @@ WTREEQMC="$PROJDIR/software/weighted-TREE-QMC/wTREE-QMC"
 DATADIR="$PROJDIR/data/mirarab2015astral2-extsim/$MODL/$REPL"
 STRE_TRUE="s_tree.trees"
 GTRE="estimatedgenetre"
-OPTS="-r 0 1"
+OPTS="--lrt"
 if [ $SUPP == "abayes" ]; then
-    OPTS="-r 0.333 1"
+    OPTS="--bayes"
     GTRE="$GTRE.abayes"
 fi
 
@@ -39,7 +39,7 @@ fi
 MYMTHD="wtreeqmc_wh_n2"
 MYSTRE="${MYMTHD}_${SUPP}_${NGEN}gen"
 if [ ! -e $MYSTRE.tre ]; then
-    MYTIME="$(time ($WTREEQMC -w h -n 2 $OPTS \
+    MYTIME="$(time ($WTREEQMC --hybrid $OPTS \
                               -i $GTRE_FILE \
                               -o $MYSTRE.tre \
                               &> $MYSTRE.log) 2>&1 1>/dev/null)"
@@ -57,7 +57,7 @@ fi
 MYMTHD="wtreeqmc_wf_n2"
 MYSTRE="${MYMTHD}_${SUPP}_${NGEN}gen"
 if [ ! -e $MYSTRE.tre ]; then
-    MYTIME="$(time ($WTREEQMC -w f -n 2 \
+    MYTIME="$(time ($WTREEQMC --fast \
                               -i $GTRE_FILE \
                               -o $MYSTRE.tre \
                               &> $MYSTRE.log) 2>&1 1>/dev/null)"

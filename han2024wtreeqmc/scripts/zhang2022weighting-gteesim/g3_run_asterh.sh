@@ -21,9 +21,9 @@ OUTDIR="$PROJDIR/data/zhang2022weighting-gteesim/S100/$REPL"
 STRE_TRUE="$INDIR/s_tree.trees"
 GTRE="$INDIR/bestMLestimatedgenetree/estimatedgenetre_${NBPS}.gtr.rerooted.final.contracted.non"
 GTRE_FILE="estimatedgenetre.${NBPS}.${NGEN}"
-OPTS="-n 0 -x 100 -d 0.0 -u 0"
+OPTS="--bootstrap"
 if [ $SUPP == "abayes" ]; then
-    OPTS="-n 0.333 -x 1 -d 0.0 -u 0"
+    OPTS="--bayes"
     GTRE="$GTRE.abayes"
     GTRE_FILE="estimatedgenetre.abayes.${NBPS}.${NGEN}"
 fi
@@ -35,10 +35,10 @@ if [ ! -e $GTRE_FILE ]; then
     head -n${NGEN} $GTRE > $GTRE_FILE
 fi
 
-MYMTHD="aster_h_t16"
+MYMTHD="aster_h"
 MYSTRE="${MYMTHD}_${SUPP}_${NBPS}bps_${NGEN}gen"
 if [ ! -e $MYSTRE.tre ]; then
-    MYTIME="$(time ($ASTERH $OPTS \
+    MYTIME="$(time ($ASTERH $OPTS -u 0 \
                          -i $GTRE_FILE \
                          -o $MYSTRE.tre \
                          &> $MYSTRE.log) 2>&1 1>/dev/null)"

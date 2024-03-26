@@ -13,9 +13,9 @@ HGHTS=( "2000000" )               # Species tree height (number of generations)
 RATES=( "0.000001" )              # Speciation rate
 
 # GENERAL PARAMETERS
-REPLS=( $(seq -f "%02g" 1 25) )   # Replicates
-SUPPS=( "sh" "abayes" )
-NGENS=( 200 50 )
+REPLS=( $(seq -f "%02g" 1 50) )  # Replicates
+SUPPS=( "abayes" )
+NGENS=( 1000 )
 
 for NTAX in ${NTAXS[@]}; do
     for HGHT in ${HGHTS[@]}; do
@@ -27,13 +27,16 @@ for NTAX in ${NTAXS[@]}; do
 MODL="model.$NTAX.$HGHT.$RATE.$REPL.$SUPP.$NGEN"
 echo "Submitting $MODL ..."
 
-sbatch \
-    --job-name="h1.$MODL" \
-    --output="h1.$MODL.%j.out" \
-    --error="h1.$MODL.%j.err" \
-    --export=NTAX="$NTAX",HGHT="$HGHT",RATE="$RATE",REPL="$REPL",SUPP="$SUPP",NGEN="$NGEN" \
-h1_drive.sbatch
+NAME="j1.$MODL"
 
+sbatch \
+    --job-name="$NAME" \
+    --output="$NAME.%j.out" \
+    --error="$NAME.%j.err" \
+    --export=NTAX="$NTAX",HGHT="$HGHT",RATE="$RATE",REPL="$REPL",SUPP="$SUPP",NGEN="$NGEN" \
+j1_drive.sbatch
+
+#exit
                     done
                 done
             done

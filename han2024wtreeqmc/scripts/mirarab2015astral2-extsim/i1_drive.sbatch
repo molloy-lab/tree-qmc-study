@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=1
 #SBATCH --mem=64gb
 #SBATCH --account=cbcb
 #SBATCH --partition=cbcb
@@ -13,7 +13,7 @@
 lscpu
 cat /proc/meminfo
 
-echo "Running ASTER with 16 threads..."
-bash h1_run_asterh_t16.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
-echo "...done"
+echo "Running branch support estimation..."
+bash i1_compute_quartet_score.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
+echo "done"
 
