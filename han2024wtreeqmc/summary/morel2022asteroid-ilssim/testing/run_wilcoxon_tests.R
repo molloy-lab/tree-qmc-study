@@ -939,4 +939,3 @@ for the  312 tests made on the Asteroid data.
 \bottomrule
 \end{tabular}
 \end{table}
-

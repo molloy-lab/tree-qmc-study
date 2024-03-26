@@ -2,7 +2,7 @@ import pandas
 import numpy
 import sys
 
-#sys.exit("DONE RUNNING")
+sys.exit("DONE RUNNING")
 
 def report_stats(df, mthds, ntax, ngen, nbps, blsc, psiz, miss, vary, emet, doit):
     sys.stdout.write("& %s" % vary)
@@ -61,7 +61,7 @@ def report_stats(df, mthds, ntax, ngen, nbps, blsc, psiz, miss, vary, emet, doit
 if __name__ == "__main__":
     
     emet = "FNR"
-    emet = "FPR"
+    #emet = "FPR"
 
     sys.stdout.write("\\begin{table}[!h]\n")
     sys.stdout.write("\\caption[")
