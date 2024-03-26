@@ -24,7 +24,6 @@ STRE_TRUE="s_tree.trees"
 GTRE="estimatedgenetre"
 if [ $SUPP == "abayes" ]; then
     GTRE="$GTRE.abayes"
-    exit
 fi
 
 # Do work

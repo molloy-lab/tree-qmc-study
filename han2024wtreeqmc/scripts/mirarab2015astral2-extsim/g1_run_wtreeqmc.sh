@@ -16,7 +16,7 @@ PROJDIR="$GROUPDIR/ekmolloy/tree-qmc-study/han2024wtreeqmc"
 
 # Define software
 COMPARE="$PROJDIR/tools/compare_two_trees.py"
-WTREEQMC="$PROJDIR/software/weighted-TREE-QMC/wTREE-QMC"
+WTREEQMC="$PROJDIR/software/TREE-QMC/tree-qmc"
 
 # Define input files
 DATADIR="$PROJDIR/data/mirarab2015astral2-extsim/$MODL/$REPL"
