@@ -28,12 +28,7 @@ STRE_TRUE="$INDIR/species_trees/speciesTree.newick"
 OUTDIR="$PROJDIR/data/morel2022asteroid-ilssim/$MODL"
 GTRE_FILE="raxmlng_gene_trees.tre"
 
-echo "Running branch support estimation..."
-MTHDS=( "true_stree" \
-	"aster_v1.16.3.4" \
-	"wtreeqmc_wf_n2_refined" )
-for MTHD in ${MTHDS[@]}; do
-    bash g2_compute_quartet_score.sh $MYMODL $OUTDIR $GTRE_FILE $STRE_TRUE $MTHD
-done
+echo "Running branch support analyses..."
+bash h2_compare_branch_support.sh $MYMODL $OUTDIR
 echo "done"
 

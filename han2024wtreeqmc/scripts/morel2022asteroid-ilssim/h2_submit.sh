@@ -19,11 +19,11 @@ for MODL in ${MODLS[@]}; do
 
     sbatch \
         --nodelist=$NODE \
-        --job-name="g2.$MODL" \
-        --output="g2.$MODL.%j.out" \
-        --error="g2.$MODL.%j.err" \
+        --job-name="h2.$MODL" \
+        --output="h2.$MODL.%j.out" \
+        --error="h2.$MODL.%j.err" \
         --export=MODL="$MODL" \
-    g2_drive.sbatch
+    h2_drive.sbatch
 
 done
 
