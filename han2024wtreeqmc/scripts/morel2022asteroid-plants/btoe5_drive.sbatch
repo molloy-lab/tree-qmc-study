@@ -19,7 +19,6 @@ GROUPDIR="/fs/cbcb-lab/ekmolloy"
 PROJDIR="$GROUPDIR/ekmolloy/tree-qmc-study/han2024wtreeqmc"
 DATADIR="$PROJDIR/data/morel2022asteroid-plants"
 GTRE_FILE="all-relabeled-raxml-ng.LG+G.geneTree.newick"
-STRE_FILE="reference-speciesTree.newick"
 MYINFO="plants"
 
 echo "Submitting TREE-QMC job..."
@@ -28,7 +27,7 @@ srun \
     --ntasks 1 \
     --cpus-per-task 32 \
     --mem=36gb \
-    ./b5_run_treeqmc.sh $MYINFO $DATADIR $GTRE_FILE $STRE_FILE 
+    ./b5_run_treeqmc.sh $MYINFO $DATADIR $GTRE_FILE  
 wait
 echo "...done"
 
@@ -38,7 +37,7 @@ srun \
     --ntasks 1 \
     --cpus-per-task 32 \
     --mem=36gb \
-    ./c5_run_asteroid.sh $MYINFO $DATADIR $GTRE_FILE $STRE_FILE
+    ./c5_run_asteroid.sh $MYINFO $DATADIR $GTRE_FILE 
 wait
 echo "...done"
 
@@ -48,7 +47,7 @@ srun \
     --ntasks 1 \
     --cpus-per-task 32 \
     --mem=36gb \
-    ./d5_run_wastrid.sh $MYINFO $DATADIR $GTRE_FILE $STRE_FILE
+    ./d5_run_wastrid.sh $MYINFO $DATADIR $GTRE_FILE 
 wait
 echo "...done"
 
@@ -59,7 +58,7 @@ srun \
     --ntasks 1 \
     --cpus-per-task 32 \
     --mem=36gb \
-    ./e5_run_aster.sh $MYINFO $DATADIR $GTRE_FILE $STRE_FILE
+    ./e5_run_aster.sh $MYINFO $DATADIR $GTRE_FILE 
 wait
 echo "...done"
 

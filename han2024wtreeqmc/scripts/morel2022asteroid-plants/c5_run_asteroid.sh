@@ -9,7 +9,6 @@ ASTEROID="$GROUPDIR/group/software-compiled-on-EPYC-7313/Asteroid-nompi/Asteroid
 MYINFO=$1
 DATADIR=$2
 GTRE_FILE=$3
-STRE_FILE=$4
 
 cd $DATADIR
 
@@ -37,8 +36,5 @@ if [ ! -e $MYSTRE ]; then
 
     MYSECS="$(echo $MYTIME | awk '{print $2","$4","$6}')"
     echo "$MYINFO,$MYMTHD,$MYNODE,$MYSECS" > ${MYMTHD}_runtime.csv
-
-    MYERRR=$(/opt/local/stow/Python3-3.8.1/bin/python3 $COMPARE -t1 $STRE_FILE -t2 $MYSTRE)
-    echo "$MYINFO,$MYMTHD,$MYERRR" > ${MYMTHD}_species_tree_error.csv
 fi
 
