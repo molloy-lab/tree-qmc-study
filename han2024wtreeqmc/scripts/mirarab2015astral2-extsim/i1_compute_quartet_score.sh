@@ -74,7 +74,7 @@ fi
 QSUP="qsupp-wn"
 OUTPUT="${NAME}_${QSUP}"
 if [ ! -e $OUTPUT.tre ]; then
-    # Run weighted ASTRAL
+    # Run ASTRAL
     $ASTER --scoring -u 2 -t 16 \
             -i $GTRE_FILE \
             -c $INPUT \
