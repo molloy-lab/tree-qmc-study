@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exit
+#exit
 
 # ILS STUDY PARAMETERS
 NTAXS=( 200 )                            # Number of taxa

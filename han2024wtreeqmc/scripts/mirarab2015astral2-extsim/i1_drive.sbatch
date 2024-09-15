@@ -14,6 +14,9 @@ lscpu
 cat /proc/meminfo
 
 echo "Running branch support estimation..."
-bash i1_compute_quartet_score.sh  $NTAX $HGHT $RATE $REPL $SUPP $NGEN
+MTHDS=( "true_stree" "aster_h_t16" "wtreeqmc_wh_n2" )
+for MTHD in ${MTHDS[@]}; do
+    bash i1_compute_quartet_score.sh $NTAX $HGHT $RATE $REPL $SUPP $NGEN $MTHD
+done
 echo "done"
 
