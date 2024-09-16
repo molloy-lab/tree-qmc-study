@@ -12,7 +12,8 @@ cd $DATADIR
 TREES1=( "reference-speciesTree.newick" \
 	 "concatenation-single.LG+G.speciesTree.newick" )
 
-TREES2=( "treeqmc_wf_n2.tre" \
+TREES2=( "concatenation-single.LG+G.speciesTree.newick" \
+	 "treeqmc_wf_n2.tre" \
          "asteroid.bestTree.newick" \
          "wastrid_vanilla.tre" \
          "aster_v1.16.3.4.tre" )
@@ -24,6 +25,10 @@ for TREE1 in ${TREES1[@]}; do
     done
 done
 
+exit
+
+reference-speciesTree.newick vs. concatenation-single.LG+G.speciesTree.newick
+81,81,81,56,78,7,29
 reference-speciesTree.newick vs. treeqmc_wf_n2.tre
 81,81,81,56,78,6,28
 reference-speciesTree.newick vs. asteroid.bestTree.newick
@@ -33,6 +38,8 @@ reference-speciesTree.newick vs. wastrid_vanilla.tre
 reference-speciesTree.newick vs. aster_v1.16.3.4.tre
 81,81,81,56,78,17,39
 
+concatenation-single.LG+G.speciesTree.newick vs. concatenation-single.LG+G.speciesTree.newick
+81,81,81,78,78,0,0
 concatenation-single.LG+G.speciesTree.newick vs. treeqmc_wf_n2.tre
 81,81,81,78,78,15,15
 concatenation-single.LG+G.speciesTree.newick vs. asteroid.bestTree.newick
