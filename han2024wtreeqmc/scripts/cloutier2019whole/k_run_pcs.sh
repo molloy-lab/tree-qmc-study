@@ -17,20 +17,6 @@ if [ ! -e $OUTF.tre ]; then
     $WTREEQMC --pcsonly $PCSTREE.tre -w h -n 0.333 -x 1 -d 0.333 --root galGal -i $GTRE_FILE -o $OUTF.tsv &> $OUTF.log
 fi
 
-# TREE-QMC w/ support weighting scheme
-MTHD="wtreeqmc_support"
-OUTF="${MTHD}_${PCSTREE}"
-if [ ! -e $OUTF.tre ]; then
-    $WTREEQMC --pcsonly $PCSTREE.tre -w s -n 0.333 -x 1 -d 0.333 --root galGal -i $GTRE_FILE -o $OUTF.tsv &> $OUTF.log
-fi
-
-# TREE-QMC w/ length weighting scheme
-MTHD="wtreeqmc_length"
-OUTF="${MTHD}_${PCSTREE}"
-if [ ! -e $OUTF.tre ]; then
-    $WTREEQMC --pcsonly $PCSTREE.tre -w l --root galGal -i $GTRE_FILE -o $OUTF.tsv &> $OUTF.log
-fi
-
 # TREE-QMC w/ no weighting scheme
 MTHD="wtreeqmc_none"
 OUTF="${MTHD}_${PCSTREE}"
