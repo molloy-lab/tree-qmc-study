@@ -99,3 +99,13 @@ T20="asteroid_UCE_minus_105_abayes_gene_trees_sorted.tre.bestTree.newick"
 #python3 $COMPARE -t1 $TB -t2 $T20
 #15,15,15,12,12,0,0
 
+# Lastly, compare to published RAxML and ExaML trees
+#python3 $COMPARE -t1 cloutier2019_UCE_examl.tre -t2 simmons2022_UCE_minus_105_raxml.tre 
+#15,15,15,12,12,0,0
+
+#python3 $COMPARE -t1 $TA -t2 cloutier2019_UCE_examl.tre
+#15,15,15,12,12,1,1
+
+#python3 $COMPARE -t1 $TB -t2 cloutier2019_UCE_examl.tre
+#15,15,15,12,12,2,2
+
