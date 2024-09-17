@@ -1,0 +1,10 @@
+# x = cryCin,tinGut,notPer,eudEle,anoDid
+# y = aptHaa,aptOwe,aptRow,aptMan,casCas,droNov
+# z = rheAme,rhePen
+# w = strCam,galGal
+id	position	f_xy|zw	f_xz|yw	f_xw|yz	f_xyzw	totalf
+0	1	60	0	60	0	120
+1	2	120	0	0	0	120
+2	3	40	0	80	0	120
+3	4	60	0	40	0	100
+4	5	40	60	0	0	100
