@@ -4879,7 +4879,7 @@ RAxML_bestTree.OG0010027_intron.marker.alg.trimmed \
 RAxML_bestTree.OG0010053_intron.marker.alg.trimmed \
 RAxML_bestTree.OG0010056_intron.marker.alg.trimmed \
 RAxML_bestTree.OG0010058_intron.marker.alg.trimmed \
-RAxML_bestTree.OG0010078_intron.marker.alg.trimmed > all_introns_raxml.tre
+RAxML_bestTree.OG0010078_intron.marker.alg.trimmed > introns_raxml.tre
 
-mv all_introns_raxml.tre $OUTDIR
+mv introns_raxml.tre $OUTDIR
 

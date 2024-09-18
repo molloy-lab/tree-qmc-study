@@ -5761,4 +5761,6 @@ align_OG0010077_cds_backtrans_from_pro_new_125sp.phy.treefile \
 align_OG0010078_cds_backtrans_from_pro_new_125sp.phy.treefile > other_cds_raxml_abayes.tre
 
 mv other_cds_raxml_abayes.tre ..
+cd ..
+cat check_cds_raxml_abayes.tre other_cds_raxml_abayes.tre > cds_raxml_abayes.tre
 

@@ -5762,4 +5762,6 @@ RAxML_bestTree.OG0010077_cds_backtrans_125sp \
 RAxML_bestTree.OG0010078_cds_backtrans_125sp > other_cds_raxml.tre
 
 mv other_cds_raxml.tre $OUTDIR
+cd $OUTDIR
+cat check_cds_raxml.tre other_cds_raxml.tre > cds_raxml.tre
 

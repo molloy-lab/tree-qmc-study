@@ -4878,7 +4878,7 @@ OG0010027_intron.marker.alg.trimmed.phy.treefile \
 OG0010053_intron.marker.alg.trimmed.phy.treefile \
 OG0010056_intron.marker.alg.trimmed.phy.treefile \
 OG0010058_intron.marker.alg.trimmed.phy.treefile \
-OG0010078_intron.marker.alg.trimmed.phy.treefile > all_introns_raxml_abayes.tre
+OG0010078_intron.marker.alg.trimmed.phy.treefile > introns_raxml_abayes.tre
 
-mv all_introns_raxml_abayes.tre ..
+mv introns_raxml_abayes.tre ..
 
