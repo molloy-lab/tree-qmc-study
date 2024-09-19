@@ -23,8 +23,8 @@ def reformat_timing(data):
 
     return [totals, totalm, totalh]
 
-ste_df = pandas.read_csv("all_species_tree_error.csv", keep_default_na=False)
-mrt_df = pandas.read_csv("all_runtime.csv", keep_default_na=False)
+ste_df = pandas.read_csv("all_species_tree_error.csv.gz", keep_default_na=False, compression="gzip")
+mrt_df = pandas.read_csv("all_runtime.csv.gz", keep_default_na=False, compression="gzip")
 
 cols = ["NTAX", "NGEN", "NBPS", "BLSC", "PSIZ", "MISS",
         "REPL", "MTHD",

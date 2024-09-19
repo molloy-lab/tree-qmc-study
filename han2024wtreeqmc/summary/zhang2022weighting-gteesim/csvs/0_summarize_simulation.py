@@ -31,9 +31,9 @@ def report_stats_poly(df):
 if __name__ == "__main__":
     nbpss = [200, 400, 800, 1600]
 
-    df_ils = pandas.read_csv("all_true_species_tree_vs_true_gene_trees.csv")
-    df_gtee = pandas.read_csv("all_true_vs_estimated_gene_trees.csv")
-    df_ad = pandas.read_csv("all_true_species_tree_vs_estimated_gene_trees.csv")
+    df_ils = pandas.read_csv("all_true_species_tree_vs_true_gene_trees.csv.gz", compression="gzip")
+    df_gtee = pandas.read_csv("all_true_vs_estimated_gene_trees.csv.gz", compression="gzip")
+    df_ad = pandas.read_csv("all_true_species_tree_vs_estimated_gene_trees.csv.gz", compression="gzip")
 
     sys.stdout.write("\\begin{table}[!h]\n")
     sys.stdout.write("\\caption[Properties of S100 simulated data]")

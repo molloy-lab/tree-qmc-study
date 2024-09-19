@@ -26,13 +26,7 @@ threshold0 <- 0.05
 ntests <- length(ngens) * length(nbpss) * length(mthds) * length(supps)
 threshold_bonferoni <- threshold0 / ntests
 
-#writeme <- paste("alpha =", as.character(threshold0))
-#print(writeme)
-#print(paste("bonferroni alpha =", as.character(threshold_bonferoni), 
-#            "=", as.character(threshold0), "/", as.character(ntests)))
-
 for (mthd in mthds) {
-
     message("\\begin{table}[!h]")
     message(paste("\\caption[Statistical testing for TREE-QMC-wh\\_n2 vs", mthd)) 
     message("on S100 data]{\\textbf{Testing for differences between TREE-QMC-wh\\_n2 vs")
@@ -50,10 +44,6 @@ for (mthd in mthds) {
     message(paste("for the ",
                   as.character(ntests),
                   "tests made on the S100 data."))
-    if (mthd == "TREE-QMC-n2") {
-        message("IMPORTANT: All other results for TREE-QMC-n2 do NOT use the refined tree from IQTREE.")
-    } else {
-    }
     message("}")
     message("\\centering")
     message("\\normalsize")
@@ -66,11 +56,9 @@ for (mthd in mthds) {
     for (supp in supps) {
         message("\\midrule")
         if (supp == "bs") {
-            if (mthd == "TREE-QMC-n2") { okgo <- "TREE-QMC used to randomly refined polytomies" } 
-            else { okgo <- "Boostrap Support" }
+            okgo <- "Boostrap Support for weighted methods"
         } else {
-            if (mthd == "TREE-QMC-n2") { okgo <- "IQtree used refined polytomies (part of abayes)" } 
-            else { okgo <- "Abayes Support" }
+            okgo <- "Abayes Support for weighted methods"
         }
         message(paste("\\multicolumn{11}{c}{\\textbf{", okgo, "}} \\\\"))
         message("\\midrule")
@@ -86,14 +74,16 @@ for (mthd in mthds) {
         mthd1 <- df$TQMCwhn2xSERF #FN
         if (mthd == "ASTER-wh") {
             mthd2 <- df$ASTERHxSERF #FN
-            supplab = supp
         } else if (mthd == "ASTRID-ws") {
             mthd2 <- df$WASTRIDxSERF #FN
-            supplab = supp
         } else if (mthd == "TREE-QMC-n2") {
-            mthd2 <- df$TQMCn2xSERF #FN
-            #print(mean(mthd2))
-            supplab = supp #"none"
+            # IMPORTANT: TQMC-n2 doesn't use support
+            # and bs support means unrefined trees
+            # that are internally refined by TREE-QMC
+            df2 <- data[data$SUPP == "bs", ]
+            df2 <- df2[df2$NGEN == ngen, ]
+            df2 <- df2[df2$NBPS == nbps, ]
+            mthd2 <- df2$TQMCn2xSERF #FN
         } else {
             print("ERROR")
             exit()
@@ -152,15 +142,6 @@ for (mthd in mthds) {
             note <- paste("(", mthd, "better)")
         }
 
-        #writeme <- paste("TQMC-wh_n2 vs.", mthd, "&",
-        #                 supplab, "& &",
-        #                 as.character(ngen), "&",
-        #                 as.character(nbps), "& &",
-        #                 as.character(ntreeqmc), "&",
-        #                 as.character(nother), "&",
-        #                 as.character(ntie), "& &",
-        #                 format(wsr, scientific = TRUE, digits=1), "&", 
-        #                 stars, "&", mc, "&", note, " \\\\")
         writeme <- paste(as.character(ngen), "&",
                          as.character(nbps), "& &",
                          as.character(ntreeqmc), "&",
@@ -203,7 +184,7 @@ for the  96 tests made on the S100 data.
 \midrule
 \# of genes & sequence length & & BET & WOR & TIE & & p-val & sig & MC & note \\
 \midrule
-\multicolumn{11}{c}{\textbf{ Abayes Support }} \\
+\multicolumn{11}{c}{\textbf{ Abayes Support for weighted methods }} \\
 \midrule
 50 & 200 & & 23 & 17 & 10 & & 0.3 &  &  &   \\
 50 & 400 & & 33 & 7 & 10 & & 4e-04 & *** & MC &   \\
@@ -222,7 +203,7 @@ for the  96 tests made on the S100 data.
 1000 & 800 & & 20 & 7 & 23 & & 0.008 & * &  &   \\
 1000 & 1600 & & 19 & 5 & 26 & & 0.002 & ** &  &   \\
 \midrule
-\multicolumn{11}{c}{\textbf{ Boostrap Support }} \\
+\multicolumn{11}{c}{\textbf{ Boostrap Support for weighted methods }} \\
 \midrule
 50 & 200 & & 22 & 17 & 11 & & 0.4 &  &  &   \\
 50 & 400 & & 19 & 14 & 17 & & 0.5 &  &  &   \\
@@ -265,7 +246,7 @@ for the  96 tests made on the S100 data.
 \midrule
 \# of genes & sequence length & & BET & WOR & TIE & & p-val & sig & MC & note \\
 \midrule
-\multicolumn{11}{c}{\textbf{ Abayes Support }} \\
+\multicolumn{11}{c}{\textbf{ Abayes Support for weighted methods }} \\
 \midrule
 50 & 200 & & 30 & 16 & 4 & & 0.03 & * &  &   \\
 50 & 400 & & 33 & 12 & 5 & & 0.001 & ** &  &   \\
@@ -284,7 +265,7 @@ for the  96 tests made on the S100 data.
 1000 & 800 & & 21 & 8 & 21 & & 0.004 & ** &  &   \\
 1000 & 1600 & & 23 & 5 & 22 & & 4e-04 & *** & MC &   \\
 \midrule
-\multicolumn{11}{c}{\textbf{ Boostrap Support }} \\
+\multicolumn{11}{c}{\textbf{ Boostrap Support for weighted methods }} \\
 \midrule
 50 & 200 & & 30 & 12 & 8 & & 0.004 & ** &  &   \\
 50 & 400 & & 31 & 12 & 7 & & 0.002 & ** &  &   \\
@@ -318,7 +299,6 @@ Significance is evaluated using paired, two-sided Wilcoxon signed-rank tests on 
 The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.
 MC indicates significance after Bonferroni correction, i.e., $p < $ 0.05 / 96 = 5e-04
 for the  96 tests made on the S100 data.
-IMPORTANT: All other results for TREE-QMC-n2 do NOT use the refined tree from IQTREE.
 }
 \centering
 \normalsize
@@ -328,26 +308,26 @@ IMPORTANT: All other results for TREE-QMC-n2 do NOT use the refined tree from IQ
 \midrule
 \# of genes & sequence length & & BET & WOR & TIE & & p-val & sig & MC & note \\
 \midrule
-\multicolumn{11}{c}{\textbf{ IQtree used refined polytomies (part of abayes) }} \\
+\multicolumn{11}{c}{\textbf{ Abayes Support for weighted methods }} \\
 \midrule
-50 & 200 & & 38 & 8 & 4 & & 3e-07 & ***** & MC &   \\
-50 & 400 & & 31 & 11 & 8 & & 1e-04 & *** & MC &   \\
-50 & 800 & & 32 & 8 & 10 & & 7e-05 & *** & MC &   \\
-50 & 1600 & & 24 & 16 & 10 & & 0.05 &  &  &   \\
-200 & 200 & & 35 & 11 & 4 & & 1e-06 & ***** & MC &   \\
-200 & 400 & & 34 & 8 & 8 & & 7e-06 & **** & MC &   \\
-200 & 800 & & 22 & 11 & 17 & & 0.03 & * &  &   \\
+50 & 200 & & 38 & 8 & 4 & & 3e-08 & ***** & MC &   \\
+50 & 400 & & 31 & 11 & 8 & & 9e-05 & *** & MC &   \\
+50 & 800 & & 31 & 8 & 11 & & 9e-05 & *** & MC &   \\
+50 & 1600 & & 24 & 16 & 10 & & 0.05 & * &  &   \\
+200 & 200 & & 33 & 11 & 6 & & 1e-05 & **** & MC &   \\
+200 & 400 & & 34 & 8 & 8 & & 3e-06 & ***** & MC &   \\
+200 & 800 & & 22 & 12 & 16 & & 0.04 & * &  &   \\
 200 & 1600 & & 29 & 9 & 12 & & 9e-04 & ** &  &   \\
-500 & 200 & & 29 & 9 & 12 & & 6e-04 & ** &  &   \\
-500 & 400 & & 28 & 9 & 13 & & 1e-04 & *** & MC &   \\
+500 & 200 & & 28 & 10 & 12 & & 0.001 & ** &  &   \\
+500 & 400 & & 28 & 8 & 14 & & 9e-05 & *** & MC &   \\
 500 & 800 & & 22 & 9 & 19 & & 0.008 & * &  &   \\
-500 & 1600 & & 24 & 6 & 20 & & 2e-04 & *** & MC &   \\
-1000 & 200 & & 26 & 6 & 18 & & 4e-05 & **** & MC &   \\
-1000 & 400 & & 29 & 4 & 17 & & 8e-07 & ***** & MC &   \\
+500 & 1600 & & 23 & 6 & 21 & & 4e-04 & *** & MC &   \\
+1000 & 200 & & 27 & 7 & 16 & & 4e-05 & **** & MC &   \\
+1000 & 400 & & 28 & 4 & 18 & & 2e-06 & ***** & MC &   \\
 1000 & 800 & & 28 & 5 & 17 & & 9e-06 & **** & MC &   \\
 1000 & 1600 & & 22 & 5 & 23 & & 0.002 & ** &  &   \\
 \midrule
-\multicolumn{11}{c}{\textbf{ TREE-QMC used to randomly refined polytomies }} \\
+\multicolumn{11}{c}{\textbf{ Boostrap Support for weighted methods }} \\
 \midrule
 50 & 200 & & 29 & 13 & 8 & & 3e-04 & *** & MC &   \\
 50 & 400 & & 25 & 20 & 5 & & 0.4 &  &  &   \\
@@ -368,5 +348,3 @@ IMPORTANT: All other results for TREE-QMC-n2 do NOT use the refined tree from IQ
 \bottomrule
 \end{tabular}
 \end{table}
-
-

@@ -2,7 +2,6 @@ import pandas
 import numpy
 import sys
 
-
 def report_stats(df):
     repls = range(3000, 3050)
 
@@ -76,9 +75,9 @@ def run_stats_helper(df_ils, df_gtee, df_ad, ntax, ngen, nbps, blsc, psiz, miss,
     sys.stdout.write(" \\\\\n")
 
 if __name__ == "__main__":
-    df_ils = pandas.read_csv("all_true_species_tree_vs_true_gene_trees.csv")
-    df_gtee = pandas.read_csv("all_true_vs_estimated_gene_trees.csv")
-    df_ad = pandas.read_csv("all_true_species_tree_vs_estimated_gene_trees.csv")
+    df_ils = pandas.read_csv("all_true_species_tree_vs_true_gene_trees.csv.gz", compression="gzip")
+    df_gtee = pandas.read_csv("all_true_vs_estimated_gene_trees.csv.gz", compression="gzip")
+    df_ad = pandas.read_csv("all_true_species_tree_vs_estimated_gene_trees.csv.gz", compression="gzip")
 
     sys.stdout.write("\\begin{table}[!h]\n")
     sys.stdout.write("\\caption[Properties of Asteroid simulated data]")
