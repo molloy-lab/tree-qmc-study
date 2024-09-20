@@ -11,7 +11,7 @@ import sys
 ###            same as running ASTRID, and wASTRID outperforms ASTRID in these data.
 ###            Therefore, we didn't run Asteroid and don't include the results.
 
-df = pandas.read_csv("data-all-error.csv", na_values='NA', keep_default_na=False)
+df = pandas.read_csv("data-all-error-and-qscore.csv", na_values='NA', keep_default_na=False)
 
 mthds = ["ASTRID-ws",
          "ASTER-wh",
@@ -72,7 +72,7 @@ for nbps in nbpss:
   TQMC-wh_n0 : 0.1674 (bs) 0.1586 (abayes) 
   TQMC-ws_n2 : 0.1561 (bs) 0.1455 (abayes) 
   TQMC-wn_n2 : 0.1720 (bs) 0.1739 (abayes) 
-     TQMC-n2 : 0.1759 (bs) 0.1739 (abayes) 
+     TQMC-n2 : 0.1759 (bs) 0.1739 (abayes) # DIFFERENT
 
 200 bp, 200 genes
    ASTRID-ws : 0.0971 (bs) 0.0947 (abayes) 
@@ -82,7 +82,7 @@ for nbps in nbpss:
   TQMC-wh_n0 : 0.1002 (bs) 0.0980 (abayes) 
   TQMC-ws_n2 : 0.0982 (bs) 0.0943 (abayes) 
   TQMC-wn_n2 : 0.1094 (bs) 0.1114 (abayes) 
-     TQMC-n2 : 0.1096 (bs) 0.1114 (abayes) 
+     TQMC-n2 : 0.1096 (bs) 0.1114 (abayes) # DIFFERENT
 
 200 bp, 500 genes
    ASTRID-ws : 0.0774 (bs) 0.0753 (abayes) 
@@ -92,7 +92,7 @@ for nbps in nbpss:
   TQMC-wh_n0 : 0.0802 (bs) 0.0778 (abayes) 
   TQMC-ws_n2 : 0.0794 (bs) 0.0784 (abayes) 
   TQMC-wn_n2 : 0.0929 (bs) 0.0924 (abayes) 
-     TQMC-n2 : 0.0926 (bs) 0.0924 (abayes) 
+     TQMC-n2 : 0.0926 (bs) 0.0924 (abayes) # DIFFERENT
 
 200 bp, 1000 genes
    ASTRID-ws : 0.0669 (bs) 0.0622 (abayes) 
@@ -112,7 +112,7 @@ for nbps in nbpss:
   TQMC-wh_n0 : 0.1320 (bs) 0.1233 (abayes) 
   TQMC-ws_n2 : 0.1235 (bs) 0.1153 (abayes) 
   TQMC-wn_n2 : 0.1306 (bs) 0.1312 (abayes) 
-     TQMC-n2 : 0.1310 (bs) 0.1312 (abayes) 
+     TQMC-n2 : 0.1310 (bs) 0.1312 (abayes) # DIFFERENT
 
 400 bp, 200 genes
    ASTRID-ws : 0.0796 (bs) 0.0743 (abayes) 
@@ -122,7 +122,7 @@ for nbps in nbpss:
   TQMC-wh_n0 : 0.0833 (bs) 0.0778 (abayes) 
   TQMC-ws_n2 : 0.0747 (bs) 0.0718 (abayes) 
   TQMC-wn_n2 : 0.0853 (bs) 0.0859 (abayes) 
-     TQMC-n2 : 0.0855 (bs) 0.0859 (abayes) 
+     TQMC-n2 : 0.0855 (bs) 0.0859 (abayes) # DIFFERENT
 
 400 bp, 500 genes
    ASTRID-ws : 0.0616 (bs) 0.0608 (abayes) 
@@ -142,7 +142,7 @@ for nbps in nbpss:
   TQMC-wh_n0 : 0.0535 (bs) 0.0561 (abayes) 
   TQMC-ws_n2 : 0.0506 (bs) 0.0524 (abayes) 
   TQMC-wn_n2 : 0.0635 (bs) 0.0637 (abayes) 
-     TQMC-n2 : 0.0633 (bs) 0.0637 (abayes) 
+     TQMC-n2 : 0.0633 (bs) 0.0637 (abayes) # DIFFERENT
 
 800 bp, 50 genes
    ASTRID-ws : 0.1135 (bs) 0.1114 (abayes) 
@@ -152,7 +152,7 @@ for nbps in nbpss:
   TQMC-wh_n0 : 0.1104 (bs) 0.1126 (abayes) 
   TQMC-ws_n2 : 0.1053 (bs) 0.1006 (abayes) 
   TQMC-wn_n2 : 0.1147 (bs) 0.1149 (abayes) 
-     TQMC-n2 : 0.1145 (bs) 0.1149 (abayes) 
+     TQMC-n2 : 0.1145 (bs) 0.1149 (abayes) # DIFFERENT
 
 800 bp, 200 genes
    ASTRID-ws : 0.0690 (bs) 0.0678 (abayes) 
@@ -162,7 +162,7 @@ for nbps in nbpss:
   TQMC-wh_n0 : 0.0680 (bs) 0.0676 (abayes) 
   TQMC-ws_n2 : 0.0641 (bs) 0.0624 (abayes) 
   TQMC-wn_n2 : 0.0700 (bs) 0.0702 (abayes) 
-     TQMC-n2 : 0.0698 (bs) 0.0702 (abayes) 
+     TQMC-n2 : 0.0698 (bs) 0.0702 (abayes) # DIFFERENT
 
 800 bp, 500 genes
    ASTRID-ws : 0.0508 (bs) 0.0488 (abayes) 
@@ -172,7 +172,7 @@ for nbps in nbpss:
   TQMC-wh_n0 : 0.0535 (bs) 0.0496 (abayes) 
   TQMC-ws_n2 : 0.0492 (bs) 0.0482 (abayes) 
   TQMC-wn_n2 : 0.0547 (bs) 0.0545 (abayes) 
-     TQMC-n2 : 0.0547 (bs) 0.0545 (abayes) 
+     TQMC-n2 : 0.0547 (bs) 0.0545 (abayes) # DIFFERENT
 
 800 bp, 1000 genes
    ASTRID-ws : 0.0420 (bs) 0.0422 (abayes) 
@@ -212,7 +212,7 @@ for nbps in nbpss:
   TQMC-wh_n0 : 0.0443 (bs) 0.0422 (abayes) 
   TQMC-ws_n2 : 0.0424 (bs) 0.0382 (abayes) 
   TQMC-wn_n2 : 0.0490 (bs) 0.0490 (abayes) 
-     TQMC-n2 : 0.0488 (bs) 0.0490 (abayes) 
+     TQMC-n2 : 0.0488 (bs) 0.0490 (abayes) # DIFFERENT
 
 1600 bp, 1000 genes
    ASTRID-ws : 0.0359 (bs) 0.0374 (abayes) 

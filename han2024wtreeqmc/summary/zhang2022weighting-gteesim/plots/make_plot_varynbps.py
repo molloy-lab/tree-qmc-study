@@ -123,7 +123,7 @@ def make_figure(df, supp, output):
                 if (mthd == "TQMC-n2"):
                     # IMPORTANT: TQMC-n2 doesn't use support
                     # and bs support means unrefined trees
-                    # that are internally refined (better than abayes)!
+                    # that are internally refined by TREE-QMC
                     ydf = df[(df["NBPS"] == nbps) &
                              (df["NGEN"] == ngen) &
                              (df["MTHD"] == mthd) &
@@ -245,6 +245,6 @@ def make_figure(df, supp, output):
 
 # Read and plot data
 supp = "abayes"
-df = pandas.read_csv("../csvs/../csvs/data-all-error.csv")
+df = pandas.read_csv("../csvs/data-all-error-and-qscore.csv")
 title = str("plot-s100-varynbps-%s-supp.pdf" % (supp))
 make_figure(df, supp, title)

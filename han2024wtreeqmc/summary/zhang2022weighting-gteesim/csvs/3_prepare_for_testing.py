@@ -5,13 +5,15 @@ import sys
 
 sys.exit("DONE RUNNING")
 
-df = pandas.read_csv("data-all-error.csv")
+df = pandas.read_csv("data-all-error-and-qscore.csv")
 df.fillna("NA", inplace=True)
 
 cols = ["NBPS", "NGEN", "SUPP", "REPL", 
         "WASTRIDxSEFN",  "WASTRIDxSERF",
         "ASTERHxSEFN",   "ASTERHxSERF",
+        "ASTERHxQSWN",   "ASTERHxQSWH",
         "TQMCwhn2xSEFN", "TQMCwhn2xSERF",
+        "TQMCwhn2xQSWN", "TQMCwhn2xQSWH",
         "TQMCwhn1xSEFN", "TQMCwhn1xSERF",
         "TQMCwhn0xSEFN", "TQMCwhn0xSERF",
         "TQMCwsn2xSEFN", "TQMCwsn2xSERF",
@@ -60,8 +62,14 @@ for nbps in nbpss:
                 row["ASTERHxSEFN"] = asterh.SEFN.values[0]
                 row["ASTERHxSERF"] = asterh.SERF.values[0]
 
+                row["ASTERHxQSWN"] = asterh.QSWN.values[0]
+                row["ASTERHxQSWH"] = asterh.QSWH.values[0]
+
                 row["TQMCwhn2xSEFN"] = tqmc_whn2.SEFN.values[0]
                 row["TQMCwhn2xSERF"] = tqmc_whn2.SERF.values[0]
+
+                row["TQMCwhn2xQSWN"] = tqmc_whn2.QSWN.values[0]
+                row["TQMCwhn2xQSWH"] = tqmc_whn2.QSWH.values[0]
 
                 row["TQMCwhn1xSEFN"] = tqmc_whn1.SEFN.values[0]
                 row["TQMCwhn1xSERF"] = tqmc_whn1.SERF.values[0]
