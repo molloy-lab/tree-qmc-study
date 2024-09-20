@@ -89,3 +89,10 @@ for INDEX in `seq 0 $END`; do
     fi
 done
 
+#scored_rooted_asteroid.log:Final quartet score is: 1863661
+#scored_rooted_aster_v1.16.3.4.log:Final quartet score is: 1868476
+#scored_rooted_concatenation.log:Final quartet score is: 1861015
+#scored_rooted_reference.log:Final quartet score is: 1717641
+#scored_rooted_treeqmc_wf_n2.log:Final quartet score is: 1864686
+#scored_rooted_wastrid_vanilla.log:Final quartet score is: 1842335
+#scored_t1_rooted_reference.log:Final quartet score is: 1717641

@@ -54,3 +54,11 @@ $ASTERH --mode 4 \
 
 done
 
+#treeA_w_hybrid_support_plus_bad105.log:Score: 2326403.019
+#treeA_w_unweighted_support.log:Score: 3031323
+#treeA_w_unweighted_support_plus_bad105.log:Score: 3117457
+#treeA_w_unweighted_support_plus_bad105_without_galGal_tinGut.log:Score: 3083056
+#treeB_w_hybrid_support_plus_bad105.log:Score: 2325430.563
+#treeB_w_unweighted_support.log:Score: 3029054
+#treeB_w_unweighted_support_plus_bad105.log:Score: 3119240
+#treeB_w_unweighted_support_plus_bad105_without_galGal_tinGut.log:Score: 3080549
