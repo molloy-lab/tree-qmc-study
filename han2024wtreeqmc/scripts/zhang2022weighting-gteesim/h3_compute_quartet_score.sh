@@ -72,16 +72,3 @@ if [ ! -e $OUTPUT.tre ]; then
 
 fi
 
-QSUP="qsupp-wn"
-OUTPUT="${NAME}_${QSUP}"
-if [ ! -e $OUTPUT.tre ]; then
-    # Run ASTRAL
-    $ASTER --scoring -u 2 -t 16 \
-            -i $GTRE_FILE \
-            -c $INPUT \
-            -o $OUTPUT.tre \
-            &> $OUTPUT.log
-    MYQS="$(grep "Score:" $OUTPUT.log | awk '{print $2}')"
-    echo "$MYMODL,$QSUP,$MYQS" > ${OUTPUT}_quartet_score.csv
-fi
-
