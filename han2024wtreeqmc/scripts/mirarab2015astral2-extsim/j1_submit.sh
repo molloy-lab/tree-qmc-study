@@ -15,7 +15,7 @@ RATES=( "0.000001" )              # Speciation rate
 # GENERAL PARAMETERS
 REPLS=( $(seq -f "%02g" 1 50) )  # Replicates
 SUPPS=( "abayes" )
-NGENS=( 1000 )
+NGENS=( 50 200 1000 )
 
 for NTAX in ${NTAXS[@]}; do
     for HGHT in ${HGHTS[@]}; do
