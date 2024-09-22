@@ -6,12 +6,14 @@ sys.exit("DONE RUNNING")
 
 cols = ["NTAX", "NGEN", "NBPS", "BLSC", "PSIZ", "MISS", "REPL",
         "WASTRIDxFNR", "WASTRIDxFPR",
-        "ASTERxFNR", "ASTERxFPR",
+        "ASTERxFNR", "ASTERxFPR", "ASTERxQS", "ASTERxAVGLPP",
         "ASTEROIDxFNR", "ASTEROIDxFPR",
         "TQMCn2xFNR", "TQMCn2xFPR",
         "TQMCn2sharedxFNR", "TQMCn2sharedxFPR",
         "TQMCn1xFNR", "TQMCn1xFPR",
-        "TQMCn0xFNR", "TQMCn0xFPR"]
+        "TQMCn0xFNR", "TQMCn0xFPR",
+        "TQMCn2refinedxFNR", "TQMCn2refinedxFPR", "TQMCn2refinedxQS", "TQMCn2refinedxAVGLPP",
+        "TQMCn2sharedrefinedxFNR", "TQMCn2sharedrefinedxFPR"]
 
 
 experiments = ["varypsiz", "varyntax", "varyngen",
@@ -77,6 +79,7 @@ for do in experiments:
                                 row["MISS"] = miss
                                 row["REPL"] = repl
 
+                                # For statistical testing
                                 vals = ydf[(ydf["MTHD"] == "wastrid_vanilla")]
                                 row["WASTRIDxFNR"] = vals.SEFNR.values[0]
                                 row["WASTRIDxFPR"] = vals.SEFPR.values[0]
@@ -84,6 +87,8 @@ for do in experiments:
                                 vals = ydf[(ydf["MTHD"] == "aster_v1.16.3.4")]
                                 row["ASTERxFNR"] = vals.SEFNR.values[0]
                                 row["ASTERxFPR"] = vals.SEFPR.values[0]
+                                row["ASTERxQS"] = vals.QSCR.values[0]         # for dot plots
+                                row["ASTERxAVGLPP"] = vals.AVG_LPP.values[0]  # for dot plots
 
                                 vals = ydf[(ydf["MTHD"] == "asteroid")]
                                 row["ASTEROIDxFNR"] = vals.SEFNR.values[0]
@@ -104,6 +109,17 @@ for do in experiments:
                                 vals = ydf[(ydf["MTHD"] == "wtreeqmc_wf_n0")]
                                 row["TQMCn0xFNR"] = vals.SEFNR.values[0]
                                 row["TQMCn0xFPR"] = vals.SEFPR.values[0]
+
+                                # For dot plots
+                                vals = ydf[(ydf["MTHD"] == "wtreeqmc_wf_n2_refined")]
+                                row["TQMCn2refinedxFNR"] = vals.SEFNR.values[0]
+                                row["TQMCn2refinedxFPR"] = vals.SEFPR.values[0]
+                                row["TQMCn2refinedxQS"] = vals.QSCR.values[0]
+                                row["TQMCn2refinedxAVGLPP"] = vals.AVG_LPP.values[0]
+
+                                vals = ydf[(ydf["MTHD"] == "wtreeqmc_wf_n2_shared_refined")]
+                                row["TQMCn2sharedrefinedxFNR"] = vals.SEFNR.values[0]
+                                row["TQMCn2sharedrefinedxFPR"] = vals.SEFPR.values[0]
 
                                 rows.append(row)
 

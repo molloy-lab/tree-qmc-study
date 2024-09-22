@@ -23,14 +23,32 @@ def reformat_timing(data):
 
     return [totals, totalm, totalh]
 
+
+def string_to_float_array(text):
+    keep = []
+    for x in text.split(','):
+        if x != "NA":
+            y = float(x)
+            # Some weird outputs can occur when EN is small
+            if (y < 0) or (y > 1):
+                y = 0.0
+            keep.append(float(y))
+    return keep
+
+
 ste_df = pandas.read_csv("all_species_tree_error.csv.gz", keep_default_na=False, compression="gzip")
 mrt_df = pandas.read_csv("all_runtime.csv.gz", keep_default_na=False, compression="gzip")
+qsc_df = pandas.read_csv("all_quartet_score.csv.gz", keep_default_na=False, compression="gzip")
+brs_df = pandas.read_csv("all_branch_support.csv.gz", keep_default_na=False, compression="gzip")
 
 cols = ["NTAX", "NGEN", "NBPS", "BLSC", "PSIZ", "MISS",
         "REPL", "MTHD",
         "SEFN", "SEFNR",
         "SEFP", "SEFPR",
-        "NODE", "SECS"]
+        "NODE", "SECS",
+        "QSCR",
+        "AVG_LPP", "MED_LPP",
+        "AVG_QQS", "MED_QQS"]
 
 mthds = ["asteroid",
          "aster_v1.16.3.4",
@@ -95,6 +113,7 @@ for do in experiments:
                                 print("%d %s %s %s %s %s %s %s %s" % (index, do, s, f, sites, bl, pop, ms, repl))
 
                                 for mthd in mthds:
+                                    # Process species tree error
                                     xste_df = ste_df[(ste_df["S"] == s) &
                                                      (ste_df["F"] == f) &
                                                      (ste_df["SITES"] == sites) &
@@ -118,6 +137,7 @@ for do in experiments:
                                         sefnr = float(sefn) / float(xste_df.I1.values[0])
                                         sefpr = float(sefp) / float(xste_df.I2.values[0])
 
+                                    # Process runtime
                                     xmrt_df = mrt_df[(mrt_df["S"] == s) &
                                                      (mrt_df["F"] == f) &
                                                      (mrt_df["SITES"] == sites) &
@@ -141,6 +161,62 @@ for do in experiments:
                                         if node.find("cbcb") < 0:
                                             sys.exit("Method not run on CBCB node - check architecture!\n")
 
+                                    # Process quartet score
+                                    qscr = "NA"
+                                    if (mthd == "wtreeqmc_wf_n2_refined") or (mthd == "aster_v1.16.3.4"):
+                                        xqsc_df = qsc_df[(qsc_df["S"] == s) &
+                                                         (qsc_df["F"] == f) &
+                                                         (qsc_df["SITES"] == sites) &
+                                                         (qsc_df["BL"] == bl) &
+                                                         (qsc_df["POP"] == pop) &
+                                                         (qsc_df["MS"] == ms) &
+                                                         (qsc_df["SEED"] == repl) &
+                                                         (qsc_df["MTHD"] == mthd)]
+
+                                        if xqsc_df.shape[0] != 1:
+                                            sys.exit("  3 QUARTET SCORE - %s!\n" % mthd)
+
+                                        if (xqsc_df.QS.values[0] == '') or (xqsc_df.QS.values[0] == "NA"):
+                                            pass
+                                        else:
+                                            qscr = float(xqsc_df.QS.values[0])
+
+                                    # Process average and median branch support
+                                    avg_lpp = "NA"
+                                    med_lpp = "NA"
+                                    avg_qqs = "NA"
+                                    med_qqs = "NA"
+                                    if (mthd == "wtreeqmc_wf_n2_refined") or (mthd == "aster_v1.16.3.4"):
+                                        xbrs_df = brs_df[(brs_df["S"] == s) &
+                                                         (brs_df["F"] == f) &
+                                                         (brs_df["SITES"] == sites) &
+                                                         (brs_df["BL"] == bl) &
+                                                         (brs_df["POP"] == pop) &
+                                                         (brs_df["MS"] == ms) &
+                                                         (brs_df["SEED"] == repl)]
+
+                                        if xbrs_df.shape[0] != 1:
+                                            sys.exit("  4 BRANCH SUPPORT - %s!\n" % mthd)
+
+                                        if mthd == "aster_v1.16.3.4":
+                                            # estimated tree 1
+                                            text_lpp = xbrs_df["FP_E1_PP"].values[0] + ',' + xbrs_df["TP_E1_PP"].values[0]
+                                            text_qqs = xbrs_df["FP_E1_QS"].values[0] + ',' + xbrs_df["TP_E1_QS"].values[0]
+                                        elif mthd == "wtreeqmc_wf_n2_refined":
+                                            # estimated tree 2
+                                            text_lpp = xbrs_df["FP_E2_PP"].values[0] + ',' + xbrs_df["TP_E2_PP"].values[0]
+                                            text_qqs = xbrs_df["FP_E2_QS"].values[0] + ',' + xbrs_df["TP_E2_QS"].values[0]
+                                        else:
+                                            sys.exit("Branch support was not computed and compared for other methods!")
+
+                                        lpp = string_to_float_array(text_lpp)
+                                        avg_lpp = numpy.mean(lpp)
+                                        med_lpp = numpy.median(lpp)
+
+                                        qqs = string_to_float_array(text_qqs)
+                                        avg_qqs = numpy.mean(qqs)
+                                        med_qqs = numpy.median(qqs)
+
                                     row = {}
                                     row["NTAX"] = int(s.replace('s', ''))
                                     row["NGEN"] = int(f.replace('f', ''))
@@ -156,6 +232,11 @@ for do in experiments:
                                     row["SEFP"] = sefp
                                     row["SEFPR"] = sefpr
                                     row["SECS"] = secs
+                                    row["QSCR"] = qscr
+                                    row["AVG_LPP"] = avg_lpp
+                                    row["MED_LPP"] = med_lpp
+                                    row["AVG_QQS"] = avg_qqs
+                                    row["MED_QQS"] = med_qqs
                                     rows.append(row)
 
                                 index += 1
