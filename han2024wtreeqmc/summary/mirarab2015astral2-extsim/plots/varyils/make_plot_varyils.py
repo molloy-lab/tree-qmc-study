@@ -105,34 +105,43 @@ def make_figure(df, supp, output):
     axs = [ax00, ax10, ax20]
 
     # Plot error for varying number of taxa
-    ntaxs = [10, 50, 100, 200, 500, 1000]
+    modls = ["high ILS\n(deep)",   "high ILS\n(shallow)",
+             "medium ILS\n(deep)", "medium ILS\n(shallow)",
+             "low ILS\n(deep)",    "low ILS\n(shallow)",]
+
+    ilsls = ["high", "medium", "low"]
+    specs = ["deep", "shallow"] 
+
     ngens = [1000, 200, 50]
-    n_ntax = len(ntaxs)
+    n_modl = len(modls)
 
     for sub_ind, ngen in enumerate(ngens):
         ax = axs[sub_ind]
-        sers = [None] * n_ntax
-        nrps = [None] * n_ntax
-        for j, ntax in enumerate(ntaxs):
-            #print(ntax)
-            sers[j] = []
-            nrps[j] = []
-            for k, mthd in enumerate(mthds):
-                print(mthd)
-                ydf = df[(df["NTAX"] == ntax) &
-                         (df["NGEN"] == ngen) &
-                         (df["MTHD"] == mthd)]
+        sers = [None] * n_modl
+        nrps = [None] * n_modl
+        j = 0
+        for j1, ilsl in enumerate(ilsls):
+            for j2, spec in enumerate(specs):
+                #print(ntax)
+                sers[j] = []
+                nrps[j] = []
+                for k, mthd in enumerate(mthds):
+                    print(mthd)
+                    ydf = df[(df["ILSL"] == ilsl) &
+                             (df["SPEC"] == spec) &
+                             (df["NGEN"] == ngen) &
+                             (df["MTHD"] == mthd)]
 
-                ydf = ydf.sort_values(by=["REPL"], ascending=True)
-                #ser = ydf.SERF.values
-                ser = ydf.SEFNR.values * 100
-                #print(ser)
-                sers[j].append(list(ser))
-                nrps[j].append(len(ser))
+                    ydf = ydf.sort_values(by=["REPL"], ascending=True)
+                    #ser = ydf.SERF.values
+                    ser = ydf.SEFNR.values * 100
+                    sers[j].append(list(ser))
+                    nrps[j].append(len(ser))
+                j += 1
 
         xs = []
         ys = []
-        inds = ntaxs
+        inds = modls
         for ind, ser in zip(inds, sers):
             if ser != []:
                 xs.append(ind)
@@ -143,7 +152,7 @@ def make_figure(df, supp, output):
         xminor = []
         xmajor = []
         base = numpy.arange(1, n_mthds + 1) 
-        for j, ntax in enumerate(ntaxs):
+        for j, modl in enumerate(modls):
             pos = base + ((n_mthds + 1) * j)
             xminor = xminor + list(pos)
             xmajor = xmajor + [numpy.mean(pos)]
@@ -166,26 +175,26 @@ def make_figure(df, supp, output):
         ax.set_xlim(xminor[0]-1, xminor[-1]+1)
         ax.set_xticks(xmajor)
         test = []
-        for j, ntax in enumerate(ntaxs):
+        for j, modl in enumerate(modls):
             if nrps[j][0] != 50:
-                sys.stdout.write("ntax %d, ngen %d - Found %d replicates!\n" % (ntax, ngen, nrps[j][0]))
-            test.append(r"%d" % ntax)
+                sys.stdout.write("modl %s, ngen %d - Found %d replicates!\n" % (modl, ngen, nrps[j][0]))
+            test.append(r"%s" % modl)
 
         ax.set_xticklabels(test)
 
         # Set dashed lines
         if ngen == 1000:
             ymin = 0
-            ymax = 10
+            ymax = 15
             yticks = list(range(0, ymax + 1, 2))
         elif ngen == 200:
             ymin = 0
-            ymax = 15
-            yticks = list(range(0, ymax + 1, 3))
+            ymax = 30
+            yticks = list(range(0, ymax + 1, 5))
         else:
             ymin = 0
-            ymax = 18
-            yticks = list(range(0, ymax + 1, 3))
+            ymax = 40
+            yticks = list(range(0, ymax + 1, 5))
         
         ydraw = yticks
         ymax = yticks[-1]
@@ -231,8 +240,8 @@ def make_figure(df, supp, output):
 
 # Read and plot data
 supp = "abayes"
-df = pandas.read_csv("../../csvs/data-varyntax-error-and-qscore.csv")
-title = str("plot-astral2-varyntax-%s-supp.pdf" % (supp))
+df = pandas.read_csv("../../csvs/data-varyils-error-and-qscore.csv")
+title = str("plot-astral2-varyils-%s-supp.pdf" % (supp))
 make_figure(df, supp, title)
 
 
