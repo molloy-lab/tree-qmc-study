@@ -47,6 +47,7 @@ rows = []
 
 mthds = ["aster_h",
          "wastrid_s",
+         "asteroid",
          "wtreeqmc_wf_n2",
          "wtreeqmc_wn_n2",
          "wtreeqmc_ws_n2",
@@ -57,6 +58,7 @@ mthds = ["aster_h",
 namemap = {}
 namemap["aster_h"] = "ASTER-wh"
 namemap["wastrid_s"] = "ASTRID-ws"
+namemap["asteroid"] = "ASTEROID"
 namemap["wtreeqmc_wf_n2"] = "TQMC-n2"
 namemap["wtreeqmc_wn_n2"] = "TQMC-wn_n2"
 namemap["wtreeqmc_ws_n2"] = "TQMC-ws_n2"
@@ -73,22 +75,13 @@ for nbps in nbpss:
     for ngen in ngens:
         for repl in repls:
             print("%d %d %d" % (nbps, ngen, repl))
-            for supp in supps:
-                # Process quartet score for true species tree
-                #xqsc_df = qsc_df[(qsc_df["NBPS"] == nbps) &
-                #                 (qsc_df["NGEN"] == ngen) &
-                #                 (qsc_df["REPL"] == repl) &
-                #                 (qsc_df["SUPP"] == supp) &
-                #                 (qsc_df["MTHD"] == "true_stree")]
+            for mthd in mthds:
+                if mthd == "asteroid":
+                    supps = ["bs"]
+                else:
+                    supps = ["abayes", "bs"]
 
-                #if xqsc_df.shape[0] != 2:
-                #    sys.exit("  0 ERROR - true_stree!\n")
-
-                #true_qswn = xqsc_df[(xqsc_df["QSUP"] == "qsupp-wn")].QSCR.values[0]
-                #true_qswh = xqsc_df[(xqsc_df["QSUP"] == "qsupp-wh")].QSCR.values[0]
-
-                for mthd in mthds:
-                
+                for supp in supps:
                     # Process species tree error
                     xste_df = ste_df[(ste_df["NBPS"] == nbps) &
                                      (ste_df["NGEN"] == ngen) &

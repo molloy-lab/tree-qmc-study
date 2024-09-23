@@ -119,16 +119,9 @@ def make_figure(df, supp, output):
             nrps[j] = []
             for k, mthd in enumerate(mthds):
                 print(mthd)
-                if (mthd == "CA-ML") or (mthd == "TQMC-n2") or (mthd == "TQMC-n2-origstudy"):
-                    ydf = df[(df["NTAX"] == ntax) &
-                             (df["NGEN"] == ngen) &
-                             (df["MTHD"] == mthd) &
-                             (df["SUPP"] == "none")]
-                else: 
-                    ydf = df[(df["NTAX"] == ntax) &
-                             (df["NGEN"] == ngen) &
-                             (df["MTHD"] == mthd) &
-                             (df["SUPP"] == supp)]
+                ydf = df[(df["NTAX"] == ntax) &
+                         (df["NGEN"] == ngen) &
+                         (df["MTHD"] == mthd)]
 
                 ydf = ydf.sort_values(by=["REPL"], ascending=True)
                 #ser = ydf.SERF.values
@@ -186,7 +179,7 @@ def make_figure(df, supp, output):
         test = []
         for j, ntax in enumerate(ntaxs):
             if nrps[j][0] != 50:
-                sys.stdout.write("ntax %d - Found %d replicates!\n" % (ntax, nrps[j][0]))
+                sys.stdout.write("ntax %d, ngen %d - Found %d replicates!\n" % (ntax, ngen, nrps[j][0]))
             test.append(r"%d" % ntax)
 
         ax.set_xticklabels(test)
@@ -249,7 +242,7 @@ def make_figure(df, supp, output):
 
 # Read and plot data
 supp = "abayes"
-df = pandas.read_csv("../../csvs/data-varyntax-error.csv")
+df = pandas.read_csv("../../csvs/data-varyntax-error-and-qscore.csv")
 title = str("plot-astral2-varyntax-%s-supp.pdf" % (supp))
 make_figure(df, supp, title)
 

@@ -98,13 +98,14 @@ def make_figure(df, supp, output):
 
     # Create a figure
     fig = plt.figure(figsize=(7, 7.125))   # x,y
-    gs = gridspec.GridSpec(3, 1)  # nrows, ncols
+    gs = gridspec.GridSpec(4, 1)  # nrows, ncols
     ax00 = plt.subplot(gs[0, 0])
     ax10 = plt.subplot(gs[1, 0])
     ax20 = plt.subplot(gs[2, 0])
-    axs = [ax00, ax10, ax20]
+    ax30 = plt.subplot(gs[3, 0])
+    axs = [ax00, ax10, ax20, ax30]
 
-    ngens = [1000, 200, 50]        # Subplots are number of genes
+    ngens = [1000, 500, 200, 50]        # Subplots are number of genes
     nbpss = [200, 400, 800, 1600]  # Box plots grouped by varying number of base pairs
     n_nbps = len(nbpss)
 
@@ -181,7 +182,7 @@ def make_figure(df, supp, output):
             mytitle = str("S100 Data (%s support)" % supp)
             #ax.set_title(mytitle, 
             #             loc="center", y=1.1, fontsize=12)
-        elif sub_ind == 2:
+        elif sub_ind == 3:
             ax.set_xlabel("Sequence Length", fontsize=12)
 
         # Set tick labels
@@ -195,6 +196,8 @@ def make_figure(df, supp, output):
 
         # Set dashed lines
         if ngen == 1000:
+            yticks = list(range(0, 20 + 1, 5))
+        elif ngen == 500:
             yticks = list(range(0, 20 + 1, 5))
         elif ngen == 200:
             yticks = list(range(0, 25 + 1, 5))
@@ -238,7 +241,7 @@ def make_figure(df, supp, output):
                   ncol=7, 
                   fontsize=9.5,
                   loc='lower center', 
-                  bbox_to_anchor=(0.5, -0.5, 0, 3))
+                  bbox_to_anchor=(0.5, -0.8, 0, 3))
 
     # Save plot
     plt.savefig(output, format='pdf', dpi=300)

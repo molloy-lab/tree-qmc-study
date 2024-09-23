@@ -12,24 +12,33 @@ Sys is the amount of CPU time spent in the kernel within the process. This means
 
 """
 Previous studies removed:
-+ remove 1 replicate (i.e. 41) from 10-taxon
-+ remove 3 replicates (i.e. 21 and 41) from 50-taxon (next is 27 with 590ish genes)
-+ remove 2 replicates (i.e. 8 and 47) from 100-taxon
-+ remove 3 replicates (i.e. 8, 15, 49) from 200 taxon/500 K/1e-06
++ 3 remove 1 replicate (i.e. 41) from 10-taxon
++ 6 remove 2 replicates (i.e. 21, 41) from 50-taxon (note 27 was close with 590ish genes)
++ 6 remove 2 replicates (i.e. 8 and 47) from 100-taxon
++ 9 remove 3 replicates (i.e. 8, 15, 49) from 200-taxon/500K/1e-06
+
+Concatenation (CA-ML) tree was also missing on 
++ 3 remove 1 replicate (i.e. 27) for 50-taxon, related to above
++ 1 remove 1 replicate (i.e. 12) for 10-taxon with 1000 genes
++ Also CA-ML wasn't run on any 1000-taxon with 1000 genes
+
+TREE-QMC returned polytomies on 
++ replicate 41 for 10-taxon with 50 genes (but already removed)
++ replicate 8 for 200-taxon/500K/1e-06 with 200 genes (but already removed)
 
 Failures due to wall clock time for single-threaded ASTER-h:
-+ remove 4 replicates (6, 8, 33, and 38) from 1000-taxon
++ 2 remove 2 replicates (8 and 38) from 1000-taxon with 1000 genes
++ 1 remove 1 replicate (21) from 200-taxon/500K/1e-07 with 1000 genes
 """
 
 sys.exit("DONE RUNNING")
 
 namemap = {}
-namemap["caml"] = "CA-ML"
-namemap["treeqmc_n2_v1.0.0"] = "TQMC-n0-origstudy"
 namemap["aster_h_t16"] = "ASTER-wh (16 threads)"
 namemap["aster_h"] = "ASTER-wh (1 thread)"
 namemap["wastrid_s"] = "ASTRID-ws"
-namemap["wtreeqmc_wn_n2"] = "TQMC-n2"
+namemap["asteroid"] = "ASTEROID"
+namemap["wtreeqmc_wf_n2"] = "TQMC-n2"
 namemap["wtreeqmc_ws_n2"] = "TQMC-ws_n2"
 namemap["wtreeqmc_wh_n2"] = "TQMC-wh_n2"
 namemap["wtreeqmc_wh_n1"] = "TQMC-wh_n1"
@@ -46,20 +55,11 @@ def reformat_timing(data):
 
     return [totals, totalm, totalh]
 
+mrt_df = pandas.read_csv("all_runtime.csv.gz", keep_default_na=False, compression="gzip")
 
-df1 = pandas.read_csv("all_species_tree_error.csv", keep_default_na=False)
-df2 = pandas.read_csv("aster_h_t1_species_tree_error.csv", keep_default_na=False)
-ste_df = pandas.concat([df1, df2])
+cols = ["NTAX", "ILSL", "SPEC", "REPL", "SUPP", "NGEN", "MTHD", "NODE", "SECS"]
 
-df1 = pandas.read_csv("all_runtime.csv", keep_default_na=False)
-df2 = pandas.read_csv("aster_h_t1_runtime.csv", keep_default_na=False)
-mrt_df = pandas.concat([df1, df2])
-
-cols = ["NTAX", "ILSL", "SPEC", "REPL", "SUPP", "NGEN", 
-        "MTHD", "NODE", "SEFN", "SEFNR", "SECS"]
-
-ngens = [1000]
-supps = ["sh"]
+ngens = [50, 200, 1000]
 
 for do in ["varyils", "varyntax"]:
     if do == "varyntax":
@@ -69,7 +69,7 @@ for do in ["varyils", "varyntax"]:
         hghtlabs = ["medium"]
         rates = [0.000001]
         ratelabs = ["shallow"]
-        
+
     elif do == "varyils":
         sys.stdout.write("Increasing ILS\n")
         ntaxs = [200]
@@ -87,56 +87,46 @@ for do in ["varyils", "varyntax"]:
                     # Pick replicates
                     repls = [repl for repl in range(1, 51)]
                     if ntax == 10:
-                        repls.remove(41)
+                        repls.remove(41)      # +3
                         if ngen == 1000:
-                            repls.remove(12)  # additional because of concatenation
+                            repls.remove(12)  # +1 additional because of concatenation
                     elif ntax == 50:
-                        repls.remove(21)
-                        repls.remove(27)  # additional because of concatenation
-                        repls.remove(41)
+                        repls.remove(21)  # +3
+                        repls.remove(27)  # +3 additional because of concatenation
+                        repls.remove(41)  # +3
                     elif ntax == 100:
-                        repls.remove(8)
-                        repls.remove(47)
-                    elif ntax == 1000:
-                        repls.remove(6)  # aster failure
-                        repls.remove(8)  # aster failure
-                        repls.remove(33) # aster failure
-                        repls.remove(38) # aster failure
-                    elif (hght == 500000) and (rate == 1e-6):
-                        repls.remove(8)
-                        repls.remove(15)
-                        repls.remove(49)
+                        repls.remove(8)   # +3
+                        repls.remove(47)  # +3
+                    elif (ntax == 1000) and (ngen == 1000):
+                            repls.remove(8)  # +1 additional because of aster single threaded failure
+                            repls.remove(38) # +1 additional because of aster single threaded failure
+                    elif (hght == 500000):
+                        if (rate == 1e-6):
+                            repls.remove(8)  # +3
+                            repls.remove(15) # +3
+                            repls.remove(49) # +3
+                        else:
+                            if ngen == 1000:
+                                repls.remove(21) # +1 additional because of aster single threaded failure
 
                     # Pick methods
                     mthds = ["wastrid_s",
+                             "asteroid",
                              "wtreeqmc_wh_n2",
+                             "aster_h_t16",
                              "aster_h",
-                             "aster_h_t16"]
+                             "wtreeqmc_wf_n2"] # ran separately
 
                     for repl in repls:
                         print("%d taxa, %d %g, %d genes : repl %d" % (ntax, hght, rate, ngen, repl))
+                        total = 0
                         for mthd in mthds:
+                            if mthd == "wtreeqmc_wf_n2":
+                                supps = ["sh", "abayes"]
+                            else:
+                                supps = ["abayes"]
+
                             for supp in supps:
-                                xste_df = ste_df[(ste_df["NTAX"] == ntax) &
-                                                 (ste_df["HGHT"] == hght) &
-                                                 (ste_df["RATE"] == rate) &
-                                                 (ste_df["REPL"] == repl) &
-                                                 (ste_df["NGEN"] == ngen) &
-                                                 (ste_df["MTHD"] == mthd) &
-                                                 (ste_df["SUPP"] == supp)]
-
-                                if xste_df.shape[0] != 1:
-                                    print("  PROBLEM 1 - %s %s" % (mthd, supp))
-                                    sefn = "NA"
-                                    sefnr = "NA"
-                                else:
-                                    int1 = int(xste_df.I1.values[0])
-                                    int2 = int(xste_df.I2.values[0])
-                                    if int1 != int2:
-                                        print("  POLY - %s %s!" % (mthd, supp))
-                                    sefn = int(ste_df.FN.values[0])
-                                    sefnr = float(sefn) / int1
-
                                 xmrt_df = mrt_df[(mrt_df["NTAX"] == ntax) &
                                                  (mrt_df["HGHT"] == hght) &
                                                  (mrt_df["RATE"] == rate) &
@@ -154,11 +144,16 @@ for do in ["varyils", "varyntax"]:
                                     mrt = reformat_timing(xmrt_df.real.values[0])
                                     secs = mrt[0]
 
-                                    if (mthd == mthds[0]):
-                                        savenode = node
-                                    else:
-                                        if node != savenode:
-                                            sys.exit("Methods run on different nodes!")
+                                    if (mthd != "aster_h") and (mthd != "wtreeqmc_wf_n2"):
+                                        total += secs
+
+                                    #if (mthd == mthds[0]):
+                                    #    savenode = node
+                                    #else:
+                                    #    if node != savenode:
+                                    #        sys.exit("Methods run on different nodes!")
+
+                                
 
                                 row = {}
                                 row["NTAX"] = ntax
@@ -169,12 +164,14 @@ for do in ["varyils", "varyntax"]:
                                 row["NGEN"] = ngen
                                 row["MTHD"] = namemap[mthd]
                                 row["NODE"] = node
-                                row["SEFN"] = sefn
-                                row["SEFNR"] = sefnr
                                 row["SECS"] = secs
                                 rows.append(row)
 
+                        if (total / (60 * 60)) > 4:
+                            print(total)
+                            sys.exit("WARNING: Checking ASTER got at least 20 hours")
+
     ydf = pandas.DataFrame(rows, columns=cols)
-    ydf.to_csv("data-" + do + "-error-and-runtime.csv",
+    ydf.to_csv("data-" + do + "-runtime.csv",
                sep=',', na_rep="NA",header=True, index=False,
                quoting=csv.QUOTE_NONNUMERIC)

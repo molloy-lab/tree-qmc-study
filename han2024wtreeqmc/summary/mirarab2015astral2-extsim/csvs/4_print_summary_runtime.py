@@ -12,17 +12,19 @@ import sys
 ###            same as running ASTRID, and wASTRID outperforms ASTRID in these data.
 ###            Therefore, we don't include the results Asteroid results going forward.
 
-mthds = ["ASTRID-ws",
+mthds = ["ASTER-wh (1 thread)",
          "TQMC-wh_n2",
-         "ASTER-wh (1 thread)",
-         "ASTER-wh (16 threads)"]
+         "ASTER-wh (16 threads)",
+         "TQMC-n2",
+         "ASTRID-ws"]
 
-names = ["            ASTRID-ws",
-         "           TQMC-wh_n2",
-         "ASTER-wh   (1 thread)",
-         "ASTER-wh (16 threads)"]
+namemap = {}
+namemap["ASTRID-ws"]             = "            ASTRID-ws"
+namemap["ASTER-wh (1 thread)"]   = "  ASTER-wh (1 thread)"
+namemap["ASTER-wh (16 threads)"] = "ASTER-wh (16 threads)"
+namemap["TQMC-wh_n2"]            = "           TQMC-wh_n2"
+namemap["TQMC-n2"]               = "              TQMC-n2"
 
-supps = ["sh"]
 ngens = [1000]
 
 for do in ["varyntax", "varyils"]: 
@@ -37,7 +39,7 @@ for do in ["varyntax", "varyils"]:
         hghts = ["low", "medium", "high"]
         rates = ["deep", "shallow"]
 
-    df = pandas.read_csv("data-" + do + "-error-and-runtime.csv", keep_default_na=True)
+    df = pandas.read_csv("data-" + do + "-runtime.csv", keep_default_na=True)
 
     for ntax in ntaxs:
         for hght in hghts:
@@ -49,98 +51,117 @@ for do in ["varyntax", "varyils"]:
                              (df["SPEC"] == rate) &
                              (df["NGEN"] == ngen) ]
 
-                    for name, mthd in zip(names, mthds):
-                        sys.stdout.write("  %s : " % name)
+                    nrepl = len(xdf[(xdf["MTHD"] == mthds[0]) & (xdf["SUPP"] == "abayes")].REPL.values)
 
-                        nrepl = len(xdf[(xdf["MTHD"] == mthds[0]) &
-                                        (xdf["SUPP"] == supps[0])].REPL.values)
+                    for mthd in mthds:
+                        ydf = xdf[(xdf["MTHD"] == mthd) & (xdf["SUPP"] == "abayes")]
 
-                        for supp in supps:
-                            ydf = xdf[(xdf["MTHD"] == mthd) & (xdf["SUPP"] == supp)]
+                        data = ydf.SECS.values / (60 * 60)
+                        if nrepl != len(data) or nrepl > 50:
+                            sys.exit("wrong number of replicates")
+                        fnravg = numpy.nanmean(data)
+                        fnravg = numpy.round(numpy.round(fnravg, 5), 4)
 
-                            data = ydf.SECS.values
-                            if nrepl != len(data) or nrepl > 50:
-                                   sys.exit("wrong number of replicates")
-                            fnravg = numpy.nanmean(data)
-                            fnravg = numpy.round(numpy.round(fnravg, 5), 4)
+                        sys.stdout.write("%s : %1.4f hours\n" % (namemap[mthd], fnravg))
 
-                            sys.stdout.write("%1.4f (%s) " % (fnravg, supp))
-
-                        sys.stdout.write("\n")
                     sys.stdout.write("\n")
+                sys.stdout.write("\n")
 
 """
 Increasing number of taxa
 Model : 10 ntax, medium ILS, shallow speciation, 1000 genes
-              ASTRID-ws : 0.0520 (sh) 
-             TQMC-wh_n2 : 0.3311 (sh) 
-  ASTER-wh   (1 thread) : 0.6520 (sh) 
-  ASTER-wh (16 threads) : 0.1241 (sh) 
+  ASTER-wh (1 thread) : 0.0002 hours
+           TQMC-wh_n2 : 0.0001 hours
+ASTER-wh (16 threads) : 0.0000 hours
+              TQMC-n2 : 0.0001 hours
+            ASTRID-ws : 0.0000 hours
+
 
 Model : 50 ntax, medium ILS, shallow speciation, 1000 genes
-              ASTRID-ws : 0.1514 (sh) 
-             TQMC-wh_n2 : 7.3293 (sh) 
-  ASTER-wh   (1 thread) : 31.1533 (sh) 
-  ASTER-wh (16 threads) : 2.4532 (sh) 
+  ASTER-wh (1 thread) : 0.0096 hours
+           TQMC-wh_n2 : 0.0021 hours
+ASTER-wh (16 threads) : 0.0007 hours
+              TQMC-n2 : 0.0009 hours
+            ASTRID-ws : 0.0000 hours
+
 
 Model : 100 ntax, medium ILS, shallow speciation, 1000 genes
-              ASTRID-ws : 0.1328 (sh) 
-             TQMC-wh_n2 : 39.6528 (sh) 
-  ASTER-wh   (1 thread) : 126.5367 (sh) 
-  ASTER-wh (16 threads) : 9.3997 (sh) 
+  ASTER-wh (1 thread) : 0.0366 hours
+           TQMC-wh_n2 : 0.0112 hours
+ASTER-wh (16 threads) : 0.0030 hours
+              TQMC-n2 : 0.0038 hours
+            ASTRID-ws : 0.0000 hours
+
 
 Model : 200 ntax, medium ILS, shallow speciation, 1000 genes
-              ASTRID-ws : 0.2691 (sh) 
-             TQMC-wh_n2 : 162.9790 (sh) 
-  ASTER-wh   (1 thread) : 644.9468 (sh) 
-  ASTER-wh (16 threads) : 36.8186 (sh) 
+  ASTER-wh (1 thread) : 0.1836 hours
+           TQMC-wh_n2 : 0.0464 hours
+ASTER-wh (16 threads) : 0.0114 hours
+              TQMC-n2 : 0.0144 hours
+            ASTRID-ws : 0.0001 hours
+
 
 Model : 500 ntax, medium ILS, shallow speciation, 1000 genes
-              ASTRID-ws : 1.4600 (sh) 
-             TQMC-wh_n2 : 1059.7883 (sh) 
-  ASTER-wh   (1 thread) : 4923.5136 (sh) 
-  ASTER-wh (16 threads) : 262.0027 (sh) 
+  ASTER-wh (1 thread) : 1.4294 hours
+           TQMC-wh_n2 : 0.3011 hours
+ASTER-wh (16 threads) : 0.0758 hours
+              TQMC-n2 : 0.0896 hours
+            ASTRID-ws : 0.0005 hours
+
 
 Model : 1000 ntax, medium ILS, shallow speciation, 1000 genes
-              ASTRID-ws : 7.0398 (sh) 
-             TQMC-wh_n2 : 4321.9724 (sh) 
-  ASTER-wh   (1 thread) : 21975.3468 (sh) 
-  ASTER-wh (16 threads) : 1077.5826 (sh) 
+  ASTER-wh (1 thread) : 7.9886 hours
+           TQMC-wh_n2 : 1.2416 hours
+ASTER-wh (16 threads) : 0.3535 hours
+              TQMC-n2 : 0.3620 hours
+            ASTRID-ws : 0.0020 hours
+
 
 Increasing ILS
 Model : 200 ntax, low ILS, deep speciation, 1000 genes
-              ASTRID-ws : 0.2753 (sh) 
-             TQMC-wh_n2 : 166.6232 (sh) 
-  ASTER-wh   (1 thread) : 605.6976 (sh) 
-  ASTER-wh (16 threads) : 33.3675 (sh) 
+  ASTER-wh (1 thread) : 0.1945 hours
+           TQMC-wh_n2 : 0.0474 hours
+ASTER-wh (16 threads) : 0.0115 hours
+              TQMC-n2 : 0.0144 hours
+            ASTRID-ws : 0.0001 hours
+
 
 Model : 200 ntax, low ILS, shallow speciation, 1000 genes
-              ASTRID-ws : 0.2671 (sh) 
-             TQMC-wh_n2 : 157.2384 (sh) 
-  ASTER-wh   (1 thread) : 624.2139 (sh) 
-  ASTER-wh (16 threads) : 40.5089 (sh) 
+  ASTER-wh (1 thread) : 0.1793 hours
+           TQMC-wh_n2 : 0.0444 hours
+ASTER-wh (16 threads) : 0.0102 hours
+              TQMC-n2 : 0.0140 hours
+            ASTRID-ws : 0.0001 hours
+
 
 Model : 200 ntax, medium ILS, deep speciation, 1000 genes
-              ASTRID-ws : 0.2747 (sh) 
-             TQMC-wh_n2 : 177.3989 (sh) 
-  ASTER-wh   (1 thread) : 652.3588 (sh) 
-  ASTER-wh (16 threads) : 37.1433 (sh) 
+  ASTER-wh (1 thread) : 0.2040 hours
+           TQMC-wh_n2 : 0.0504 hours
+ASTER-wh (16 threads) : 0.0122 hours
+              TQMC-n2 : 0.0155 hours
+            ASTRID-ws : 0.0001 hours
+
 
 Model : 200 ntax, medium ILS, shallow speciation, 1000 genes
-              ASTRID-ws : 0.2691 (sh) 
-             TQMC-wh_n2 : 162.9790 (sh) 
-  ASTER-wh   (1 thread) : 644.9468 (sh) 
-  ASTER-wh (16 threads) : 36.8186 (sh) 
+  ASTER-wh (1 thread) : 0.1836 hours
+           TQMC-wh_n2 : 0.0464 hours
+ASTER-wh (16 threads) : 0.0114 hours
+              TQMC-n2 : 0.0144 hours
+            ASTRID-ws : 0.0001 hours
+
 
 Model : 200 ntax, high ILS, deep speciation, 1000 genes
-              ASTRID-ws : 0.2899 (sh) 
-             TQMC-wh_n2 : 191.3823 (sh) 
-  ASTER-wh   (1 thread) : 915.9786 (sh) 
-  ASTER-wh (16 threads) : 47.6838 (sh) 
+  ASTER-wh (1 thread) : 0.2653 hours
+           TQMC-wh_n2 : 0.0560 hours
+ASTER-wh (16 threads) : 0.0150 hours
+              TQMC-n2 : 0.0170 hours
+            ASTRID-ws : 0.0001 hours
+
 
 Model : 200 ntax, high ILS, shallow speciation, 1000 genes
-              ASTRID-ws : 0.2850 (sh) 
-             TQMC-wh_n2 : 185.9239 (sh) 
-  ASTER-wh   (1 thread) : 850.9421 (sh) 
-  ASTER-wh (16 threads) : 58.5240 (sh) 
+  ASTER-wh (1 thread) : 0.2415 hours
+           TQMC-wh_n2 : 0.0535 hours
+ASTER-wh (16 threads) : 0.0150 hours
+              TQMC-n2 : 0.0163 hours
+            ASTRID-ws : 0.0001 hours
 """

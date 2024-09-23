@@ -6,15 +6,15 @@ import sys
 sys.exit("DONE RUNNING")
 
 cols = ["NTAX", "ILSL", "SPEC", "REPL", "SUPP", "NGEN",
-        "CAMLxSEFN", "CAMLxSERF",
-        "WASTRIDxSEFN", "WASTRIDxSERF",
-        "ASTERHxSEFN", "ASTERHxSERF",
+        "CAMLxSEFN",     "CAMLxSERF",
+        "WASTRIDxSEFN",  "WASTRIDxSERF",
+        "ASTERHxSEFN",   "ASTERHxSERF",
+        "ASTERHxQS",     "ASTERHxAVGLPP",
         "TQMCwhn2xSEFN", "TQMCwhn2xSERF",
-        "TQMCwsn2xSEFN", "TQMCwsn2xSERF",
-        "TQMCwnn2xSEFN", "TQMCwnn2xSERF"]
+        "TQMCwhn2xQS",   "TQMCwhn2xAVGLPP",
+        "TQMCn2xSEFN",   "TQMCn2xSERF"]
 
 ngens = [50, 200, 1000]
-supps = ["sh", "abayes"]
 
 for do in ["varyntax", "varyils"]: 
     if do == "varyntax":
@@ -29,7 +29,7 @@ for do in ["varyntax", "varyils"]:
         hghts = ["low", "medium", "high"]
         rates = ["deep", "shallow"]
 
-    df = pandas.read_csv("data-" + do + "-error.csv", keep_default_na=False)
+    df = pandas.read_csv("data-" + do + "-error-and-qscore.csv", keep_default_na=False)
     df.fillna("NA", inplace=True)
     rows = []
 
@@ -48,16 +48,15 @@ for do in ["varyntax", "varyils"]:
                         ydf = xdf[(xdf["REPL"] == repl)]
 
                         caml = ydf[(ydf["MTHD"] == "CA-ML")]
-                        tqmc_wnn2 = ydf[(ydf["MTHD"] == "TQMC-n2")]
 
-                        for supp in supps:
+                        for supp in ["abayes"]:
                             print("%d %s %s %d %d %s" % (ntax, hght, rate, repl, ngen, supp))
                             zdf = ydf[(ydf["SUPP"] == supp)]
 
                             wastrid = zdf[(zdf["MTHD"] == "ASTRID-ws")]
                             asterh = zdf[(zdf["MTHD"] == "ASTER-wh")]
                             tqmc_whn2 = zdf[(zdf["MTHD"] == "TQMC-wh_n2")]
-                            tqmc_wsn2 = zdf[(zdf["MTHD"] == "TQMC-ws_n2")]
+                            tqmc_n2 = zdf[(zdf["MTHD"] == "TQMC-n2")]
 
                             row = {}
                             row["NTAX"] = ntax
@@ -73,17 +72,20 @@ for do in ["varyntax", "varyils"]:
                             row["WASTRIDxSEFN"] = wastrid.SEFN.values[0]
                             row["WASTRIDxSERF"] = wastrid.SEFNR.values[0]
 
-                            row["ASTERHxSEFN"] = asterh.SEFN.values[0]
-                            row["ASTERHxSERF"] = asterh.SEFNR.values[0]
+                            row["ASTERHxSEFN"]   = asterh.SEFN.values[0]
+                            row["ASTERHxSERF"]   = asterh.SEFNR.values[0]
+
+                            row["ASTERHxQS"]     = asterh.QSCR.values[0]
+                            row["ASTERHxAVGLPP"] = asterh.AVG_LPP.values[0]
 
                             row["TQMCwhn2xSEFN"] = tqmc_whn2.SEFN.values[0]
                             row["TQMCwhn2xSERF"] = tqmc_whn2.SEFNR.values[0]
 
-                            row["TQMCwsn2xSEFN"] = tqmc_wsn2.SEFN.values[0]
-                            row["TQMCwsn2xSERF"] = tqmc_wsn2.SEFNR.values[0]
+                            row["TQMCwhn2xQS"]     = tqmc_whn2.QSCR.values[0]
+                            row["TQMCwhn2xAVGLPP"] = tqmc_whn2.AVG_LPP.values[0]
 
-                            row["TQMCwnn2xSEFN"] = tqmc_wnn2.SEFN.values[0]
-                            row["TQMCwnn2xSERF"] = tqmc_wnn2.SEFNR.values[0]
+                            row["TQMCn2xSEFN"] = tqmc_n2.SEFN.values[0]
+                            row["TQMCn2xSERF"] = tqmc_n2.SEFNR.values[0]
 
                             rows.append(row)
 

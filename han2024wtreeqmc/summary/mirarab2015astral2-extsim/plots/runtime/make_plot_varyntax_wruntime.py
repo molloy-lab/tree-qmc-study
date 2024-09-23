@@ -102,112 +102,7 @@ def add_dashed_lines(ax, yticks, xminor=None):
                     lw=0.5, color="black", alpha=0.3)
 
 
-def plot_error(ax, df, ntaxs, supp):
-    n_ntax = len(ntaxs)
-
-    ax.set_title(letters[0],
-                 loc="left", x=0.0, y=1.0, fontsize=10.5)
-    #ax.set_title(upperletters[0],
-    #             loc="left", fontsize=11)
-
-    mthds = ["ASTRID-ws",
-             "ASTER-wh",
-             "TQMC-wh_n2",
-             "TQMC-n2",
-             "CA-ML"]
-    n_mthds = len(mthds)
-
-    tableau20 = []
-    tableau20 += orange
-    tableau20 += purple
-    tableau20 += darkblue
-    tableau20 += brown
-    tableau20 += red
-
-    map_rgb_to_01(tableau20)
-
-    sers = [None] * n_ntax
-    nrps = [None] * n_ntax
-    for j, ntax in enumerate(ntaxs):
-        #print(ntax)
-        sers[j] = []
-        nrps[j] = []
-        for k, mthd in enumerate(mthds):
-            print(mthd)
-            if (mthd == "CA-ML") or (mthd == "TQMC-n2"):
-                ydf = df[(df["NTAX"] == ntax) &
-                          (df["NGEN"] == 1000) &
-                          (df["MTHD"] == mthd) &
-                          (df["SUPP"] == "none")]
-            else: 
-                ydf = df[(df["NTAX"] == ntax) &
-                          (df["NGEN"] == 1000) &
-                          (df["MTHD"] == mthd) &
-                          (df["SUPP"] == supp)]
-
-            ydf = ydf.sort_values(by=["REPL"], ascending=True)
-            #ser = ydf.SERF.values
-            ser = ydf.SEFNR.values * 100
-            #print(ser)
-            sers[j].append(list(ser))
-            nrps[j].append(len(ser))
-
-    xs = []
-    ys = []
-    inds = ntaxs
-    for ind, ser in zip(inds, sers):
-        if ser != []:
-            xs.append(ind)
-            ys.append(ser)
-    labs = xs
-    sers = ys
-
-    xminor = []
-    xmajor = []
-    base = numpy.arange(1, n_mthds + 1) 
-    for j, ntax in enumerate(ntaxs):
-        pos = base + ((n_mthds + 1) * j)
-        xminor = xminor + list(pos)
-        xmajor = xmajor + [numpy.mean(pos)]
-
-        bp = ax.boxplot(sers[j], positions=pos, widths=0.75,
-                        showfliers=False, 
-                        showmeans=True,
-                        patch_artist=True)
-        setBoxColors(bp, tableau20)
-
-    # Set labels
-    ax.set_ylabel(r"\% RF Error", fontsize=11)  
-    ax.tick_params(axis='x', labelsize=10)
-    ax.tick_params(axis='y', labelsize=9)
-    
-    # Set tick labels
-    ax.set_xlim(xminor[0]-1, xminor[-1]+1)
-    ax.set_xticks(xmajor)
-    test = []
-    for j, ntax in enumerate(ntaxs):
-        if nrps[j][0] != 50:
-            sys.stdout.write("ntax %d - Found %d replicates!\n" % (ntax, nrps[j][0]))
-        test.append(r"%d" % ntax)
-
-    ax.set_xticklabels(test)
-
-    # Set dashed lines
-    yticks = list(range(0, 10 + 1, 2))
-    add_dashed_lines(ax, yticks, xminor=xminor)
-
-    # Set plot axis parameters
-    ax.tick_params(axis=u'both', which=u'both',length=0) # removes tiny ticks
-    ax.get_xaxis().tick_bottom() 
-    ax.get_yaxis().tick_left()
-
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-
-    return [mthds, tableau20]
-
-
-def plot_runtime(ax, df, ntaxs, supp):
+def plot_runtime(ax, df, ntaxs):
     # Plot runtime for number of taxa
     n_ntax = len(ntaxs)
 
@@ -216,17 +111,19 @@ def plot_runtime(ax, df, ntaxs, supp):
     #ax.set_title(upperletters[1],
     #             loc="left", fontsize=11)
 
-    mthds = ["ASTRID-ws",
-             "ASTER-wh (1 thread)",
+    mthds = ["ASTER-wh (1 thread)",
              "ASTER-wh (16 threads)",
-             "TQMC-wh_n2"]
+             "TQMC-wh_n2",
+             "TQMC-n2",
+             "ASTRID-ws"]
     n_mthds = len(mthds)
 
     tableau20 = []
-    tableau20 += orange
     tableau20 += purple
     tableau20 += purple
     tableau20 += darkblue
+    tableau20 += brown
+    tableau20 += orange
     map_rgb_to_01(tableau20)
 
     for k, mthd in enumerate(mthds):
@@ -234,17 +131,16 @@ def plot_runtime(ax, df, ntaxs, supp):
         av = []
         se = []
         for ntax in ntaxs:
-            xdf = df2[(df2["NTAX"] == ntax) & 
-                      (df2["NGEN"] == 1000) &
-                      (df2["SUPP"] == "sh") &  # update after jobs are done
-                      (df2["MTHD"] == mthd)]
+            xdf = df[(df["NTAX"] == ntax) & 
+                     (df["MTHD"] == mthd)]
 
-            if xdf.shape[0] > 0:
-                vals = xdf.SECS.values / (60.0 * 60.0)
+            vals = xdf.SECS.values / (60.0 * 60.0)
 
-                av.append(numpy.mean(vals))
-                se.append(numpy.std(vals) / numpy.sqrt(vals.size))
+            av.append(numpy.mean(vals))
+            se.append(numpy.std(vals) / numpy.sqrt(vals.size))
     
+        print(av)
+
         av = numpy.array(av)
         se = numpy.array(se)
 
@@ -275,38 +171,111 @@ def plot_runtime(ax, df, ntaxs, supp):
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
 
-    #print("legend")
-    #h1, = ax.plot([1, 2, 3], [1, 2, 3], '-', color='k', lw=1)
-    #h2, = ax.plot([1, 2, 3], [1, 2, 3], '--', color='k', lw=1)
-    #ax.legend([h1, h2],
-    #          ["1 thread", "16 threads"], 
-    #          frameon=False,
-    #          ncol=2,
-    #          fontsize=8,
-    #          loc='upper left')
-
     ax.text(0, 7, 
             "Solid lines = 1 thread\nDashed line = 16 threads",
-             fontsize=9,
-             horizontalalignment='left',
-             verticalalignment='center')
+            fontsize=9,
+            horizontalalignment='left',
+            verticalalignment='center')
 
 
-def make_figure(df1, df2, supp, output):
+def plot_runtime_ratio(ax, df, ntaxs):
+    # Plot runtime for number of taxa
+    n_ntax = len(ntaxs)
+
+    ax.set_title(letters[0],
+                 loc="left", x=0.0, y=1.0, fontsize=10.5)
+    #ax.set_title(upperletters[1],
+    #             loc="left", fontsize=11)
+
+    tableau20 = []
+    tableau20 += darkblue
+    map_rgb_to_01(tableau20)
+    
+    secs = []
+    for ntax in ntaxs:
+        xdf = df[(df["NTAX"] == ntax) & (df["MTHD"] == "TQMC-n2")]
+        xdf = xdf.sort_values(by=["REPL"], ascending=True)
+        xvals = xdf.SECS.values
+
+        ydf = df[(df["NTAX"] == ntax) & (df["MTHD"] == "TQMC-wh_n2")]
+        ydf = ydf.sort_values(by=["REPL"], ascending=True)
+        yvals = ydf.SECS.values
+
+        if ((xdf.REPL.values == ydf.REPL.values).all()):
+            pass
+        else:
+            sys.exit("Cannot do division!")
+
+        vals = yvals / xvals
+        secs.append(vals)
+
+        labls = ntaxs
+
+    n_mthds = 1
+    xminor = []
+    xmajor = []
+    base = numpy.arange(1, n_mthds + 1) 
+    for j, ntax in enumerate(ntaxs):
+        pos = base + ((n_mthds + 1) * j)
+        xminor = xminor + list(pos)
+        xmajor = xmajor + [numpy.mean(pos)]
+
+        bp = ax.boxplot(secs[j], positions=pos, widths=0.75,
+                        showfliers=False, 
+                        showmeans=True,
+                        patch_artist=True)
+        setBoxColors(bp, tableau20)
+
+    # Set labels
+    ax.set_ylabel(r"Weighted / unweighted", fontsize=11)  
+    ax.tick_params(axis='x', labelsize=10)
+    ax.tick_params(axis='y', labelsize=9)
+
+    # Set tick labels
+    ax.set_xlim(xminor[0]-1, xminor[-1]+1)
+    ax.set_xticks(xmajor)
+    ax.set_xticklabels(ntaxs)
+
+    # Set dashed lines
+    yticks = list(range(0, 4 + 1, 1))
+    add_dashed_lines(ax, yticks, xminor=xminor)
+
+    # Set plot axis parameters
+    ax.tick_params(axis=u'both', which=u'both',length=0) # removes tiny ticks
+    ax.get_xaxis().tick_bottom() 
+    ax.get_yaxis().tick_left()
+
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+
+
+def make_figure(df, output):
     fig = plt.figure(figsize=(8, 4.75))   # x,y
     gs = gridspec.GridSpec(2, 1)  # nrows, ncols
-    ax00 = plt.subplot(gs[0, 0])  ## changing number of taxa
+    ax00 = plt.subplot(gs[0, 0])  # changing number of taxa
     ax10 = plt.subplot(gs[1, 0])
 
     ntaxs = [10, 50, 100, 200, 500, 1000]
 
-    plot_runtime(ax10, df2, ntaxs, supp)
-    [mthds, tableau20] = plot_error(ax00, df1, ntaxs, supp)
+    plot_runtime_ratio(ax00, df, ntaxs)
+    plot_runtime(ax10, df, ntaxs)
 
     # Shift layout
     gs.tight_layout(fig, rect=[0, 0.05, 1, 1])
 
     # Add legend at bottom
+    mthds = ["ASTER-wh",
+             "TREE-QMC-wh (n2)",
+             "TREE-QMC (n2)",
+             "ASTRID-ws"]
+
+    tableau20 = []
+    tableau20 += purple
+    tableau20 += darkblue
+    tableau20 += brown
+    tableau20 += orange
+    map_rgb_to_01(tableau20)
+
     hs = []
     for k in range(len(mthds)):
         #print(mthds[k])
@@ -329,9 +298,10 @@ def make_figure(df1, df2, supp, output):
 
 # Read and plot data
 supp = "abayes"
-df1 = pandas.read_csv("../../csvs/data-varyntax-error.csv",
-                      keep_default_na=True)
-df2 = pandas.read_csv("../../csvs/data-varyntax-error-and-runtime.csv",
-                      keep_default_na=True, quoting=csv.QUOTE_NONNUMERIC)
-title = str("plot-astral2-varyntax-%s-supp-wruntime.pdf" % (supp))
-make_figure(df1, df2, supp, title)
+df = pandas.read_csv("../../csvs/data-varyntax-runtime.csv", keep_default_na=True)
+df = df.drop(df[(df["NGEN"] == 200)].index)
+df = df.drop(df[(df["NGEN"] == 50)].index)
+df = df.drop(df[(df["SUPP"] == "sh")].index)
+title = str("plot-astral2-varyntax-%s-runtime.pdf" % (supp))
+make_figure(df, title)
+

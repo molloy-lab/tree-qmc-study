@@ -5,14 +5,11 @@ library(coin)
 
 data <- read.csv("../csvs/data-varyntax-for-testing.csv")
 data$NTAX <- as.factor(data$NTAX)
-data$HGHT <- as.factor(data$HGHT)
-data$RATE <- as.factor(data$RATE)
+data$ILSL <- as.factor(data$ILSL)
+data$SPEC <- as.factor(data$SPEC)
 data$SUPP <- as.factor(data$SUPP)
 data$NGEN <- as.factor(data$NGEN)
 data$REPL <- as.factor(data$REPL)
-
-#data <- subset(data, HGHT == "2000000")
-#data <- subset(data, RATE == "1e-06")
 
 supps <- c("abayes")
 ngens <- c(50, 200, 1000)
@@ -25,12 +22,39 @@ ntests <- length(supps) * length(ngens) * 11 * length(mthds)
 threshold0 <- 0.05
 threshold_bonferoni <- threshold0 / ntests
 
-writeme <- paste("alpha =", as.character(threshold0))
-print(writeme)
-print(paste("bonferroni alpha =", as.character(threshold_bonferoni), 
-            "=", as.character(threshold0), "/", as.character(ntests)))
+#writeme <- paste("alpha =", as.character(threshold0))
+#print(writeme)
+#print(paste("bonferroni alpha =", as.character(threshold_bonferoni), 
+#            "=", as.character(threshold0), "/", as.character(ntests)))
 
 for (mthd in mthds) {
+    message("\\begin{table}[!h]")
+    message(paste("\\caption[Testing for TREE-QMC-wh\\_n2 vs", mthd))
+    message("on ASTRAL-II data for varying numbers of taxa]{\\textbf{Testing for differences between TREE-QMC-wh\\_n2 vs")
+    message(paste(mthd, "on the ASTRAL-II simulated data (with abayes support) for varying numbers of taxa.} BET is the number of replicates for which"))
+    message(paste("TREE-QMC-wh\\_n2 has lower species tree (RF) error and thus is better than", mthd, ",")) 
+    message("WOR is the number of replicates for which wTREE-QMC-wh\\_n2 has higher")
+    message(paste("RF error and thus is worse than", mthd, ",")) 
+    message("and TIE is the number of replicates where the two methods tie.")
+    message("Significance is evaluated using paired, two-sided Wilcoxon signed-rank tests on the RF error rates.")
+    message("The symbols *, **, ***, ****, ***** indicate significance at $p <$ 0.5, 0.005, and so on.")
+    message(paste("MC indicates significance after Bonferroni correction, i.e., $p < $",
+                  as.character(threshold0), "/",
+                  as.character(ntests), "=", 
+                  format(threshold_bonferoni, scientific = TRUE, digits=1)))
+    message(paste("for the ",
+                  as.character(ntests),
+                  "tests made on the S100 data."))
+    message("}")
+    message("\\centering")
+    message("\\scriptsize")
+    message("\\begin{tabular}{r r l r r r l c c c l}")
+    message("\\toprule") 
+    message(paste("\\multicolumn{11}{c}{\\textbf{TREE-QMC-wh\\_n2  vs ", mthd, "}} \\\\"))
+    message("\\midrule")
+    message("\\# of taxa & \\# of genes & & BET & WOR & TIE & & p-val & sig & MC & note \\\\")
+    message("\\midrule")
+
     for (supp in supps) {
         for (ntax in ntaxs) {
             if ((mthd == "CAML") && (ntax == 1000)) {
@@ -80,14 +104,12 @@ for (mthd in mthds) {
 
         # Run test
         if (ntreeqmc + nother == 0) {
-            writeme <- paste("TQMC-wh-n2 vs.", mthd, "&",
-                         supp, "&",
-                         as.character(ntax), "&",
-                         as.character(ngen), "&",
-                         as.character(ntreeqmc), "/",
-                         as.character(nother), "/",
-                         as.character(ntie), "&",
-                         "NA", "&", "NA")
+            writeme <- paste(as.character(ntax), "&",
+                             as.character(ngen), "& &",
+                             as.character(ntreeqmc), "&",
+                             as.character(nother), "&",
+                             as.character(ntie), "& &",
+                             "NA & NA & NA \\\\")
         } else {
             xwsr <-  pvalue(wilcoxsign_test(mthd1 ~ mthd2,
                             zero.method="Wilcoxon",
@@ -129,23 +151,24 @@ for (mthd in mthds) {
             if ((mean(diff) < 0) & (wsr < threshold0)) {
                 note <- paste("(", mthd, "better)")
             }
-            writeme <- paste("TQMC-wh-n2 vs.", mthd, "&",
-                         supp, "&",
-                         as.character(ntax), "&",
-                         as.character(ngen), "&",
-                         as.character(ntreeqmc), "/",
-                         as.character(nother), "/",
-                         as.character(ntie), "&",
-                         format(xwsr, scientific = TRUE), "&", 
-                         format(ywsr, scientific = TRUE), "&",
-                         "&", stars, "&", mc, note)
+            writeme <- paste(as.character(ntax), "&",
+                             as.character(ngen), "& &",
+                             as.character(ntreeqmc), "&",
+                             as.character(nother), "&",
+                             as.character(ntie), "& &",
+                             format(wsr, scientific = TRUE), "&", 
+                             stars, "&", mc, note, "\\\\")
 
         }
-        print(writeme)
+        message(writeme)
 
             }
         }
     }
+    message("\\bottomrule")
+    message("\\end{tabular}")
+    message("\\end{table}")
+    message("")
 }
 
 print("done")
