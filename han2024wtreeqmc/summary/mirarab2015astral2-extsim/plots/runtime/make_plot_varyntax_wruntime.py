@@ -106,7 +106,7 @@ def plot_runtime(ax, df, ntaxs):
     # Plot runtime for number of taxa
     n_ntax = len(ntaxs)
 
-    ax.set_title(letters[1],
+    ax.set_title(letters[0],
                  loc="left", x=0.0, y=1.0, fontsize=10.5)
     #ax.set_title(upperletters[1],
     #             loc="left", fontsize=11)
@@ -161,7 +161,7 @@ def plot_runtime(ax, df, ntaxs):
     yticks = range(0, 9, 2)
     add_dashed_lines(ax, yticks)
 
-    ax.set_xlabel("Number of Taxa", fontsize=12)
+    #ax.set_xlabel("Number of Taxa", fontsize=12)
     ax.set_ylabel(r'Runtime (h)', fontsize=11)
     ax.tick_params(axis='x', labelsize=10)
     ax.tick_params(axis='y', labelsize=9)
@@ -182,7 +182,7 @@ def plot_runtime_ratio(ax, df, ntaxs):
     # Plot runtime for number of taxa
     n_ntax = len(ntaxs)
 
-    ax.set_title(letters[0],
+    ax.set_title(letters[1],
                  loc="left", x=0.0, y=1.0, fontsize=10.5)
     #ax.set_title(upperletters[1],
     #             loc="left", fontsize=11)
@@ -227,7 +227,8 @@ def plot_runtime_ratio(ax, df, ntaxs):
         setBoxColors(bp, tableau20)
 
     # Set labels
-    ax.set_ylabel(r"Weighted / unweighted", fontsize=11)  
+    ax.set_ylabel(r"Weighted / unweighted", fontsize=11)
+    ax.set_xlabel("Number of Taxa", fontsize=12)
     ax.tick_params(axis='x', labelsize=10)
     ax.tick_params(axis='y', labelsize=9)
 
@@ -257,8 +258,8 @@ def make_figure(df, output):
 
     ntaxs = [10, 50, 100, 200, 500, 1000]
 
-    plot_runtime_ratio(ax00, df, ntaxs)
-    plot_runtime(ax10, df, ntaxs)
+    plot_runtime_ratio(ax10, df, ntaxs)
+    plot_runtime(ax00, df, ntaxs)
 
     # Shift layout
     gs.tight_layout(fig, rect=[0, 0.05, 1, 1])
@@ -290,7 +291,7 @@ def make_figure(df, output):
                 ncol=5, 
                 fontsize=9.5,
                 loc='lower center', 
-                bbox_to_anchor=(0.5, -0.575, 0, 3))
+                bbox_to_anchor=(0.5, -0.5, 0, 3))
 
     # Save plot
     plt.savefig(output, format='pdf', dpi=300)
