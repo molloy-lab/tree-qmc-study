@@ -3,109 +3,93 @@
 GROUPDIR="/fs/cbcb-lab/ekmolloy"
 PROJDIR="$GROUPDIR/ekmolloy/tree-qmc-study/han2024wtreeqmc"
 DATADIR="$PROJDIR/data/cloutier2019whole/species-trees-analysis"
+SIMMONSDIR="$GROUPDIR/group/data/simmons2022gene/Simmons_et_al_trees_and_matrices"
 COMPARE="$PROJDIR/tools/compare_two_trees.py"
 
 cd $DATADIR
 
-# Check - TREE-QMC trees
-T1="wtreeqmc_hybrid_n2_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre"
-T2="wtreeqmc_length_n2_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre"
-T3="wtreeqmc_support_n2_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre"
-T4="wtreeqmc_none_n2_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre"
-T5="wtreeqmc_none_n2_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105_without_galGal_tinGut.tre"
-T6="wtreeqmc_none_n2_UCE_minus_105_abayes_gene_trees_sorted.tre"
+TA="treeA.tre"
+TB="treeB.tre"
+TC="treeC.tre"
 
-#python3 $COMPARE -t1 $T1 -t2 $T2
-# 15,15,15,12,12,0,0
+python3 $COMPARE -t1 $TA -t2 ../species_trees/ExaML/intron_examl_species_tree.tre
+python3 $COMPARE -t1 $TC -t2 ../species_trees/ExaML/UCE_examl_species_tree.tre
+python3 $COMPARE -t1 $TA -t2 ../species_trees/ExaML/TENT_examl_species_tree.tre
 
-#python3 $COMPARE -t1 $T1 -t2 $T3
-#15,15,15,12,12,1,1
+python3 $COMPARE -t1 $TA -t2 $SIMMONSDIR/concatenation/likelihood/plus_Gallus/RAxML_bipartitions.intron_mafft_BS.tre 
+python3 $COMPARE -t1 $TC -t2 $SIMMONSDIR/concatenation/likelihood/plus_Gallus/RAxML_bipartitions.UCE_mafft_BS.tre 
+python3 $COMPARE -t1 $TA -t2 $SIMMONSDIR/concatenation/likelihood/plus_Gallus/RAxML_bipartitions.TENT_mafft_BS.tre 
+python3 $COMPARE -t1 $TC -t2 $SIMMONSDIR/UCE_MAFFT_alignment_homology_errors/concatenation/RAxML_bipartitions.UCE_minus_105_plus_Gallus.tre
 
-#python3 $COMPARE -t1 $T1 -t2 $T4
-#15,15,15,12,12,1,1
+# Check the ASTEROID trees
+python3 $COMPARE -t1 $TB -t2 asteroid_introns_abayes_gene_trees_sorted.tre.bestTree.newick
+python3 $COMPARE -t1 $TB -t2 asteroid_UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre.bestTree.newick
+python3 $COMPARE -t1 $TB -t2 asteroid_UCEs_minus_bad105_sorted_plus_bad105_sorted_without_galGal_and_tinGut_abayes_gene_trees.tre.bestTree.newick
+python3 $COMPARE -t1 $TB -t2 asteroid_UCEs_minus_bad105_abayes_gene_trees_sorted.tre.bestTree.newick
 
-#python3 $COMPARE -t1 $T1 -t2 $T5
-#15,15,15,12,12,0,0
+# Check unweighted ASTRID trees
+python3 $COMPARE -t1 $TB -t2 wastrid_none_introns_abayes_gene_trees_sorted.tre
+python3 $COMPARE -t1 $TB -t2 wastrid_none_UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TB -t2 wastrid_none_UCEs_minus_bad105_sorted_plus_bad105_sorted_without_galGal_and_tinGut_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TB -t2 wastrid_none_UCEs_minus_bad105_abayes_gene_trees_sorted.tre
 
-#python3 $COMPARE -t1 $T1 -t2 $T6
-#15,15,15,12,12,0,0
+# Check support weighted ASTRID tree
+python3 $COMPARE -t1 $TB -t2 wastrid_support_introns_abayes_gene_trees_sorted.tre
+python3 $COMPARE -t1 $TB -t2 wastrid_support_UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TB -t2 wastrid_support_UCEs_minus_bad105_sorted_plus_bad105_sorted_without_galGal_and_tinGut_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TB -t2 wastrid_support_UCEs_minus_bad105_abayes_gene_trees_sorted.tre
 
-#python3 $COMPARE -t1 $T3 -t2 $T4
-#15,15,15,12,12,0,0
+# Check length weighted ASTRID trees
+python3 $COMPARE -t1 $TB -t2 wastrid_length_introns_abayes_gene_trees_sorted.tre
+python3 $COMPARE -t1 $TB -t2 wastrid_length_UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TB -t2 wastrid_length_UCEs_minus_bad105_sorted_plus_bad105_sorted_without_galGal_and_tinGut_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TB -t2 wastrid_length_UCEs_minus_bad105_abayes_gene_trees_sorted.tre
 
-TA=$T1 # TREE-QMC (hybrid weighting, length weighting, taxa filtering, gene filtering)
-       # ASTRAL   (hybrid weighting, length weighting, taxa filtering, gene filtering)
-TB=$T3 # TREE-QMC (no weighting, support weighting); 
-       # ASTRAL   (no weighting, support weighting); 
-       # ASTRID   (no weighting, support weighting, length weighting, taxa filtering, gene filtering)
+# Check unweighted TREE-QMC 
+python3 $COMPARE -t1 $TB -t2 wtreeqmc_none_n2_introns_abayes_gene_trees_sorted.tre
+python3 $COMPARE -t1 $TB -t2 wtreeqmc_none_n2_UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 wtreeqmc_none_n2_UCEs_minus_bad105_sorted_plus_bad105_sorted_without_galGal_and_tinGut_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 wtreeqmc_none_n2_UCEs_minus_bad105_abayes_gene_trees_sorted.tre
 
-# Check ASTER trees
-T7="waster_hybrid_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre"
-T8="waster_length_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre"
-T9="waster_support_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre"
-T10="waster_none_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre"
-T11="waster_none_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105_without_galGal_tinGut.tre"
-T12="waster_none_UCE_minus_105_abayes_gene_trees_sorted.tre"
+# Check support-weighted TREE-QMC 
+python3 $COMPARE -t1 $TB -t2 wtreeqmc_support_n2_introns_abayes_gene_trees_sorted.tre
+python3 $COMPARE -t1 $TB -t2 wtreeqmc_support_n2_UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 wtreeqmc_support_n2_UCEs_minus_bad105_sorted_plus_bad105_sorted_without_galGal_and_tinGut_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 wtreeqmc_support_n2_UCEs_minus_bad105_abayes_gene_trees_sorted.tre
 
-#python3 $COMPARE -t1 $TA -t2 $T7
-#15,15,15,12,12,0,0
+# Check length-weighted TREE-QMC 
+python3 $COMPARE -t1 $TA -t2 wtreeqmc_length_n2_introns_abayes_gene_trees_sorted.tre
+python3 $COMPARE -t1 $TA -t2 wtreeqmc_length_n2_UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 wtreeqmc_length_n2_UCEs_minus_bad105_sorted_plus_bad105_sorted_without_galGal_and_tinGut_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 wtreeqmc_length_n2_UCEs_minus_bad105_abayes_gene_trees_sorted.tre
 
-#python3 $COMPARE -t1 $TA -t2 $T8
-#15,15,15,12,12,0,0
+# Check hybrid-weighted TREE-QMC 
+python3 $COMPARE -t1 $TA -t2 wtreeqmc_hybrid_n2_introns_abayes_gene_trees_sorted.tre
+python3 $COMPARE -t1 $TA -t2 wtreeqmc_hybrid_n2_UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 wtreeqmc_hybrid_n2_UCEs_minus_bad105_sorted_plus_bad105_sorted_without_galGal_and_tinGut_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 wtreeqmc_hybrid_n2_UCEs_minus_bad105_abayes_gene_trees_sorted.tre
 
-#python3 $COMPARE -t1 $TB -t2 $T9
-#15,15,15,12,12,0,0
+# Check ASTER
+python3 $COMPARE -t1 $TB -t2 waster_none_introns_abayes_gene_trees_sorted.tre
+python3 $COMPARE -t1 $TB -t2 waster_none_UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 waster_none_UCEs_minus_bad105_sorted_plus_bad105_sorted_without_galGal_and_tinGut_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 waster_none_UCEs_minus_bad105_abayes_gene_trees_sorted.tre
 
-#python3 $COMPARE -t1 $TB -t2 $T10
-#15,15,15,12,12,0,0
+# Check support-weighted ASTER
+python3 $COMPARE -t1 $TB -t2 waster_support_introns_abayes_gene_trees_sorted.tre
+python3 $COMPARE -t1 $TB -t2 waster_support_UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 waster_support_UCEs_minus_bad105_sorted_plus_bad105_sorted_without_galGal_and_tinGut_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 waster_support_UCEs_minus_bad105_abayes_gene_trees_sorted.tre
 
-#python3 $COMPARE -t1 $TA -t2 $T11
-#15,15,15,12,12,0,0
+# Check length-weighted ASTER
+python3 $COMPARE -t1 $TA -t2 waster_length_introns_abayes_gene_trees_sorted.tre
+python3 $COMPARE -t1 $TA -t2 waster_length_UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 waster_length_UCEs_minus_bad105_sorted_plus_bad105_sorted_without_galGal_and_tinGut_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 waster_length_UCEs_minus_bad105_abayes_gene_trees_sorted.tre
 
-#python3 $COMPARE -t1 $TA -t2 $T12
-#15,15,15,12,12,0,0
-
-T13="wastrid_length_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre"
-T14="wastrid_support_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre"
-T15="wastrid_none_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre"
-T16="wastrid_none_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105_without_galGal_tinGut.tre"
-T17="wastrid_none_UCE_minus_105_abayes_gene_trees_sorted.tre"
-
-#python3 $COMPARE -t1 $TB -t2 $T13
-#15,15,15,12,12,0,0
-
-#python3 $COMPARE -t1 $TB -t2 $T14
-#15,15,15,12,12,0,0
-
-#python3 $COMPARE -t1 $TB -t2 $T15
-#15,15,15,12,12,0,0
-
-#python3 $COMPARE -t1 $TB -t2 $T16
-#15,15,15,12,12,0,0
-
-#python3 $COMPARE -t1 $TB -t2 $T16
-#15,15,15,12,12,0,0
-
-T18="asteroid_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre.bestTree.newick"
-T19="asteroid_UCE_minus_105_abayes_gene_trees_sorted_plus_bad105_without_galGal_tinGut.tre.bestTree.newick"
-T20="asteroid_UCE_minus_105_abayes_gene_trees_sorted.tre.bestTree.newick"
-
-#python3 $COMPARE -t1 $TB -t2 $T18
-#15,15,15,12,12,0,0
-
-#python3 $COMPARE -t1 $TB -t2 $T19
-#15,15,15,12,12,0,0
-
-#python3 $COMPARE -t1 $TB -t2 $T20
-#15,15,15,12,12,0,0
-
-# Lastly, compare to published RAxML and ExaML trees
-#python3 $COMPARE -t1 cloutier2019_UCE_examl.tre -t2 simmons2022_UCE_minus_105_raxml.tre 
-#15,15,15,12,12,0,0
-
-#python3 $COMPARE -t1 $TA -t2 cloutier2019_UCE_examl.tre
-#15,15,15,12,12,1,1
-
-#python3 $COMPARE -t1 $TB -t2 cloutier2019_UCE_examl.tre
-#15,15,15,12,12,2,2
+# Check hybrid-weighted ASTER
+python3 $COMPARE -t1 $TA -t2 waster_hybrid_introns_abayes_gene_trees_sorted.tre
+python3 $COMPARE -t1 $TA -t2 waster_hybrid_UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 waster_hybrid_UCEs_minus_bad105_sorted_plus_bad105_sorted_without_galGal_and_tinGut_abayes_gene_trees.tre
+python3 $COMPARE -t1 $TA -t2 waster_hybrid_UCEs_minus_bad105_abayes_gene_trees_sorted.tre
 

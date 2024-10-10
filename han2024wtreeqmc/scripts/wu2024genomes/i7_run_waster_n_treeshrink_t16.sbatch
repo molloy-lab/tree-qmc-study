@@ -24,12 +24,14 @@ ASTERH="$GROUPDIR/group/software-compiled-on-EPYC-7313/ASTER/bin/astral-hybrid"
 
 THREAD=16
 
+cd $OUTDIR
+
 # ASTER w/ no weighting scheme - but treeshrink taxon filtering
 MTHD="waster_none_t${THREAD}"
 GTRE="cds_and_introns_raxml_abayes_treeshrink"
 STRE="${MTHD}_${GTRE}"
 if [ ! -e $STRE.tre ]; then
-    TIME="$(time ($ASTERH -t ${THREAD} -u 0 --mode 4 -i $OUTDIR/${GTRE}.tre -o $STRE.tre &> $STRE.log) 2>&1 1>/dev/null)"
+    TIME="$(time ($ASTERH -t ${THREAD} -u 0 --mode 4 -i $GENEDIR/${GTRE}.tre -o $STRE.tre &> $STRE.log) 2>&1 1>/dev/null)"
 
     uname -a > ${STRE}_node_info.csv
     NODE=$( uname -a | sed 's/\./ /g' | awk '{print $2}' )

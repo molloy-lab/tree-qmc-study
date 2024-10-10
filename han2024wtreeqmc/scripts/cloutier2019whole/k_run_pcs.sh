@@ -2,12 +2,13 @@
 
 GROUPDIR="/fs/cbcb-lab/ekmolloy"
 PROJDIR="$GROUPDIR/ekmolloy/tree-qmc-study/han2024wtreeqmc"
+GTREDIR="$PROJDIR/data/cloutier2019whole/gene-trees"
 DATADIR="$PROJDIR/data/cloutier2019whole/species-trees-analysis"
 WTREEQMC="$PROJDIR/software/TREE-QMC/tree-qmc"
 
 cd $DATADIR
 
-GTRE_FILE="UCE_minus_105_abayes_gene_trees_sorted_plus_bad105.tre"
+GTRE_FILE="$GTREDIR/UCEs_minus_bad105_sorted_plus_bad105_sorted_abayes_gene_trees.tre"
 PCSTREE="treeA-for-pcs"
 
 # TREE-QMC w/ hybrid weighting scheme

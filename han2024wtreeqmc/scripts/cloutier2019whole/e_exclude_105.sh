@@ -15,11 +15,11 @@ for GENE in `cat $EXCLUDE`; do
     mv exclude.* exclude
 done
 
-cd $DATADIR/alignments/UCEs
-mkdir exclude
-for GENE in `cat $EXCLUDE`; do
-    mv $GENE.fasta exclude.$GENE.fasta
-    mv $GENE.csv exclude.$GENE.csv
-    mv exclude.* exclude
-done
+#cd $DATADIR/alignments/UCEs
+#mkdir exclude
+#for GENE in `cat $EXCLUDE`; do
+#    mv $GENE.fasta exclude.$GENE.fasta
+#    mv $GENE.csv exclude.$GENE.csv
+#    mv exclude.* exclude
+#done
 
