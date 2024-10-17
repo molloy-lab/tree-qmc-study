@@ -83,30 +83,23 @@ def setBoxColors(bp, tableau20):
 
 
 def add_dashed_lines(ax, yticks, xminor=None):
-    ymin = yticks[0]
-    ymax = yticks[-1]
-
-    ymin = -0.05 * ymax
-    ax.set_ylim(ymin, ymax)
-    ax.set_yticks(yticks)
-
     if xminor == None:
         xdraw = ax.xaxis.get_majorticklocs()
         for y in yticks:
             ax.plot(xdraw, [y] * len(xdraw), "--", dashes=(3, 3),
-                    lw=0.5, color="black", alpha=0.3)
+                    lw=1, color="black", alpha=0.3)
     else:
         xs = numpy.arange(xminor[0]-1, xminor[-1]+2)
         for y in yticks:
             ax.plot(xs, [y] * len(xs), "--", dashes=(3, 3),
-                    lw=0.5, color="black", alpha=0.3)
+                    lw=1, color="black", alpha=0.3)
 
 
 def plot_runtime(ax, df, ntaxs):
     # Plot runtime for number of taxa
     n_ntax = len(ntaxs)
 
-    ax.set_title(letters[0],
+    ax.set_title(letters[1],
                  loc="left", x=0.0, y=1.0, fontsize=10.5)
     #ax.set_title(upperletters[1],
     #             loc="left", fontsize=11)
@@ -137,7 +130,7 @@ def plot_runtime(ax, df, ntaxs):
             vals = xdf.SECS.values / (60.0 * 60.0)
 
             av.append(numpy.mean(vals))
-            se.append(numpy.std(vals) / numpy.sqrt(vals.size))
+            se.append(numpy.std(vals)) # / numpy.sqrt(vals.size))
     
         print(av)
 
@@ -158,31 +151,32 @@ def plot_runtime(ax, df, ntaxs):
     ax.set_xticks(ntaxs)
     ax.set_xticklabels([str(x) for x in ntaxs])
 
-    yticks = range(0, 9, 2)
+    yticks = [1, 2, 3, 4, 5,  8]
+    ax.set_ylim(0, yticks[-1])
+    ax.set_yticks([0] + yticks)
     add_dashed_lines(ax, yticks)
 
-    #ax.set_xlabel("Number of Taxa", fontsize=12)
-    ax.set_ylabel(r'Runtime (h)', fontsize=11)
-    ax.tick_params(axis='x', labelsize=10)
-    ax.tick_params(axis='y', labelsize=9)
+    ax.set_xlabel("Number of Taxa", fontsize=12)
+    ax.set_ylabel(r'Runtime (h)', fontsize=12)
+    ax.tick_params(axis='x', labelsize=11)
+    ax.tick_params(axis='y', labelsize=11)
 
     ax.get_xaxis().tick_bottom() 
     ax.get_yaxis().tick_left() 
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
 
-    ax.text(0, 7, 
+    ax.text(0, 6.5, 
             "Solid lines = 1 thread\nDashed line = 16 threads",
-            fontsize=9,
+            fontsize=12,
             horizontalalignment='left',
             verticalalignment='center')
-
 
 def plot_runtime_ratio(ax, df, ntaxs):
     # Plot runtime for number of taxa
     n_ntax = len(ntaxs)
 
-    ax.set_title(letters[1],
+    ax.set_title(letters[0],
                  loc="left", x=0.0, y=1.0, fontsize=10.5)
     #ax.set_title(upperletters[1],
     #             loc="left", fontsize=11)
@@ -190,8 +184,9 @@ def plot_runtime_ratio(ax, df, ntaxs):
     tableau20 = []
     tableau20 += darkblue
     map_rgb_to_01(tableau20)
-    
-    secs = []
+
+    av = []
+    se = []
     for ntax in ntaxs:
         xdf = df[(df["NTAX"] == ntax) & (df["MTHD"] == "TQMC-n2")]
         xdf = xdf.sort_values(by=["REPL"], ascending=True)
@@ -207,45 +202,35 @@ def plot_runtime_ratio(ax, df, ntaxs):
             sys.exit("Cannot do division!")
 
         vals = yvals / xvals
-        secs.append(vals)
 
-        labls = ntaxs
+        av.append(numpy.mean(vals))
+        se.append(numpy.std(vals)) # / numpy.sqrt(vals.size))
 
-    n_mthds = 1
-    xminor = []
-    xmajor = []
-    base = numpy.arange(1, n_mthds + 1) 
-    for j, ntax in enumerate(ntaxs):
-        pos = base + ((n_mthds + 1) * j)
-        xminor = xminor + list(pos)
-        xmajor = xmajor + [numpy.mean(pos)]
+    av = numpy.array(av)
+    se = numpy.array(se)
 
-        bp = ax.boxplot(secs[j], positions=pos, widths=0.75,
-                        showfliers=False, 
-                        showmeans=True,
-                        patch_artist=True)
-        setBoxColors(bp, tableau20)
+    labls = ntaxs
+    
+    ax.fill_between(labls, av - se, av + se, 
+                    color=tableau20[1], alpha=0.5)
 
-    # Set labels
-    ax.set_ylabel(r"Weighted / unweighted", fontsize=11)
-    ax.set_xlabel("Number of Taxa", fontsize=12)
+    ax.scatter(labls, av, color=tableau20[0]) #, size=3)
+
+    ax.set_xticks(ntaxs)
+    ax.set_xticklabels([str(x) for x in ntaxs])
+
+    yticks = [1.5, 2, 2.5, 3, 3.5, 4]
+    ax.set_ylim(1, yticks[-1])
+    ax.set_yticks([1] + yticks)
+    add_dashed_lines(ax, yticks)
+
+    #ax.set_xlabel("Number of Taxa", fontsize=12)
+    ax.set_ylabel(r'TQMC runtime ratio', fontsize=12)
     ax.tick_params(axis='x', labelsize=10)
-    ax.tick_params(axis='y', labelsize=9)
+    ax.tick_params(axis='y', labelsize=10)
 
-    # Set tick labels
-    ax.set_xlim(xminor[0]-1, xminor[-1]+1)
-    ax.set_xticks(xmajor)
-    ax.set_xticklabels(ntaxs)
-
-    # Set dashed lines
-    yticks = list(range(0, 4 + 1, 1))
-    add_dashed_lines(ax, yticks, xminor=xminor)
-
-    # Set plot axis parameters
-    ax.tick_params(axis=u'both', which=u'both',length=0) # removes tiny ticks
     ax.get_xaxis().tick_bottom() 
-    ax.get_yaxis().tick_left()
-
+    ax.get_yaxis().tick_left() 
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
 
@@ -258,8 +243,8 @@ def make_figure(df, output):
 
     ntaxs = [10, 50, 100, 200, 500, 1000]
 
-    plot_runtime_ratio(ax10, df, ntaxs)
-    plot_runtime(ax00, df, ntaxs)
+    plot_runtime_ratio(ax00, df, ntaxs)
+    plot_runtime(ax10, df, ntaxs)
 
     # Shift layout
     gs.tight_layout(fig, rect=[0, 0.05, 1, 1])
@@ -280,7 +265,7 @@ def make_figure(df, output):
     hs = []
     for k in range(len(mthds)):
         #print(mthds[k])
-        h, = ax00.plot([0], [0], 
+        h, = ax10.plot([0], [0], 
                        '-', 
                        color=tableau20[k*2], 
                        lw=10)
@@ -289,9 +274,9 @@ def make_figure(df, output):
     ax10.legend(hs, mthds,
                 frameon=False,
                 ncol=5, 
-                fontsize=9.5,
+                fontsize=11,
                 loc='lower center', 
-                bbox_to_anchor=(0.5, -0.5, 0, 3))
+                bbox_to_anchor=(0.5, -0.55, 0, 3))
 
     # Save plot
     plt.savefig(output, format='pdf', dpi=300)
