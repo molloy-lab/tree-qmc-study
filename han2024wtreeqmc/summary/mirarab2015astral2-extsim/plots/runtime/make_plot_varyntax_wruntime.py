@@ -154,12 +154,13 @@ def plot_runtime(ax, df, ntaxs):
     yticks = [1, 2, 3, 4, 5,  8]
     ax.set_ylim(0, yticks[-1])
     ax.set_yticks([0] + yticks)
+    ax.set_yticklabels(['0.0', '1.0', '2.0', '3.0', '4.0', '5.0',  '8.0'])
     add_dashed_lines(ax, yticks)
 
     ax.set_xlabel("Number of Taxa", fontsize=12)
     ax.set_ylabel(r'Runtime (h)', fontsize=12)
-    ax.tick_params(axis='x', labelsize=11)
-    ax.tick_params(axis='y', labelsize=11)
+    ax.tick_params(axis='x', labelsize=10.5)
+    ax.tick_params(axis='y', labelsize=10.5)
 
     ax.get_xaxis().tick_bottom() 
     ax.get_yaxis().tick_left() 
@@ -226,8 +227,8 @@ def plot_runtime_ratio(ax, df, ntaxs):
 
     #ax.set_xlabel("Number of Taxa", fontsize=12)
     ax.set_ylabel(r'TQMC runtime ratio', fontsize=12)
-    ax.tick_params(axis='x', labelsize=10)
-    ax.tick_params(axis='y', labelsize=10)
+    ax.tick_params(axis='x', labelsize=10.5)
+    ax.tick_params(axis='y', labelsize=10.5)
 
     ax.get_xaxis().tick_bottom() 
     ax.get_yaxis().tick_left() 
