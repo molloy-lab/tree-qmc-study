@@ -11,8 +11,8 @@ plt.rc('text.latex', preamble=r'\usepackage{helvet} \usepackage{sfmath}')
 w10 = 10
 
 # Read data frame
-df_h = pandas.read_csv("wtreeqmc_hybrid_n2_treeA-for-pcs.tsv", sep="\t")
-df_n = pandas.read_csv("wtreeqmc_none_n2_treeA-for-pcs.tsv", sep="\t")
+df_h = pandas.read_csv("wtreeqmc_hybrid_treeA-for-pcs.tsv", sep="\t")
+df_n = pandas.read_csv("wtreeqmc_none_treeA-for-pcs.tsv", sep="\t")
 
 # Normalize quartets
 pos = df_h["position"].values
