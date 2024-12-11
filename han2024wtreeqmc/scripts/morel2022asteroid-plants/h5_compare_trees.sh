@@ -9,7 +9,8 @@ DATADIR="$PROJDIR/data/morel2022asteroid-plants"
 cd $DATADIR
 
 
-TREES1=( "reference-speciesTree.newick" \
+TREES1=( "apgweb_reference-speciesTree.newick" \
+         "reference-speciesTree.newick" \
 	 "concatenation-single.LG+G.speciesTree.newick" )
 
 TREES2=( "concatenation-single.LG+G.speciesTree.newick" \
@@ -26,6 +27,17 @@ for TREE1 in ${TREES1[@]}; do
 done
 
 exit
+
+apgweb_reference-speciesTree.newick vs. concatenation-single.LG+G.speciesTree.newick
+81,81,81,53,78,14,39
+apgweb_reference-speciesTree.newick vs. treeqmc_wf_n2.tre
+81,81,81,53,78,14,39
+apgweb_reference-speciesTree.newick vs. asteroid.bestTree.newick
+81,81,81,53,78,14,39
+apgweb_reference-speciesTree.newick vs. wastrid_vanilla.tre
+81,81,81,53,78,27,52
+apgweb_reference-speciesTree.newick vs. aster_v1.16.3.4.tre
+81,81,81,53,78,23,48
 
 reference-speciesTree.newick vs. concatenation-single.LG+G.speciesTree.newick
 81,81,81,56,78,7,29
