@@ -80,7 +80,7 @@ def make_figure(df, output):
     namemap["wtreeqmc_wf_n2_shared"] = "TQMC-n2 (shared)"
     namemap["wtreeqmc_wf_n2"] = "TQMC-n2"
     namemap["asteroid"] = "Asteroid"
-    namemap["aster_v1.16.3.4"] = "ASTER"
+    namemap["aster_v1.16.3.4"] = "ASTRAL-IV"
     namemap["wastrid_vanilla"] = "ASTRID"
 
     mthds = ["wtreeqmc_wf_n0",

@@ -210,6 +210,7 @@ def make_figure(df, supp, output):
     gs.tight_layout(fig, rect=[0, 0.05, 1, 1])
 
     # Add legend at bottom
+    mthds[1] = "ASTRAL-IV-wh"
     hs = []
     for k in range(n_mthds):
         #print(mthds[k])
@@ -224,7 +225,7 @@ def make_figure(df, supp, output):
                   ncol=7, 
                   fontsize=9.5,
                   loc='lower center', 
-                  bbox_to_anchor=(0.5, -0.5, 0, 3))
+                  bbox_to_anchor=(0.5, -0.4, 0, 3))
 
     # Save plot
     plt.savefig(output, format='pdf', dpi=300)

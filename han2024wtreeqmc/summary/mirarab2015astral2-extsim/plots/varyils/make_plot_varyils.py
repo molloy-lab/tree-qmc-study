@@ -219,6 +219,7 @@ def make_figure(df, supp, output):
     gs.tight_layout(fig, rect=[0, 0.05, 1, 1])
 
     # Add legend at bottom
+    mthds[1] = "ASTRAL-IV-wh"
     hs = []
     for k in range(n_mthds):
         #print(mthds[k])

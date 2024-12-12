@@ -137,11 +137,11 @@ ax.set_xticks([])
 ax.set_yticks([])
 
 # e, f, g)
-x = df.TQMCn2refinedxFNR.values * 100
+x = df.TQMCn2refinedxFNR.values * 100  # refined i.e. binary so FN rate = RF rate
 
 # a) TREE-QMC (n2) vs. shared
 name = "shared"
-y = df.TQMCn2sharedrefinedxFNR.values * 100
+y = df.TQMCn2sharedrefinedxFNR.values * 100  # refined i.e. binary so FN rate = RF rate
 
 ax = ax01
 ax.set_title(letters[0], loc="left", fontsize=11)
@@ -193,7 +193,7 @@ print("      Norm RF --> TIE: %d, TQMC better: %d, %s better: %d, TOTAL: %d" % (
 
 
 # c) TREE-QMC (n2) vs. ASTRAL/ASTER - SPECIES TREE ERROR - RF
-name = "ASTRAL"
+name = "ASTRAL-IV"
 y = df.ASTERxFNR.values * 100
 
 ax = ax03
@@ -308,7 +308,7 @@ print("      Norm RF --> TIE: %d, TQMC better: %d, %s better: %d, TOTAL: %d" % (
 
 
 # g) TREE-QMC-wh (n2) vs. ASTRAL/ASTER-wh - SPECIES TREE ERROR - RF
-name = "ASTRAL-wh"
+name = "ASTRAL-IV-wh"
 y = df.ASTERHxSERF.values * 100
 
 ax = ax13
@@ -436,7 +436,7 @@ print("      Norm RF --> TIE: %d, TQMC better: %d, %s better: %d, TOTAL: %d" % (
 
 
 # k) TREE-QMC (wh, n2) vs. ASTER (wh)
-name = "ASTER-wh"
+name = "ASTRAL-IV-wh"
 y = df.ASTERHxSERF.values * 100
 
 ax = ax23
