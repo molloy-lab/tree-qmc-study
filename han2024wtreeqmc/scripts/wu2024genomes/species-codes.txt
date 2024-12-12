@@ -13,12 +13,12 @@ Gouldian_finch,chloebia_gouldiae,erythrrgl
 Flycatcher,empidonax_alnorum,fcdllbcll
 Swainson's_thrush,catharus_ustulatus,cthrsstlt
 Common_starling,sturnus_vulgaris,strnsvlgr
-Great_tit,parus_major,prsmjr,parusmajr
+Great_tit,parus_major,parusmajr
 Tibetan_ground-tit,pseudopodoces_humilis,psdpdcshm
 Blue_tit,cyanistes_caeruleus,cynstscrl
 Rufous-capped_babbler,cyanoderma_ruficeps,stchyrsrf
 Reunion_grey_white-eye,zosterops_borbonicus,zstrpsbrb
-Barn_swallow,hirundo_rustica,hrndrstc,hrndrstcr
+Barn_swallow,hirundo_rustica,hrndrstcr
 American_crow,corvus_brachyrhynchos,crvsbrchy
 New_Caledonian_crow,corvus_moneduloides,crvsmndld
 Painted_honeyeater,grantiella_picta,grntllpct
