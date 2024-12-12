@@ -16,8 +16,8 @@ cat /proc/meminfo
 
 GROUPDIR="/fs/cbcb-lab/ekmolloy"
 PROJDIR="$GROUPDIR/ekmolloy/tree-qmc-study/han2024wtreeqmc"
-GENEDIR="$GROUPDIR/group/data/wu2024genomes/1_besttrees_cds5756"
-OUTDIR="$PROJDIR/data/wu2024genomes/gene-trees-abayes"
+GENEDIR="$PROJDIR/data/wu2024genomes/gene-trees-abayes"
+OUTDIR="$PROJDIR/data/wu2024genomes/species-trees"
 WTREEQMC="$PROJDIR/software/TREE-QMC/tree-qmc"
 
 cd $OUTDIR

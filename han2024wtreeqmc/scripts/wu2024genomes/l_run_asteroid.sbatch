@@ -13,8 +13,8 @@
 
 GROUPDIR="/fs/cbcb-lab/ekmolloy"
 PROJDIR="/fs/cbcb-lab/ekmolloy/ekmolloy/tree-qmc-study/han2024wtreeqmc"
-GENEDIR="$GROUPDIR/group/data/wu2024genomes/1_besttrees_cds5756"
-OUTDIR="$PROJDIR/data/wu2024genomes/gene-trees-abayes"
+GENEDIR="$PROJDIR/data/wu2024genomes/gene-trees-abayes"
+OUTDIR="$PROJDIR/data/wu2024genomes/species-trees"
 ASTEROID="$GROUPDIR/group/software-compiled-on-EPYC-7313/Asteroid-nompi/Asteroid/build/bin/asteroid"
 
 cd $OUTDIR
